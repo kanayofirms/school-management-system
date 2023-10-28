@@ -42,11 +42,13 @@
   
   <!-- /.content-wrapper -->
  
-  @include('layouts.footer')
+ 
   <!-- Control Sidebar -->
 
   @yield('content')
 
+  
+  @include('layouts.footer')
   
   <!-- /.control-sidebar -->
 </div>
