@@ -4,7 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Auth;
+
 
 class AdminMiddleware
 {
@@ -15,17 +17,18 @@ class AdminMiddleware
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
         if(!empty(Auth::check()))
         {
-            if(Auth::user->user_type == 1)
+            if(Auth::user()->user_type == 1)
             {
                 return $next($request);
             }
             else
             {
-                
+                Auth::logout();
+                return redirect(url(''));   
             }   
         }
         else{
@@ -35,3 +38,4 @@ class AdminMiddleware
        
     }
 }
+
