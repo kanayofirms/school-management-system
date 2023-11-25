@@ -23,7 +23,7 @@ Route::get('/', function () {
 Route::get('/', [AuthController::class, 'login']);
 Route::get('logout', [AuthController::class, 'logout']);
 Route::post('login', [AuthController::class, 'AuthLogin']);
-
+Route::get('forgot-password', [AuthController::class, 'forgotpassword']);
 
 
 
