@@ -26,28 +26,12 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{ url('public/plugins/summernote/summernote-bs4.min.css') }}">
 </head>
+@yield('style')
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
-  <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="{{ url('public/dist/img/AdminLTELogo.png') }}" alt="AdminLTELogo" height="60" width="60">
-  </div>
-
   @include('layouts.header') 
-
-  <!-- Main Sidebar Container -->
-  
-  <!-- Content Wrapper. Contains page content -->
-  
-  <!-- /.content-wrapper -->
- 
- 
-  <!-- Control Sidebar -->
-
   @yield('content')
-
-  
   @include('layouts.footer')
   
   <!-- /.control-sidebar -->
@@ -87,5 +71,8 @@
 <!-- AdminLTE for demo purposes -->
 
 <script src="{{ url('public/dist/js/pages/dashboard.js') }}"></script>
+
+@yield('script')
+
 </body>
 </html>
