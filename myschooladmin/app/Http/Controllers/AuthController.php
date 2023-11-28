@@ -84,12 +84,12 @@ class AuthController extends Controller
 
             Mail::to($user->email)->send(new ForgotPasswordMail($user));
 
-            return redirect()->back()->with('success', "Please check your email and reset your password.");
+            return redirect()->back()->with('success', "Please check your email and reset your password");
 
         }
         else
         {
-            return redirect()->back->with('error', "Email not found.");
+            return redirect()->back->with('error', "Email not found");
         }
     }
 
@@ -104,6 +104,23 @@ class AuthController extends Controller
         else
         {
             abort(404);
+        }
+    }
+
+    public function PostReset($token, Request $request)
+    {
+        if($request->password == $request->cpassword)
+        {
+            $user = User::getTokenSingle($token);
+            $user->password = Hash::make($request->password);
+            $user->remember_token = Str::random(30);
+            $user->save();
+
+            return redirect(url(''))->with('success', "Password successfully reset");
+        }
+        else
+        {
+            return redirect()->back()->with('error', "Password and confirm password does not match"); 
         }
     }
 
