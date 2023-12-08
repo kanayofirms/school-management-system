@@ -23,6 +23,9 @@ class AdminController extends Controller
 
     public function insert(Request $request)
     {
+        request()->validate([
+            'email' => 'required|email|unique:users'
+        ]);
         $user = new User;
         $user->name = trim($request->name);
         $user->email = trim($request->email);
