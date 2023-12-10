@@ -44,6 +44,7 @@ Route::group(['middleware' => 'admin'], function () {
     // class url
 
     Route::get('admin/class/list', [ClassController::class, 'list']);
+    Route::get('admin/class/add', [ClassController::class, 'add']);
 
 }); 
 
