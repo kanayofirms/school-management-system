@@ -82,7 +82,17 @@
                     </tr>
                   </thead>
                   <tbody>
-                    
+                    @foreach ($getRecord as $value)
+                        <tr>
+                            <td>{{ $value->id }}</td>
+                            <td>{{ $value->name }}</td>
+                            <td>{{ $value->status }}</td>
+                            <td>{{ $value->created_by_name }}</td>
+                            <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
+                            <td></td>
+                        </tr>
+                    @endforeach
+                        
                   </tbody>
                 </table>
                 <div style="padding: 10px; float:right;">
