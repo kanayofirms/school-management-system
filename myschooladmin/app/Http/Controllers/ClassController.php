@@ -11,7 +11,7 @@ class ClassController extends Controller
     public function list()
     {
         $data['getRecord'] = ClassModel::getRecord();
-        
+
         $data['header_title'] = "Class List";
         return view('admin.class.list', $data);
     }
@@ -31,5 +31,11 @@ class ClassController extends Controller
         $save->save();
         
         return redirect('admin/class/list')->with('success', "Class Successfully Created");
+    }
+
+    public function edit($id)
+    {
+        $data['header_title'] = "Edit Class";
+        return view('admin.class.edit', $data);
     }
 }
