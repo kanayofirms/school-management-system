@@ -11,6 +11,11 @@ class ClassModel extends Model
 
     protected $table = 'class';
 
+    static public function getSingle($id)
+    {
+        return self::find($id);
+    }
+
     static public function getRecord()
     {
         $return = ClassModel::select('class.*', 'users.name as created_by_name')
