@@ -86,18 +86,27 @@
                         <tr>
                             <td>{{ $value->id }}</td>
                             <td>{{ $value->name }}</td>
-                            <td>{{ $value->status }}</td>
+                            <td>
+                                @if ($value->status == 0)
+                                    Active
+                                @else
+                                    Inactive
+                                @endif
+                            </td>
                             <td>{{ $value->created_by_name }}</td>
                             <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
-                            <td></td>
+                            <td>
+                                <a href="{{ url('admin/class/edit/'.$value->id) }}" class="btn btn-primary">Edit</a>
+                                <a href="{{ url('admin/class/delete/'.$value->id) }}" class="btn btn-danger">Delete</a>
+                            </td>
                         </tr>
                     @endforeach
                         
                   </tbody>
                 </table>
                 <div style="padding: 10px; float:right;">
-                
-              </div>
+                    {!! $getRecord->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
+                  </div>
               </div>
               <!-- /.card-body -->
             </div>
