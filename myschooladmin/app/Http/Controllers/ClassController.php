@@ -35,7 +35,16 @@ class ClassController extends Controller
 
     public function edit($id)
     {
-        $data['header_title'] = "Edit Class";
-        return view('admin.class.edit', $data);
+        $data['getRecord'] = ClassModel::getSingle($id);
+        if(!empty($data['getRecord']))
+        {
+            $data['header_title'] = "Edit Class";
+            return view('admin.class.edit', $data);
+        }
+        else
+        {
+            abort(404);
+        }
+        
     }
 }
