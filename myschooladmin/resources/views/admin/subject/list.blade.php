@@ -74,8 +74,8 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Name</th>
-                      <th>Type</th>
+                      <th>Subject Name</th>
+                      <th>Subject Type</th>
                       <th>Status</th>
                       <th>Created By</th>
                       <th>Created Date</th>
@@ -87,6 +87,7 @@
                         <tr>
                             <td>{{ $value->id }}</td>
                             <td>{{ $value->name }}</td>
+                            <td>{{ $value->type }}</td>
                             <td>
                                 @if ($value->status == 0)
                                     Active
