@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\SubjectModel;
+use Auth;
 
 class SubjectController extends Controller
 {
@@ -19,5 +20,17 @@ class SubjectController extends Controller
     {
         $data['header_title'] = "Add Subject";
         return view('admin.subject.add', $data);
+    }
+
+    public function insert(Request $request)
+    {
+        $save = new SubjectModel;
+        $save->name = trim($request->name);
+        $save->type = trim($request->type);
+        $save->status = trim($request->status);
+        $save->created_by = Auth::user()->id;
+        $save->save();
+
+        return redirect('admin/subject/list')->with('success', "Subject Successfully Created");
     }
 }
