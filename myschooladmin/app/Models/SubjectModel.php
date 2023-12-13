@@ -11,6 +11,11 @@ class SubjectModel extends Model
 
     protected $table = 'subject';
 
+    static public function getSingle($id)
+    {
+        return self::find($id);
+    }
+
     static public function getRecord()
     {
         $return = SubjectModel::select('subject.*', 'users.name as created_by_name')
