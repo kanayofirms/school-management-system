@@ -14,4 +14,10 @@ class SubjectController extends Controller
         $data['header_title'] = "Subject List";
         return view('admin.subject.list', $data);
     }
+
+    public function add()
+    {
+        $data['header_title'] = "Add Subject";
+        return view('admin.subject.add', $data);
+    }
 }
