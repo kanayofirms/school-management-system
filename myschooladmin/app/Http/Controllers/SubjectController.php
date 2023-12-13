@@ -33,4 +33,19 @@ class SubjectController extends Controller
 
         return redirect('admin/subject/list')->with('success', "Subject Successfully Created");
     }
-}
+
+    public function edit($id)
+    {
+        $data['getRecord'] = SubjectModel::getSingle($id);
+        if(!empty($data['getRecord']))
+        {
+            $data['header_title'] = "Edit Subject";
+            return view('admin.subject.edit', $data);
+        }
+        else
+        {
+            abort(404);
+        }
+    }
+
+    }
