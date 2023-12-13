@@ -45,7 +45,19 @@ class SubjectController extends Controller
         else
         {
             abort(404);
-        }
+        }   
+    }
+
+    public function update($id, Request $request)
+    {
+        $save = SubjectModel::getSingle($id);
+        $save->name = trim('$request->name');
+        $save->type = trim('$request->type');
+        $save->status = trim($request->status);
+        $save->save();
+
+        return redirect('admin/subject/list')->with('success', "Subject Successfully Updated");
+
     }
 
     }
