@@ -31,6 +31,16 @@
                       </div>
 
                       <div class="form-group">
+                        <label>Subject Type</label>
+                        <select class="form-control" name="type" required>
+                            <option value="">Select Type</option>
+                            <option value="Theory">Theory</option>
+                            <option value="Practical">Practical</option>
+                        </select>
+            
+                      </div>
+
+                      <div class="form-group">
                         <label>Status</label>
                         <select class="form-control" name="status">
                             <option value="0">Active</option>
