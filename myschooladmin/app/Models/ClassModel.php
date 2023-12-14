@@ -32,7 +32,6 @@ class ClassModel extends Model
                         $return = $return->whereDate('class.created_at','=', Request::get('date'));
                     }
 
-
                     $return = $return->where('class.is_delete', '=', 0)
                     ->orderBy('class.id', 'desc')
                     ->paginate(20);
