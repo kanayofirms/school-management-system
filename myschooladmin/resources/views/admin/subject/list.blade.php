@@ -37,9 +37,19 @@
                   <form method="get" action="">     
                     <div class="card-body">
                       <div class="row">
+
                         <div class="form-group col-md-3">
                             <label>Name</label>
                             <input type="text" class="form-control" value="{{ Request::get('name') }}" name="name" placeholder="Name">
+                          </div>
+
+                          <div class="form-group col-md-3">
+                            <label>Subject Type</label>
+                            <select class="form-control" name="type">
+                                <option value="">Select Type</option>
+                                <option {{ (Request::get('type') == 'Theory') ? 'selected' : '' }} value="Theory">Theory</option>
+                                <option {{ (Request::get('type') == 'Practical') ? 'selected' : '' }} value="Practical">Practical</option>
+                            </select>
                           </div>
 
                       <div class="form-group col-md-3">
@@ -49,7 +59,7 @@
 
                       <div class="form-group col-md-3">
                         <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Search</button> 
-                        <a href="{{ url('admin/class/list') }}" class="btn btn-success" style="margin-top: 30px;">Reset</a>  
+                        <a href="{{ url('admin/subject/list') }}" class="btn btn-success" style="margin-top: 30px;">Reset</a>  
                       </div>
                       
                     </div>
