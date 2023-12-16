@@ -22,6 +22,7 @@ class ClassSubjectController extends Controller
     public function add(Request $request)
     {
         $data['getClass'] = ClassModel::getClass();
+        $data['getSubject'] = SubjectModel::getSubject();
         $data['header_title'] = "Assign Subject Add";
         return view('admin.assign_subject.add', $data);
     }
