@@ -27,7 +27,24 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Class Name</label>
-                        <input type="text" class="form-control" name="name" required placeholder="Class Name">
+                        <select class="form-control" name="class_id" required>
+                            <option value="">Select Class</option>
+                            @foreach ($getClass as $class)
+                                <option value="{{ $class->id }}">{{ $class->name }}</option>    
+                            @endforeach
+                        </select>
+            
+                      </div>
+
+                      <div class="form-group">
+                        <label>Subject Name</label>
+                            @foreach ($getSubject as $subject)
+                            <div>
+                              <label style="font-weight: normal;">
+                                <input type="checkbox" value="{{ $subject->id }}" name="subject_id[]"> {{ $subject->name }}
+                              </label>
+                            </div>               
+                            @endforeach
                       </div>
 
                       <div class="form-group">
