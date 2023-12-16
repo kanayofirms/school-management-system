@@ -13,7 +13,7 @@
             <h1>Assign Subject List</h1>
           </div>
           <div class="col-sm-6" style="text-align: right;">
-            <a href="{{ url('admin/class/add') }}" class="btn btn-primary">Add New Assign Subject</a>
+            <a href="{{ url('admin/assign_subject/add') }}" class="btn btn-primary">Add New Assign Subject</a>
             
           </div>
         
