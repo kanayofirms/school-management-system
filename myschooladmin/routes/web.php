@@ -65,6 +65,7 @@ Route::group(['middleware' => 'admin'], function () {
     // assign_subject
 
     Route::get('admin/assign_subject/list', [ClassSubjectController::class, 'list']);
+    Route::get('admin/assign_subject/add', [ClassSubjectController::class, 'add']);
 
 }); 
 
