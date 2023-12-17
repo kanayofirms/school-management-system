@@ -56,4 +56,13 @@ class ClassSubjectController extends Controller
             return redirect()->back()->with('error', "Due to some error please try again");
         }
     }
+
+    public function delete($id)
+    {
+        $save = ClassSubjectModel::getSingle($id);
+        $save->is_delete = 1;
+        $save->save();
+
+        return redirect()->back()->with('success', "Record Successfully Deleted");
+    }
 }
