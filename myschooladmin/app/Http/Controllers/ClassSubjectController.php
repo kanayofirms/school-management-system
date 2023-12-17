@@ -23,7 +23,7 @@ class ClassSubjectController extends Controller
     {
         $data['getClass'] = ClassModel::getClass();
         $data['getSubject'] = SubjectModel::getSubject();
-        $data['header_title'] = "Assign Subject Add";
+        $data['header_title'] = "Add Assign Subject";
         return view('admin.assign_subject.add', $data);
     }
 
@@ -55,6 +55,25 @@ class ClassSubjectController extends Controller
         {
             return redirect()->back()->with('error', "Due to some error please try again");
         }
+    }
+
+    public function edit($id)
+    {
+        $getRecord = ClassSubjectModel::getSingle($id);
+        if(!empty($getRecord))
+        {
+            $data['getRecord'] = $getRecord;
+            $data['getAssignSubjectID'] = ClassSubjectModel::getAssignSubjectID($getRecord->class_id);
+            $data['getClass'] = ClassModel::getClass();
+            $data['getSubject'] = SubjectModel::getSubject();
+            $data['header_title'] = "Edit Assign Subject";
+            return view('admin.assign_subject.edit', $data);
+        }
+        else
+        {
+            abort(404);
+        }
+       
     }
 
     public function delete($id)
