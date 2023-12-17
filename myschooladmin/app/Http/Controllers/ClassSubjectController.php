@@ -76,6 +76,23 @@ class ClassSubjectController extends Controller
        
     }
 
+    public function edit_single($id)
+    {
+        $getRecord = ClassSubjectModel::getSingle($id);
+        if(!empty($getRecord))
+        {
+            $data['getRecord'] = $getRecord;
+            $data['getClass'] = ClassModel::getClass();
+            $data['getSubject'] = SubjectModel::getSubject();
+            $data['header_title'] = "Edit Assign Subject";
+            return view('admin.assign_subject.edit_single', $data);
+        }
+        else
+        {
+            abort(404);
+        }
+    }
+
     public function update(Request $request)
     {
         ClassSubjectModel::deleteSubject($request->class_id);
@@ -101,7 +118,7 @@ class ClassSubjectController extends Controller
                 }
             }    
         }
-        
+
         return redirect('admin/assign_subject/list')->with('success', "Subject Successfully Assigned to Class");
     }
 
