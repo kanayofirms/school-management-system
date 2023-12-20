@@ -122,6 +122,29 @@ class ClassSubjectController extends Controller
         return redirect('admin/assign_subject/list')->with('success', "Subject Successfully Assigned to Class");
     }
 
+    public function update_single($id, Request $request)
+    {
+            $getAlreadyFirst = ClassSubjectModel::getAlreadyFirst($request->class_id, $request->subject_id);
+            if(!empty($getAlreadyFirst))
+            {
+                $getAlreadyFirst->status = $request->status;
+                $getAlreadyFirst->save();
+
+                return redirect('admin/assign_subject/list')->with('success', "Status Successfully Updated");
+            }
+            else
+            {
+                $save = ClassSubjectModel::getSingle($id);
+                $save->class_id = $request->class_id;
+                $save->subject_id = $request->subject_id;
+                $save->status = $request->status;
+                $save->save();
+
+                return redirect('admin/assign_subject/list')->with('success', "Subject Successfully Assigned to Class");
+            }
+        
+    }
+
     public function delete($id)
     {
         $save = ClassSubjectModel::getSingle($id);
