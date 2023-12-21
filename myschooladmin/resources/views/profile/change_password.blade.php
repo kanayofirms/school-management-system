@@ -19,7 +19,11 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
+
+            
+
           <div class="col-md-12">
+            @include('_message')
             <!-- general form elements -->
             <div class="card card-primary">   
               <form method="post" action="">
@@ -27,12 +31,12 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Old Password</label>
-                        <input type="text" class="form-control" name="old_password" required placeholder="Old Password">
+                        <input type="password" class="form-control" name="old_password" required placeholder="Old Password">
                       </div>
 
                       <div class="form-group">
                         <label>New Password</label>
-                        <input type="text" class="form-control" name="new_password" required placeholder="New Password">
+                        <input type="password" class="form-control" name="new_password" required placeholder="New Password">
                       </div>
 
                   
