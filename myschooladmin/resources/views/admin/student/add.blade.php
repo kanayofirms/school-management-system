@@ -157,7 +157,7 @@
                                     <hr />
                                   
                                     <div class="form-group">
-                                        <label> <span style="color: red;"></span></label>
+                                        <label> <span style="color: red;">*</span></label>
                                         <input type="email" class="form-control" value="{{ old('email') }}"
                                             name="email" required placeholder="Email">
                                         <div style="color:red">
@@ -165,7 +165,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>Password <span style="color: red;"></span></label>
+                                        <label>Password <span style="color: red;">*</span></label>
                                         <input type="password" class="form-control" name="password" required
                                             placeholder="Password">
                                     </div>
