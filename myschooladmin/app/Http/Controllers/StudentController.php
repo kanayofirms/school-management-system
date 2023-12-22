@@ -21,4 +21,9 @@ class StudentController extends Controller
         $data['header_title'] = "Add New Student";
         return view('admin.student.add', $data);
     }
+
+    public function insert(Request $request)
+    {
+        dd($request->all());
+    }
 }
