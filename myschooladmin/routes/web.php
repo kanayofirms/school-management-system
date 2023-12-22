@@ -40,6 +40,7 @@ Route::post('reset/{token}', [AuthController::class, 'PostReset']);
 // student
 
 Route::get('admin/student/list', [StudentController::class, 'list']);
+Route::get('admin/student/add', [StudentController::class, 'add']);
 
 
 
