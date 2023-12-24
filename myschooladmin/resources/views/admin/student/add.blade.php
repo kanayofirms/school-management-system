@@ -21,7 +21,7 @@
                     <div class="col-md-12">
                         <!-- general form elements -->
                         <div class="card card-primary">
-                            <form method="post" action="">
+                            <form method="post" action="" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="card-body">
                                     <div class="row">
@@ -160,7 +160,7 @@
                                     <hr />
                                   
                                     <div class="form-group">
-                                        <label> <span style="color: red;">*</span></label>
+                                        <label>Email <span style="color: red;">*</span></label>
                                         <input type="email" class="form-control" value="{{ old('email') }}"
                                             name="email" required placeholder="Email">
                                         <div style="color:red">
