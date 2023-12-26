@@ -42,6 +42,7 @@ Route::post('reset/{token}', [AuthController::class, 'PostReset']);
 Route::get('admin/student/list', [StudentController::class, 'list']);
 Route::get('admin/student/add', [StudentController::class, 'add']);
 Route::post('admin/student/add', [StudentController::class, 'insert']);
+Route::get('admin/student/edit/{id}', [StudentController::class, 'edit']);
 
 
 
