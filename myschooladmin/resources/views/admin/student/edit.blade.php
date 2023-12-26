@@ -195,7 +195,7 @@
                                                 {{ $errors->first('profile_pic') }}
                                             </div>
                                             @if (!@empty($getRecord->getProfile()))
-                                                <img src="{{ $getRecord->getProfile() }}" style="width: 100px;">
+                                                <img src="{{ $getRecord->getProfile() }}" style="width: auto;height: 50px;">
                                             @endif
                                         </div>
 
