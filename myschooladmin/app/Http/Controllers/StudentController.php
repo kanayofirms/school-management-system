@@ -27,6 +27,18 @@ class StudentController extends Controller
 
     public function insert(Request $request)
     {
+        request()->validate([
+            'email' => 'required|email|unique:users',
+            'genotype' => 'max:10',
+            'blood_group' => 'max:10',
+            'religion' => 'max:50',
+            'admission_number' => 'max:50',
+            'roll_number' => 'max:50',
+            'country' => 'max:50',
+            'state' => 'max:50',
+            'local_govt_area' => 'max:50',
+            'hometown' => 'max:50',        
+        ]);
 
         $student = new User;
         $student->name = trim($request->last_name);
@@ -34,6 +46,7 @@ class StudentController extends Controller
         $student->last_name = trim($request->last_name);
         $student->admission_number = trim($request->admission_number);
         $student->roll_number = trim($request->roll_number);
+        $student->gender = trim($request->gender);
         
         if(!empty($request->date_of_birth))
         {
