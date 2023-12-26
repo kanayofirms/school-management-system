@@ -87,4 +87,19 @@ class StudentController extends Controller
         return redirect('admin/student/list')->with('success', "Student Successfully Created");
 
     }
+
+    public function edit($id)
+    {
+        $data['getRecord'] = User::getSingle($id);
+        if(!empty($data['getRecord']))
+        {
+            $data['getClass'] = ClassModel::getClass();
+            $data['header_title'] = "Edit Student";
+            return view('admin.student.edit', $data);
+        }
+        else
+        {
+            abort(404);
+        }
+    }
 }
