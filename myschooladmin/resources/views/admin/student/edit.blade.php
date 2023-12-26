@@ -194,6 +194,9 @@
                                             <div style="color:red">
                                                 {{ $errors->first('profile_pic') }}
                                             </div>
+                                            @if (!@empty($getRecord->getProfile()))
+                                                <img src="{{ $getRecord->getProfile() }}" style="width: 100px;">
+                                            @endif
                                         </div>
 
                                         <div class="form-group col-md-6">
