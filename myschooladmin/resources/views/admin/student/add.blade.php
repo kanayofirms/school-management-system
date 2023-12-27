@@ -72,10 +72,10 @@
 
                                         <div class="form-group col-md-6">
                                             <label>Class <span style="color: red;">*</span></label>
-                                            <select name="form-control" required name="class_id">
+                                            <select class="form-control" required name="class_id">
                                                 <option value="">Select Class</option>
                                                 @foreach ($getClass as $value)
-                                                    <option {{ (old('class_id') == $value->id) ? 'selected' : ''}}  value="{{ $value->id }}">{{ $value->name }}</option>
+                                                    <option {{ (old('class_id') == $value->id) ? 'selected' : '' }}  value="{{ $value->id }}">{{ $value->name }}</option>
                                                 @endforeach
                                             </select>
                                             <div style="color:red">
@@ -85,10 +85,10 @@
 
                                         <div class="form-group col-md-6">
                                             <label>Gender <span style="color: red;">*</span></label>
-                                            <select name="form-control" required name="gender">
+                                            <select class="form-control" required name="gender">
                                                 <option value="">Select Gender</option>
-                                                <option  {{ (old('gender') == 'Male') ? 'selected' : ''}} value="Male">Male</option>
-                                                <option  {{ (old('gender') == 'Female') ? 'selected' : ''}} value="Female">Female</option>
+                                                <option  {{ (old('gender') == 'Male') ? 'selected' : '' }} value="Male">Male</option>
+                                                <option  {{ (old('gender') == 'Female') ? 'selected' : '' }} value="Female">Female</option>
                                             </select>
                                             <div style="color:red">
                                                 {{ $errors->first('gender') }}
@@ -197,7 +197,7 @@
 
                                         <div class="form-group col-md-6">
                                             <label>Disability <span style="color: red;">*</span></label>
-                                            <select name="form-control" required name="disability">
+                                            <select class="form-control" required name="disability">
                                                 <option value="">Select Gender</option>
                                                 <option  {{ (old('disability') == 'No') ? 'selected' : ''}} value="No">No</option>
                                                 <option  {{ (old('disability') == 'Yes') ? 'selected' : ''}} value="Yes">Yes</option>
