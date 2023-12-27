@@ -45,8 +45,25 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
+                                            <th>Profile Pic</th>
                                             <th>Name</th>
                                             <th>Email</th>
+                                            <th>Admission Number</th>
+                                            <th>Roll Number</th>
+                                            <th>Class</th>
+                                            <th>Gender</th>
+                                            <th>Date of Birth</th>
+                                            <th>Address</th>
+                                            <th>Country</th>
+                                            <th>State</th>
+                                            <th>Local Government Area</th>
+                                            <th>Hometown</th>
+                                            <th>Religion</th>
+                                            <th>Admission Date</th>
+                                            <th>Blood Group</th>
+                                            <th>Genotype</th>
+                                            <th>Disability</th>
+                                            <th>Status</th>
                                             <th>Created Date</th>
                                             <th>Action</th>
                                         </tr>
@@ -55,8 +72,29 @@
                                         @foreach ($getRecord as $value)
                                             <tr>
                                                 <td>{{ $value->id }}</td>
-                                                <td>{{ $value->name }}</td>
+                                                <td>
+                                                    @if (!@empty($value->getProfile()))
+                                                    <img src="{{ $value->getProfile() }}" style="height: 50px; width: 50px; border-radius: 50%;">    
+                                                    @endif
+                                                </td>
+                                                <td>{{ $value->name }} {{ $value->middle_name }} {{ $value->last_name }}</td>
                                                 <td>{{ $value->email }}</td>
+                                                <td>{{ $value->admission_number }}</td>
+                                                <td>{{ $value->roll_number }}</td>
+                                                <td>{{ $value->admission_date }}</td>
+                                                <td>{{ $value->class_id }}</td>
+                                                <td>{{ $value->gender }}</td>
+                                                <td>{{ $value->date_of_birth }}</td>
+                                                <td>{{ $value->address }}</td>
+                                                <td>{{ $value->country }}</td>
+                                                <td>{{ $value->state }}</td>
+                                                <td>{{ $value->local_govt_area }}</td>
+                                                <td>{{ $value->hometown }}</td>
+                                                <td>{{ $value->religion }}</td>
+                                                <td>{{ $value->blood_group }}</td>
+                                                <td>{{ $value->genotype }}</td>
+                                                <td>{{ $value->disability }}</td>
+                                                <td>{{ ($value->status == 0) ? 'Active' : 'Inactive' }}</td>
                                                 <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
                                                 <td>
                                                     <a href="{{ url('admin/student/edit/' . $value->id) }}"
