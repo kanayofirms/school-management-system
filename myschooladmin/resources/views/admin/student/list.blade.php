@@ -41,7 +41,7 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body p-0">
-                                <table class="table table-striped">
+                                <table class="table table-striped" style="overflow:auto;">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -50,6 +50,7 @@
                                             <th>Email</th>
                                             <th>Admission Number</th>
                                             <th>Roll Number</th>
+                                            <th>Admission Date</th>
                                             <th>Class</th>
                                             <th>Gender</th>
                                             <th>Date of Birth</th>
@@ -59,7 +60,6 @@
                                             <th>Local Government Area</th>
                                             <th>Hometown</th>
                                             <th>Religion</th>
-                                            <th>Admission Date</th>
                                             <th>Blood Group</th>
                                             <th>Genotype</th>
                                             <th>Disability</th>
@@ -82,7 +82,7 @@
                                                 <td>{{ $value->admission_number }}</td>
                                                 <td>{{ $value->roll_number }}</td>
                                                 <td>{{ $value->admission_date }}</td>
-                                                <td>{{ $value->class_id }}</td>
+                                                <td>{{ $value->class_name }}</td>
                                                 <td>{{ $value->gender }}</td>
                                                 <td>{{ $value->date_of_birth }}</td>
                                                 <td>{{ $value->address }}</td>
@@ -96,11 +96,11 @@
                                                 <td>{{ $value->disability }}</td>
                                                 <td>{{ ($value->status == 0) ? 'Active' : 'Inactive' }}</td>
                                                 <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
-                                                <td>
+                                                <td style="min-width: 150px;">
                                                     <a href="{{ url('admin/student/edit/' . $value->id) }}"
-                                                        class="btn btn-primary">Edit</a>
+                                                        class="btn btn-primary btn-sm">Edit</a>
                                                     <a href="{{ url('admin/student/delete/' . $value->id) }}"
-                                                        class="btn btn-danger">Delete</a>
+                                                        class="btn btn-danger btn-sm">Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach
