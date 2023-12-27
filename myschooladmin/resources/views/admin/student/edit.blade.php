@@ -77,7 +77,7 @@
 
                                         <div class="form-group col-md-6">
                                             <label>Class <span style="color: red;">*</span></label>
-                                            <select name="form-control" required name="class_id">
+                                            <select class="form-control" required name="class_id">
                                                 <option value="">Select Class</option>
                                                 @foreach ($getClass as $value)
                                                     <option
@@ -92,7 +92,7 @@
 
                                         <div class="form-group col-md-6">
                                             <label>Gender <span style="color: red;">*</span></label>
-                                            <select name="form-control" required name="gender">
+                                            <select class="form-control" required name="gender">
                                                 <option value="">Select Gender</option>
                                                 <option
                                                     {{ old('gender', $getRecord->gender) == 'Male' ? 'selected' : '' }}
@@ -221,7 +221,7 @@
 
                                         <div class="form-group col-md-6">
                                             <label>Disability <span style="color: red;">*</span></label>
-                                            <select name="form-control" required name="disability">
+                                            <select class="form-control" required name="disability">
                                                 <option value="">Select Gender</option>
                                                 <option
                                                     {{ old('disability', $getRecord->disability) == 'No' ? 'selected' : '' }}
