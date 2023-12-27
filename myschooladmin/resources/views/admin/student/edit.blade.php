@@ -222,7 +222,7 @@
                                         <div class="form-group col-md-6">
                                             <label>Disability <span style="color: red;">*</span></label>
                                             <select class="form-control" required name="disability">
-                                                <option value="">Select Gender</option>
+                                                <option value="">Select Disability</option>
                                                 <option
                                                     {{ old('disability', $getRecord->disability) == 'No' ? 'selected' : '' }}
                                                     value="No">No</option>
