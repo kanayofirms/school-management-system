@@ -81,10 +81,18 @@
                                                 <td>{{ $value->email }}</td>
                                                 <td>{{ $value->admission_number }}</td>
                                                 <td>{{ $value->roll_number }}</td>
-                                                <td>{{ $value->admission_date }}</td>
+                                                <td>
+                                                    @if (!@empty($value->admission_date))
+                                                        {{ date('d-m-Y', strtotime($value->admission_date)) }}
+                                                    @endif
+                                                </td>
                                                 <td>{{ $value->class_name }}</td>
                                                 <td>{{ $value->gender }}</td>
-                                                <td>{{ $value->date_of_birth }}</td>
+                                                <td>
+                                                    @if (!@empty($value->date_of_birth))
+                                                        {{ date('d-m-Y', strtotime($value->date_of_birth)) }}
+                                                    @endif
+                                                </td>
                                                 <td>{{ $value->address }}</td>
                                                 <td>{{ $value->country }}</td>
                                                 <td>{{ $value->state }}</td>
