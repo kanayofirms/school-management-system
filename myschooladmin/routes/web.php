@@ -9,6 +9,7 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\ClassSubjectController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\ParentController;
 
 
 
@@ -45,6 +46,12 @@ Route::post('admin/student/add', [StudentController::class, 'insert']);
 Route::get('admin/student/edit/{id}', [StudentController::class, 'edit']);
 Route::post('admin/student/edit/{id}', [StudentController::class, 'update']);
 Route::get('admin/student/delete/{id}', [StudentController::class, 'delete']);
+
+
+//parent
+
+Route::get('admin/parent/list', [ParentController::class, 'list']);
+
 
 
 
