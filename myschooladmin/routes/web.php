@@ -54,6 +54,7 @@ Route::get('admin/parent/list', [ParentController::class, 'list']);
 Route::get('admin/parent/add', [ParentController::class, 'add']);
 Route::post('admin/parent/add', [ParentController::class, 'insert']);
 Route::get('admin/parent/edit/{id}', [ParentController::class, 'edit']);
+Route::post('admin/parent/edit/{id}', [ParentController::class, 'update']);
 
 
 
