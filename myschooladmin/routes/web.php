@@ -51,6 +51,7 @@ Route::get('admin/student/delete/{id}', [StudentController::class, 'delete']);
 //parent
 
 Route::get('admin/parent/list', [ParentController::class, 'list']);
+Route::get('admin/parent/add', [ParentController::class, 'add']);
 
 
 
