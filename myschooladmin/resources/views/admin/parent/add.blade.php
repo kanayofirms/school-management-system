@@ -58,8 +58,6 @@
                                             </div>
                                         </div>
 
-                                        
-
                                         <div class="form-group col-md-6">
                                             <label>Address <span style="color: red;">*</span></label>
                                             <input type="text" class="form-control" value="{{ old('address') }}"
