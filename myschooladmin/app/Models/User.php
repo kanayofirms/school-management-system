@@ -71,14 +71,45 @@ class User extends Authenticatable
                             $return = $return->where('name','like', '%'.Request::get('name').'%');
                         }
 
+                        if(!empty(Request::get('last_name')))
+                        {
+                            $return = $return->where('last_name','like', '%'.Request::get('last_name').'%');
+                        }
+
                         if(!empty(Request::get('email')))
                         {
                             $return = $return->where('email','like', '%'.Request::get('email').'%');
                         }
 
+                        if(!empty(Request::get('gender')))
+                        {
+                            $return = $return->where('users.gender', '=', Request::get('gender'));
+                        }
+
+                        if(!empty(Request::get('mobile_number')))
+                        {
+                            $return = $return->where('mobile_number','like', '%'.Request::get('mobile_number').'%');
+                        }
+
+                        if(!empty(Request::get('address')))
+                        {
+                            $return = $return->where('address','like', '%'.Request::get('address').'%');
+                        }
+
+                        if(!empty(Request::get('occupation')))
+                        {
+                            $return = $return->where('occupation','like', '%'.Request::get('occupation').'%');
+                        }
+
                         if(!empty(Request::get('date')))
                         {
                             $return = $return->whereDate('created_at','=', Request::get('date'));
+                        }
+
+                        if(!empty(Request::get('status')))
+                        {
+                            $status = (Request::get('status') == 100) ? 0 : 1;
+                            $return = $return->whereDate('users.status', '=', $status);
                         }
 
         $return = $return->orderBy('id', 'desc')
@@ -128,7 +159,7 @@ class User extends Authenticatable
 
                         if(!empty(Request::get('gender')))
                         {
-                            $return = $return->where('users.gender', 'like', '%'.Request::get('gender').'%');
+                            $return = $return->where('users.gender', '=', Request::get('gender'));
                         }
 
                         if(!empty(Request::get('state')))
