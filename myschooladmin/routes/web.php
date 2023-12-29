@@ -52,6 +52,7 @@ Route::get('admin/student/delete/{id}', [StudentController::class, 'delete']);
 
 Route::get('admin/parent/list', [ParentController::class, 'list']);
 Route::get('admin/parent/add', [ParentController::class, 'add']);
+Route::post('admin/parent/add', [ParentController::class, 'insert']);
 
 
 
