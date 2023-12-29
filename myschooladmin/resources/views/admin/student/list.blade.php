@@ -67,8 +67,8 @@
 
                                         <div class="form-group col-md-2">
                                             <label>Class</label>
-                                            <input type="text" class="form-control" value="{{ Request::get('class') }}"
-                                                name="class" placeholder="Class">
+                                            <input type="text" class="form-control" value="{{ Request::get('class_id') }}"
+                                                name="class_id" placeholder="Class">
                                         </div>
 
                                         <div class="form-group col-md-2">
@@ -102,8 +102,8 @@
                                             <label>Status</label>
                                             <select class="form-control" name="status">
                                                 <option value="">Select Status</option>
-                                                <option  {{ (Request::get('status') == 100) ? 'selected' : '' }} value="100">Active</option>
-                                                <option  {{ (Request::get('status') == 1) ? 'selected' : '' }} value="1">Inactive</option>
+                                                <option  {{ (Request::get('status') == 100) ? 'selected' : '' }} value="Male">Active</option>
+                                                <option  {{ (Request::get('status') == 1) ? 'selected' : '' }} value="Female">Inactive</option>
                                             </select>
                                         </div>
 
