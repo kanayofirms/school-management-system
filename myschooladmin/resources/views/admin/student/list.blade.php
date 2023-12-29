@@ -67,8 +67,8 @@
 
                                         <div class="form-group col-md-2">
                                             <label>Class</label>
-                                            <input type="text" class="form-control" value="{{ Request::get('class_id') }}"
-                                                name="class_id" placeholder="Class">
+                                            <input type="text" class="form-control" value="{{ Request::get('class') }}"
+                                                name="class" placeholder="Class">
                                         </div>
 
                                         <div class="form-group col-md-2">
@@ -81,9 +81,43 @@
                                         </div>
 
                                         <div class="form-group col-md-2">
-                                            <label>Date</label>
+                                            <label>State</label>
+                                            <input type="text" class="form-control" value="{{ Request::get('state') }}"
+                                                name="state" placeholder="State">
+                                        </div>
+
+                                        <div class="form-group col-md-2">
+                                            <label>Religion</label>
+                                            <input type="text" class="form-control" value="{{ Request::get('religion') }}"
+                                                name="religion" placeholder="Religion">
+                                        </div>
+
+                                        <div class="form-group col-md-2">
+                                            <label>Blood Group</label>
+                                            <input type="text" class="form-control" value="{{ Request::get('blood_group') }}"
+                                                name="blood_group" placeholder="Blood Group">
+                                        </div>
+
+                                        <div class="form-group col-md-2">
+                                            <label>Status</label>
+                                            <select class="form-control" name="status">
+                                                <option value="">Select Status</option>
+                                                <option  {{ (Request::get('status') == 100) ? 'selected' : '' }} value="100">Active</option>
+                                                <option  {{ (Request::get('status') == 1) ? 'selected' : '' }} value="1">Inactive</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group col-md-2">
+                                            <label>Admission Date</label>
+                                            <input type="date" class="form-control" value="{{ Request::get('admission_date') }}"
+                                                name="admission_date">
+                                        </div>
+
+
+                                        <div class="form-group col-md-2">
+                                            <label>Created Date</label>
                                             <input type="date" class="form-control" value="{{ Request::get('date') }}"
-                                                name="date" placeholder="Email">
+                                                name="date" placeholder="">
                                         </div>
 
                                         <div class="form-group col-md-3">
