@@ -120,4 +120,20 @@ class ParentController extends Controller
         return redirect('admin/parent/list')->with('success', "Parent Successfully Updated");
 
     }
+
+    public function delete($id)
+    {
+        $getRecord = User::getSingle($id);
+        if(!empty($getRecord))
+        {
+            $getRecord->is_delete = 1;
+            $getRecord->save();
+
+            return redirect()->back()->with('success', "Parent Successfully deleted");
+        }
+        else
+        {
+            abort(404);
+        }
+    }
 }
