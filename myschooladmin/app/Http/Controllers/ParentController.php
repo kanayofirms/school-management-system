@@ -73,4 +73,51 @@ class ParentController extends Controller
             abort(404);
         }
     }
+
+    public function update($id, Request $request)
+    {
+        request()->validate([
+            'email' => 'required|email|unique:users,email,'.$id,
+            'mobile_number' => 'max:14|min:11',
+            'address' => 'max:255',
+            'occupation' => 'max:255',         
+        ]);
+
+        $student = User::getSingle($id);
+
+        $student->name = trim($request->name);
+        $student->last_name = trim($request->last_name);
+        $student->gender = trim($request->gender);
+        $student->occupation = trim($request->occupation);
+        
+        if(!empty($request->file('profile_pic')))
+        {
+            if(!empty($student->getProfile()))
+            {
+                unlink('upload/profile/'.$student->profile_pic);
+            }
+
+            $ext = $request->file('profile_pic')->getClientOriginalExtension();
+            $file = $request->file('profile_pic');
+            $randomStr = date('Ymdhis').Str::random(20);
+            $filename = strtolower($randomStr).'.'.$ext;
+            $file->move('upload/profile/', $filename);
+
+            $student->profile_pic = $filename;
+        }
+        $student->address = trim($request->address);
+        $student->mobile_number = trim($request->mobile_number);
+        $student->status = trim($request->status);
+        $student->email = trim($request->email);
+        if(!empty($request->password))
+        {
+            $student->password = Hash::make($request->password);   
+        }
+        
+
+        $student->save();
+
+        return redirect('admin/parent/list')->with('success', "Parent Successfully Updated");
+
+    }
 }
