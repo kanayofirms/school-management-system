@@ -140,7 +140,7 @@ class ParentController extends Controller
     public function myStudent($id)
     {
         $data['parent_id'] = $id;
-        $data['getRecord'] = User::getSearchStudent();
+        $data['getSearchStudent'] = User::getSearchStudent();
         $data['header_title'] = "Parent Student List";
         return view('admin.parent.my_student', $data);
     }
