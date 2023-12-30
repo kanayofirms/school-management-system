@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Parent Student List (Total: {{ $getRecord->Total() }})</h1>
+                        <h1>Parent Student List</h1>
                     </div>
                 </div><!-- /.container-fluid -->
         </section>
@@ -74,6 +74,8 @@
 
                         <!-- /.card -->
 
+
+@if (!empty($getSearchStudent))
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Student List</h3>
@@ -103,7 +105,7 @@
                             
                             <!-- /.card-body -->
                         </div>
-
+@endif 
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Parent Student List</h3>
