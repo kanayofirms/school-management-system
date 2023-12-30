@@ -87,8 +87,9 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Profile Pic</th>
-                                            <th>Name</th>
+                                            <th>Student Name</th>
                                             <th>Email</th>
+                                            <th>Parent Name</th>
                                             <th>Created Date</th>
                                             <th>Action</th>
                                         </tr>
@@ -104,6 +105,7 @@
                                                 </td>
                                                 <td>{{ $value->name }} {{ $value->middle_name }} {{ $value->last_name }}</td>
                                                 <td>{{ $value->email }}</td>
+                                                <td>{{ $value->parent_name }}</td>
                                                 <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
                                                 <td style="min-width: 150px;">
 
