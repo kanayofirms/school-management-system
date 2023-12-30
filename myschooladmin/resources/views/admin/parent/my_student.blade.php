@@ -106,10 +106,9 @@
                                                 <td>{{ $value->email }}</td>
                                                 <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
                                                 <td style="min-width: 150px;">
-                                                    <a href="{{ url('admin/student/edit/' . $value->id) }}"
-                                                        class="btn btn-primary btn-sm">Edit</a>
-                                                    <a href="{{ url('admin/student/delete/' . $value->id) }}"
-                                                        class="btn btn-danger btn-sm">Delete</a>
+
+                                                    <a href="{{ url('admin/parent/assign_student_parent/'.$value->id.'/'.$parent_id) }}"
+                                                        class="btn btn-primary btn-sm">Assign Student to parent</a>
                                                 </td>
                                             </tr>
                                         @endforeach
