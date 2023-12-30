@@ -30,7 +30,7 @@
 
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Search Student</h3>
+                                <h3 class="card-title">Search Parent</h3>
                             </div>
                             <form method="get" action="">
                                 <div class="card-body">
@@ -154,10 +154,12 @@
                                                 <td>{{ ($value->status == 0) ? 'Active' : 'Inactive' }}</td>
                                                 <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
                                                 <td>
-                                                    <a href="{{ url('admin/parent/edit/' . $value->id) }}"
+                                                    <a href="{{ url('admin/parent/edit/'.$value->id) }}"
                                                         class="btn btn-primary">Edit</a>
-                                                    <a href="{{ url('admin/parent/delete/' . $value->id) }}"
+                                                    <a href="{{ url('admin/parent/delete/'.$value->id) }}"
                                                         class="btn btn-danger">Delete</a>
+                                                    <a href="{{ url('admin/parent/my-student/'.$value->id) }}"
+                                                        class="btn btn-primary">My Student</a>
                                                 </td>
                                             </tr>
                                         @endforeach
