@@ -144,4 +144,14 @@ class ParentController extends Controller
         $data['header_title'] = "Parent Student List";
         return view('admin.parent.my_student', $data);
     }
+
+    public function assignStudentParent($student_id, $parent_id)
+    {
+        $student = User::getSingle($student_id);
+        $student->parent_id = $parent_id;
+        $student->save();
+
+        return redirect()->back()->with('success', "Student Successfully Assigned");
+
+    }
 }
