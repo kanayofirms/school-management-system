@@ -200,6 +200,11 @@ class User extends Authenticatable
         return $return;
     }
 
+    static public function getSearchStudent()
+    {
+        dd(Request::all());
+    }
+
     static public function getEmailSingle($email)
     {
         return User::where('email', '=', $email)->first();
