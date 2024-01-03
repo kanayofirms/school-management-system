@@ -139,6 +139,7 @@ class ParentController extends Controller
 
     public function myStudent($id)
     {
+        $data['getParent'] = User::getSingle($id);
         $data['parent_id'] = $id;
         $data['getSearchStudent'] = User::getSearchStudent();
         $data['getRecord'] = User::getMyStudent($id);
