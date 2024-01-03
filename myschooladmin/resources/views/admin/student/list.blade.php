@@ -54,13 +54,13 @@
                                         </div>
 
                                         <div class="form-group col-md-2">
-                                            <label>Admission Number</label>
+                                            <label>Admission No.</label>
                                             <input type="text" class="form-control" value="{{ Request::get('admission_number') }}"
                                                 name="admission_number" placeholder="Admission Number">
                                         </div>
 
                                         <div class="form-group col-md-2">
-                                            <label>Roll Number</label>
+                                            <label>Roll No.</label>
                                             <input type="text" class="form-control" value="{{ Request::get('roll_number') }}"
                                                 name="roll_number" placeholder="Roll Number">
                                         </div>
@@ -144,8 +144,8 @@
                                 <h3 class="card-title">Student List</h3>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body p-0">
-                                <table class="table table-striped" style="overflow:auto;">
+                            <div class="card-body p-0" style="overflow: auto;">
+                                <table class="table table-striped">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -153,8 +153,8 @@
                                             <th>Student Name</th>
                                             <th>Parent Name</th>
                                             <th>Email</th>
-                                            <th>Admission Number</th>
-                                            <th>Roll Number</th>
+                                            <th>Admission No.</th>
+                                            <th>Roll No.</th>
                                             <th>Admission Date</th>
                                             <th>Class</th>
                                             <th>Gender</th>
