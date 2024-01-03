@@ -122,8 +122,9 @@ class User extends Authenticatable
 
     static public function getStudent()
     {
-        $return = self::select('users.*', 'class.name as class_name', 'parent.name as parent_name', 'parent.last_name as parent_last_name')
-                        ->join('users as parent', 'parent_id', '=', 'users.parent_id', 'left')
+        $return = self::select('users.*', 'class.name as class_name', 'parent.name as parent_name', 'parent.last_name as 
+        parent_last_name')
+                        ->join('users as parent', 'parent.id', '=', 'users.parent_id', 'left')
                         ->join('class', 'class.id', '=', 'users.class_id', 'left')
                         ->where('users.user_type', '=', 3)
                         ->where('users.is_delete', '=', 0);
@@ -195,7 +196,7 @@ class User extends Authenticatable
                         }
 
 
-        $return = $return->orderBy('id', 'desc')
+        $return = $return->orderBy('users.id', 'desc')
                         ->paginate(20);
 
         return $return;
@@ -232,7 +233,7 @@ class User extends Authenticatable
                         }
 
 
-        $return = $return->orderBy('id', 'desc')
+        $return = $return->orderBy('users.id', 'desc')
                         ->limit(50)
                         ->get();
 
@@ -248,7 +249,7 @@ class User extends Authenticatable
                         ->where('users.user_type','=',3)
                         ->where('users.parent_id','=',$parent_id)
                         ->where('users.is_delete','=',0)
-                        ->orderBy('id', 'desc')
+                        ->orderBy('users.id', 'desc')
                         ->get();
 
         return $return;
