@@ -155,11 +155,11 @@
                                                 <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
                                                 <td>
                                                     <a href="{{ url('admin/parent/edit/'.$value->id) }}"
-                                                        class="btn btn-primary">Edit</a>
+                                                        class="btn btn-primary btn-sm">Edit</a>
                                                     <a href="{{ url('admin/parent/delete/'.$value->id) }}"
-                                                        class="btn btn-danger">Delete</a>
+                                                        class="btn btn-danger btn-sm">Delete</a>
                                                     <a href="{{ url('admin/parent/my-student/'.$value->id) }}"
-                                                        class="btn btn-primary">My Student</a>
+                                                        class="btn btn-primary btn-sm">My Student</a>
                                                 </td>
                                             </tr>
                                         @endforeach
