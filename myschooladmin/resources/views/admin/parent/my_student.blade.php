@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Parent Student List</h1>
+                        <h1>Parent Student List ({{ $getParent->name }} {{ $getParent->last_name }})</h1>
                     </div>
                 </div><!-- /.container-fluid -->
         </section>
