@@ -119,7 +119,7 @@
                                 <h3 class="card-title">Parent List</h3>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body p-0">
+                            <div class="card-body p-0" style="overflow:auto;">
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
@@ -153,7 +153,7 @@
                                                 <td>{{ $value->occupation }}</td>
                                                 <td>{{ ($value->status == 0) ? 'Active' : 'Inactive' }}</td>
                                                 <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
-                                                <td>
+                                                <td style="min-width: 250px;">
                                                     <a href="{{ url('admin/parent/edit/'.$value->id) }}"
                                                         class="btn btn-primary btn-sm">Edit</a>
                                                     <a href="{{ url('admin/parent/delete/'.$value->id) }}"
