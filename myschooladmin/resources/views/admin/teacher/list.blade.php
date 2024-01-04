@@ -90,7 +90,7 @@
                                         </div>
 
                                         <div class="form-group col-md-2">
-                                            <label>Employment Date</label>
+                                            <label>Date of Joining</label>
                                             <input type="date" class="form-control" value="{{ Request::get('admission_date') }}"
                                                 name="admission_date">
                                         </div>
@@ -136,7 +136,7 @@
                                             <th>Email</th>
                                             <th>Gender</th>
                                             <th>Date of Birth</th>
-                                            <th>Employment Date</th>
+                                            <th>Date of Joining</th>
                                             <th>Mobile Number</th>
                                             <th>Marital Status</th>
                                             <th>Address</th>
