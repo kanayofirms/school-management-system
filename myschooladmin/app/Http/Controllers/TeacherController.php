@@ -16,4 +16,11 @@ class TeacherController extends Controller
         $data['header_title'] = "Teacher List";
         return view('admin.teacher.list', $data);
     }
+
+    public function add()
+    {
+        $data['header_title'] = "Add New Teacher";
+        return view('admin.teacher.add', $data);
+    }
+    
 }
