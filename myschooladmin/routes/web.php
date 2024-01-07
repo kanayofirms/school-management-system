@@ -54,6 +54,7 @@ Route::group(['middleware' => 'admin'], function () {
 
     Route::get('admin/teacher/list', [TeacherController::class, 'list']);
     Route::get('admin/teacher/add', [TeacherController::class, 'add']);
+    Route::post('admin/teacher/add', [TeacherController::class, 'insert']);
 
     // student
 
