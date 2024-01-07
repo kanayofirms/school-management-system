@@ -102,8 +102,8 @@
 
                                         <div class="form-group col-md-6">
                                             <label>Address <span style="color: red;">*</span></label>
-                                            <input type="text" class="form-control" value="{{ old('address') }}"
-                                                name="address" required placeholder="Address">
+                                            <textarea class="form-control" value="{{ old('address') }}"
+                                                name="address" required placeholder="Address"></textarea>
                                                 <div style="color:red">
                                                     {{ $errors->first('address') }}
                                                 </div>
@@ -112,8 +112,8 @@
 
                                         <div class="form-group col-md-6">
                                             <label>Qualification<span style="color: red;"></span></label>
-                                            <input type="text" class="form-control" value="{{ old('qualification') }}"
-                                                name="qualification" required placeholder="Qualification">
+                                            <textarea class="form-control" value="{{ old('qualification') }}"
+                                                name="qualification" required placeholder="Qualification"></textarea>
                                                 <div style="color:red">
                                                     {{ $errors->first('qualification') }}
                                                 </div>
@@ -121,8 +121,8 @@
 
                                         <div class="form-group col-md-6">
                                             <label>Note <span style="color: red;">*</span></label>
-                                            <input type="text" class="form-control" value="{{ old('note') }}"
-                                                name="note" required placeholder="Note">
+                                            <textarea class="form-control" value="{{ old('note') }}"
+                                                name="note" required placeholder="Note"></textarea>
                                                 <div style="color:red">
                                                     {{ $errors->first('note') }}
                                                 </div>
