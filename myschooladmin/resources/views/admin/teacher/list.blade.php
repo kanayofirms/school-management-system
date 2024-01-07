@@ -84,8 +84,8 @@
                                             <label>Status</label>
                                             <select class="form-control" name="status">
                                                 <option value="">Select Status</option>
-                                                <option  {{ (Request::get('status') == 100) ? 'selected' : '' }} value="Male">Active</option>
-                                                <option  {{ (Request::get('status') == 1) ? 'selected' : '' }} value="Female">Inactive</option>
+                                                <option  {{ (Request::get('status') == 100) ? 'selected' : '' }} value="100">Active</option>
+                                                <option  {{ (Request::get('status') == 1) ? 'selected' : '' }} value="1">Inactive</option>
                                             </select>
                                         </div>
 
