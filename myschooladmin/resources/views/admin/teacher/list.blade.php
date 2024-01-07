@@ -164,8 +164,6 @@
                                                         {{ date('d-m-Y', strtotime($value->date_of_birth)) }}
                                                     @endif
                                                 </td>
-                                                <td>{{ $value->admission_number }}</td>
-                                                <td>{{ $value->roll_number }}</td>
                                                 <td>
                                                     @if (!@empty($value->admission_date))
                                                         {{ date('d-m-Y', strtotime($value->admission_date)) }}
