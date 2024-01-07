@@ -132,4 +132,20 @@ class TeacherController extends Controller
 
         return redirect('admin/teacher/list')->with('success', "Teacher Successfully Updated");
     }
+
+    public function delete($id)
+    {
+        $getRecord = User::getSingle($id);
+        if(!empty($getRecord))
+        {
+            $getRecord->is_delete = 1;
+            $getRecord->save();
+
+            return redirect()->back()->with('success', "Teacher Successfully Deleted");
+        }
+        else
+        {
+            abort(404);
+        }
+    }
 }
