@@ -9,6 +9,13 @@ use Hash;
 
 class UserController extends Controller
 {
+    public function myAccount()
+    {
+        $data['getRecord'] = User::getSingle(Auth::user()->id);
+        $data['header_title'] = "My Account";
+        return view('teacher.my_account', $data);
+    }
+
     public function change_password()
     {
         $data['header_title'] = "Change Password";
