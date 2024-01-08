@@ -13,7 +13,11 @@ class UserController extends Controller
     {
         $data['getRecord'] = User::getSingle(Auth::user()->id);
         $data['header_title'] = "My Account";
-        if(Auth::user()->user_type == 2)
+        if(Auth::user()->user_type == 1)
+        {
+            return view('admin.my_account', $data);
+        }
+        else if(Auth::user()->user_type == 2)
         {
             return view('teacher.my_account', $data);
         }
@@ -28,7 +32,7 @@ class UserController extends Controller
         
     }
 
-    public function updateMyAccount(Request $request)
+    public function updateMyAccountTeacher(Request $request)
     {
         $id = Auth::user()->id;
         request()->validate([
