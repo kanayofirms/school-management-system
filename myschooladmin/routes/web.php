@@ -137,6 +137,7 @@ Route::group(['middleware' => 'student'], function () {
     Route::post('student/change_password', [UserController::class, 'update_change_password']);
 
     Route::get('student/account', [UserController::class, 'myAccount']);
+    Route::post('student/account', [UserController::class, 'updateMyAccountStudent']);
 
 
 
