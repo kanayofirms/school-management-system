@@ -32,6 +32,21 @@ class UserController extends Controller
         
     }
 
+    public function updateMyAccountAdmin(Request $request)
+    {
+        $id = Auth::user()->id;
+        request()->validate([
+            'email' => 'required|email|unique:users,email,'.$id 
+        ]);
+
+        $admin = User::getSingle($id);
+        $admin->name = trim($request->name);
+        $admin->email = trim($request->email);
+        $admin->save();
+
+        return redirect()->back()->with('success', "Account Successfully Updated");
+    }
+
     public function updateMyAccountTeacher(Request $request)
     {
         $id = Auth::user()->id;
