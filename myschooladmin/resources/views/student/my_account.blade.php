@@ -19,6 +19,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
+                        
+                        @include('_message')
                         <!-- general form elements -->
                         <div class="card card-primary">
                             <form method="post" action="" enctype="multipart/form-data">
