@@ -13,7 +13,15 @@ class UserController extends Controller
     {
         $data['getRecord'] = User::getSingle(Auth::user()->id);
         $data['header_title'] = "My Account";
-        return view('teacher.my_account', $data);
+        if(Auth::user()->user_type == 2)
+        {
+            return view('teacher.my_account', $data);
+        }
+        else if(Auth::user()->user_type == 3)
+        {
+            return view('student.my_account', $data);
+        }
+        
     }
 
     public function updateMyAccount(Request $request)
