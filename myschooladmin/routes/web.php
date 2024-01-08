@@ -111,6 +111,8 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/assign_subject/edit_single/{id}', [ClassSubjectController::class, 'update_single']);
     Route::get('admin/assign_subject/delete/{id}', [ClassSubjectController::class, 'delete']);
 
+    Route::get('admin/account', [UserController::class, 'myAccount']);
+
     // change_password
 
     Route::get('admin/change_password', [UserController::class, 'change_password']);
@@ -126,7 +128,7 @@ Route::group(['middleware' => 'teacher'], function () {
     Route::post('teacher/change_password', [UserController::class, 'update_change_password']);
 
     Route::get('teacher/account', [UserController::class, 'myAccount']);
-    Route::post('teacher/account', [UserController::class, 'updateMyAccount']);
+    Route::post('teacher/account', [UserController::class, 'updateMyAccountTeacher']);
 
 });
 
