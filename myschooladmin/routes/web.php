@@ -112,6 +112,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/assign_subject/delete/{id}', [ClassSubjectController::class, 'delete']);
 
     Route::get('admin/account', [UserController::class, 'myAccount']);
+    Route::post('admin/account', [UserController::class, 'updateMyAccountAdmin']);
 
     // change_password
 
