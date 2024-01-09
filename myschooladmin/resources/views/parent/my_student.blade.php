@@ -43,9 +43,7 @@
                                             <th>Profile Pic</th>
                                             <th>Student Name</th>
                                             <th>Email</th>
-                                            <th>Parent Name</th>
                                             <th>Created Date</th>
-                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -59,13 +57,7 @@
                                                 </td>
                                                 <td>{{ $value->name }} {{ $value->last_name }}</td>
                                                 <td>{{ $value->email }}</td>
-                                                <td>{{ $value->parent_name }}</td>
                                                 <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
-                                                <td style="min-width: 150px;">
-
-                                                    <a href="{{ url('admin/parent/assign_student_parent_delete/'.$value->id) }}"
-                                                        class="btn btn-danger btn-sm">Delete</a>
-                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
