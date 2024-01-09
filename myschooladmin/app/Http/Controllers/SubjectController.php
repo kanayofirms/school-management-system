@@ -68,4 +68,13 @@ class SubjectController extends Controller
         return redirect()->back()->with('success', "Subject Successfully Deleted");
     }
 
+    // student part
+
+    public function mySubject()
+    {
+        $data['getRecord'] = SubjectModel::getRecord();
+        $data['header_title'] = "Subject List";
+        return view('student.my_subject', $data);
+    }
+
 }
