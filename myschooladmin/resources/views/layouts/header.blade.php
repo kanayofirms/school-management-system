@@ -283,6 +283,15 @@
         </li>
 
         <li class="nav-item">
+          <a href="{{ url('student/my_subject') }}" class="nav-link @if(Request::segment(2) == 'my_subject') active @endif">
+            <i class="nav-icon far fa-user"></i>
+            <p>
+              My Subject
+            </p>
+          </a>
+        </li>
+
+        <li class="nav-item">
           <a href="{{ url('student/account') }}" class="nav-link @if(Request::segment(2) == 'account') active @endif">
             <i class="nav-icon far fa-user"></i>
             <p>
