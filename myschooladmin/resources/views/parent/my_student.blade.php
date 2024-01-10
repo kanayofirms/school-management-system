@@ -59,6 +59,7 @@
                                             <th>Genotype</th>
                                             <th>Disability</th>
                                             <th>Created Date</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -96,6 +97,9 @@
                                                 <td>{{ $value->genotype }}</td>
                                                 <td>{{ $value->disability }}</td>
                                                 <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
+                                                <td>
+                                                    <a class="btn btn-primary btn-sm" href="{{ url('parent/my_student/subject/'.$value->id) }}">Subject</a>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
