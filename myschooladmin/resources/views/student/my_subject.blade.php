@@ -53,6 +53,7 @@
                     @foreach ($getRecord as $value)
                     <tr>
                       <td>{{ $value->subject_name }}</td>
+                      <td>{{ $value->subject_type }}</td>
                     </tr>  
                     @endforeach    
                   </tbody>
