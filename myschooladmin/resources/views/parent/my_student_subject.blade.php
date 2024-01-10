@@ -10,7 +10,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>My Subject</h1>
+            <h1>My Student Subject <span style="color: #3180FF;">({{ $getUser->name }} {{ $getUser->last_name }})</span></h1>
           </div>
         
       </div><!-- /.container-fluid -->
@@ -31,7 +31,7 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">My Subject</h3>
+                <h3 class="card-title">My Student Subject</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body p-0">
