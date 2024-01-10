@@ -50,7 +50,11 @@
                     </tr>
                   </thead>
                   <tbody>
-                        
+                    @foreach ($getRecord as $value)
+                    <tr>
+                      <td>{{ $value->subject_name }}</td>
+                    </tr>  
+                    @endforeach    
                   </tbody>
                 </table>
                 
