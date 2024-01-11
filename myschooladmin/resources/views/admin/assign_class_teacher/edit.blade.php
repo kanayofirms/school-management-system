@@ -40,7 +40,20 @@
                                         @foreach ($getTeacher as $teacher)
                                             <div>
                                                 <label style="font-weight: normal;">
-                                                    <input type="checkbox" value="{{ $teacher->id }}" name="teacher_id[]">
+                                                    @php
+                                                        $checked = '';
+                                                    @endphp
+
+                                                    @foreach ($getAssignTeacherID as $teacherID)
+                                                        @if ($teacherID->teacher_id == $teacher->id)
+                                                        @php
+                                                        $checked = 'checked';
+                                                    @endphp
+                                                            
+                                                        @endif
+                                                        
+                                                    @endforeach
+                                                    <input {{ $checked }} type="checkbox" value="{{ $teacher->id }}" name="teacher_id[]">
                                                     {{ $teacher->name }} {{ $teacher->last_name }}
                                                 </label>
                                             </div>
@@ -50,8 +63,8 @@
                                     <div class="form-group">
                                         <label>Status</label>
                                         <select class="form-control" name="status">
-                                            <option value="0">Active</option>
-                                            <option value="1">Inactive</option>
+                                            <option {{ ($getRecord->status == 0) ? 'selected' : '' }} value="0">Active</option>
+                                            <option {{ ($getRecord->status == 1) ? 'selected' : '' }} value="1">Inactive</option>
                                         </select>
 
                                     </div>
@@ -60,7 +73,7 @@
                                 <!-- /.card-body -->
 
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
                             </form>
                         </div>
