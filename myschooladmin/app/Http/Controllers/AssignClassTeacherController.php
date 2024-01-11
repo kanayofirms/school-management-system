@@ -17,7 +17,7 @@ class AssignClassTeacherController extends Controller
     public function add(Request $request)
     {
         $data['getClass'] = ClassModel::getClass();
-        $data['getTeacher'] = User::getTeacher();
+        $data['getTeacher'] = User::getTeacherClass();
         $data['header_title'] = "Add Assign Class Teacher";
         return view('admin.assign_class_teacher.add', $data);
     }
