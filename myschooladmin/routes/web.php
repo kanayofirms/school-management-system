@@ -121,6 +121,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/change_password', [UserController::class, 'update_change_password']);
 
     Route::get('admin/assign_class_teacher/list', [AssignClassTeacherController::class, 'list']);
+    Route::get('admin/assign_class_teacher/add', [AssignClassTeacherController::class, 'add']);
 
 
 }); 
