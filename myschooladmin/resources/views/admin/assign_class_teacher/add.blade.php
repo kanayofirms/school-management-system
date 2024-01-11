@@ -37,11 +37,11 @@
 
                                     <div class="form-group">
                                         <label>Teacher Name</label>
-                                        @foreach ($getTeacher as $subject)
+                                        @foreach ($getTeacher as $teacher)
                                             <div>
                                                 <label style="font-weight: normal;">
-                                                    <input type="checkbox" value="{{ $subject->id }}" name="subject_id[]">
-                                                    {{ $subject->name }}
+                                                    <input type="checkbox" value="{{ $teacher->id }}" name="teacher_id[]">
+                                                    {{ $teacher->name }} {{ $teacher->last_name }}
                                                 </label>
                                             </div>
                                         @endforeach
