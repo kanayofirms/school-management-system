@@ -29,7 +29,7 @@
                                         <select class="form-control" name="class_id" required>
                                             <option value="">Select Class</option>
                                             @foreach ($getClass as $class)
-                                                <option value="{{ $class->id }}">{{ $class->name }}</option>
+                                                <option {{ ($getRecord->class_id == $class->id) ? 'selected' : '' }} value="{{ $class->id }}">{{ $class->name }}</option>
                                             @endforeach
                                         </select>
 
