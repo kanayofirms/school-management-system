@@ -8,10 +8,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Assign Class Teacher</h1>
+                        <h1>Assign Class Teacher ({{ $getRecord->total() }})</h1>
                     </div>
                     <div class="col-sm-6" style="text-align: right;">
-                        <a href="{{ url('admin/assign_class_teacher/add') }}" class="btn btn-primary">Add New Assign Class Teacher</a>
+                        <a href="{{ url('admin/assign_class_teacher/add') }}" class="btn btn-primary">Add New Assign Class
+                            Teacher</a>
 
                     </div>
 
@@ -37,26 +38,30 @@
 
                                         <div class="form-group col-md-3">
                                             <label>Class Name</label>
-                                            <input type="text" class="form-control" value="{{ Request::get('class_name') }}"
-                                                name="class_name" placeholder="Class Name">
+                                            <input type="text" class="form-control"
+                                                value="{{ Request::get('class_name') }}" name="class_name"
+                                                placeholder="Class Name">
                                         </div>
 
                                         <div class="form-group col-md-3">
-                                          <label>Teacher Name</label>
-                                          <input type="text" class="form-control" value="{{ Request::get('teacher_name') }}"
-                                              name="teacher_name" placeholder="Teacher Name">
-                                      </div>
+                                            <label>Teacher Name</label>
+                                            <input type="text" class="form-control"
+                                                value="{{ Request::get('teacher_name') }}" name="teacher_name"
+                                                placeholder="Teacher Name">
+                                        </div>
 
-                                      <div class="form-group col-md-2">
-                                        <label>Status</label>
-                                        <select class="form-control" name="status">
-                                            <option value="">Select</option>
-                                            <option {{ (Request::get('status') == 100) ? 'selected' : '' }} value="100">Active</option>
-                                            <option {{ (Request::get('status') == 1) ? 'selected' : '' }} value="1">Inactive</option>
+                                        <div class="form-group col-md-2">
+                                            <label>Status</label>
+                                            <select class="form-control" name="status">
+                                                <option value="">Select</option>
+                                                <option {{ Request::get('status') == 100 ? 'selected' : '' }}
+                                                    value="100">Active</option>
+                                                <option {{ Request::get('status') == 1 ? 'selected' : '' }}
+                                                    value="1">Inactive</option>
 
 
-                                        </select>
-                                      </div>
+                                            </select>
+                                        </div>
 
                                         <div class="form-group col-md-2">
                                             <label>Date</label>
@@ -115,18 +120,21 @@
                                                 <td>{{ $value->created_by_name }}</td>
                                                 <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
                                                 <td>
-                                                    <a href="{{ url('admin/assign_class_teacher/edit/'.$value->id) }}" class="btn btn-primary">Edit</a>
-                                                    <a href="{{ url('admin/assign_class_teacher/edit_single/'.$value->id) }}" class="btn btn-primary">Edit Single</a>
-                                                    <a href="{{ url('admin/assign_class_teacher/delete/'.$value->id) }}" class="btn btn-danger">Delete</a>
+                                                    <a href="{{ url('admin/assign_class_teacher/edit/' . $value->id) }}"
+                                                        class="btn btn-primary">Edit</a>
+                                                    <a href="{{ url('admin/assign_class_teacher/edit_single/' . $value->id) }}"
+                                                        class="btn btn-primary">Edit Single</a>
+                                                    <a href="{{ url('admin/assign_class_teacher/delete/' . $value->id) }}"
+                                                        class="btn btn-danger">Delete</a>
                                                 </td>
-                                            
+
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
                                 <div style="padding: 10px; float:right;">
                                     {!! $getRecord->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
-                                  </div>
+                                </div>
                             </div>
                             <!-- /.card-body -->
                         </div>
