@@ -37,6 +37,10 @@ class AssignClassTeacherModel extends Model
                         $status = (Request::get('status') == 100) ? 0 : 1;
                         $return = $return->where('assign_class_teacher.status', '=', $status);
                     }
+                    if(!empty(Request::get('date')))
+                    {
+                        $return = $return->whereDate('assign_class_teacher.created_at', '=', Request::get('date'));
+                    }
         $return = $return->orderBy('assign_class_teacher.id', 'desc')
                     ->paginate(20);
 
