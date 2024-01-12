@@ -47,6 +47,15 @@ class AssignClassTeacherModel extends Model
         return $return;
     }
 
+    static public function getMyClassSubject($teacher_id)
+    {
+        return self::select('assign_class_teacher.*', 'class.name as class_name')
+                    ->join('class', 'class.id', '=', 'assign_class_teacher.class_id')
+                   ->where('assign_class_teacher.is_delete', '=', 0)
+                   ->where('assign_class_teacher.status', '=', 0)
+                    ->get();
+    }
+
     static public function getAlreadyFirst($class_id, $teacher_id)
     {
         return self::where('class_id', '=', $class_id)->where('teacher_id', '=', $teacher_id)->first();
