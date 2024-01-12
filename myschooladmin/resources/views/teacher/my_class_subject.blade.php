@@ -38,9 +38,10 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                           
                                             <th>Class Name</th>
                                             <th>Subject Name</th>
+                                            <th>Subject Type</th>
                                             <th>Created Date</th>
                                             
                                         </tr>
@@ -48,9 +49,9 @@
                                     <tbody>
                                         @foreach ($getRecord as $value)
                                             <tr>
-                                                <td>{{ $value->id }}</td>
                                                 <td>{{ $value->class_name }}</td>
-                                                <td></td>
+                                                <td>{{ $value->subject_name }}</td>
+                                                <td>{{ $value->subject_type }}</td>
                                                 <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
                                             </tr>
                                         @endforeach
