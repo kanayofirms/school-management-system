@@ -100,4 +100,21 @@ class AssignClassTeacherController extends Controller
         }
     return redirect('admin/assign_class_teacher/list')->with('success', "Assign Class to Teacher Successfully");
     }
+
+    public function edit_single($id)
+    {
+        $getRecord = AssignClassTeacherModel::getSingle($id);
+        if(!empty($getRecord))
+        {
+            $data['getRecord'] = $getRecord;
+            $data['getClass'] = ClassModel::getClass();
+            $data['getTeacher'] = User::getTeacherClass();
+            $data['header_title'] = "Edit Assign Class Teacher";
+            return view('admin.assign_class_teacher.edit_single', $data);
+        }
+        else
+        {
+            abort(404);
+        }
+    }
 }
