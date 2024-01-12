@@ -39,4 +39,9 @@ class AssignClassTeacherModel extends Model
     {
         return self::where('class_id', '=', $class_id)->where('is_delete', '=', 0)->get();
     }
+
+    static public function deleteTeacher($class_id)
+    {
+        return self::where('class_id', '=', $class_id)->delete();
+    }
 }
