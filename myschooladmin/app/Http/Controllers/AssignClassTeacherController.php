@@ -153,6 +153,7 @@ class AssignClassTeacherController extends Controller
 
     public function myClassSubject()
     {
+        $data['getRecord'] = AssignClassTeacherModel::getMyClassSubject(Auth::user()->id);
         $data['header_title'] = "My Class & Subject";
         return view('teacher.my_class_subject', $data);
     }
