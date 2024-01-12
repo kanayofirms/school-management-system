@@ -27,6 +27,56 @@
                     <!-- /.col -->
                     <div class="col-md-12">
 
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Search Assign Class Teacher</h3>
+                            </div>
+                            <form method="get" action="">
+                                <div class="card-body">
+                                    <div class="row">
+
+                                        <div class="form-group col-md-3">
+                                            <label>Class Name</label>
+                                            <input type="text" class="form-control" value="{{ Request::get('class_name') }}"
+                                                name="class_name" placeholder="Class Name">
+                                        </div>
+
+                                        <div class="form-group col-md-3">
+                                          <label>Teacher Name</label>
+                                          <input type="text" class="form-control" value="{{ Request::get('teacher_name') }}"
+                                              name="teacher_name" placeholder="Teacher Name">
+                                      </div>
+
+                                      <div class="form-group col-md-2">
+                                        <label>Status</label>
+                                        <select class="form-control" name="status">
+                                            <option value="">Select</option>
+                                            <option {{ (Request::get('status') == 100) ? 'selected' : '' }} value="100">Active</option>
+                                            <option {{ (Request::get('status') == 1) ? 'selected' : '' }} value="1">Inactive</option>
+
+
+                                        </select>
+                                      </div>
+
+                                        <div class="form-group col-md-2">
+                                            <label>Date</label>
+                                            <input type="date" class="form-control" value="{{ Request::get('date') }}"
+                                                name="date">
+                                        </div>
+
+                                        <div class="form-group col-md-2">
+                                            <button class="btn btn-primary" type="submit"
+                                                style="margin-top: 30px;">Search</button>
+                                            <a href="{{ url('admin/assign_class_teacher/list') }}" class="btn btn-success"
+                                                style="margin-top: 30px;">Reset</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+
                         @include('_message')
 
                         <!-- /.card -->
