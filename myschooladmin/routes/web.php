@@ -124,6 +124,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/assign_class_teacher/add', [AssignClassTeacherController::class, 'add']);
     Route::post('admin/assign_class_teacher/add', [AssignClassTeacherController::class, 'insert']);
     Route::get('admin/assign_class_teacher/edit/{id}', [AssignClassTeacherController::class, 'edit']);
+    Route::post('admin/assign_class_teacher/edit/{id}', [AssignClassTeacherController::class, 'update']);
 
 
 }); 
