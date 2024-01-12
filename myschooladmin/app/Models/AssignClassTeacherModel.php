@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Request;
 
 class AssignClassTeacherModel extends Model
 {
@@ -23,7 +24,19 @@ class AssignClassTeacherModel extends Model
                     ->join('class', 'class.id', '=', 'assign_class_teacher.class_id')
                     ->join('users', 'users.id', '=', 'assign_class_teacher.created_by')
                     ->where('assign_class_teacher.is_delete', '=', 0);
-
+                    if(!empty(Request::get('class_name')))
+                    {
+                        $return = $return->where('class.name', 'like', '%'.Request::get('class_name').'%');
+                    }
+                    if(!empty(Request::get('teacher_name')))
+                    {
+                        $return = $return->where('teacher.name', 'like', '%'.Request::get('teacher_name').'%');
+                    }
+                    if(!empty(Request::get('status')))
+                    {
+                        $status = (Request::get('status') == 100) ? 0 : 1;
+                        $return = $return->where('assign_class_teacher.status', '=', $status);
+                    }
         $return = $return->orderBy('assign_class_teacher.id', 'desc')
                     ->paginate(20);
 
