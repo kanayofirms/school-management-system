@@ -51,10 +51,10 @@ class AssignClassTeacherModel extends Model
     {
         return AssignClassTeacherModel::select('assign_class_teacher.*', 'class.name as class_name')
                     ->join('class', 'class.id', '=', 'assign_class_teacher.class_id')
+                    ->join('class_subject', 'class_subject.class_id', '=', 'class.id')
                    ->where('assign_class_teacher.is_delete', '=', 0)
                    ->where('assign_class_teacher.status', '=', 0)
                    ->where('assign_class_teacher.teacher_id', '=', $teacher_id)
-
                     ->get();
     }
 
