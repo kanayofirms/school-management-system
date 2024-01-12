@@ -117,4 +117,26 @@ class AssignClassTeacherController extends Controller
             abort(404);
         }
     }
+
+    public function update_single($id, Request $request)
+    {
+        $getAlreadyFirst = AssignClassTeacherModel::getAlreadyFirst($request->class_id, $request->teacher_id);
+            if(!empty($getAlreadyFirst))
+            {
+                $getAlreadyFirst->status = $request->status;
+                $getAlreadyFirst->save();
+
+                return redirect('admin/assign_class_teacher/list')->with('success', "Status Successfully Updated");
+            }
+            else
+            {
+                $save = AssignClassTeacherModel::getSingle($id);
+                $save->class_id = $request->class_id;
+                $save->teacher_id = $request->teacher_id;
+                $save->status = $request->status;
+                $save->save();
+
+                return redirect('admin/assign_class_teacher/list')->with('success', "Assign Class to Teacher Successfully Updated");
+            }
+    }
 }
