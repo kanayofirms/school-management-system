@@ -115,7 +115,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/assign_subject/delete/{id}', [ClassSubjectController::class, 'delete']);
 
     Route::get('admin/class_timetable/list', [ClassTimetableController::class, 'list']);
-    Route::get('admin/class_timetable/add', [ClassTimetableController::class, 'add']);
+    
 
 
     Route::get('admin/account', [UserController::class, 'myAccount']);
