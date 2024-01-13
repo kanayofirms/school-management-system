@@ -196,6 +196,42 @@
           </li>
 
           <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Academics
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ url('admin/class/list') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Class</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('admin/subject/list') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Subject</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('admin/assign_subject/list') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Assign Subject</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('admin/assign_class_teacher/list') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                <p>Assign Class Teacher</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          {{-- <li class="nav-item">
             <a href="{{ url('admin/class/list') }}" class="nav-link @if(Request::segment(2) == 'class') active @endif">
               <i class="nav-icon far fa-user"></i>
               <p>
@@ -229,7 +265,7 @@
                 Assign Class Teacher
               </p>
             </a>
-          </li>
+          </li> --}}
 
           <li class="nav-item">
             <a href="{{ url('admin/account') }}" class="nav-link @if(Request::segment(2) == 'account') active @endif">
