@@ -149,7 +149,7 @@ class AssignClassTeacherController extends Controller
         return redirect()->back()->with('success', "Record Successfully Deleted");
     }
 
-    //teacher side work
+    //teacher side code
 
     public function myClassSubject()
     {
