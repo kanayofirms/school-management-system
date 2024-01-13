@@ -11,4 +11,10 @@ class ClassTimetableController extends Controller
         $data['header_title'] = "Class Timetable List";
         return view('admin.class_timetable.list', $data); 
     }
+
+    public function add()
+    {
+        $data['header_title'] = "Add Class Timetable";
+        return view('admin.class_timetable.add', $data);
+    }
 }
