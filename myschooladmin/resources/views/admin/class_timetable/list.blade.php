@@ -8,12 +8,9 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Class Timetable List</h1>
+                        <h1>Class Timetable</h1>
                     </div>
-                    <div class="col-sm-6" style="text-align: right;">
-                        <a href="{{ url('admin/class_timetable/add') }}" class="btn btn-primary">Add New Class Timetable</a>
-
-                    </div>
+                   
 
                 </div><!-- /.container-fluid -->
         </section>
@@ -38,8 +35,13 @@
 
                                         <div class="form-group col-md-3">
                                             <label>Class Name</label>
-                                            <input type="text" class="form-control" value="{{ Request::get('class_name') }}"
-                                                name="class_name" placeholder="Class Name">
+                                            <select name="" id="" class="form-control">
+                                                <option value="">Select</option>
+                                                @foreach ($getClass as $class)
+                                                <option value="{{ $class->id }}">{{ $class->name }}</option>
+                                                    
+                                                @endforeach
+                                            </select>
                                         </div>
 
                                         <div class="form-group col-md-3">
