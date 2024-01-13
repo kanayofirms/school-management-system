@@ -199,7 +199,7 @@ class StudentController extends Controller
 
     public function myStudent()
     {
-        $data['getRecord'] = User::getStudent();
+        $data['getRecord'] = User::getTeacherStudent(Auth::user()->id);
         $data['header_title'] = "My Student List";
         return view('teacher.my_student', $data);
     }
