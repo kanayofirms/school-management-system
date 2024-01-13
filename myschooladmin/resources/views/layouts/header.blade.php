@@ -195,8 +195,8 @@
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item @if(Request::segment(2) == 'class') menu-is-opening menu-open @endif">
+            <a href="#" class="nav-link @if(Request::segment(2) == 'class') active @endif">
               <i class="nav-icon fas fa-table"></i>
               <p>
                 Academics
