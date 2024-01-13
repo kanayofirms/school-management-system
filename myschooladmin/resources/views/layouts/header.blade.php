@@ -205,25 +205,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('admin/class/list') }}" class="nav-link">
+                <a href="{{ url('admin/class/list') }}" class="nav-link @if(Request::segment(2) == 'class') active @endif">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Class</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('admin/subject/list') }}" class="nav-link">
+                <a href="{{ url('admin/subject/list') }}" class="nav-link @if(Request::segment(2) == 'subject') active @endif">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Subject</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('admin/assign_subject/list') }}" class="nav-link">
+                <a href="{{ url('admin/assign_subject/list') }}" class="nav-link @if(Request::segment(2) == 'assign_subject') active @endif">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Assign Subject</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('admin/assign_class_teacher/list') }}" class="nav-link">
+                <a href="{{ url('admin/assign_class_teacher/list') }}" class="nav-link @if(Request::segment(2) == 'assign_class_teacher') active @endif">
                   <i class="far fa-circle nav-icon"></i>
                 <p>Assign Class Teacher</p>
                 </a>
