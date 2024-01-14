@@ -74,7 +74,27 @@
                         </div>
 
 
-
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Class Timetable</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body p-0">
+                                <table class="table table-striped">
+                                   
+                                    <tbody>
+                                        @foreach ($week as $value)
+                                        <tr>
+                                            <th>{{ $value['week_name'] }}</th>
+                                        </tr>
+                                            
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
 
 
 
