@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ClassModel;
+use App\Models\ClassSubjectModel;
 
 class ClassTimetableController extends Controller
 {
@@ -16,11 +17,13 @@ class ClassTimetableController extends Controller
 
     public function get_subject(Request $request)
     {
-        $getSubject = ClassSubjectModel::mySubject($request-class_id);
+        $getSubject = ClassSubjectModel::mySubject($request->class_id);
+
         $html = "<option value=''>Select</option>";
+
         foreach($getSubject as $value)
         {
-            $html = "<option value='".$value->subject_id."'>".$value->subject->name."</option>";
+            $html .= "<option value='".$value->subject_id."'>".$value->subject_name."</option>";
         }
 
         $json['html'] = $html;
