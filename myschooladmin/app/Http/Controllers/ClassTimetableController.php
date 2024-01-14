@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ClassModel;
 use App\Models\ClassSubjectModel;
 use App\Models\WeekModel;
+use App\Models\ClassSubjectTimetableModel;
 
 
 class ClassTimetableController extends Controller
@@ -29,7 +30,7 @@ class ClassTimetableController extends Controller
         }
 
         $data['week'] = $week;
-        
+
         $data['header_title'] = "Class Timetable List";
         return view('admin.class_timetable.list', $data); 
     }
@@ -47,5 +48,26 @@ class ClassTimetableController extends Controller
 
         $json['html'] = $html;
         echo json_encode($json);
+    }
+
+    public function insert_update(Request $request)
+    {
+        foreach($request->timetable as $timetable)
+        {
+            if(!empty($timetable['week_id']) && !empty($timetable['start_time']) && !empty($timetable['end_time']) && !empty($timetable['class_room']))
+            {
+                $save = new ClassSubjectTimetableModel;
+                $save->class_id = $request->class_id;
+                $save->subject_id = $request->subject_id;
+                $save->week_id = $timetable['week_id'];
+                $save->end_time = $timetable['end_time'];
+                $save->start_time = $timetable['start_time'];
+                $save->class_room = $timetable['class_room'];
+                $save->save();
+
+            }
+        }
+
+        return redirect()->back()->with('success', "Class Timetable Successfully Saved");
     }
 }
