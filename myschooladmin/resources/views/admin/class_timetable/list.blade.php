@@ -38,7 +38,8 @@
                                             <select class="form-control getClass" name="class_id" required>
                                                 <option value="">Select</option>
                                                 @foreach ($getClass as $class)
-                                                    <option {{ (Request::get('class_id') == $class->id) ? 'selected' : '' }} value="{{ $class->id }}">{{ $class->name }}</option>
+                                                    <option {{ Request::get('class_id') == $class->id ? 'selected' : '' }}
+                                                        value="{{ $class->id }}">{{ $class->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -47,6 +48,12 @@
                                             <label>Subject Name</label>
                                             <select class="form-control getSubject" name="subject_id" required>
                                                 <option value="">Select</option>
+                                                @foreach ($getSubject as $subject)
+                                                    <option
+                                                        {{ Request::get('subject_id') == $subject->subject_id ? 'selected' : '' }}
+                                                        value="{{ $subject->subject_id }}">{{ $subject->subject_name }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                         </div>
 
