@@ -35,17 +35,17 @@
 
                                         <div class="form-group col-md-3">
                                             <label>Class Name</label>
-                                            <select name="" id="" class="form-control getClass" name="class_id" required>
+                                            <select class="form-control getClass" name="class_id" required>
                                                 <option value="">Select</option>
                                                 @foreach ($getClass as $class)
-                                                    <option value="{{ $class->id }}">{{ $class->name }}</option>
+                                                    <option {{ (Request::get('class_id') == $class->id) ? 'selected' : '' }} value="{{ $class->id }}">{{ $class->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
 
                                         <div class="form-group col-md-3">
                                             <label>Subject Name</label>
-                                            <select name="" id="" class="form-control getSubject" name="subject_id" required>
+                                            <select class="form-control getSubject" name="subject_id" required>
                                                 <option value="">Select</option>
                                             </select>
                                         </div>
