@@ -26,12 +26,36 @@ class ClassTimetableController extends Controller
             $dataW = array();
             $dataW['week_id'] = $value->id;
             $dataW['week_name'] = $value->name;
+            if(!empty($request->class->id) && !empty($request->subject_id))
+            {
+                $ClassSubject = ClassSubjectTimetableModel::getRecordClassSubject($request->class_id, $request->subject_id, $request->value_id);
+
+                if(!empty($ClassSubject))
+                {
+                    $dataW['start_time'] = $ClassSubject->start_time;
+                    $dataW['end_time'] = $ClassSubject->end_time;
+                    $dataW['class_room'] = $ClassSubject->class_room;
+
+                }
+                else
+                {
+                    $dataW['start_time'] = '';
+                    $dataW['end_time'] = '';
+                    $dataW['class_room'] = '';
+                }
+            }
+            else{
+                    $dataW['start_time'] = '';
+                    $dataW['end_time'] = '';
+                    $dataW['class_room'] = '';
+            }
+
             $week[] = $dataW;
         }
 
         $data['week'] = $week;
 
-        $data['header_title'] = "Class Timetable List";
+        $data['header_title'] = "Class Timetable";
         return view('admin.class_timetable.list', $data); 
     }
 
@@ -52,6 +76,8 @@ class ClassTimetableController extends Controller
 
     public function insert_update(Request $request)
     {
+        ClassSubjectTimetableModel::where('class_id', '=', $request->class_id)->where('subject_id', '=', $request->subject_id)->delete();
+
         foreach($request->timetable as $timetable)
         {
             if(!empty($timetable['week_id']) && !empty($timetable['start_time']) && !empty($timetable['end_time']) && !empty($timetable['class_room']))
