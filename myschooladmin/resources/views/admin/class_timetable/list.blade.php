@@ -98,7 +98,9 @@
                     class_id: class_id,
                 },
                 dataType: "json",
-                success: function(response) {},
+                success: function(response) {
+                    $('.getSubject').html(response.html);
+                },
             });
         });
     </script>
