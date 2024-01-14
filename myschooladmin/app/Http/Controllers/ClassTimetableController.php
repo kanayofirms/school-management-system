@@ -8,9 +8,13 @@ use App\Models\ClassSubjectModel;
 
 class ClassTimetableController extends Controller
 {
-    public function list()
+    public function list(Request $request)
     {
         $data['getClass'] = ClassModel::getClass();
+        if(!empty($request->class_id))
+        {
+            $data['getSubject'] = ClassSubjectModel::mySubject($request->class_id); 
+        }
         $data['header_title'] = "Class Timetable List";
         return view('admin.class_timetable.list', $data); 
     }
