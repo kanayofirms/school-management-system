@@ -48,12 +48,15 @@
                                             <label>Subject Name</label>
                                             <select class="form-control getSubject" name="subject_id" required>
                                                 <option value="">Select</option>
+                                                @if (!@empty($getSubject))
                                                 @foreach ($getSubject as $subject)
-                                                    <option
-                                                        {{ Request::get('subject_id') == $subject->subject_id ? 'selected' : '' }}
-                                                        value="{{ $subject->subject_id }}">{{ $subject->subject_name }}
-                                                    </option>
-                                                @endforeach
+                                                <option
+                                                    {{ Request::get('subject_id') == $subject->subject_id ? 'selected' : '' }}
+                                                    value="{{ $subject->subject_id }}">{{ $subject->subject_name }}
+                                                </option>
+                                            @endforeach
+                                                @endif
+                                                
                                             </select>
                                         </div>
 
