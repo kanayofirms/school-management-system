@@ -10,7 +10,7 @@
                     <div class="col-sm-6">
                         <h1>Class Timetable</h1>
                     </div>
-                   
+
 
                 </div><!-- /.container-fluid -->
         </section>
@@ -35,20 +35,20 @@
 
                                         <div class="form-group col-md-3">
                                             <label>Class Name</label>
-                                            <select name="" id="" class="form-control">
+                                            <select name="" id="" class="form-control getClass" name="class_id" required>
                                                 <option value="">Select</option>
                                                 @foreach ($getClass as $class)
-                                                <option value="{{ $class->id }}">{{ $class->name }}</option>
-                                                    
+                                                    <option value="{{ $class->id }}">{{ $class->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
 
                                         <div class="form-group col-md-3">
-                                          <label>Subject Name</label>
-                                          <input type="text" class="form-control" value="{{ Request::get('subject_name') }}"
-                                              name="subject_name" placeholder="Subject Name">
-                                      </div>
+                                            <label>Subject Name</label>
+                                            <select name="" id="" class="form-control getSubject" name="subject_id" required>
+                                                <option value="">Select</option>
+                                            </select>
+                                        </div>
 
                                         <div class="form-group col-md-3">
                                             <button class="btn btn-primary" type="submit"
@@ -65,25 +65,41 @@
 
 
 
-                        @include('_message')
 
-                        <!-- /.card -->
 
-                        
-                            </div>
-                            <!-- /.card-body -->
-                        </div>
-                        <!-- /.card -->
+
                     </div>
-                    <!-- /.col -->
+                    <!-- /.card-body -->
                 </div>
-                <!-- /.row -->
-
-                <!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </section>
-
-
-        <!-- /.content -->
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
     </div>
+    <!-- /.row -->
+
+    <!-- /.row -->
+    </div><!-- /.container-fluid -->
+    </section>
+
+
+    <!-- /.content -->
+    </div>
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        $('.getClass').change(function() {
+            var class_id = $(this).val();
+            $.ajax({
+                url: "{{ url('admin/class_timetable/get_subject') }}",
+                type: "POST",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    class_id: class_id,
+                },
+                dataType: "json",
+                success: function(response) {},
+            });
+        });
+    </script>
 @endsection
