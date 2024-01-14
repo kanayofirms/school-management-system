@@ -81,6 +81,14 @@
                             <!-- /.card-header -->
                             <div class="card-body p-0">
                                 <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Week</th>
+                                            <th>Start Time</th>
+                                            <th>End Time</th>
+                                            <th>Class Room</th>
+                                        </tr>
+                                    </thead>
                                    
                                     <tbody>
                                         @foreach ($week as $value)
