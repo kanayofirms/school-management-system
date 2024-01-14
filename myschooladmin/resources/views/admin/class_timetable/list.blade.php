@@ -73,7 +73,8 @@
                             </form>
                         </div>
 
-
+                        @if (!@empty(Request::get('class_id')) && !@empty(Request::get('subject_id')))
+                    
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Class Timetable</h3>
@@ -94,15 +95,29 @@
                                         @foreach ($week as $value)
                                         <tr>
                                             <th>{{ $value['week_name'] }}</th>
+                                            <td>
+                                                <input type="time" name="start_time" class="form-control"> 
+                                            </td>
+                                            <td>
+                                                <input type="time" name="end_time" class="form-control"> 
+                                            </td>
+                                            <td>
+                                                <input type="text" style="width:250px;" name="class_room" class="form-control"> 
+                                            </td>
                                         </tr>
                                             
                                         @endforeach
                                     </tbody>
                                 </table>
-                                
+
+                                <div style="text-align:center; padding:20px;">
+                                    <button class="btn btn-primary">Submit</button>
+                                </div>
                             </div>
                             <!-- /.card-body -->
                         </div>
+
+                        @endif
 
 
 
