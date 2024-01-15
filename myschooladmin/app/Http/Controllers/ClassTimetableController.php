@@ -100,4 +100,52 @@ class ClassTimetableController extends Controller
 
         return redirect()->back()->with('success', "Class Timetable Successfully Saved");
     }
+
+    // student side code
+
+    public function myTimetable()
+    {
+        // $getWeek = WeekModel::getRecord();
+        // $week = array();
+
+        // foreach($getWeek as $value)
+        // {
+        //     $dataW = array();
+        //     $dataW['week_id'] = $value->id;
+        //     $dataW['week_name'] = $value->name;
+
+        //     if(!empty($request->class_id) && !empty($request->subject_id))
+        //     {
+        //         $ClassSubject = ClassSubjectTimetableModel::getRecordClassSubject($request->class_id, $request
+        //                         ->subject_id, $value->id);
+
+        //         if(!empty($ClassSubject))
+        //         {
+        //             $dataW['start_time'] = $ClassSubject->start_time;
+        //             $dataW['end_time'] = $ClassSubject->end_time;
+        //             $dataW['class_room'] = $ClassSubject->class_room;
+
+        //         }
+        //         else
+        //         {
+        //             $dataW['start_time'] = '';
+        //             $dataW['end_time'] = '';
+        //             $dataW['class_room'] = '';
+        //         }
+        //     }
+        //     else
+        //     {
+        //             $dataW['start_time'] = '';
+        //             $dataW['end_time'] = '';
+        //             $dataW['class_room'] = '';
+        //     }
+
+        //     $week[] = $dataW;
+        // }
+
+        // $data['week'] = $week;
+
+        $data['header_title'] = "My Timetable";
+        return view('student.my_timetable', $data);
+    }
 }
