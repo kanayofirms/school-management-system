@@ -32,7 +32,7 @@
                                 @foreach ($getRecord as $value) 
                                 <div class="card">
                                     <div class="card-header">
-                                        <h3 class="card-title">My Timetable</h3>
+                                        <h3 class="card-title">{{ $value['name'] }}</h3>
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body p-0">
@@ -47,7 +47,16 @@
                                             </thead>
 
                                             <tbody>
-                                              
+                                              @foreach ($value['week'] as $valueW)
+                                              <tr>
+                                                <th>{{ $valueW['week_name'] }}</th>
+                                                <td>{{ !empty($valueW['start_time']) ? date('h:i A', strtotime($valueW['start_time'])) : '' }}</td>
+                                                <td>{{ !empty($valueW['end_time']) ? date('h:i A', strtotime($valueW['end_time'])) : '' }}</td>
+                                                <td>{{ $valueW['class_room'] }}</td>
+
+                                              </tr>
+                                                  
+                                              @endforeach
                                             </tbody>
                                         </table>         
                                     </div>
