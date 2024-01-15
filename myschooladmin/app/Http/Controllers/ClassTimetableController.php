@@ -21,14 +21,17 @@ class ClassTimetableController extends Controller
 
         $getWeek = WeekModel::getRecord();
         $week = array();
+
         foreach($getWeek as $value)
         {
             $dataW = array();
             $dataW['week_id'] = $value->id;
             $dataW['week_name'] = $value->name;
-            if(!empty($request->class->id) && !empty($request->subject_id))
+
+            if(!empty($request->class_id) && !empty($request->subject_id))
             {
-                $ClassSubject = ClassSubjectTimetableModel::getRecordClassSubject($request->class_id, $request->subject_id, $request->value_id);
+                $ClassSubject = ClassSubjectTimetableModel::getRecordClassSubject($request->class_id, $request
+                                ->subject_id, $value->id);
 
                 if(!empty($ClassSubject))
                 {
@@ -44,7 +47,8 @@ class ClassTimetableController extends Controller
                     $dataW['class_room'] = '';
                 }
             }
-            else{
+            else
+            {
                     $dataW['start_time'] = '';
                     $dataW['end_time'] = '';
                     $dataW['class_room'] = '';
