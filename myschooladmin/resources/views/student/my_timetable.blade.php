@@ -29,7 +29,7 @@
 
                         
 
-
+                                @foreach ($getRecord as $value) 
                                 <div class="card">
                                     <div class="card-header">
                                         <h3 class="card-title">My Timetable</h3>
@@ -53,7 +53,7 @@
                                     </div>
                                     
                                 </div>
-                            
+                                @endforeach
                         
 
 
