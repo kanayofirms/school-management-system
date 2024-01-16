@@ -145,4 +145,43 @@ class ClassTimetableController extends Controller
         $data['header_title'] = "My Timetable";
         return view('student.my_timetable', $data);
     }
+
+    // teacher side code
+
+    public function myTimetableTeacher($class_id, $subject_id)
+    {
+       
+
+            $getWeek = WeekModel::getRecord();
+            $week = array();
+            foreach($getWeek as $valueW)
+            {
+                $dataW = array();
+                $dataW['week_name'] = $valueW->name;
+
+                $ClassSubject = ClassSubjectTimetableModel::getRecordClassSubject($value->class_id, $value
+                ->subject_id, $valueW->id);
+
+                if(!empty($ClassSubject))
+                {
+                    $dataW['start_time'] = $ClassSubject->start_time;
+                    $dataW['end_time'] = $ClassSubject->end_time;
+                    $dataW['class_room'] = $ClassSubject->class_room;
+
+                }
+                else
+                {
+                    $dataW['start_time'] = '';
+                    $dataW['end_time'] = '';
+                    $dataW['class_room'] ='';
+                }
+                $week[] =   $dataW;
+            }
+            $dataS['week'] = $week;
+       
+        $data['getRecord'] = $result;
+
+        $data['header_title'] = "My Timetable";
+        return view('teacher.my_timetable', $data);
+    }
 }
