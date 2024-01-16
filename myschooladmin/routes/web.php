@@ -154,7 +154,7 @@ Route::group(['middleware' => 'teacher'], function () {
     Route::get('teacher/my_student', [StudentController::class, 'myStudent']);
 
     Route::get('teacher/my_class_subject', [AssignClassTeacherController::class, 'myClassSubject']);
-    Route::get('teacher/my_class_subject/class_timetable/{class_id}/{subject_id}', [ClassTimetableController::class, 'myTimetableTeacher']);
+    Route::get('teacher/my_class_subject/class_timetable/{class_id}/{subject_id}/', [ClassTimetableController::class, 'myTimetableTeacher']);
 
 
 });
@@ -185,7 +185,10 @@ Route::group(['middleware' => 'parent'], function () {
     Route::get('parent/account', [UserController::class, 'myAccount']);
     Route::post('parent/account', [UserController::class, 'updateMyAccountParent']);
 
-    Route::get('/parent/my_student/subject/{student_id}', [SubjectController::class, 'parentStudentSubject']);
+    Route::get('parent/my_student/subject/{student_id}', [SubjectController::class, 'parentStudentSubject']);
+
+    Route::get('parent/my_student/subject/class_timetable/{class_id}/{subject_id}/{student_id}', [ClassTimetableController::class, 'myTimetableParent']);
+
 
     Route::get('parent/my_student', [ParentController::class, 'myStudentParent']);
 
