@@ -78,4 +78,11 @@ class AssignClassTeacherModel extends Model
     {
         return self::where('class_id', '=', $class_id)->delete();
     }
+
+    static public function getMyTimeTable($class_id, $subject_id)
+    {
+        $getWeek = WeekModel::getWeekUsingName(date('l'));
+
+        return ClassSubjectTimetableModel::getRecordClassSubject($class_id, $subject_id, $getWeek->id);
+    }
 }
