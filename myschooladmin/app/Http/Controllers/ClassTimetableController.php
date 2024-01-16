@@ -159,8 +159,7 @@ class ClassTimetableController extends Controller
                 $dataW = array();
                 $dataW['week_name'] = $valueW->name;
 
-                $ClassSubject = ClassSubjectTimetableModel::getRecordClassSubject($value->class_id, $value
-                ->subject_id, $valueW->id);
+                $ClassSubject = ClassSubjectTimetableModel::getRecordClassSubject($class_id, $subject_id, $valueW->id);
 
                 if(!empty($ClassSubject))
                 {
@@ -175,10 +174,9 @@ class ClassTimetableController extends Controller
                     $dataW['end_time'] = '';
                     $dataW['class_room'] ='';
                 }
-                $week[] =   $dataW;
+                $result[] =   $dataW;
             }
-            $dataS['week'] = $week;
-       
+        
         $data['getRecord'] = $result;
 
         $data['header_title'] = "My Timetable";
