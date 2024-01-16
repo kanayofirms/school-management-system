@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>My Timetable</h1>
+                        <h1>My Timetable ({{ $getClass->name }} - {{ $getSubject->name }})</h1>
                     </div>
                 </div><!-- /.container-fluid -->
         </section>
@@ -24,7 +24,9 @@
 
                                 <div class="card">
                                     <div class="card-header">
-                                        <h3 class="card-title"></h3>
+                                        <h3 class="card-title">
+                                            {{ $getClass->name }} - {{ $getSubject->name }}
+                                        </h3>
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body p-0">
@@ -54,7 +56,6 @@
                                     </div>
                                     
                                 </div>
-
                     </div>
                     <!-- /.card-body -->
                 </div>
