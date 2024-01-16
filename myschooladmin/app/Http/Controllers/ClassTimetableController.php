@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ClassModel;
+use App\Models\SubjectModel;
 use App\Models\WeekModel;
 use App\Models\ClassSubjectModel;
 use App\Models\ClassSubjectTimetableModel;
@@ -150,30 +151,31 @@ class ClassTimetableController extends Controller
 
     public function myTimetableTeacher($class_id, $subject_id)
     {
-       
+        $data['getClass'] = ClassModel::getSingle($class_id);
+        $data['getSubject'] = SubjectModel::getSingle($subject_id);
 
-            $getWeek = WeekModel::getRecord();
-            $week = array();
-            foreach($getWeek as $valueW)
+        $getWeek = WeekModel::getRecord();
+        $week = array();
+        foreach($getWeek as $valueW)
+        {
+            $dataW = array();
+            $dataW['week_name'] = $valueW->name;
+
+            $ClassSubject = ClassSubjectTimetableModel::getRecordClassSubject($class_id, $subject_id, $valueW->id);
+
+            if(!empty($ClassSubject))
             {
-                $dataW = array();
-                $dataW['week_name'] = $valueW->name;
+                $dataW['start_time'] = $ClassSubject->start_time;
+                $dataW['end_time'] = $ClassSubject->end_time;
+                $dataW['class_room'] = $ClassSubject->class_room;
 
-                $ClassSubject = ClassSubjectTimetableModel::getRecordClassSubject($class_id, $subject_id, $valueW->id);
-
-                if(!empty($ClassSubject))
-                {
-                    $dataW['start_time'] = $ClassSubject->start_time;
-                    $dataW['end_time'] = $ClassSubject->end_time;
-                    $dataW['class_room'] = $ClassSubject->class_room;
-
-                }
-                else
-                {
-                    $dataW['start_time'] = '';
-                    $dataW['end_time'] = '';
-                    $dataW['class_room'] ='';
-                }
+            }
+            else
+            {
+                $dataW['start_time'] = '';
+                $dataW['end_time'] = '';
+                $dataW['class_room'] ='';
+            }
                 $result[] =   $dataW;
             }
         
