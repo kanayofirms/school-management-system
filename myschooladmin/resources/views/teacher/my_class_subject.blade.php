@@ -56,12 +56,19 @@
                                                 <td>{{ $value->subject_name }}</td>
                                                 <td>{{ $value->subject_type }}</td>
                                                 <td>
-
+                                                    @php
+                                                        $ClassSubject = $value->getMyTimeTable($value->class_id, $value->subject_id);
+                                                    @endphp
+                                                    @if (!empty($ClassSubject))
+                                                        {{ date('H:i A', strtotime($ClassSubject->start_time)) }} to
+                                                        {{ date('H:i A', strtotime($ClassSubject->end_time)) }}
+                                                        <br />
+                                                        Class Room: {{ $ClassSubject->class_room }}
+                                                    @endif
                                                 </td>
                                                 <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
                                                 <td>
-                                                    <a href="{{ url('teacher/my_class_subject/class_timetable/'.$value->
-                                                    class_id . '/'.$value->subject_id) }}"
+                                                    <a href="{{ url('teacher/my_class_subject/class_timetable/' . $value->class_id . '/' . $value->subject_id) }}"
                                                         class="btn btn-primary">My Class Timetable</a>
                                                 </td>
                                             </tr>
