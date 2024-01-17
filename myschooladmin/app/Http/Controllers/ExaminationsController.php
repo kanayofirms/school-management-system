@@ -31,4 +31,19 @@ class ExaminationsController extends Controller
 
          return redirect('admin/examinations/exam/list')->with('success', "Exam successfully created");
      }
+
+     public function exam_edit($id)
+     {
+        $data['getRecord'] = ExamModel::getSingle($id);
+        if(!empty($data['getRecord']))
+        {
+            $data['header_title'] = "Edit Exam";
+            return view('admin.examinations.exam.edit', $data);
+        }
+        else
+        {
+            abort(404);
+        }
+}
+
 }
