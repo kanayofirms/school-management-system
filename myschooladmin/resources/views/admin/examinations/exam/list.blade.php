@@ -38,13 +38,13 @@
                                         <div class="form-group col-md-3">
                                             <label>Exam Name</label>
                                             <input type="text" class="form-control" value="{{ Request::get('name') }}"
-                                                name="name" placeholder="Name">
+                                                name="name" placeholder="Exam Name">
                                         </div>
 
                                         <div class="form-group col-md-3">
                                             <label>Date</label>
                                             <input type="date" class="form-control" value="{{ Request::get('date') }}"
-                                                name="date" placeholder="Email">
+                                                name="date" placeholder="Date">
                                         </div>
 
                                         <div class="form-group col-md-3">
