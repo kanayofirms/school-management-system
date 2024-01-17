@@ -248,7 +248,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('admin/examinations/exam/list') }}" class="nav-link @if(Request::segment(2) == 'exam') active @endif">
+                <a href="{{ url('admin/examinations/exam/list') }}" class="nav-link @if(Request::segment(3) == 'exam') active @endif">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Exam</p>
                 </a>
