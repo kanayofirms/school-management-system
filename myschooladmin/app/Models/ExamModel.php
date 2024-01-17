@@ -11,6 +11,11 @@ class ExamModel extends Model
 
     protected $table = 'exam';
 
+    static public function getSingle($id)
+    {
+        return self::find($id);
+    }
+
     static public function getRecord()
     {
         return self::select('exam.*', 'users.name as created_name')
