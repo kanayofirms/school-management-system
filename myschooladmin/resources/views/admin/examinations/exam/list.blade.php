@@ -90,7 +90,6 @@
                                                 <td>{{ $value->name }}</td>
                                                 <td>{{ $value->note }}</td>
                                                 <td>{{ $value->created_name }}</td>
-
                                                 <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
                                                 <td>
                                                     <a href="{{ url('admin/admin/edit/' . $value->id) }}"
