@@ -31,7 +31,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Note</label>
-                                        <textarea name="note" class="form-control" placeholder="Note"></textarea>
+                                        <textarea name="note" class="form-control"></textarea>
                                         </div>
                                     </div>
 

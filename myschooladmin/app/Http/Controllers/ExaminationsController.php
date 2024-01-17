@@ -29,6 +29,6 @@ class ExaminationsController extends Controller
          $exam->created_by = Auth::user()->id;
          $exam->save();
 
-         return redirect()->back()->with('success', "Exam successfully created");
+         return redirect('admin/examinations/exam/list')->with('success', "Exam successfully created");
      }
 }
