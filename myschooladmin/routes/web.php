@@ -13,6 +13,8 @@ use App\Http\Controllers\ParentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\AssignClassTeacherController;
 use App\Http\Controllers\ClassTimetableController;
+use App\Http\Controllers\ExaminationsController;
+
 
 
 
@@ -40,8 +42,6 @@ Route::get('forgot-password', [AuthController::class, 'forgotpassword']);
 Route::post('forgot-password', [AuthController::class, 'PostForgotPassword']);
 Route::get('reset/{token}', [AuthController::class, 'reset']);
 Route::post('reset/{token}', [AuthController::class, 'PostReset']);
-
-
 
 
 Route::group(['middleware' => 'admin'], function () {
@@ -119,9 +119,6 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/class_timetable/add', [ClassTimetableController::class, 'insert_update']);
 
 
-    
-
-
     Route::get('admin/account', [UserController::class, 'myAccount']);
     Route::post('admin/account', [UserController::class, 'updateMyAccountAdmin']);
     
@@ -138,6 +135,14 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/assign_class_teacher/edit_single/{id}', [AssignClassTeacherController::class, 'edit_single']);
     Route::post('admin/assign_class_teacher/edit_single/{id}', [AssignClassTeacherController::class, 'update_single']);
     Route::get('admin/assign_class_teacher/delete/{id}', [AssignClassTeacherController::class, 'delete']);
+    
+    
+    Route::get('admin/examinations/exam/list', [ExaminationsController::class, 'exam_list']);
+    // Route::get('admin/examinations/exam/add', [ExaminationsController::class, 'exam_add']);
+    // Route::post('admin/examinations/exam/add', [ExaminationsController::class, 'exam_insert']);
+
+
+
 
 
 }); 
