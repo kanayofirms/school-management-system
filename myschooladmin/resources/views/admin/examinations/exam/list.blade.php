@@ -11,7 +11,7 @@
                         <h1>Exam List (Total: {{ $getRecord->Total() }})</h1>
                     </div>
                     <div class="col-sm-6" style="text-align: right;">
-                        <a href="{{ url('admin/admin/add') }}" class="btn btn-primary">Add New Exam</a>
+                        <a href="{{ url('admin/examinations/exam/add') }}" class="btn btn-primary">Add New Exam</a>
 
                     </div>
 
