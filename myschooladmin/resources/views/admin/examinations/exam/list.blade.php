@@ -92,9 +92,9 @@
                                                 <td>{{ $value->created_name }}</td>
                                                 <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
                                                 <td>
-                                                    <a href="{{ url('admin/admin/edit/' . $value->id) }}"
+                                                    <a href="{{ url('admin/examinations/exam/edit/' . $value->id) }}"
                                                         class="btn btn-primary">Edit</a>
-                                                    <a href="{{ url('admin/admin/delete/' . $value->id) }}"
+                                                    <a href="{{ url('admin/examinations/exam/delete/' . $value->id) }}"
                                                         class="btn btn-danger">Delete</a>
                                                 </td>
                                             </tr>
