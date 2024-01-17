@@ -139,7 +139,7 @@ Route::group(['middleware' => 'admin'], function () {
     
     Route::get('admin/examinations/exam/list', [ExaminationsController::class, 'exam_list']);
     Route::get('admin/examinations/exam/add', [ExaminationsController::class, 'exam_add']);
-    // Route::post('admin/examinations/exam/add', [ExaminationsController::class, 'exam_insert']);
+    Route::post('admin/examinations/exam/add', [ExaminationsController::class, 'exam_insert']);
 
 
 
