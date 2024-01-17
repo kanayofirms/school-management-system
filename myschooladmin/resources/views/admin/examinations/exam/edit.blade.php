@@ -40,7 +40,7 @@
                 </div>
                 <!-- /.card-body -->
 
-                <div class="card-footer">
+                <div class="card-footer" style="text-align: center;">
                   <button type="submit" class="btn btn-primary">Update</button>
                 </div>
               </form>
