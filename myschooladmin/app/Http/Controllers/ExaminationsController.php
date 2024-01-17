@@ -21,14 +21,14 @@ class ExaminationsController extends Controller
          return view('admin.examinations.exam.add', $data);
      }
 
-    // public function exam_insert(Request $request)
-    // {
-    //     $exam = new ExamModel;
-    //     $exam->name = trim($request->name);
-    //     $exam->note = trim($request->note);
-    //     $exam->created_by = Auth::user()->id;
-    //     $exam->save();
+     public function exam_insert(Request $request)
+     {
+         $exam = new ExamModel;
+         $exam->name = trim($request->name);
+         $exam->note = trim($request->note);
+         $exam->created_by = Auth::user()->id;
+         $exam->save();
 
-    //     return redirect()->back()->with('success', "Exam successfully created");
-    // }
+         return redirect()->back()->with('success', "Exam successfully created");
+     }
 }
