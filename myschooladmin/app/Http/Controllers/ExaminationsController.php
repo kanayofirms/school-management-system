@@ -21,19 +21,19 @@ class ExaminationsController extends Controller
          return view('admin.examinations.exam.add', $data);
      }
 
-     public function exam_insert(Request $request)
-     {
-         $exam = new ExamModel;
-         $exam->name = trim($request->name);
-         $exam->note = trim($request->note);
-         $exam->created_by = Auth::user()->id;
-         $exam->save();
+    public function exam_insert(Request $request)
+    {
+        $exam = new ExamModel;
+        $exam->name = trim($request->name);
+        $exam->note = trim($request->note);
+        $exam->created_by = Auth::user()->id;
+        $exam->save();
 
-         return redirect('admin/examinations/exam/list')->with('success', "Exam successfully created");
-     }
+        return redirect('admin/examinations/exam/list')->with('success', "Exam successfully created");
+    }
 
-     public function exam_edit($id)
-     {
+    public function exam_edit($id)
+    {
         $data['getRecord'] = ExamModel::getSingle($id);
         if(!empty($data['getRecord']))
         {
@@ -44,6 +44,16 @@ class ExaminationsController extends Controller
         {
             abort(404);
         }
-}
+    }
+
+    public function exam_update($id, Request $request)
+    {
+        $exam = ExamModel::getSingle($id);
+        $exam->name = trim($request->name);
+        $exam->note = trim($request->note);
+        $exam->save();
+
+        return redirect('admin/examinations/exam/list')->with('success', "Exam successfully updated");
+    }
 
 }
