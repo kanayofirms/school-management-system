@@ -13,7 +13,7 @@ class ExamModel extends Model
 
     static public function getRecord()
     {
-        return self::select('exam.*', 'users.name')
+        return self::select('exam.*', 'users.name as created_name')
                 ->join('users', 'users.id', '=', 'exam.created_by')
                 ->orderBy('exam.id', 'desc')
                 ->paginate(50);
