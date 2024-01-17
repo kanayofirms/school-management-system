@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ExamModel;
+use App\Models\ClassModel;
 use Auth;
 
 class ExaminationsController extends Controller
@@ -74,6 +75,8 @@ class ExaminationsController extends Controller
 
     public function exam_schedule()
     {
+        $data['getClass'] = ClassModel::getClass();
+        $data['getExam'] = ExamModel::getExam();
         $data['header_title'] = "Exam Schedule";
         return view('admin.examinations.exam_schedule', $data);
     }
