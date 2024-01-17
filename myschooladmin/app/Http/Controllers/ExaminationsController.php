@@ -72,4 +72,10 @@ class ExaminationsController extends Controller
         }
     }
 
+    public function exam_schedule()
+    {
+        $data['header_title'] = "Exam Schedule";
+        return view('admin.examinations.exam_schedule', $data);
+    }
+
 }
