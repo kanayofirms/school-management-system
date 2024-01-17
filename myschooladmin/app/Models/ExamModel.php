@@ -20,6 +20,7 @@ class ExamModel extends Model
     {
         return self::select('exam.*', 'users.name as created_name')
                 ->join('users', 'users.id', '=', 'exam.created_by')
+                ->where('exam.is_delete', '=', 0)
                 ->orderBy('exam.id', 'desc')
                 ->paginate(50);
     }
