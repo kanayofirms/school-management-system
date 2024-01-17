@@ -15,11 +15,11 @@ class ExaminationsController extends Controller
         return view('admin.examinations.exam.list', $data);
     }
 
-    // public function exam_add()
-    // {
-    //     $data['header_title'] = "Add New Exam";
-    //     return view('admin.examinations.exam.add', $data);
-    // }
+    public function exam_add()
+     {
+         $data['header_title'] = "Add New Exam";
+         return view('admin.examinations.exam.add', $data);
+     }
 
     // public function exam_insert(Request $request)
     // {
