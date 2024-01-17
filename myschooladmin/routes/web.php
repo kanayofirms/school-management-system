@@ -142,6 +142,8 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/examinations/exam/add', [ExaminationsController::class, 'exam_insert']);
     Route::get('admin/examinations/exam/edit/{id}', [ExaminationsController::class, 'exam_edit']);
     Route::post('admin/examinations/exam/edit/{id}', [ExaminationsController::class, 'exam_update']);
+    Route::get('admin/examinations/exam/delete/{id}', [ExaminationsController::class, 'exam_delete']);
+
 
 
 
