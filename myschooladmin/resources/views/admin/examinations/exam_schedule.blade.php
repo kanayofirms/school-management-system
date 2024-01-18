@@ -36,6 +36,9 @@
                                             <label>Exam</label>
                                             <select class="form-control" name="exam_id" required>
                                                 <option value="">Select</option>
+                                                @foreach ($getExam as $exam)
+                                                    <option value="{{ $exam->id }}">{{ $exam->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
 
