@@ -87,13 +87,18 @@ class ExaminationsController extends Controller
             foreach($getSubject as $value)
             {
                 $dataS = array();
-                $dataS['subject_id'] = $value->subject->id;
+                $dataS['subject_id'] = $value->subject_id;
                 $dataS['class_id'] = $value->class_id;
                 $dataS['subject_name'] = $value->subject_name;
                 $dataS['subject_type'] = $value->subject_type;
                 $result[] = $dataS;
             }
+
+        
         }
+
+        $data['getRecord'] = $result;
+
         $data['header_title'] = "Exam Schedule";
         return view('admin.examinations.exam_schedule', $data);
     }
