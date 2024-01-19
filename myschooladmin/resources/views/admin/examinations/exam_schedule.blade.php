@@ -37,7 +37,7 @@
                                             <select class="form-control" name="exam_id" required>
                                                 <option value="">Select</option>
                                                 @foreach ($getExam as $exam)
-                                                    <option value="{{ $exam->id }}">{{ $exam->name }}</option>
+                                                    <option {{ (Request::get('exam_id') == $exam->id) ? 'selected' : '' }} value="{{ $exam->id }}">{{ $exam->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -47,7 +47,7 @@
                                             <select class="form-control" name="class_id" required>
                                                 <option value="">Select</option>
                                                 @foreach ($getClass as $class)
-                                                    <option value="{{ $class->id }}">{{ $class->name }}</option>
+                                                    <option {{ (Request::get('class_id') == $class->id) ? 'selected' : '' }} value="{{ $class->id }}">{{ $class->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -73,7 +73,7 @@
 
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Exam List</h3>
+                                <h3 class="card-title">Exam Schedule</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body p-0">
