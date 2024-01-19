@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\ExamModel;
 use App\Models\ClassModel;
 use App\Models\ClassSubjectModel;
+use App\Models\ExamScheduleModel;
+
 
 use Auth;
 
@@ -103,7 +105,31 @@ class ExaminationsController extends Controller
 
     public function exam_schedule_insert(Request $request)
     {
-        dd($request->all());
+        if(!empty($request->schedule))
+        {
+            foreach($request->schedule as $schedule)
+            {
+                if(!empty($schedule['subject_id']) && !empty($schedule['subject_id']) && !empty($schedule['exam_date']) && !empty($schedule['start_time']) && 
+                !empty($schedule['end_time']) && !empty($schedule['class_room']) && !empty($schedule['full_mark']) && 
+                !empty($schedule['passing_mark']))
+                {
+                    $exam = new ExamScheduleModel;
+                    $exam->exam_id = $request->exam_id;
+                    $exam->class_id = $request->class_id;
+                    $exam->subject_id = $schedule['subject_id'];
+                    $exam->exam_date = $schedule['exam_date'];
+                    $exam->start_time = $schedule['start_time'];
+                    $exam->end_time = $schedule['end_time'];
+                    $exam->class_room = $schedule['class_room'];
+                    $exam->full_mark = $schedule['full_mark'];
+                    $exam->passing_mark = $schedule['passing_mark'];
+                    $exam->created_by = Auth::user()->id;
+                    $exam->save();
+                }    
+            }
+        }
+
+        return redirect()->back()->with('success', "Exam schedule successfully saved");
     }
 
 }
