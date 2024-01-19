@@ -92,15 +92,18 @@ class ExaminationsController extends Controller
                 $dataS['subject_name'] = $value->subject_name;
                 $dataS['subject_type'] = $value->subject_type;
                 $result[] = $dataS;
-            }
-
-        
+            } 
         }
 
         $data['getRecord'] = $result;
 
         $data['header_title'] = "Exam Schedule";
         return view('admin.examinations.exam_schedule', $data);
+    }
+
+    public function exam_schedule_insert(Request $request)
+    {
+        dd($request->all());
     }
 
 }
