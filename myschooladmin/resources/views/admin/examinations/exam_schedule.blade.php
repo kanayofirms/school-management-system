@@ -92,9 +92,37 @@
                                             <th>Passing Marks</th>
                                         </tr>
                                     </thead>
-                                   
+                                    <tbody>
+                                        @foreach ($getRecord as $value)                          
+                                        <tr>
+                                            <td>{{ $value['subject_name'] }}</td>
+                                            <td>
+                                                <input type="date" class="form-control">
+                                            </td>
+                                            <td>
+                                                <input type="time" class="form-control">
+                                            </td>
+                                            <td>
+                                                <input type="time" class="form-control">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control">
+                                            </td>
+
+                                        </tr>
+                                        @endforeach
+                                    </tbody>     
                                 </table>
                                 
+                                <div style="text-align:center; padding:20px;">
+                                    <button class="btn btn-primary">Submit</button>
+                                </div>
                             </div>
                            
                         </div>
