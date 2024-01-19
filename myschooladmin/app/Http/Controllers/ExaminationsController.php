@@ -93,6 +93,28 @@ class ExaminationsController extends Controller
                 $dataS['class_id'] = $value->class_id;
                 $dataS['subject_name'] = $value->subject_name;
                 $dataS['subject_type'] = $value->subject_type;
+
+                $ExamSchedule = ExamScheduleModel::getRecordSingle($request->get('exam_id'), $request->get('class_id'), $value->
+                subject_id);
+                if(!empty($ExamSchedule))
+                {
+                    $dataS['exam_date'] = $ExamSchedule->exam_date;
+                    $dataS['start_time'] = $ExamSchedule->start_time;
+                    $dataS['end_time'] = $ExamSchedule->end_time;
+                    $dataS['class_room'] = $ExamSchedule->class_room;
+                    $dataS['full_mark'] = $ExamSchedule->full_mark;
+                    $dataS['passing_mark'] = $ExamSchedule->passing_mark;
+                }
+                else
+                {
+                    $dataS['exam_date'] = '';
+                    $dataS['start_time'] = '';
+                    $dataS['end_time'] = '';
+                    $dataS['class_room'] = '';
+                    $dataS['full_mark'] = '';
+                    $dataS['passing_mark'] = '';
+
+                }
                 $result[] = $dataS;
             } 
         }
@@ -105,11 +127,13 @@ class ExaminationsController extends Controller
 
     public function exam_schedule_insert(Request $request)
     {
+        ExamScheduleModel::deleteRecord($request->exam_id, $request->class_id);
+
         if(!empty($request->schedule))
         {
             foreach($request->schedule as $schedule)
             {
-                if(!empty($schedule['subject_id']) && !empty($schedule['subject_id']) && !empty($schedule['exam_date']) && !empty($schedule['start_time']) && 
+                if(!empty($schedule['subject_id']) && !empty($schedule['exam_date']) && !empty($schedule['start_time']) && 
                 !empty($schedule['end_time']) && !empty($schedule['class_room']) && !empty($schedule['full_mark']) && 
                 !empty($schedule['passing_mark']))
                 {
@@ -129,7 +153,7 @@ class ExaminationsController extends Controller
             }
         }
 
-        return redirect()->back()->with('success', "Exam schedule successfully saved");
+        return redirect()->back()->with('success', "Exam Schedule Successfully Saved");
     }
 
 }
