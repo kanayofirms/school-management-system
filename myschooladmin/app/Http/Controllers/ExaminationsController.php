@@ -156,4 +156,16 @@ class ExaminationsController extends Controller
         return redirect()->back()->with('success', "Exam Schedule Successfully Saved");
     }
 
+    // student side code
+
+    public function myExamTimetable(Request $request)
+    {
+        $class_id = Auth::user()->class_id;
+        $getExam = ExamScheduleModel::getExam($class_id);
+        dd($getExam);
+
+        $data['header_title'] = "My Exam Timetable";
+        return view('student.my_exam_timetable', $data);
+    }
+
 }
