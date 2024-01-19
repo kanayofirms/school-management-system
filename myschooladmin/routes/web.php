@@ -177,6 +177,8 @@ Route::group(['middleware' => 'student'], function () {
     Route::get('student/my_subject', [SubjectController::class, 'mySubject']);
     Route::get('student/my_timetable', [ClassTimetableController::class, 'myTimetable']);
 
+    Route::get('student/my_exam_timetable', [ExaminationsController::class, 'myExamTimetable']);
+
 
     Route::get('student/account', [UserController::class, 'myAccount']);
     Route::post('student/account', [UserController::class, 'updateMyAccountStudent']);
