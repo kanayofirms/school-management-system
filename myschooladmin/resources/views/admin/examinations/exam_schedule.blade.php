@@ -71,6 +71,9 @@
 
                         <!-- /.card -->
 
+                        @if (!@empty($getRecord))
+                            
+                        
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Exam Schedule</h3>
@@ -80,20 +83,22 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>Exam Name</th>
-                                            <th>Note</th>
-                                            <th>Created By</th>
-                                            <th>Created Date</th>
-                                            <th>Action</th>
+                                            <th>Subject Name</th>
+                                            <th>Date</th>
+                                            <th>Start Time</th>
+                                            <th>End Time</th>
+                                            <th>Class Room</th>
+                                            <th>Full Marks</th>
+                                            <th>Passing Marks</th>
                                         </tr>
                                     </thead>
                                    
                                 </table>
                                 
                             </div>
-                            <!-- /.card-body -->
+                           
                         </div>
+                        @endif
                         <!-- /.card -->
                     </div>
                     <!-- /.col -->
