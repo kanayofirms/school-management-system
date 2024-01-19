@@ -72,7 +72,11 @@
                         <!-- /.card -->
 
                         @if (!@empty($getRecord))
-                            
+                        <form action="{{ url('admin/examinations/exam_schedule_insert') }}" method="post">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="exam_id" value="{{ Request::get('exam_id') }}">
+                            <input type="hidden" name="class_id" value="{{ Request::get('class_id') }}">
+                      
                         
                         <div class="card">
                             <div class="card-header">
@@ -84,7 +88,7 @@
                                     <thead>
                                         <tr>
                                             <th>Subject Name</th>
-                                            <th>Date</th>
+                                            <th>Exam Date</th>
                                             <th>Start Time</th>
                                             <th>End Time</th>
                                             <th>Class Room</th>
@@ -93,29 +97,36 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @php
+                                            $i = 1;
+                                        @endphp
                                         @foreach ($getRecord as $value)                          
                                         <tr>
                                             <td>{{ $value['subject_name'] }}</td>
+                                                <input type="hidden" class="form-control" value="{{ $value['subject_id'] }}" name="schedule[{{ $i }}][subject_id]">
                                             <td>
-                                                <input type="date" class="form-control">
+                                                <input type="date" class="form-control" name="schedule[{{ $i }}][exam_date]">
                                             </td>
                                             <td>
-                                                <input type="time" class="form-control">
+                                                <input type="time" class="form-control" name="schedule[{{ $i }}][start_time]">
                                             </td>
                                             <td>
-                                                <input type="time" class="form-control">
+                                                <input type="time" class="form-control" name="schedule[{{ $i }}][end_time]">
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="schedule[{{ $i }}][class_room]">
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="schedule[{{ $i }}][full_mark]">
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="schedule[{{ $i }}][passing_mark]">
                                             </td>
 
                                         </tr>
+                                        @php
+                                            $i++;
+                                        @endphp
                                         @endforeach
                                     </tbody>     
                                 </table>
@@ -126,7 +137,9 @@
                             </div>
                            
                         </div>
+                        </form>
                         @endif
+                        
                         <!-- /.card -->
                     </div>
                     <!-- /.col -->
