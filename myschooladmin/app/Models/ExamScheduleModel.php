@@ -20,4 +20,12 @@ class ExamScheduleModel extends Model
     {
         ExamScheduleModel::where('exam_id', '=', $exam_id)->where('class_id', '=', $class_id)->delete();
     }
+
+    static public function getExam($class_id)
+    {
+        return ExamScheduleModel::select('exam_schedule.*', 'exam.name as exam_name')
+                ->join('exam', 'exam.id', '=', 'exam_schedule.exam_id')
+                ->where('exam_schedule.class_id', '=', $class_id)
+                ->get();
+    }
 }
