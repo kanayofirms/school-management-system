@@ -7,6 +7,8 @@ use App\Models\ExamModel;
 use App\Models\ClassModel;
 use App\Models\ClassSubjectModel;
 use App\Models\ExamScheduleModel;
+use App\Models\AssignClassTeacherModel;
+
 
 
 use Auth;
@@ -190,6 +192,52 @@ class ExaminationsController extends Controller
 
         $data['header_title'] = "My Exam Timetable";
         return view('student.my_exam_timetable', $data);
+    }
+
+    // teacher side code
+
+    public function myExamTimetableTeacher()
+    {
+        $result = array();
+        $getClass = AssignClassTeacherModel::getMyClassSubjectGroup(Auth::user()->id);
+        foreach($getClass as $class)
+        {
+            $dataC = array();
+            $dataC['class_name'] = $class->class_name;
+
+            $getExam = ExamScheduleModel::getExam($class->class_id);
+            $examArray = array();
+            foreach($getExam as $exam)
+            {
+                $dataE = array();
+                $dataE['exam_name'] = $exam->exam_name;
+
+                $getExamTimetable = ExamScheduleModel::getExamTimetable($exam->exam_id, $class->class_id);
+                $subjectArray = array();
+                foreach($getExamTimetable as $valueS)
+                {
+                    $dataS = array();
+                    $dataS['subject_name'] = $valueS->subject_name;
+                    $dataS['exam_date'] = $valueS->exam_date;
+                    $dataS['start_time'] = $valueS->start_time;
+                    $dataS['end_time'] = $valueS->end_time;
+                    $dataS['class_room'] = $valueS->class_room;
+                    $dataS['full_mark'] = $valueS->full_mark;
+                    $dataS['passing_mark'] = $valueS->passing_mark;
+                    $subjectArray[] = $dataS;
+                }
+                $dataE['subject'] = $subjectArray;
+                $examArray[] = $dataE;
+            }
+            $dataC['exam'] = $examArray;
+
+            $result[] = $dataC;
+        }
+
+        dd($result);
+
+        $data['header_title'] = "My Exam Timetable";
+        return view('teacher.my_exam_timetable', $data);
     }
 
 }
