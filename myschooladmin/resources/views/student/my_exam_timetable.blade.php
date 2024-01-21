@@ -35,6 +35,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Subject Name</th>
+                                                    <th>Day</th>
                                                     <th>Exam Date</th>
                                                     <th>Start Time</th>
                                                     <th>End Time</th>
@@ -48,9 +49,10 @@
                                               @foreach ($value['exam'] as $valueS)
                                               <tr>
                                                 <td>{{ $valueS['subject_name'] }}</td>
-                                                <td>{{ $valueS['exam_date'] }}</td>     
-                                                <td>{{ $valueS['start_time'] }}</td>     
-                                                <td>{{ $valueS['end_time'] }}</td>     
+                                                <td>{{ date('l', strtotime($valueS['exam_date'])) }}</td>     
+                                                <td>{{ date('d-m-Y', strtotime($valueS['exam_date'])) }}</td>     
+                                                <td>{{ date('h:i A', strtotime($valueS['start_time'] ))}}</td>     
+                                                <td>{{ date('h:i A', strtotime($valueS['end_time'])) }}</td>     
                                                 <td>{{ $valueS['class_room'] }}</td>
                                                 <td>{{ $valueS['full_mark'] }}</td>     
                                                 <td>{{ $valueS['passing_mark'] }}</td>     
