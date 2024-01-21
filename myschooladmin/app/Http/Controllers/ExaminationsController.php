@@ -177,6 +177,7 @@ class ExaminationsController extends Controller
                 $dataS['start_time'] = $valueS->start_time;
                 $dataS['end_time'] = $valueS->end_time;
                 $dataS['class_room'] = $valueS->class_room;
+                $dataS['full_mark'] = $valueS->full_mark;
                 $dataS['passing_mark'] = $valueS->passing_mark;
                 $resultS[] = $dataS;
             }
