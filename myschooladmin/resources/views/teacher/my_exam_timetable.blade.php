@@ -24,10 +24,12 @@
                     <div class="col-md-12">
                         @include('_message')
 
-                            @foreach ($getRecord as $value) 
+                        @foreach ($getRecord as $value)
+                            <h2 style="font-size: 32px; margin-bottom: 15px;">Class: <span style="color: #3180FF;">{{ $value['class_name'] }}</span></h2>
+                            @foreach ($value['exam'] as $exam)
                                 <div class="card">
                                     <div class="card-header">
-                                        <h3 class="card-title">{{ $value['name'] }}</h3>
+                                        <h3 class="card-title">Exam Name: <b>{{ $exam['exam_name'] }}</b></h3>
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body p-0">
@@ -44,9 +46,8 @@
                                                     <th>Passing Marks</th>
                                                 </tr>
                                             </thead>
-
                                             <tbody>
-                                              @foreach ($value['exam'] as $valueS)
+                                                @foreach ($exam['subject'] as $valueS)
                                               <tr>
                                                 <td>{{ $valueS['subject_name'] }}</td>
                                                 <td>{{ date('l', strtotime($valueS['exam_date'])) }}</td>     
@@ -60,12 +61,13 @@
                                               </tr>  
                                               @endforeach
                                             </tbody>
-                                        </table>         
+                                        </table>
                                     </div>
-                                    
+
                                 </div>
-                                @endforeach
-                        
+                            @endforeach
+                        @endforeach
+
 
 
 
@@ -86,5 +88,3 @@
     <!-- /.content -->
     </div>
 @endsection
-
-
