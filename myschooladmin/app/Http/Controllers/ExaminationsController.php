@@ -234,7 +234,7 @@ class ExaminationsController extends Controller
             $result[] = $dataC;
         }
 
-        dd($result);
+        $data['getRecord'] = $result;
 
         $data['header_title'] = "My Exam Timetable";
         return view('teacher.my_exam_timetable', $data);
