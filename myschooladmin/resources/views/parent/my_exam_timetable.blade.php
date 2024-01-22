@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Exam Timetable</h1>
+                        <h1>Exam Timetable <span style="color: #3180FF;">({{ $getStudent->name }} {{ $getStudent->middle_name }} {{ $getStudent->last_name }})</span></h1>
                     </div>
 
 
