@@ -8,6 +8,8 @@ use App\Models\ClassModel;
 use App\Models\ClassSubjectModel;
 use App\Models\ExamScheduleModel;
 use App\Models\AssignClassTeacherModel;
+use App\Models\User;
+
 
 
 
@@ -238,6 +240,45 @@ class ExaminationsController extends Controller
 
         $data['header_title'] = "My Exam Timetable";
         return view('teacher.my_exam_timetable', $data);
+    }
+
+    // parent side code
+
+    public function myExamTimetableParent($student_id)
+    {
+        $getStudent = User::getSingle($student_id);
+
+        $class_id = $getStudent->class_id;
+        $getExam = ExamScheduleModel::getExam($class_id);
+        $result = array();
+        foreach($getExam as $value)
+        {
+            $dataE = array();
+            $dataE['name'] = $value->exam_name;
+            $getExamTimetable = ExamScheduleModel::getExamTimetable($value->exam_id, $class_id);
+            $results = array();
+            foreach($getExamTimetable as $valueS)
+            {
+                $dataS = array();
+                $dataS['subject_name'] = $valueS->subject_name;
+                $dataS['exam_date'] = $valueS->exam_date;
+                $dataS['start_time'] = $valueS->start_time;
+                $dataS['end_time'] = $valueS->end_time;
+                $dataS['class_room'] = $valueS->class_room;
+                $dataS['full_mark'] = $valueS->full_mark;
+                $dataS['passing_mark'] = $valueS->passing_mark;
+                $resultS[] = $dataS;
+            }
+
+            $dataE['exam'] = $resultS;
+            $result[] = $dataE;
+        }
+
+        $data['getRecord'] = $result;
+
+        $data['header_title'] = "Exam Timetable";
+        return view('parent.my_exam_timetable', $data);
+    
     }
 
 }
