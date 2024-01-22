@@ -275,7 +275,7 @@ class ExaminationsController extends Controller
         }
 
         $data['getRecord'] = $result;
-
+        $data['getStudent'] = $getStudent;
         $data['header_title'] = "Exam Timetable";
         return view('parent.my_exam_timetable', $data);
     
