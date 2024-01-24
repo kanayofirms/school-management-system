@@ -14,6 +14,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\AssignClassTeacherController;
 use App\Http\Controllers\ClassTimetableController;
 use App\Http\Controllers\ExaminationsController;
+use App\Http\Controllers\CalendarController;
 
 
 
@@ -184,6 +185,8 @@ Route::group(['middleware' => 'student'], function () {
 
     Route::get('student/account', [UserController::class, 'myAccount']);
     Route::post('student/account', [UserController::class, 'updateMyAccountStudent']);
+
+    Route::get('student/my_calendar', [CalendarController::class, 'myCalendar']); 
 
 
 
