@@ -54,6 +54,7 @@
         navLinks: true,
         editable: false,
         events: events,
+        initialView: 'timeGridWeek',
     });
 
     calendar.render();
