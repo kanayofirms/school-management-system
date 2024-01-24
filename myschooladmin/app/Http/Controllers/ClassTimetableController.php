@@ -31,6 +31,7 @@ class ClassTimetableController extends Controller
             $dataW['week_id'] = $value->id;
             $dataW['week_name'] = $value->name;
 
+
             if(!empty($request->class_id) && !empty($request->subject_id))
             {
                 $ClassSubject = ClassSubjectTimetableModel::getRecordClassSubject($request->class_id, $request
