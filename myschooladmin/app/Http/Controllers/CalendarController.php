@@ -13,8 +13,25 @@ class CalendarController extends Controller
 {
     public function myCalendar()
     {
+        //timetable
+
+       $data['getMyTimetable'] = $this->getTimetable(Auth::user()->class_id);
+       $data['getMyExamTimetable'] = $this->getMyExamTimetable(Auth::user()->class_id);
+
+
+        $data['header_title'] = "My Calendar";
+        return view('student.my_calendar', $data);
+    }
+
+    // public function getMyExamTimetable($class_id)
+    // {
+
+    // }
+
+    public function getTimetable($class_id)
+    {
         $result = array();
-        $getRecord = ClassSubjectModel::mySubject(Auth::user()->class_id);
+        $getRecord = ClassSubjectModel::mySubject($class_id);
         foreach($getRecord as $value)
         {
             $dataS['name'] = $value->subject_name;
@@ -42,10 +59,6 @@ class CalendarController extends Controller
             $result[] = $dataS;
         }
 
-        // dd($result);
-       $data['getMyTimetable'] = $result;
-
-        $data['header_title'] = "My Calendar";
-        return view('student.my_calendar', $data);
+        return $result;
     }
 }
