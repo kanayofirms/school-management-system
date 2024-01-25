@@ -1,4 +1,12 @@
 @extends('layouts.app')
+@section('style')
+
+<style type="text/css">
+.fc-daygrid-event {
+    white-space: normal;
+}
+</style>
+@endsection
 
 @section('content')
     <div class="content-wrapper">
@@ -33,12 +41,23 @@
     var events = new Array();
 
     @foreach ($getMyTimetable as $value)
-        @foreach ($value['week'] as $week)
+        // @foreach ($value['week'] as $week)
+        //     events.push({
+        //     title: '{{ $value['name'] }}', 
+        //     daysOfWeek: [ {{ $week['fullcalendar_day'] }} ],
+        //     startTime: '{{ $week['start_time'] }}',
+        //     endTime: '{{ $week['end_time'] }}', 
+        //      });
+        @endforeach       
+    @endforeach
+
+    
+    @foreach ($getExamTimetable as $valueE)
+        @foreach ($valueE['exam'] as $exam)
             events.push({
-                title: '{{ $value['name'] }}', 
-                daysOfWeek: [ {{ $week['fullcalendar_day'] }} ],
-                startTime: '{{ $week['start_time'] }}',
-                endTime: '{{ $week['end_time'] }}', 
+                title: '{{ $valueE['name'] }} - {{ $exam['subject_name'] }}', 
+                start: '{{ $exam['exam_date'] }}',
+                end: '{{ $exam['exam_date'] }}',
             });
         @endforeach       
     @endforeach
@@ -54,7 +73,7 @@
         navLinks: true,
         editable: false,
         events: events,
-        initialView: 'timeGridWeek',
+        // initialView: 'dayGridMonth',
     });
 
     calendar.render();
