@@ -172,7 +172,7 @@ class ExaminationsController extends Controller
             $dataE = array();
             $dataE['name'] = $value->exam_name;
             $getExamTimetable = ExamScheduleModel::getExamTimetable($value->exam_id, $class_id);
-            $results = array();
+            $resultS = array();
             foreach($getExamTimetable as $valueS)
             {
                 $dataS = array();
