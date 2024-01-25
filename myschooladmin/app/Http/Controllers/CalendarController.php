@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ClassSubjectModel;
 use App\Models\WeekModel;
 use App\Models\ClassSubjectTimetableModel;
+use App\Models\ExamScheduleModel;
 use Auth;
 
 
@@ -16,19 +17,48 @@ class CalendarController extends Controller
         //timetable
 
        $data['getMyTimetable'] = $this->getTimetable(Auth::user()->class_id);
-       $data['getMyExamTimetable'] = $this->getMyExamTimetable(Auth::user()->class_id);
+       $data['getExamTimetable'] = $this->getExamTimetable(Auth::user()->class_id);
+       
 
 
         $data['header_title'] = "My Calendar";
         return view('student.my_calendar', $data);
     }
 
-    // public function getMyExamTimetable($class_id)
-    // {
+     
+     public function getExamTimetable($class_id)
+     {
+        $getExam = ExamScheduleModel::getExam($class_id);
+        
+        $result = array();
+        foreach($getExam as $value)
+        {
+            $dataE = array();
+            $dataE['name'] = $value->exam_name;
+            $getExamTimetable = ExamScheduleModel::getExamTimetable($value->exam_id, $class_id);
+            $resultS = array();
+            foreach($getExamTimetable as $valueS)
+            {
+                $dataS = array();
+                $dataS['subject_name'] = $valueS->subject_name;
+                $dataS['exam_date'] = $valueS->exam_date;
+                $dataS['start_time'] = $valueS->start_time;
+                $dataS['end_time'] = $valueS->end_time;
+                $dataS['class_room'] = $valueS->class_room;
+                $dataS['full_mark'] = $valueS->full_mark;
+                $dataS['passing_mark'] = $valueS->passing_mark;
+                $resultS[] = $dataS;
+            }
 
-    // }
+            $dataE['exam'] = $resultS;
+            $result[] = $dataE;
+        }
 
-    public function getTimetable($class_id)
+        return $result;
+
+     }
+
+     public function getTimetable($class_id)
     {
         $result = array();
         $getRecord = ClassSubjectModel::mySubject($class_id);
