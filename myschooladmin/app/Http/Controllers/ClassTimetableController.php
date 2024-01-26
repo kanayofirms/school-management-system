@@ -151,7 +151,7 @@ class ClassTimetableController extends Controller
 
     // teacher side code
 
-    public function myTimetableTeacher($class_id, $subject_id, $student_id)
+    public function myTimetableTeacher($class_id, $subject_id)
     {
         $data['getClass'] = ClassModel::getSingle($class_id);
         $data['getSubject'] = SubjectModel::getSingle($subject_id);
