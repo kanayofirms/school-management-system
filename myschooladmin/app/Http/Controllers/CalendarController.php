@@ -99,6 +99,9 @@ class CalendarController extends Controller
     public function myCalendarParent($student_id)
     {
         $getStudent = User::getSingle($student_id);
+        
+        $data['getMyTimetable'] = $this->getTimetable($getStudent->class_id);
+        $data['getExamTimetable'] = $this->getExamTimetable($getStudent->class_id);
         $data['getStudent'] = $getStudent;
         $data['header_title'] = "Student Calendar";
         return view('parent.my_calendar', $data);
