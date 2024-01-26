@@ -75,6 +75,21 @@ class AssignClassTeacherModel extends Model
                     ->get();
     }
 
+    static public function getCalendarTeacher($teacher_id)
+    {
+        return AssignClassTeacherModel::select('class_subject_timetable.*', 'class.name as class_name', 'subject.name as 
+        subject_name', 'week.name as week_name', 'week.fullcalendar_day')
+            ->join('class', 'class.id', '=', 'assign_class_teacher.class_id')
+            ->join('class_subject', 'class_subject.class_id', '=', 'class_id')
+            ->join('class_subject_timetable', 'class_subject_timetable.subject_id', '=', 'class_subject.subject_id')
+            ->join('subject', 'subject.id', '=', 'class_subject_timetable.subject_id')
+            ->join('week', 'week.id', '=', 'class_subject_timetable.week_id')
+            ->where('assign_class_teacher.teacher_id', '=', $teacher_id)
+            ->where('assign_class_teacher.status', '=', 0)
+            ->where('assign_class_teacher.is_delete', '=', 0)
+            ->get();
+    }
+
     static public function getAlreadyFirst($class_id, $teacher_id)
     {
         return self::where('class_id', '=', $class_id)->where('teacher_id', '=', $teacher_id)->first();
