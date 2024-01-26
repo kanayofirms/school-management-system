@@ -62,8 +62,9 @@
                             {{ csrf_field() }}
                             <input type="hidden" name="exam_id" value="{{ Request::get('exam_id') }}">
                             <input type="hidden" name="class_id" value="{{ Request::get('class_id') }}">
-                      
-                        
+
+
+                        @if(!@empty($getSubject) && !empty($getSubject->count()))
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Marks Register</h3>
@@ -73,13 +74,15 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Subject Name</th>
-                                            <th>Exam Date</th>
-                                            <th>Start Time</th>
-                                            <th>End Time</th>
-                                            <th>Class Room</th>
-                                            <th>Full Marks</th>
-                                            <th>Passing Marks</th>
+                                            <th>STUDENT NAME</th>
+                                            @foreach($getSubject as $subject)
+                                            <th>{{ $subject->subject_name }} <br />
+                                                ({{ $subject->subject_type }} : {{ $subject->passing_mark }} / {{ $subject->full_mark }})
+                                            
+                                            </th>
+                                            @endforeach
+                                            <th>ACTION</th>
+                                           
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -88,8 +91,9 @@
                                 </table>
 
                             </div>
-                           
+ 
                         </div>
+                        @endif
 
                       
                         <!-- /.card -->
