@@ -168,6 +168,8 @@ Route::group(['middleware' => 'teacher'], function () {
 
     Route::get('teacher/my_exam_timetable', [ExaminationsController::class, 'myExamTimetableTeacher']);
 
+    Route::get('teacher/my_calendar', [CalendarController::class, 'myCalendarTeacher']);
+
 
 });
 
