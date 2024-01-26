@@ -80,7 +80,7 @@ class AssignClassTeacherModel extends Model
         return AssignClassTeacherModel::select('class_subject_timetable.*', 'class.name as class_name', 'subject.name as 
         subject_name', 'week.name as week_name', 'week.fullcalendar_day')
             ->join('class', 'class.id', '=', 'assign_class_teacher.class_id')
-            ->join('class_subject', 'class_subject.class_id', '=', 'class_id')
+            ->join('class_subject', 'class_subject.class_id', '=', 'class.id')
             ->join('class_subject_timetable', 'class_subject_timetable.subject_id', '=', 'class_subject.subject_id')
             ->join('subject', 'subject.id', '=', 'class_subject_timetable.subject_id')
             ->join('week', 'week.id', '=', 'class_subject_timetable.week_id')
