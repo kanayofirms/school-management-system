@@ -59,7 +59,7 @@
                 color: '#f91d1d',
                 url: '{{ url('teacher/my_exam_timetable') }}'
             });
-        @endforeach
+    @endforeach
     
     var calendarID = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarID, {
