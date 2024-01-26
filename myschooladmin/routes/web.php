@@ -211,4 +211,6 @@ Route::group(['middleware' => 'parent'], function () {
 
     Route::get('parent/my_student', [ParentController::class, 'myStudentParent']);
 
+    Route::get('parent/my_student/calendar/{student_id}', [CalendarController::class, 'myCalendarParent']);
+
 });
