@@ -160,14 +160,15 @@ class ExaminationsController extends Controller
         return redirect()->back()->with('success', "Exam Schedule Successfully Saved");
     }
 
-    public function marks_register()
+    public function marks_register(Request $request)
     {
         $data['getClass'] = ClassModel::getClass();
         $data['getExam'] = ExamModel::getExam();
 
         if(!empty($request->get('exam_id')) && !empty($request->get('class_id')))
         {
-            
+            $data['getSubject'] = ExamScheduleModel::getSubject($request->get('exam_id'), $request->get('class_id'));
+           
         }
 
         $data['header_title'] = "Marks Register";
