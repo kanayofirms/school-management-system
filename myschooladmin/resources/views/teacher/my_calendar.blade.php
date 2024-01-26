@@ -40,7 +40,15 @@
 <script type="text/javascript">
     var events = new Array();
 
-    
+    @foreach ($getClassTimetable as $value)
+       
+            events.push({
+            title: '{{ $value->class_name }} - {{ $value->subject_name }}', 
+            daysOfWeek: [ {{ $value->fullcalendar_day }} ],
+            startTime: '{{ $value->start_time }}',
+            endTime: '{{ $value->end_time }}', 
+             });      
+    @endforeach
     
     var calendarID = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarID, {
