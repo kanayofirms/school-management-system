@@ -176,6 +176,11 @@ class ExaminationsController extends Controller
         return view('admin.examinations.marks_register', $data);
     }
 
+    public function submit_marks_register(Request $request)
+    {
+        dd($request->all());
+    }
+
     // student side code
 
     public function myExamTimetable(Request $request)
