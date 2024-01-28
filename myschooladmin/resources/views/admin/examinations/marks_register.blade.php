@@ -87,6 +87,11 @@
                                     <tbody>
                                        @if(!empty($getStudent) && !empty($getStudent->count()))
                                        @foreach($getStudent as $student)
+                                       <form name="post" class="SubmitForm">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="student_id" value="{{ $student->id }}">
+                                        <input type="hidden" name="exam_id" value="{{ Request::get('exam_id') }}">
+                                        <input type="hidden" name="class_id" value="{{ Request::get('class_id') }}">
                                        <tr>
                                         <td>{{ $student->name }} {{ $student->middle_name }} {{ $student->last_name }}</td>
                                         @foreach ($getSubject as $subject)
@@ -115,9 +120,10 @@
                                         </td>                                          
                                         @endforeach
                                         <td>
-                                            <button type="" class="btn btn-success">Save</button>
+                                            <button type="submit" class="btn btn-success">Save</button>
                                         </td>
                                        </tr>
+                                    </form>
                                        @endforeach
                                        @endif
                                     </tbody>     
@@ -136,8 +142,26 @@
                 <!-- /.row -->
             </div><!-- /.container-fluid -->
         </section>
-
-
         <!-- /.content -->
     </div>
+@endsection
+
+@section('script')
+
+<script type="text/javascript">
+  $('.SubmitForm').submit(function(e) {
+    e.preventDefault();
+    $.ajax({
+        type: "POST", 
+        url: "{{ url('admin/examinations/submit_marks_register') }}",
+        data: $(this).serialize(),
+        dataType: "json", 
+        success: function(data) {
+
+        }
+    });
+  })
+
+</script>
+
 @endsection
