@@ -77,21 +77,52 @@
                                             <th>STUDENT NAME</th>
                                             @foreach($getSubject as $subject)
                                             <th>{{ $subject->subject_name }} <br />
-                                                ({{ $subject->subject_type }} : {{ $subject->passing_mark }} / {{ $subject->full_mark }})
+                                                ({{ $subject->subject_type }} : {{ $subject->passing_mark }} / {{ $subject->full_mark }})                                              
                                             
                                             </th>
                                             @endforeach
-                                            <th>ACTION</th>
-                                           
+                                            <th>ACTION</th>                                 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                       
+                                       @if(!empty($getStudent) && !empty($getStudent->count()))
+                                       @foreach($getStudent as $student)
+                                       <tr>
+                                        <td>{{ $student->name }} {{ $student->middle_name }} {{ $student->last_name }}</td>
+                                        @foreach ($getSubject as $subject)
+                                        <td>
+                                            <div style="margin-bottom: 10px;">
+                                                Attendance
+                                                <input type="text" name="" style="width: 200px;" class="form-control">
+                                            </div>
+
+                                            <div style="margin-bottom: 10px;">
+
+                                                CAT 1
+                                                <input type="text" name="" style="width: 200px;" class="form-control">
+                                            </div>
+
+                                            <div>
+                                                CAT 2
+                                                <input type="text" name="" style="width: 200px;" class="form-control">
+                                            </div>
+
+                                            <div style="margin-bottom: 10px;">
+                                                Exam
+                                                <input type="text" name="" style="width: 200px;" class="form-control">
+                                            </div>
+                                            
+                                        </td>                                          
+                                        @endforeach
+                                        <td>
+                                            <button type="" class="btn btn-success">Save</button>
+                                        </td>
+                                       </tr>
+                                       @endforeach
+                                       @endif
                                     </tbody>     
                                 </table>
-
                             </div>
- 
                         </div>
                         @endif
 
