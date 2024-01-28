@@ -93,23 +93,23 @@
                                         <td>
                                             <div style="margin-bottom: 10px;">
                                                 Attendance
-                                                <input type="text" name="" style="width: 200px;" class="form-control">
+                                                <input type="text" name="" style="width: 200px;" placeholder="Enter Marks" class="form-control">
                                             </div>
 
                                             <div style="margin-bottom: 10px;">
 
                                                 CAT 1
-                                                <input type="text" name="" style="width: 200px;" class="form-control">
+                                                <input type="text" name="" style="width: 200px;" placeholder="Enter Marks" class="form-control">
                                             </div>
 
                                             <div>
                                                 CAT 2
-                                                <input type="text" name="" style="width: 200px;" class="form-control">
+                                                <input type="text" name="" style="width: 200px;" placeholder="Enter Marks" class="form-control">
                                             </div>
 
                                             <div style="margin-bottom: 10px;">
                                                 Exam
-                                                <input type="text" name="" style="width: 200px;" class="form-control">
+                                                <input type="text" name="" style="width: 200px;" placeholder="Enter Marks" class="form-control">
                                             </div>
                                             
                                         </td>                                          
