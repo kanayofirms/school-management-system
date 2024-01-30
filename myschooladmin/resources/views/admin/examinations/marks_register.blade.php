@@ -94,30 +94,37 @@
                                         <input type="hidden" name="class_id" value="{{ Request::get('class_id') }}">
                                        <tr>
                                         <td>{{ $student->name }} {{ $student->middle_name }} {{ $student->last_name }}</td>
+                                        @php
+                                            $i = 1;
+                                        @endphp
                                         @foreach ($getSubject as $subject)
                                         <td>
                                             <div style="margin-bottom: 10px;">
                                                 Attendance
-                                                <input type="text" name="" style="width: 200px;" placeholder="Enter Marks" class="form-control">
+                                                <input type="hidden" name="mark[{{ $i }}][subject_id]" value="{{ $subject->subject_id }}">
+                                                <input type="text" name="mark[{{ $i }}][attendance]" style="width: 200px;" placeholder="Enter Marks" class="form-control">
                                             </div>
 
                                             <div style="margin-bottom: 10px;">
 
                                                 CAT 1
-                                                <input type="text" name="" style="width: 200px;" placeholder="Enter Marks" class="form-control">
+                                                <input type="text" name="mark[{{ $i }}][cat_one]" style="width: 200px;" placeholder="Enter Marks" class="form-control">
                                             </div>
 
                                             <div>
                                                 CAT 2
-                                                <input type="text" name="" style="width: 200px;" placeholder="Enter Marks" class="form-control">
+                                                <input type="text" name="mark[{{ $i }}][cat_two]" style="width: 200px;" placeholder="Enter Marks" class="form-control">
                                             </div>
 
                                             <div style="margin-bottom: 10px;">
                                                 Exam
-                                                <input type="text" name="" style="width: 200px;" placeholder="Enter Marks" class="form-control">
+                                                <input type="text" name="mark[{{ $i }}][exam]" style="width: 200px;" placeholder="Enter Marks" class="form-control">
                                             </div>
                                             
-                                        </td>                                          
+                                        </td> 
+                                        @php
+                                            $i++;
+                                        @endphp                                         
                                         @endforeach
                                         <td>
                                             <button type="submit" class="btn btn-success">Save</button>
