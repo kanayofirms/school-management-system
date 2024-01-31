@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 use App\Models\User;
 use Hash;
-use Auth;
 use Str;
 
 class ParentController extends Controller
