@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\ExamModel;
 use App\Models\ClassModel;
 use App\Models\ClassSubjectModel;
@@ -10,7 +11,7 @@ use App\Models\ExamScheduleModel;
 use App\Models\MarksRegisterModel;
 use App\Models\AssignClassTeacherModel;
 use App\Models\User;
-use Auth;
+
 
 class ExaminationsController extends Controller
 {
@@ -166,7 +167,17 @@ class ExaminationsController extends Controller
                 $cat_two = !empty($mark['cat_two']) ? $mark['cat_two'] : 0;
                 $exam = !empty($mark['exam']) ? $mark['exam'] : 0;
 
-                $save = new MarksRegisterModel;
+                $getMark = MarksRegisterModel::CheckAlreadyMark($request->student_id, $request->exam_id, $request->class_id, $mark['subject_id']);
+                if(!empty($getMark))
+                {
+                    $save = $getMark;
+                } 
+                else
+                {
+                    $save = new MarksRegisterModel;
+                    $save->created_by = Auth::user()->id;
+                }
+
                 $save->student_id = $request->student_id;
                 $save->exam_id = $request->exam_id;
                 $save->class_id = $request->class_id;
@@ -175,7 +186,6 @@ class ExaminationsController extends Controller
                 $save->cat_one = $cat_one;
                 $save->cat_two = $cat_two;
                 $save->exam = $exam;
-                $save->created_by = Auth::user()->id;
                 $save->save();
             }
         }
