@@ -98,27 +98,32 @@
                                             $i = 1;
                                         @endphp
                                         @foreach ($getSubject as $subject)
+
+                                        @php
+                                            $getMark = $subject->getMark($student->id, Request::get('exam_id'), Request::get('class_id'), $subject->subject_id);
+                                        @endphp
+
                                         <td>
                                             <div style="margin-bottom: 10px;">
                                                 Attendance
                                                 <input type="hidden" name="mark[{{ $i }}][subject_id]" value="{{ $subject->subject_id }}">
-                                                <input type="text" name="mark[{{ $i }}][attendance]" style="width: 200px;" placeholder="Enter Marks" class="form-control">
+                                                <input type="text" name="mark[{{ $i }}][attendance]" style="width: 200px;" placeholder="Enter Marks" value="{{ !empty($getMark) ? $getMark->attendance : '' }}" class="form-control">
                                             </div>
 
                                             <div style="margin-bottom: 10px;">
 
                                                 CAT 1
-                                                <input type="text" name="mark[{{ $i }}][cat_one]" style="width: 200px;" placeholder="Enter Marks" class="form-control">
+                                                <input type="text" name="mark[{{ $i }}][cat_one]" style="width: 200px;" placeholder="Enter Marks" value="{{ !empty($getMark) ? $getMark->cat_one : '' }}" class="form-control">
                                             </div>
 
                                             <div>
                                                 CAT 2
-                                                <input type="text" name="mark[{{ $i }}][cat_two]" style="width: 200px;" placeholder="Enter Marks" class="form-control">
+                                                <input type="text" name="mark[{{ $i }}][cat_two]" style="width: 200px;" placeholder="Enter Marks" value="{{ !empty($getMark) ? $getMark->cat_two : '' }}" class="form-control">
                                             </div>
 
                                             <div style="margin-bottom: 10px;">
                                                 Exam
-                                                <input type="text" name="mark[{{ $i }}][exam]" style="width: 200px;" placeholder="Enter Marks" class="form-control">
+                                                <input type="text" name="mark[{{ $i }}][exam]" style="width: 200px;" placeholder="Enter Marks" value="{{ !empty($getMark) ? $getMark->exam : '' }}" class="form-control">
                                             </div>
                                             
                                         </td> 
