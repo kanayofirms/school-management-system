@@ -62,4 +62,9 @@ class ExamScheduleModel extends Model
             ->where('assign_class_teacher.teacher_id', '=', $teacher_id)
             ->get();
     }
+
+    static public function getMark($student_id, $exam_id, $class_id, $subject_id)
+    {
+        return MarksRegisterModel::CheckAlreadyMark($student_id, $exam_id, $class_id, $subject_id);
+    }
 }
