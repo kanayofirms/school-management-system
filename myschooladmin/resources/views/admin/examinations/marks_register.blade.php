@@ -107,23 +107,23 @@
                                             <div style="margin-bottom: 10px;">
                                                 Attendance
                                                 <input type="hidden" name="mark[{{ $i }}][subject_id]" value="{{ $subject->subject_id }}">
-                                                <input type="text" name="mark[{{ $i }}][attendance]" style="width: 200px;" placeholder="Enter Marks" value="{{ !empty($getMark) ? $getMark->attendance : '' }}" class="form-control">
+                                                <input type="text" name="mark[{{ $i }}][attendance]" style="width: 200px;" placeholder="Enter Marks" value="{{ !empty($getMark->attendance) ? $getMark->attendance : '' }}" class="form-control">
                                             </div>
 
                                             <div style="margin-bottom: 10px;">
 
                                                 CAT 1
-                                                <input type="text" name="mark[{{ $i }}][cat_one]" style="width: 200px;" placeholder="Enter Marks" value="{{ !empty($getMark) ? $getMark->cat_one : '' }}" class="form-control">
+                                                <input type="text" name="mark[{{ $i }}][cat_one]" style="width: 200px;" placeholder="Enter Marks" value="{{ !empty($getMark->cat_one) ? $getMark->cat_one : '' }}" class="form-control">
                                             </div>
 
                                             <div>
                                                 CAT 2
-                                                <input type="text" name="mark[{{ $i }}][cat_two]" style="width: 200px;" placeholder="Enter Marks" value="{{ !empty($getMark) ? $getMark->cat_two : '' }}" class="form-control">
+                                                <input type="text" name="mark[{{ $i }}][cat_two]" style="width: 200px;" placeholder="Enter Marks" value="{{ !empty($getMark->cat_two) ? $getMark->cat_two : '' }}" class="form-control">
                                             </div>
 
                                             <div style="margin-bottom: 10px;">
                                                 Exam
-                                                <input type="text" name="mark[{{ $i }}][exam]" style="width: 200px;" placeholder="Enter Marks" value="{{ !empty($getMark) ? $getMark->exam : '' }}" class="form-control">
+                                                <input type="text" name="mark[{{ $i }}][exam]" style="width: 200px;" placeholder="Enter Marks" value="{{ !empty($getMark->exam) ? $getMark->exam : '' }}" class="form-control">
                                             </div>
                                             
                                         </td> 
