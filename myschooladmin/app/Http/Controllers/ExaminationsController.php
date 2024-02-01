@@ -194,6 +194,11 @@ class ExaminationsController extends Controller
         echo json_encode($json);
     }
 
+    public function single_submit_marks_register(Request $request)
+    {
+        dd($request->all());
+    }
+
     // student side code
 
     public function myExamTimetable(Request $request)
