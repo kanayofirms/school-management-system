@@ -168,12 +168,9 @@ class ExaminationsController extends Controller
                 $exam = !empty($mark['exam']) ? $mark['exam'] : 0;
 
                 $getMark = MarksRegisterModel::CheckAlreadyMark($request->student_id, $request->exam_id, $request->class_id, $mark['subject_id']);
-                if(!empty($getMark))
-                {
+                if (!empty($getMark)) {
                     $save = $getMark;
-                } 
-                else
-                {
+                } else {
                     $save = new MarksRegisterModel;
                     $save->created_by = Auth::user()->id;
                 }
@@ -196,7 +193,34 @@ class ExaminationsController extends Controller
 
     public function single_submit_marks_register(Request $request)
     {
-        dd($request->all());
+        
+
+        $attendance = !empty($request->attendance) ? $request->attendance : 0;
+        $cat_one = !empty($request->cat_one) ? $request->cat_one : 0;
+        $cat_two = !empty($request->cat_two) ? $request->cat_two : 0;
+        $exam = !empty($request->exam) ? $request->exam : 0;
+
+        $getMark = MarksRegisterModel::CheckAlreadyMark($request->student_id, $request->exam_id, $request->class_id, $request->subject_id);
+
+        if (!empty($getMark)) {
+            $save = $getMark;
+        } else {
+            $save = new MarksRegisterModel;
+            $save->created_by = Auth::user()->id;
+        }
+
+        $save->student_id = $request->student_id;
+        $save->exam_id = $request->exam_id;
+        $save->class_id = $request->class_id;
+        $save->subject_id = $request->subject_id;
+        $save->attendance = $attendance;
+        $save->cat_one = $cat_one;
+        $save->cat_two = $cat_two;
+        $save->exam = $exam;
+        $save->save();
+
+        $json['message'] = "Mark Register Successfully Saved";
+        echo json_encode($json);
     }
 
     // student side code
