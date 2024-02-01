@@ -107,24 +107,31 @@
                                             <div style="margin-bottom: 10px;">
                                                 Attendance
                                                 <input type="hidden" name="mark[{{ $i }}][subject_id]" value="{{ $subject->subject_id }}">
-                                                <input type="text" name="mark[{{ $i }}][attendance]" style="width: 200px;" placeholder="Enter Marks" value="{{ !empty($getMark->attendance) ? $getMark->attendance : '' }}" class="form-control">
+                                                <input type="text" name="mark[{{ $i }}][attendance]" style="width: 200px;" id="attendance_{{ $student->id }}{{ $subject->subject_id }}" placeholder="Enter Marks" value="{{ !empty($getMark->attendance) ? $getMark->attendance : '' }}" class="form-control">
                                             </div>
 
                                             <div style="margin-bottom: 10px;">
 
                                                 CAT 1
-                                                <input type="text" name="mark[{{ $i }}][cat_one]" style="width: 200px;" placeholder="Enter Marks" value="{{ !empty($getMark->cat_one) ? $getMark->cat_one : '' }}" class="form-control">
+                                                <input type="text" name="mark[{{ $i }}][cat_one]" style="width: 200px;" id="cat_one_{{ $student->id }}{{ $subject->subject_id }}" placeholder="Enter Marks" value="{{ !empty($getMark->cat_one) ? $getMark->cat_one : '' }}" class="form-control">
                                             </div>
 
                                             <div>
                                                 CAT 2
-                                                <input type="text" name="mark[{{ $i }}][cat_two]" style="width: 200px;" placeholder="Enter Marks" value="{{ !empty($getMark->cat_two) ? $getMark->cat_two : '' }}" class="form-control">
+                                                <input type="text" name="mark[{{ $i }}][cat_two]" style="width: 200px;" id="cat_two_{{ $student->id }}{{ $subject->subject_id }}" placeholder="Enter Marks" value="{{ !empty($getMark->cat_two) ? $getMark->cat_two : '' }}" class="form-control">
                                             </div>
 
                                             <div style="margin-bottom: 10px;">
                                                 Exam
-                                                <input type="text" name="mark[{{ $i }}][exam]" style="width: 200px;" placeholder="Enter Marks" value="{{ !empty($getMark->exam) ? $getMark->exam : '' }}" class="form-control">
+                                                <input type="text" name="mark[{{ $i }}][exam]" style="width: 200px;" id="exam_{{ $student->id }}{{ $subject->subject_id }}" placeholder="Enter Marks" value="{{ !empty($getMark->exam) ? $getMark->exam : '' }}" class="form-control">
                                             </div>
+
+                                            <div style="margin-bottom: 10px;">
+                                                <button type="button" class="btn btn-primary SaveSingleSubject" id="{{ $student->id }}" data-val="{{ $subject->subject_id }}" data-exam="{{ Request::get('exam_id') }}" 
+                                                    data-class="{{ Request::get('class_id') }}">Save</button>
+                                            </div>
+
+
                                             
                                         </td> 
                                         @php
@@ -172,7 +179,40 @@
 
         }
     });
-  })
+  });
+
+  $('.SaveSingleSubject').click(function(e) {
+    var student_id = $(this).attr('id');
+    var subject_id = $(this).attr('data-val');
+    var exam_id = $(this).attr('data-exam');
+    var class_id = $(this).attr('data-class');
+    var attendance = $('#attendance_'+student_id+subject_id).val();
+    var cat_one = $('#cat_one_'+student_id+subject_id).val();
+    var cat_two = $('#cat_two_'+student_id+subject_id).val();
+    var exam = $('#exam_'+student_id+subject_id).val();
+    
+
+    $.ajax({
+        type: "POST", 
+        url: "{{ url('admin/examinations/single_submit_marks_register') }}", 
+        data: {
+            "_token" : "{{ csrf_token() }}",
+            student_id : student_id,
+            subject_id : subject_id,
+            exam_id : exam_id,
+            class_id : class_id,
+            attendance : attendance,
+            cat_one : cat_one,
+            cat_two : cat_two,
+            exam : exam
+
+        },
+        dataType : "json",
+        success : function(data) {
+            alert(data.message);
+        }
+    });
+  });
 
 </script>
 
