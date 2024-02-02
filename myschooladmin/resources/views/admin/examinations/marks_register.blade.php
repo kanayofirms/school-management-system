@@ -70,7 +70,7 @@
                                 <h3 class="card-title">Marks Register</h3>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body p-0">
+                            <div class="card-body p-0" style="overflow: auto;">
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
@@ -161,16 +161,15 @@
                                             $i++;
                                         @endphp                                         
                                         @endforeach
-                                        <td>
+                                        <td style="min-width: 250px;">
                                             <button type="submit" class="btn btn-success">Save</button>
-
-                                            <br />
-                                            {{ $totalStudentMark }}
                                             <br >
-                                            {{ $totalFullMark }}
                                             <br >
-                                            {{ $totalPassingMark }}
-
+                                            <b>Total Subject Mark :</b> {{ $totalFullMark }}
+                                            <br >
+                                            <b>Total Passing Mark :</b> {{ $totalPassingMark }}
+                                            <br >
+                                            <b>Total Student Mark :</b> {{ $totalStudentMark }}
                                         </td>
                                        </tr>
                                     </form>
