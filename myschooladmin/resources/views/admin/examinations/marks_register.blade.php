@@ -99,6 +99,7 @@
                                             $totalStudentMark = 0;
                                             $totalFullMark = 0;
                                             $totalPassingMark = 0;
+                                            $pass_fail_vali = 0;
                                         @endphp
                                         @foreach ($getSubject as $subject)
 
@@ -150,9 +151,12 @@
                                                 <b>Total Mark :</b> {{ $totalMark }} <br />
                                                 <b>Passing Mark :</b> {{ $subject->passing_mark }} <br >    
                                                 @if($totalMark >= $subject->passing_mark)
-                                                    <span style="color: green; font-weight: bold;">Pass</span>
+                                                    Result : <span style="color: green; font-weight: bold;">Pass</span>
                                                 @else
-                                                    <span style="color: red; font-weight: bold;">Fail</span>
+                                                    Result : <span style="color: red; font-weight: bold;">Fail</span>
+                                                    @php
+                                                        $pass_fail_vali = 1;
+                                                    @endphp
                                                 @endif
                                             </div>
                                             @endif
@@ -163,13 +167,28 @@
                                         @endforeach
                                         <td style="min-width: 250px;">
                                             <button type="submit" class="btn btn-success">Save</button>
-                                            <br >
-                                            <br >
-                                            <b>Total Subject Mark :</b> {{ $totalFullMark }}
-                                            <br >
-                                            <b>Total Passing Mark :</b> {{ $totalPassingMark }}
-                                            <br >
-                                            <b>Total Student Mark :</b> {{ $totalStudentMark }}
+                                            @if(!@empty($totalStudentMark))
+                                                <br >
+                                                <br >
+                                                <b>Total Subject Mark :</b> {{ $totalFullMark }}
+                                                <br >
+                                                <b>Total Passing Mark :</b> {{ $totalPassingMark }}
+                                                <br >
+                                                <b>Total Student Mark :</b> {{ $totalStudentMark }}
+                                                <br />
+                                                @php
+                                                    $percent = ($totalStudentMark * 100) / $totalFullMark;
+                                                    
+                                                @endphp
+                                                <br >
+                                                <b>Percentage :</b>{{ round($percent,2) }}%
+                                                <br >
+                                                @if ($pass_fail_vali == 0)
+                                                    Result :<span style="color: green; font-weight: bold;">Pass</span>
+                                                @else
+                                                Result :<span style="color: red; font-weight: bold;">Fail</span>
+                                                @endif
+                                            @endif
                                         </td>
                                        </tr>
                                     </form>
