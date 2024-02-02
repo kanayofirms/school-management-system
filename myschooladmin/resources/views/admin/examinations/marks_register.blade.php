@@ -96,11 +96,25 @@
                                         <td>{{ $student->name }} {{ $student->middle_name }} {{ $student->last_name }}</td>
                                         @php
                                             $i = 1;
+                                            $totalStudentMark = 0;
+                                            $totalFullMark = 0;
+                                            $totalPassingMark = 0;
                                         @endphp
                                         @foreach ($getSubject as $subject)
 
                                         @php
+                                            $totalMark = 0;
+                                            $totalFullMark = $totalFullMark + $subject->full_mark;
+                                            $totalPassingMark = $totalPassingMark + $subject->passing_mark;
+
                                             $getMark = $subject->getMark($student->id, Request::get('exam_id'), Request::get('class_id'), $subject->subject_id);
+                                            
+                                            if(!empty($getMark))
+                                            {
+                                                $totalMark = $getMark->attendance + $getMark->cat_one + $getMark->cat_two + $getMark->exam;
+                                            }
+
+                                            $totalStudentMark = $totalStudentMark+$totalMark;
                                         @endphp
 
                                         <td>
@@ -131,9 +145,17 @@
                                                 <button type="button" class="btn btn-primary SaveSingleSubject" id="{{ $student->id }}" data-val="{{ $subject->subject_id }}" data-exam="{{ Request::get('exam_id') }}" 
                                                      data-schedule="{{ $subject->id }}" data-class="{{ Request::get('class_id') }}">Save</button>
                                             </div>
-
-
-                                            
+                                            @if(!@empty($getMark))
+                                            <div style="margin-bottom: 10px;">
+                                                <b>Total Mark :</b> {{ $totalMark }} <br />
+                                                <b>Passing Mark :</b> {{ $subject->passing_mark }} <br >    
+                                                @if($totalMark >= $subject->passing_mark)
+                                                    <span style="color: green; font-weight: bold;">Pass</span>
+                                                @else
+                                                    <span style="color: red; font-weight: bold;">Fail</span>
+                                                @endif
+                                            </div>
+                                            @endif
                                         </td> 
                                         @php
                                             $i++;
@@ -141,6 +163,14 @@
                                         @endforeach
                                         <td>
                                             <button type="submit" class="btn btn-success">Save</button>
+
+                                            <br />
+                                            {{ $totalStudentMark }}
+                                            <br >
+                                            {{ $totalFullMark }}
+                                            <br >
+                                            {{ $totalPassingMark }}
+
                                         </td>
                                        </tr>
                                     </form>
