@@ -160,34 +160,55 @@ class ExaminationsController extends Controller
 
     public function submit_marks_register(Request $request)
     {
+        $validation = 0;
         if (!empty($request->mark)) {
             foreach ($request->mark as $mark) {
+
+                $getExamSchedule = ExamScheduleModel::getSingle($mark['id']);
+                $full_mark = $getExamSchedule->full_mark;
+
                 $attendance = !empty($mark['attendance']) ? $mark['attendance'] : 0;
                 $cat_one = !empty($mark['cat_one']) ? $mark['cat_one'] : 0;
                 $cat_two = !empty($mark['cat_two']) ? $mark['cat_two'] : 0;
                 $exam = !empty($mark['exam']) ? $mark['exam'] : 0;
 
-                $getMark = MarksRegisterModel::CheckAlreadyMark($request->student_id, $request->exam_id, $request->class_id, $mark['subject_id']);
-                if (!empty($getMark)) {
-                    $save = $getMark;
-                } else {
-                    $save = new MarksRegisterModel;
-                    $save->created_by = Auth::user()->id;
-                }
+                $total_mark = $attendance + $cat_one + $cat_two + $exam;
+                if ($full_mark >= $total_mark) {
 
-                $save->student_id = $request->student_id;
-                $save->exam_id = $request->exam_id;
-                $save->class_id = $request->class_id;
-                $save->subject_id = $mark['subject_id'];
-                $save->attendance = $attendance;
-                $save->cat_one = $cat_one;
-                $save->cat_two = $cat_two;
-                $save->exam = $exam;
-                $save->save();
+                    $getMark = MarksRegisterModel::CheckAlreadyMark($request->student_id, $request->exam_id, $request->class_id, $mark['subject_id']);
+                    if (!empty($getMark)) {
+                        $save = $getMark;
+                    } else {
+                        $save = new MarksRegisterModel;
+                        $save->created_by = Auth::user()->id;
+                    }
+
+                    $save->student_id = $request->student_id;
+                    $save->exam_id = $request->exam_id;
+                    $save->class_id = $request->class_id;
+                    $save->subject_id = $mark['subject_id'];
+                    $save->attendance = $attendance;
+                    $save->cat_one = $cat_one;
+                    $save->cat_two = $cat_two;
+                    $save->exam = $exam;
+                    
+                    $save->save();
+                }
+                else
+                {
+                    $validation = 1;
+                }
             }
         }
 
-        $json['message'] = "Mark Register Successfully Saved";
+        if($validation == 0)
+        {
+            $json['message'] = "Mark Register Successfully Saved";
+        }
+        else{
+            $json['message'] = "Mark Register Successfully Saved. Some Subject Total mark greater than Full mark";
+        }
+           
         echo json_encode($json);
     }
 
@@ -226,9 +247,7 @@ class ExaminationsController extends Controller
             $save->save();
 
             $json['message'] = "Mark Register Successfully Saved";
-        }
-        else
-        {
+        } else {
             $json['message'] = "Total mark greater than Full mark";
         }
 
