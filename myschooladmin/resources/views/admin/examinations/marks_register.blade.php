@@ -106,6 +106,7 @@
                                         <td>
                                             <div style="margin-bottom: 10px;">
                                                 Attendance
+                                                <input type="hidden" name="mark[{{ $i }}][id]" value="{{ $subject->id }}">
                                                 <input type="hidden" name="mark[{{ $i }}][subject_id]" value="{{ $subject->subject_id }}">
                                                 <input type="text" name="mark[{{ $i }}][attendance]" style="width: 200px;" id="attendance_{{ $student->id }}{{ $subject->subject_id }}" placeholder="Enter Marks" value="{{ !empty($getMark->attendance) ? $getMark->attendance : '' }}" class="form-control">
                                             </div>
