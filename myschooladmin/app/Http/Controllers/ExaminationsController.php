@@ -164,7 +164,8 @@ class ExaminationsController extends Controller
     {
         
         $data['getClass'] = AssignClassTeacherModel::getMyClassSubjectGroup(Auth::user()->id);
-        $data['getExam'] = ExamModel::getExam();
+        $data['getExam'] = ExamScheduleModel::getExamTeacher(Auth::user()->id);
+        
 
         if (!empty($request->get('exam_id')) && !empty($request->get('class_id'))) {
             $data['getSubject'] = ExamScheduleModel::getSubject($request->get('exam_id'), $request->get('class_id'));
