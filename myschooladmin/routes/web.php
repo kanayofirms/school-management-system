@@ -175,7 +175,7 @@ Route::group(['middleware' => 'teacher'], function () {
 
     Route::get('teacher/my_calendar', [CalendarController::class, 'myCalendarTeacher']);
 
-
+    Route::get('teacher/marks_register', [ExaminationsController::class, 'marks_register_teacher']);
 });
 
 Route::group(['middleware' => 'student'], function () {
