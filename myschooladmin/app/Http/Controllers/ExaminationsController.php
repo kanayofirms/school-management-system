@@ -158,6 +158,23 @@ class ExaminationsController extends Controller
         return view('admin.examinations.marks_register', $data);
     }
 
+    // teacher side code
+
+    public function marks_register_teacher(Request $request)
+    {
+        
+        $data['getClass'] = AssignClassTeacherModel::getMyClassSubjectGroup(Auth::user()->id);
+        $data['getExam'] = ExamModel::getExam();
+
+        if (!empty($request->get('exam_id')) && !empty($request->get('class_id'))) {
+            $data['getSubject'] = ExamScheduleModel::getSubject($request->get('exam_id'), $request->get('class_id'));
+            $data['getStudent'] = User::getStudentClass($request->get('class_id'));
+        }
+
+        $data['header_title'] = "Marks Register";
+        return view('teacher.marks_register', $data);
+    }
+
     public function submit_marks_register(Request $request)
     {
         $validation = 0;
@@ -191,7 +208,7 @@ class ExaminationsController extends Controller
                     $save->cat_one = $cat_one;
                     $save->cat_two = $cat_two;
                     $save->exam = $exam;
-                    
+
                     $save->save();
                 }
                 else
