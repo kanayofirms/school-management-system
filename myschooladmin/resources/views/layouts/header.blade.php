@@ -356,16 +356,6 @@
              </li>
 
              <li class="nav-item">
-                 <a href="{{ url('teacher/account') }}"
-                     class="nav-link @if (Request::segment(2) == 'account') active @endif">
-                     <i class="nav-icon far fa-user"></i>
-                     <p>
-                         My Account
-                     </p>
-                 </a>
-             </li>
-
-             <li class="nav-item">
                  <a href="{{ url('teacher/my_exam_timetable') }}"
                      class="nav-link @if (Request::segment(2) == 'my_exam_timetable') active @endif">
                      <i class="nav-icon far fa-user"></i>
@@ -384,6 +374,25 @@
                      </p>
                  </a>
              </li>
+
+             <a href="{{ url('teacher/marks_register') }}"
+                     class="nav-link @if (Request::segment(2) == 'marks_register') active @endif">
+                     <i class="nav-icon far fa-user"></i>
+                     <p>
+                         Marks Register
+                     </p>
+                 </a>
+             </li>
+
+         <li class="nav-item">
+            <a href="{{ url('teacher/account') }}"
+                class="nav-link @if (Request::segment(2) == 'account') active @endif">
+                <i class="nav-icon far fa-user"></i>
+                <p>
+                    My Account
+                </p>
+            </a>
+        </li>
 
              <li class="nav-item">
                  <a href="{{ url('teacher/change_password') }}"
