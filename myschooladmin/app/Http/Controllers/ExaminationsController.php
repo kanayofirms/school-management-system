@@ -385,4 +385,12 @@ class ExaminationsController extends Controller
         $data['header_title'] = "Exam Timetable";
         return view('parent.my_exam_timetable', $data);
     }
+
+    // student side code
+
+    public function myExamResult()
+    {
+        $data['header_title'] = "My Exam Result";
+        return view('student.my_exam_result', $data);
+    }
 }
