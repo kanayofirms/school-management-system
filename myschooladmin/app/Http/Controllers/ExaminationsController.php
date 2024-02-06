@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Auth;
 use App\Models\ExamModel;
 use App\Models\ClassModel;
 use App\Models\ClassSubjectModel;
@@ -408,8 +408,24 @@ class ExaminationsController extends Controller
             $dataE = array();
             $dataE['exam_name'] = $value->exam_name;
             $getExamSubject = MarksRegisterModel::getExamSubject($value->exam_id, Auth::user()->id);
-            dd($getExamSubject);
+            $dataSubject = array();
+            foreach($getExamSubject as $exam)
+            {
+                $dataS = array();
+                $dataS['subject_name'] = $exam['subject_name'];
+                $dataS['attendance'] = $exam['attendance'];
+                $dataS['cat_one'] = $exam['cat_one'];
+                $dataS['cat_two'] = $exam['cat_two'];
+                $dataS['exam'] = $exam['exam'];
+                $dataS['full_mark'] = $exam['full_mark'];
+                $dataS['passing_mark'] = $exam['passing_mark'];
+                $dataSubject[] = $dataS;
+            }
+            $dataE['subject'] = $dataSubject; 
+            $result[] = $dataE;
+
         }
+        $data['getRecord'] = $result;
         $data['header_title'] = "My Exam Result";
         return view('student.my_exam_result', $data);
     }
