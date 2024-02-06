@@ -459,7 +459,7 @@
                     class="nav-link @if (Request::segment(2) == 'my_exam_result') active @endif">
                     <i class="nav-icon far fa-user"></i>
                     <p>
-                        Exam Result
+                        My Exam Result
                     </p>
                 </a>
             </li>
