@@ -189,6 +189,9 @@ class ExaminationsController extends Controller
                 $cat_one = !empty($mark['cat_one']) ? $mark['cat_one'] : 0;
                 $cat_two = !empty($mark['cat_two']) ? $mark['cat_two'] : 0;
                 $exam = !empty($mark['exam']) ? $mark['exam'] : 0;
+                $full_mark = !empty($mark['full_mark']) ? $mark['full_mark'] : 0;
+                $passing_mark = !empty($mark['passing_mark']) ? $mark['passing_mark'] : 0;
+
 
                 $total_mark = $attendance + $cat_one + $cat_two + $exam;
                 if ($full_mark >= $total_mark) {
@@ -209,7 +212,8 @@ class ExaminationsController extends Controller
                     $save->cat_one = $cat_one;
                     $save->cat_two = $cat_two;
                     $save->exam = $exam;
-
+                    $save->full_mark = $full_mark;
+                    $save->passing_mark = $passing_mark;
                     $save->save();
                 }
                 else
@@ -242,6 +246,9 @@ class ExaminationsController extends Controller
         $cat_two = !empty($request->cat_two) ? $request->cat_two : 0;
         $exam = !empty($request->exam) ? $request->exam : 0;
 
+        // $full_mark = !empty($request->full_mark) ? $request->full_mark : 0;
+        // $passing_mark = !empty($request->passing_mark) ? $request->passing_mark : 0;        
+
         $total_mark = $attendance + $cat_one + $cat_two + $exam;
 
         if ($full_mark >= $total_mark) {
@@ -262,6 +269,10 @@ class ExaminationsController extends Controller
             $save->cat_one = $cat_one;
             $save->cat_two = $cat_two;
             $save->exam = $exam;
+
+            $save->full_mark = $getExamSchedule->full_mark;
+            $save->passing_mark = $getExamSchedule->passing_mark;
+
             $save->save();
 
             $json['message'] = "Mark Register Successfully Saved";
@@ -390,6 +401,15 @@ class ExaminationsController extends Controller
 
     public function myExamResult()
     {
+        $result = array();
+        $getExam = MarksRegisterModel::getExam(Auth::user()->id);
+        foreach($getExam as $value)
+        {
+            $dataE = array();
+            $dataE['exam_name'] = $value->exam_name;
+            $getExamSubject = MarksRegisterModel::getExamSubject($value->exam_id, Auth::user()->id);
+            dd($getExamSubject);
+        }
         $data['header_title'] = "My Exam Result";
         return view('student.my_exam_result', $data);
     }
