@@ -40,7 +40,15 @@
                     </tr>
                   </thead>
                   <tbody>
+                    @php
+                      $totalScore = 0;
+                      $full_mark = 0;
+                    @endphp
                     @foreach ($value['subject'] as $exam)
+                    @php
+                      $totalScore = $totalScore + $exam['totalScore'];
+                      $full_mark = $full_mark + $exam['full_mark'];
+                    @endphp
                        <tr>
                         <td>{{ $exam['subject_name'] }}</td>
                         <td>{{ $exam['attendance'] }}</td>
@@ -54,11 +62,16 @@
                           @if ($exam['totalScore'] >= $exam['passing_mark'])
                               <span style="color: green; font-weight:bold;">Pass</span>
                           @else
-                              <span style="color: red; font-weight:bold;">Fail</span>
+                              <span style="color: red; font-weight:bold;
+                              ">Fail</span>
                           @endif
                         </td>
                        </tr>
                     @endforeach
+
+                    <tr>
+                      <td colspan="100%"><b>Grand Total: {{ $totalScore }}/{{ $full_mark }}</b></td>
+                    </tr>
                   </tbody>
                 </table>               
             </div>
