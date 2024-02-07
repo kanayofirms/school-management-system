@@ -70,7 +70,8 @@
                     @endforeach
 
                     <tr>
-                      <td colspan="100%"><b>Grand Total: {{ $totalScore }}/{{ $full_mark }}</b></td>
+                      <td colspan="2"><b>Grand Total: {{ $totalScore }}/{{ $full_mark }}</b></td>
+                      <td colspan="7"><b>Percentage: {{ round(($totalScore * 100) / $full_mark, 2) }}</b></td>
                     </tr>
                   </tbody>
                 </table>               
