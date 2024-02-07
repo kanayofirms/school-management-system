@@ -43,6 +43,7 @@
                     @php
                       $totalScore = 0;
                       $full_mark = 0;
+                      $resultValidation = 0;
                     @endphp
                     @foreach ($value['subject'] as $exam)
                     @php
@@ -50,7 +51,7 @@
                       $full_mark = $full_mark + $exam['full_mark'];
                     @endphp
                        <tr>
-                        <td>{{ $exam['subject_name'] }}</td>
+                        <td style="width:300px;">{{ $exam['subject_name'] }}</td>
                         <td>{{ $exam['attendance'] }}</td>
                         <td>{{ $exam['cat_one'] }}</td>
                         <td>{{ $exam['cat_two'] }}</td>
@@ -62,6 +63,9 @@
                           @if ($exam['totalScore'] >= $exam['passing_mark'])
                               <span style="color: green; font-weight:bold;">Pass</span>
                           @else
+                            @php
+                              $resultValidation = 1;
+                            @endphp
                               <span style="color: red; font-weight:bold;
                               ">Fail</span>
                           @endif
@@ -71,7 +75,15 @@
 
                     <tr>
                       <td colspan="2"><b>Grand Total: {{ $totalScore }}/{{ $full_mark }}</b></td>
-                      <td colspan="7"><b>Percentage: {{ round(($totalScore * 100) / $full_mark, 2) }}</b></td>
+                      <td colspan="2"><b>Percentage: {{ round(($totalScore * 100) / $full_mark, 2) }}%</b></td>
+                      <td colspan="5"><b>Result: 
+                        @if ($resultValidation == 0)
+                          <span style="color:green;">Pass</span>
+                        @else
+                          <span style="color:red;">Fail</span>
+                        @endif
+                      </b>
+                      </td>
                     </tr>
                   </tbody>
                 </table>               
