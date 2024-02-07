@@ -32,6 +32,7 @@
                       <th>CAT 1</th>
                       <th>CAT 2</th>
                       <th>Exam</th>
+                      <th>Total Score</th>
                       <th>Passing Mark</th>
                       <th>Full Mark</th>
 
@@ -45,6 +46,7 @@
                         <td>{{ $exam['cat_one'] }}</td>
                         <td>{{ $exam['cat_two'] }}</td>
                         <td>{{ $exam['exam'] }}</td>
+                        <td>{{ $exam['totalScore'] }}</td>
                         <td>{{ $exam['passing_mark'] }}</td>
                         <td>{{ $exam['full_mark'] }}</td>
                        </tr>
