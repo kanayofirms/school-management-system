@@ -331,6 +331,14 @@ class ExaminationsController extends Controller
         return view('admin.examinations.marks_grade.list', $data);
     }
 
+    public function marks_grade_add()
+    {
+        $data['header_title'] = "Add New Marks Grade";
+        return view('admin.examinations.marks_grade.add', $data);
+    }
+
+
+
     // student side code
 
     public function myExamResult()
