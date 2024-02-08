@@ -160,6 +160,47 @@ class ExaminationsController extends Controller
 
     // teacher side code
 
+    public function myExamTimetableTeacher()
+    {
+        $result = array();
+        $getClass = AssignClassTeacherModel::getMyClassSubjectGroup(Auth::user()->id);
+        foreach ($getClass as $class) {
+            $dataC = array();
+            $dataC['class_name'] = $class->class_name;
+
+            $getExam = ExamScheduleModel::getExam($class->class_id);
+            $examArray = array();
+            foreach ($getExam as $exam) {
+                $dataE = array();
+                $dataE['exam_name'] = $exam->exam_name;
+
+                $getExamTimetable = ExamScheduleModel::getExamTimetable($exam->exam_id, $class->class_id);
+                $subjectArray = array();
+                foreach ($getExamTimetable as $valueS) {
+                    $dataS = array();
+                    $dataS['subject_name'] = $valueS->subject_name;
+                    $dataS['exam_date'] = $valueS->exam_date;
+                    $dataS['start_time'] = $valueS->start_time;
+                    $dataS['end_time'] = $valueS->end_time;
+                    $dataS['class_room'] = $valueS->class_room;
+                    $dataS['full_mark'] = $valueS->full_mark;
+                    $dataS['passing_mark'] = $valueS->passing_mark;
+                    $subjectArray[] = $dataS;
+                }
+                $dataE['subject'] = $subjectArray;
+                $examArray[] = $dataE;
+            }
+            $dataC['exam'] = $examArray;
+
+            $result[] = $dataC;
+        }
+
+        $data['getRecord'] = $result;
+
+        $data['header_title'] = "My Exam Timetable";
+        return view('teacher.my_exam_timetable', $data);
+    }
+
     public function marks_register_teacher(Request $request)
     {
         
@@ -284,7 +325,46 @@ class ExaminationsController extends Controller
         echo json_encode($json);
     }
 
+    public function marks_grade()
+    {
+        $data['header_title'] = "Marks Grade";
+        return view('admin.examinations.marks_grade.list', $data);
+    }
+
     // student side code
+
+    public function myExamResult()
+    {
+        $result = array();
+        $getExam = MarksRegisterModel::getExam(Auth::user()->id);
+        foreach($getExam as $value)
+        {
+            $dataE = array();
+            $dataE['exam_name'] = $value->exam_name;
+            $getExamSubject = MarksRegisterModel::getExamSubject($value->exam_id, Auth::user()->id);
+            $dataSubject = array();
+            foreach($getExamSubject as $exam)
+            {
+                $totalScore = $exam['attendance'] + $exam['cat_one'] + $exam['cat_two'] + $exam['exam'];
+                $dataS = array();
+                $dataS['subject_name'] = $exam['subject_name'];
+                $dataS['attendance'] = $exam['attendance'];
+                $dataS['cat_one'] = $exam['cat_one'];
+                $dataS['cat_two'] = $exam['cat_two'];
+                $dataS['exam'] = $exam['exam'];
+                $dataS['totalScore'] = $totalScore;
+                $dataS['full_mark'] = $exam['full_mark'];
+                $dataS['passing_mark'] = $exam['passing_mark'];
+                $dataSubject[] = $dataS;
+            }
+            $dataE['subject'] = $dataSubject; 
+            $result[] = $dataE;
+
+        }
+        $data['getRecord'] = $result;
+        $data['header_title'] = "My Exam Result";
+        return view('student.my_exam_result', $data);
+    }
 
     public function myExamTimetable(Request $request)
     {
@@ -316,49 +396,6 @@ class ExaminationsController extends Controller
 
         $data['header_title'] = "My Exam Timetable";
         return view('student.my_exam_timetable', $data);
-    }
-
-    // teacher side code
-
-    public function myExamTimetableTeacher()
-    {
-        $result = array();
-        $getClass = AssignClassTeacherModel::getMyClassSubjectGroup(Auth::user()->id);
-        foreach ($getClass as $class) {
-            $dataC = array();
-            $dataC['class_name'] = $class->class_name;
-
-            $getExam = ExamScheduleModel::getExam($class->class_id);
-            $examArray = array();
-            foreach ($getExam as $exam) {
-                $dataE = array();
-                $dataE['exam_name'] = $exam->exam_name;
-
-                $getExamTimetable = ExamScheduleModel::getExamTimetable($exam->exam_id, $class->class_id);
-                $subjectArray = array();
-                foreach ($getExamTimetable as $valueS) {
-                    $dataS = array();
-                    $dataS['subject_name'] = $valueS->subject_name;
-                    $dataS['exam_date'] = $valueS->exam_date;
-                    $dataS['start_time'] = $valueS->start_time;
-                    $dataS['end_time'] = $valueS->end_time;
-                    $dataS['class_room'] = $valueS->class_room;
-                    $dataS['full_mark'] = $valueS->full_mark;
-                    $dataS['passing_mark'] = $valueS->passing_mark;
-                    $subjectArray[] = $dataS;
-                }
-                $dataE['subject'] = $subjectArray;
-                $examArray[] = $dataE;
-            }
-            $dataC['exam'] = $examArray;
-
-            $result[] = $dataC;
-        }
-
-        $data['getRecord'] = $result;
-
-        $data['header_title'] = "My Exam Timetable";
-        return view('teacher.my_exam_timetable', $data);
     }
 
     // parent side code
@@ -430,40 +467,5 @@ class ExaminationsController extends Controller
         $data['getRecord'] = $result;
         $data['header_title'] = "My Exam Result";
         return view('parent.my_exam_result', $data);
-    }
-
-    // student side code
-
-    public function myExamResult()
-    {
-        $result = array();
-        $getExam = MarksRegisterModel::getExam(Auth::user()->id);
-        foreach($getExam as $value)
-        {
-            $dataE = array();
-            $dataE['exam_name'] = $value->exam_name;
-            $getExamSubject = MarksRegisterModel::getExamSubject($value->exam_id, Auth::user()->id);
-            $dataSubject = array();
-            foreach($getExamSubject as $exam)
-            {
-                $totalScore = $exam['attendance'] + $exam['cat_one'] + $exam['cat_two'] + $exam['exam'];
-                $dataS = array();
-                $dataS['subject_name'] = $exam['subject_name'];
-                $dataS['attendance'] = $exam['attendance'];
-                $dataS['cat_one'] = $exam['cat_one'];
-                $dataS['cat_two'] = $exam['cat_two'];
-                $dataS['exam'] = $exam['exam'];
-                $dataS['totalScore'] = $totalScore;
-                $dataS['full_mark'] = $exam['full_mark'];
-                $dataS['passing_mark'] = $exam['passing_mark'];
-                $dataSubject[] = $dataS;
-            }
-            $dataE['subject'] = $dataSubject; 
-            $result[] = $dataE;
-
-        }
-        $data['getRecord'] = $result;
-        $data['header_title'] = "My Exam Result";
-        return view('student.my_exam_result', $data);
     }
 }
