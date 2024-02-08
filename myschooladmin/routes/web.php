@@ -154,8 +154,8 @@ Route::group(['middleware' => 'admin'], function () {
 
     Route::get('admin/examinations/marks_grade', [ExaminationsController::class, 'marks_grade']);
     Route::get('admin/examinations/marks_grade/add', [ExaminationsController::class, 'marks_grade_add']);
-    Route::post('admin/examinations/marks_grade/add', [ExaminationsController::class, 'marks_grade_insert']);
-    Route::get('admin/examinations/marks_grade/edit/{id}', [ExaminationsController::class, 'marks_grade_edit']);
+    // Route::post('admin/examinations/marks_grade/add', [ExaminationsController::class, 'marks_grade_insert']);
+    // Route::get('admin/examinations/marks_grade/edit/{id}', [ExaminationsController::class, 'marks_grade_edit']);
 
 }); 
 

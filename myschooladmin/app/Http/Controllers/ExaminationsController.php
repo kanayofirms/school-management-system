@@ -359,6 +359,17 @@ class ExaminationsController extends Controller
         return view('admin.examinations.marks_grade.edit', $data);
     }
 
+    public function marks_grade_update($id, Request $request)
+    {
+        $mark = MarksGradeModel::getSingle($id);
+        $mark->name = trim($request->name);
+        $mark->percent_from = trim($request->percent_from);
+        $mark->percent_to = trim($request->percent_to);
+        $mark->save();
+
+        return redirect('admin/examinations/marks_grade')->with('success', "Marks Grade Successfully Updated");
+    }
+
     // student side code
 
     public function myExamResult()
