@@ -153,6 +153,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/examinations/single_submit_marks_register', [ExaminationsController::class, 'single_submit_marks_register']);
 
     Route::get('admin/examinations/marks_grade', [ExaminationsController::class, 'marks_grade']);
+    Route::get('admin/examinations/marks_grade/add', [ExaminationsController::class, 'marks_grade_add']);
 }); 
 
 Route::group(['middleware' => 'teacher'], function () {
