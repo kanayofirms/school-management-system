@@ -352,7 +352,12 @@ class ExaminationsController extends Controller
 
     }
 
-
+    public function marks_grade_edit($id)
+    {
+        $data['getRecord'] = MarksGradeModel::getSingle($id);
+        $data['header_title'] = "Edit Marks Grade";
+        return view('admin.examinations.marks_grade.edit', $data);
+    }
 
     // student side code
 
