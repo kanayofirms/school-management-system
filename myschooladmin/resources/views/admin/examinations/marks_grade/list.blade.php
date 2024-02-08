@@ -47,7 +47,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                       
+                                       @foreach ($getRecord as $value)
+                                       <tr>
+                                        <td>{{ $value->name }}</td>
+                                        <td>{{ $value->percent_from }}</td>
+                                        <td>{{ $value->percent_to }}</td>
+                                        <td>{{ $value->created_name }}</td>
+                                        <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
+                                        <td>
+                                            <a href="{{ url('admin/examinations/marks_grade/edit/' . $value->id) }}"
+                                                class="btn btn-primary">Edit</a>
+                                            <a href="{{ url('admin/examinations/marks_grade/delete/' . $value->id) }}"
+                                                class="btn btn-danger">Delete</a>
+                                        </td>
+                                       </tr>
+                                           
+                                       @endforeach
                                     </tbody>
                                 </table>
                             
