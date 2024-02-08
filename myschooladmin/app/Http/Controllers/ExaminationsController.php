@@ -10,6 +10,7 @@ use App\Models\ClassSubjectModel;
 use App\Models\ExamScheduleModel;
 use App\Models\MarksRegisterModel;
 use App\Models\AssignClassTeacherModel;
+use App\Models\MarksGradeModel;
 use App\Models\User;
 
 
@@ -327,6 +328,7 @@ class ExaminationsController extends Controller
 
     public function marks_grade()
     {
+        $data['getRecord'] = MarksGradeModel::getRecord();
         $data['header_title'] = "Marks Grade";
         return view('admin.examinations.marks_grade.list', $data);
     }
@@ -335,6 +337,19 @@ class ExaminationsController extends Controller
     {
         $data['header_title'] = "Add New Marks Grade";
         return view('admin.examinations.marks_grade.add', $data);
+    }
+
+    public function marks_grade_insert(Request $request)
+    {
+        $mark = new MarksGradeModel;
+        $mark->name = trim($request->name);
+        $mark->percent_from = trim($request->percent_from);
+        $mark->percent_to = trim($request->percent_to);
+        $mark->created_by  = Auth::user()->id;
+        $mark->save();
+
+        return redirect('admin/examinations/marks_grade')->with('success', "Marks Grade Successfully Created");
+
     }
 
 
