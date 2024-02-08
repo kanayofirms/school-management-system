@@ -11,6 +11,11 @@ class MarksGradeModel extends Model
 
     protected $table = 'marks_grade';
 
+    static public function getSingle($id)
+    {
+        return self::find($id);
+    }
+
     static public function getRecord()
     {
         return MarksGradeModel::select('marks_grade.*', 'users.name as created_name')
