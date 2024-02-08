@@ -26,7 +26,7 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label>Grade Name</label>
-                                        <input type="number" class="form-control" value="{{ old('name') }}"
+                                        <input type="text" class="form-control" value="{{ old('name') }}"
                                             name="name" required placeholder="">
                                     </div>
                                     <div class="form-group">
