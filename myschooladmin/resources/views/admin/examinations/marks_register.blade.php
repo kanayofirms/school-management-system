@@ -180,11 +180,15 @@
                                                 <br />
                                                 @php
                                                     $percent = ($totalStudentMark * 100) / $totalFullMark;
-                                                    
+                                                    $getGrade = App\Models\MarksGradeModel::getGrade($percent);
                                                 @endphp
                                                 <br >
                                                 <b>Percentage :</b>{{ round($percent,2) }}%
                                                 <br >
+                                                @if (!empty($getGrade))
+                                                <b>Grade : </b>{{ $getGrade }}
+                                                <br >  
+                                                @endif
                                                 @if ($pass_fail_vali == 0)
                                                     Result :<span style="color: green; font-weight: bold;">Pass</span>
                                                 @else
