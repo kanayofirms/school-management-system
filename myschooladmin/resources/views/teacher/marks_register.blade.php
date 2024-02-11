@@ -149,9 +149,15 @@
                                                      data-schedule="{{ $subject->id }}" data-class="{{ Request::get('class_id') }}">Save</button>
                                             </div>
                                             @if(!@empty($getMark))
+                                            @php
+                                                $getLoopGrade = App\Models\MarksGradeModel::getGrade($totalMark);
+                                            @endphp
                                             <div style="margin-bottom: 10px;">
                                                 <b>Total Mark :</b> {{ $totalMark }} <br />
-                                                <b>Passing Mark :</b> {{ $subject->passing_mark }} <br >    
+                                                <b>Passing Mark :</b> {{ $subject->passing_mark }} <br >  
+                                                @if (!@empty($getLoopGrade))
+                                                    <b>Grade :</b> {{ $getLoopGrade }} <br >
+                                                @endif 
                                                 @if($totalMark >= $subject->passing_mark)
                                                     Result : <span style="color: green; font-weight: bold;">Pass</span>
                                                 @else
@@ -180,11 +186,15 @@
                                                 <br />
                                                 @php
                                                     $percent = ($totalStudentMark * 100) / $totalFullMark;
-                                                    
+                                                    $getGrade = App\Models\MarksGradeModel::getGrade($percent);
                                                 @endphp
                                                 <br >
                                                 <b>Percentage :</b>{{ round($percent,2) }}%
                                                 <br >
+                                                @if (!empty($getGrade))
+                                                <b>Grade : </b>{{ $getGrade }}
+                                                <br >  
+                                                @endif
                                                 @if ($pass_fail_vali == 0)
                                                     Result :<span style="color: green; font-weight: bold;">Pass</span>
                                                 @else
