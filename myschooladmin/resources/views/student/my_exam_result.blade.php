@@ -80,11 +80,12 @@
                       <td colspan="2">
                         @php
                           $percent = ($totalScore * 100) / $full_mark;
+                          $getGrade = App\Models\MarksGradeModel::getGrade($percent);
                         @endphp
                         <b>Percentage : {{ round($percent, 2) }}%</b>
-                      </td>
+                      </td> 
                       <td colspan="2">
-                        <b>Grade : {{ round(($totalScore * 100) / $full_mark, 2) }}%</b>
+                        <b>Grade : {{ $getGrade }}</b>
                       </td>
                       <td colspan="3">
                         <b>Result: 
