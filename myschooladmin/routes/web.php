@@ -15,6 +15,7 @@ use App\Http\Controllers\AssignClassTeacherController;
 use App\Http\Controllers\ClassTimetableController;
 use App\Http\Controllers\ExaminationsController;
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\AttendanceController;
 
 
 
@@ -46,8 +47,8 @@ Route::post('reset/{token}', [AuthController::class, 'PostReset']);
 
 
 Route::group(['middleware' => 'admin'], function () {
-    Route::get('admin/dashboard', [DashboardController::class, 'dashboard']); 
-    Route::get('admin/admin/list', [AdminController::class, 'list']); 
+    Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('admin/admin/list', [AdminController::class, 'list']);
     Route::get('admin/admin/add', [AdminController::class, 'add']);
     Route::post('admin/admin/add', [AdminController::class, 'insert']);
     Route::get('admin/admin/edit/{id}', [AdminController::class, 'edit']);
@@ -122,7 +123,7 @@ Route::group(['middleware' => 'admin'], function () {
 
     Route::get('admin/account', [UserController::class, 'myAccount']);
     Route::post('admin/account', [UserController::class, 'updateMyAccountAdmin']);
-    
+
     // change_password
 
     Route::get('admin/change_password', [UserController::class, 'change_password']);
@@ -136,8 +137,8 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/assign_class_teacher/edit_single/{id}', [AssignClassTeacherController::class, 'edit_single']);
     Route::post('admin/assign_class_teacher/edit_single/{id}', [AssignClassTeacherController::class, 'update_single']);
     Route::get('admin/assign_class_teacher/delete/{id}', [AssignClassTeacherController::class, 'delete']);
-    
-    
+
+
     Route::get('admin/examinations/exam/list', [ExaminationsController::class, 'exam_list']);
     Route::get('admin/examinations/exam/add', [ExaminationsController::class, 'exam_add']);
     Route::post('admin/examinations/exam/add', [ExaminationsController::class, 'exam_insert']);
@@ -154,13 +155,15 @@ Route::group(['middleware' => 'admin'], function () {
 
     Route::get('admin/examinations/marks_grade', [ExaminationsController::class, 'marks_grade']);
     Route::get('admin/examinations/marks_grade/add', [ExaminationsController::class, 'marks_grade_add']);
-    // Route::post('admin/examinations/marks_grade/add', [ExaminationsController::class, 'marks_grade_insert']);
-    // Route::get('admin/examinations/marks_grade/edit/{id}', [ExaminationsController::class, 'marks_grade_edit']);
+    Route::post('admin/examinations/marks_grade/add', [ExaminationsController::class, 'marks_grade_insert']);
+    Route::get('admin/examinations/marks_grade/edit/{id}', [ExaminationsController::class, 'marks_grade_edit']);
+    
 
-}); 
+    Route::get('admin/attendance/student', [AttendanceController::class, 'attendance_student']);
+});
 
 Route::group(['middleware' => 'teacher'], function () {
-    Route::get('teacher/dashboard', [DashboardController::class, 'dashboard']);  
+    Route::get('teacher/dashboard', [DashboardController::class, 'dashboard']);
 
     Route::get('teacher/change_password', [UserController::class, 'change_password']);
     Route::post('teacher/change_password', [UserController::class, 'update_change_password']);
@@ -183,8 +186,8 @@ Route::group(['middleware' => 'teacher'], function () {
 });
 
 Route::group(['middleware' => 'student'], function () {
-    Route::get('student/dashboard', [DashboardController::class, 'dashboard']); 
-    
+    Route::get('student/dashboard', [DashboardController::class, 'dashboard']);
+
     Route::get('student/change_password', [UserController::class, 'change_password']);
     Route::post('student/change_password', [UserController::class, 'update_change_password']);
 
@@ -197,16 +200,13 @@ Route::group(['middleware' => 'student'], function () {
     Route::get('student/account', [UserController::class, 'myAccount']);
     Route::post('student/account', [UserController::class, 'updateMyAccountStudent']);
 
-    Route::get('student/my_calendar', [CalendarController::class, 'myCalendar']); 
+    Route::get('student/my_calendar', [CalendarController::class, 'myCalendar']);
 
     Route::get('student/my_exam_result', [ExaminationsController::class, 'myExamResult']);
-
-
-
 });
 
 Route::group(['middleware' => 'parent'], function () {
-    Route::get('parent/dashboard', [DashboardController::class, 'dashboard']);  
+    Route::get('parent/dashboard', [DashboardController::class, 'dashboard']);
 
     Route::get('parent/change_password', [UserController::class, 'change_password']);
     Route::post('parent/change_password', [UserController::class, 'update_change_password']);
@@ -225,5 +225,4 @@ Route::group(['middleware' => 'parent'], function () {
     Route::get('parent/my_student', [ParentController::class, 'myStudentParent']);
 
     Route::get('parent/my_student/calendar/{student_id}', [CalendarController::class, 'myCalendarParent']);
-
 });
