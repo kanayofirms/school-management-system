@@ -59,9 +59,9 @@
 
                         @include('_message')
 
-                            {{ csrf_field() }}
+                            {{-- {{ csrf_field() }}
                             <input type="hidden" name="exam_id" value="{{ Request::get('exam_id') }}">
-                            <input type="hidden" name="class_id" value="{{ Request::get('class_id') }}">
+                            <input type="hidden" name="class_id" value="{{ Request::get('class_id') }}"> --}}
 
 
                         @if(!@empty($getSubject) && !empty($getSubject->count()))
