@@ -39,13 +39,8 @@
                                         </div>
 
                                         <div class="form-group col-md-3">
-                                            <label>Date</label>
-                                            <select class="form-control" name="class_id" required>
-                                                <option value="">Select</option>
-                                                @foreach ($getClass as $class)
-                                                    <option {{ (Request::get('class_id') == $class->id) ? 'selected' : '' }} value="{{ $class->id }}">{{ $class->name }}</option>
-                                                @endforeach
-                                            </select>
+                                            <label>Attendance Date</label>
+                                            <input type="date" class="form-control" value="{{ Request::get('attendance_date') }}" name="attendance_date" required>
                                         </div>
 
                                         <div class="form-group col-md-3">
