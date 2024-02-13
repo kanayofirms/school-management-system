@@ -53,6 +53,25 @@
                                 </div>
                             </form>
                         </div>
+
+                        @if(!empty(Request::get('class_id')) && !empty(Request::get('attendance_date')))
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Student List</h3>
+                                </div>
+                                <div class="card-body p-0" style="overflow: auto;">
+                                    <table class="table table-striped">
+                                        <tbody>
+                                            @if(!@empty($getSubject) && !@empty($getSubject->count()))
+                                            <tr></tr>
+                                            @endif
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        @endif
+                    
                     </div>
                 </div>
             </div>
