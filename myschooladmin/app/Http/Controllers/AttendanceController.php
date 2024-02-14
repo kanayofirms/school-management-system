@@ -21,4 +21,9 @@ class AttendanceController extends Controller
         $data['header_title'] = "Student Attendance";
         return view('admin.attendance.student', $data);
     }
+
+    public function attendance_student_submit(Request $request)
+    {
+        dd($request->all());
+    }
 }
