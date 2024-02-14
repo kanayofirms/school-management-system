@@ -30,7 +30,7 @@
 
                                         <div class="form-group col-md-3">
                                             <label>Class</label>
-                                            <select class="form-control" name="class_id" required>
+                                            <select class="form-control" name="class_id" id="getClass" required>
                                                 <option value="">Select</option>
                                                 @foreach ($getClass as $class)
                                                     <option {{ (Request::get('class_id') == $class->id) ? 'selected' : '' }} value="{{ $class->id }}">{{ $class->name }}</option>
@@ -40,7 +40,7 @@
 
                                         <div class="form-group col-md-3">
                                             <label>Attendance Date</label>
-                                            <input type="date" class="form-control" value="{{ Request::get('attendance_date') }}" name="attendance_date" required>
+                                            <input type="date" class="form-control" id="getAttendanceDate" value="{{ Request::get('attendance_date') }}" name="attendance_date" required>
                                         </div>
 
                                         <div class="form-group col-md-3">
@@ -76,10 +76,10 @@
                                                         <td>{{ $value->id }}</td>
                                                         <td>{{ $value->name }} {{ $value->middle_name }} {{ $value->last_name }}</td>
                                                         <td>
-                                                            <label style="margin-right: 10px;"><input type="radio" name="attendance{{ $value->id }}">Present</label>
-                                                            <label style="margin-right: 10px"><input type="radio" name="attendance{{ $value->id }}">Late</label>
-                                                            <label style="margin-right: 10px"><input type="radio" name="attendance{{ $value->id }}">Absent</label>
-                                                            <label><input type="radio" name="attendance{{ $value->id }}">Half Day</label>
+                                                            <label style="margin-right: 10px;"><input value="1" type="radio" id="{{ $value->id }}" class="SaveAttendance" name="attendance{{ $value->id }}">Present</label>
+                                                            <label style="margin-right: 10px"><input value="2" type="radio" id="{{ $value->id }}" class="SaveAttendance" name="attendance{{ $value->id }}">Late</label>
+                                                            <label style="margin-right: 10px"><input value="3" type="radio" id="{{ $value->id }}" class="SaveAttendance" name="attendance{{ $value->id }}">Absent</label>
+                                                            <label><input value="4" type="radio" id="{{ $value->id }}" class="SaveAttendance" name="attendance{{ $value->id }}">Half Day</label>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -100,6 +100,30 @@
 @section('script')
 
 <script type="text/javascript">
+    $('.SaveAttendance').change(function(e) {
+
+        var student_id = $(this).attr('id');
+        var attendance_type = $(this).val();
+        var class_id = $('#getClass').val();
+        var attendance_date = $('#getAttendanceDate').val();
+
+
+        $.ajax({
+            type: "POST",
+            url: "{{ url('admin/attendance/student/save') }}",
+            data: {
+                "_token": "{{ csrf_token() }}",
+                student_id : student_id,
+                attendance_type : attendance_type,
+                class_id : class_id,
+                attendance_date : attendance_date,
+            },
+            dataType: "json",
+            success: function(data) {
+                // alert(data.message);
+            }
+        });
+    });
   
 </script>
 
