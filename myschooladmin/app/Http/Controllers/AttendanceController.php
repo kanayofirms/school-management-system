@@ -26,12 +26,24 @@ class AttendanceController extends Controller
 
     public function attendance_student_submit(Request $request)
     {
-        $attendance = new StudentAttendanceModel;
-        $attendance->student_id = $request->student_id;
+
+        $check_attendance = StudentAttendanceModel::CheckAlreadyAttendance($request->student_id, $request->class_id, 
+            $request->attendance_date);
+
+        if(!empty($check_attendance))
+        {
+            $attendance = $check_attendance;
+        }
+        else
+        {
+            $attendance = new StudentAttendanceModel;
+            $attendance->student_id = $request->student_id;
+            $attendance->class_id = $request->class_id;
+            $attendance->attendance_date = $request->attendance_date;
+            $attendance->created_by = Auth::user()->id;
+        }
+
         $attendance->attendance_type = $request->attendance_type;
-        $attendance->class_id = $request->class_id;
-        $attendance->attendance_date = $request->attendance_date;
-        $attendance->created_by = Auth::user()->id;
         $attendance->save();
 
         $json['message'] = "Attendance Successfully saved";
