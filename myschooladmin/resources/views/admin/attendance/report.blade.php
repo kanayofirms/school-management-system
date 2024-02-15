@@ -78,13 +78,34 @@
                                                 <th>Student ID</th>
                                                 <th>Student Name</th>
                                                 <th>Class Name</th>
-                                                <th>Attendance</th>
+                                                <th>Attendance Type</th>
                                                 <th>Attendance Date</th>
                                                 <th>Created Date</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            
+                                            @forelse ($getRecord as $value)
+                                            <tr>
+                                                <td>{{ $value->id }}</td>
+                                                <td>{{ $value->student_name }} {{ $value->student_middle_name }} {{ $value->student_last_name }}</td>
+                                                <td>{{ $value->class_name }}</td>
+                                                <td>
+                                                    @if ($value->attendance_type == 1)
+                                                    Present
+                                                    @elseif ($value->attendance_type == 2)
+                                                    Late
+                                                    @elseif ($value->attendance_type == 3)
+                                                    Absent
+                                                    @elseif ($value->attendance_type == 4)
+                                                    Half Day
+                                                    @endif
+                                                </td>
+                                            </tr> 
+                                            @empty
+                                            <tr>
+                                                <td colspan="100%">Record not found</td>
+                                            </tr>                                          
+                                            @endforelse
                                         </tbody>
                                     </table>
                                 </div>
