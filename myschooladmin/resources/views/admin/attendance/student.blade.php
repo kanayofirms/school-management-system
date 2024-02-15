@@ -72,14 +72,36 @@
                                         <tbody>
                                             @if(!@empty($getStudent) && !@empty($getStudent->count()))
                                                 @foreach ($getStudent as $value)
+                                                @php
+                                                    $attendance_type = '';
+                                                    $getAttendance = $value->getAttendance($value->id, Request::get('class_id'), 
+                                                    Request::get('attendance_date'));
+                                                    if(!empty($getAttendance->attendance_type))
+                                                    {
+                                                        $attendance_type = $getAttendance->attendance_type;
+                                                    }
+                                                    
+                                                @endphp
                                                     <tr>
                                                         <td>{{ $value->id }}</td>
                                                         <td>{{ $value->name }} {{ $value->middle_name }} {{ $value->last_name }}</td>
                                                         <td>
-                                                            <label style="margin-right: 10px;"><input value="1" type="radio" id="{{ $value->id }}" class="SaveAttendance" name="attendance{{ $value->id }}">Present</label>
-                                                            <label style="margin-right: 10px"><input value="2" type="radio" id="{{ $value->id }}" class="SaveAttendance" name="attendance{{ $value->id }}">Late</label>
-                                                            <label style="margin-right: 10px"><input value="3" type="radio" id="{{ $value->id }}" class="SaveAttendance" name="attendance{{ $value->id }}">Absent</label>
-                                                            <label><input value="4" type="radio" id="{{ $value->id }}" class="SaveAttendance" name="attendance{{ $value->id }}">Half Day</label>
+                                                            <label style="margin-right: 10px;">
+                                                                <input value="1" type="radio" {{ ($attendance_type == '1') ? 'checked' : '' }} id="{{ $value->id }}" class="SaveAttendance" 
+                                                                name="attendance{{ $value->id }}">Present
+                                                            </label>
+                                                            <label style="margin-right: 10px">
+                                                                <input value="2" type="radio" {{ ($attendance_type == '2') ? 'checked' : '' }} id="{{ $value->id }}" class="SaveAttendance" 
+                                                                name="attendance{{ $value->id }}">Late
+                                                            </label>
+                                                            <label style="margin-right: 10px">
+                                                                <input value="3" type="radio" {{ ($attendance_type == '3') ? 'checked' : '' }} id="{{ $value->id }}" class="SaveAttendance" 
+                                                                name="attendance{{ $value->id }}">Absent
+                                                            </label>
+                                                            <label>
+                                                                <input value="4" type="radio" {{ ($attendance_type == '4') ? 'checked' : '' }} id="{{ $value->id }}" class="SaveAttendance" 
+                                                                name="attendance{{ $value->id }}">Half Day
+                                                            </label>
                                                         </td>
                                                     </tr>
                                                 @endforeach
