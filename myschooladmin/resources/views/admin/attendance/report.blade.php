@@ -49,10 +49,10 @@
                                             <label>Attendance Type</label>
                                             <select class="form-control" name="attendance_type">
                                                 <option value="">Select</option>
-                                                <option value="1">Present</option>
-                                                <option value="2">Late</option> 
-                                                <option value="3">Absent</option>
-                                                <option value="4">Half Day</option>
+                                                <option {{ (Request::get('attendance_type') == 1) ? 'selected' : '' }} value="1">Present</option>
+                                                <option {{ (Request::get('attendance_type') == 2) ? 'selected' : '' }} value="2">Late</option> 
+                                                <option {{ (Request::get('attendance_type') == 3) ? 'selected' : '' }} value="3">Absent</option>
+                                                <option {{ (Request::get('attendance_type') == 4) ? 'selected' : '' }} value="4">Half Day</option>
                                             </select>
                                         </div>
 
@@ -66,8 +66,6 @@
                                 </div>
                             </form>
                         </div>
-
-                        {{-- @if(!empty(Request::get('class_id')) && !empty(Request::get('attendance_date')))
 
                             <div class="card">
                                 <div class="card-header">
@@ -90,7 +88,6 @@
                                     </table>
                                 </div>
                             </div>
-                        @endif --}}
                     
                     </div>
                 </div>
