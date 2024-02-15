@@ -77,6 +77,7 @@
                                             <tr>
                                                 <th>Student ID</th>
                                                 <th>Student Name</th>
+                                                <th>Class Name</th>
                                                 <th>Attendance</th>
                                                 <th>Attendance Date</th>
                                                 <th>Created Date</th>
