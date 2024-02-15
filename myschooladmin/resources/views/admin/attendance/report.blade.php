@@ -80,6 +80,7 @@
                                                 <th>Class Name</th>
                                                 <th>Attendance Type</th>
                                                 <th>Attendance Date</th>
+                                                <th>Created By</th>
                                                 <th>Created Date</th>
                                             </tr>
                                         </thead>
@@ -100,6 +101,9 @@
                                                     Half Day
                                                     @endif
                                                 </td>
+                                                <td>{{ date('d-m-Y', strtotime($value->attendance_date)) }}</td>
+                                                <td>{{ $value->created_name }}</td>
+                                                <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
                                             </tr> 
                                             @empty
                                             <tr>
