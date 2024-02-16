@@ -29,6 +29,11 @@ class StudentAttendanceModel extends Model
             ->join('users as student', 'student.id', '=', 'student_attendance.student_id')
             ->join('users as createdby', 'createdby.id', '=', 'student_attendance.created_by');
 
+            if(!empty(Request::get('student_id')))
+            {
+                $return = $return->where('student_attendance.student_id', '=', Request::get('student_id'));
+            }
+
             if(!empty(Request::get('class_id')))
             {
                 $return = $return->where('student_attendance.class_id', '=', Request::get('class_id'));
