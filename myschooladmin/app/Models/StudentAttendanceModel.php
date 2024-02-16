@@ -39,6 +39,11 @@ class StudentAttendanceModel extends Model
                 $return = $return->where('student_attendance.attendance_date', '=', Request::get('attendance_date'));
             }
 
+            if(!empty(Request::get('attendance_type')))
+            {
+                $return = $return->where('student_attendance.attendance_type', '=', Request::get('attendance_type'));
+            }
+
         $return = $return->orderBy('student_attendance.id', 'desc')
             ->paginate(50);
         return $return;
