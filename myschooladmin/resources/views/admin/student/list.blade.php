@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Student List (Total: {{ $getRecord->Total() }})</h1>
+                        <h1>Student List <span style="color: #3180FF;">(Total: {{ $getRecord->Total() }})</span></h1>
                     </div>
                     <div class="col-sm-6" style="text-align: right;">
                         <a href="{{ url('admin/student/add') }}" class="btn btn-primary">Add New student</a>
