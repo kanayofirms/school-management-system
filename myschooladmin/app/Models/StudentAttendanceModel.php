@@ -34,6 +34,17 @@ class StudentAttendanceModel extends Model
                 $return = $return->where('student_attendance.student_id', '=', Request::get('student_id'));
             }
 
+            if(!empty(Request::get('student_name')))
+            {
+                $return = $return->where('student.name', 'like', '%'.Request::get('student_name').'%');
+            }
+
+            if(!empty(Request::get('student_last_name')))
+            {
+                $return = $return->where('student.last_name', 'like', '%'.Request::get('student_last_name').'%');
+            }
+
+
             if(!empty(Request::get('class_id')))
             {
                 $return = $return->where('student_attendance.class_id', '=', Request::get('class_id'));
