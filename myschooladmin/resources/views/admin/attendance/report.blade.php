@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Attendance Report</h1>
+                        <h1>Attendance Report <span style="color: #3180FF;">(Total: {{ $getRecord->total() }})</span></h1>
                     </div>
                 </div><!-- /.container-fluid -->
         </section>
@@ -28,7 +28,7 @@
                                 <div class="card-body">
                                     <div class="row">
 
-                                        <div class="form-group col-md-2">
+                                        <div class="form-group col-md-1">
                                             <label>Student ID</label>
                                             <input type="text" class="form-control" placeholder="Student ID" value="{{ Request::get('student_id') }}" 
                                             name="student_id">
@@ -38,6 +38,13 @@
                                             <label>Student Name</label>
                                             <input type="text" class="form-control" placeholder="Student Name" value="{{ Request::get('student_name') }}" 
                                             name="student_name">
+                                        </div>
+                                        
+
+                                        <div class="form-group col-md-2">
+                                            <label>Student Last Name</label>
+                                            <input type="text" class="form-control" placeholder="Student Last Name" value="{{ Request::get('student_last_name') }}" 
+                                            name="student_last_name">
                                         </div>
 
                                         <div class="form-group col-md-2">
@@ -57,7 +64,7 @@
                                             name="attendance_date">
                                         </div>
 
-                                        <div class="form-group col-md-2">
+                                        <div class="form-group col-md-1">
                                             <label>Attendance Type</label>
                                             <select class="form-control" name="attendance_type">
                                                 <option value="">Select</option>
