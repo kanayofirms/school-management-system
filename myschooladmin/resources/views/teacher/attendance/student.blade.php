@@ -33,7 +33,8 @@
                                             <select class="form-control" name="class_id" id="getClass" required>
                                                 <option value="">Select</option>
                                                 @foreach ($getClass as $class)
-                                                    <option {{ (Request::get('class_id') == $class->id) ? 'selected' : '' }} value="{{ $class->id }}">{{ $class->name }}</option>
+                                                    <option {{ (Request::get('class_id') == $class->class_id) ? 'selected' : '' }} value="{{ $class
+                                                        ->id }}">{{ $class->class_name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -46,7 +47,7 @@
                                         <div class="form-group col-md-3">
                                             <button class="btn btn-primary" type="submit"
                                                 style="margin-top: 30px;">Search</button>
-                                            <a href="{{ url('admin/attendance/student') }}" class="btn btn-success"
+                                            <a href="{{ url('teacher/attendance/student') }}" class="btn btn-success"
                                                 style="margin-top: 30px;">Reset</a>
                                         </div>
                                     </div>
@@ -145,7 +146,7 @@
     //             alert(data.message);
     //         }
     //     });
-    // });
+    // }); --}}
   
 </script>
 
