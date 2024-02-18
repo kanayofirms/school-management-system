@@ -34,7 +34,7 @@
                                                 <option value="">Select</option>
                                                 @foreach ($getClass as $class)
                                                     <option {{ (Request::get('class_id') == $class->class_id) ? 'selected' : '' }} value="{{ $class
-                                                        ->id }}">{{ $class->class_name }}</option>
+                                                        ->class_id }}">{{ $class->class_name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -123,30 +123,30 @@
 @section('script')
 
 <script type="text/javascript">
-    // $('.SaveAttendance').change(function(e) {
+    $('.SaveAttendance').change(function(e) {
 
-    //     var student_id = $(this).attr('id');
-    //     var attendance_type = $(this).val();
-    //     var class_id = $('#getClass').val();
-    //     var attendance_date = $('#getAttendanceDate').val();
+        var student_id = $(this).attr('id');
+        var attendance_type = $(this).val();
+        var class_id = $('#getClass').val();
+        var attendance_date = $('#getAttendanceDate').val();
 
 
-    //     $.ajax({
-    //         type: "POST",
-    //         url: "{{ url('admin/attendance/student/save') }}",
-    //         data: {
-    //             "_token": "{{ csrf_token() }}",
-    //             student_id : student_id,
-    //             attendance_type : attendance_type,
-    //             class_id : class_id,
-    //             attendance_date : attendance_date,
-    //         },
-    //         dataType: "json",
-    //         success: function(data) {
-    //             alert(data.message);
-    //         }
-    //     });
-    // }); --}}
+        $.ajax({
+            type: "POST",
+            url: "{{ url('teacher/attendance/student/save') }}",
+            data: {
+                "_token": "{{ csrf_token() }}",
+                student_id : student_id,
+                attendance_type : attendance_type,
+                class_id : class_id,
+                attendance_date : attendance_date,
+            },
+            dataType: "json",
+            success: function(data) {
+                alert(data.message);
+            }
+        });
+    }); 
   
 </script>
 
