@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ClassModel;
-use App\Models\StudentAttendanceModel;
+use App\Models\StudentAttendanceModel;  
+use App\Models\AssignClassTeacherModel;
 use App\Models\User;
 use Auth;
 
@@ -60,9 +61,12 @@ class AttendanceController extends Controller
         return view('admin.attendance.report', $data);
     }
 
+    // teacher side
+
     public function attendance_student_teacher(Request $request)
     {
-        $data['getClass'] = ClassModel::getClass();
+
+        $data['getClass'] = AssignClassTeacherModel::getMyClassSubjectGroup(Auth::user()->id);
         if(!empty($request->get('class_id')) && !empty($request->get('attendance_date')))
         {
             $data['getStudent'] = User::getStudentClass($request->get('class_id'));
