@@ -59,4 +59,15 @@ class AttendanceController extends Controller
         $data['header_title'] = "Attendance Report";
         return view('admin.attendance.report', $data);
     }
+
+    public function attendance_student_teacher(Request $request)
+    {
+        $data['getClass'] = ClassModel::getClass();
+        if(!empty($request->get('class_id')) && !empty($request->get('attendance_date')))
+        {
+            $data['getStudent'] = User::getStudentClass($request->get('class_id'));
+        }
+        $data['header_title'] = "Student Attendance";
+        return view('teacher.attendance.student', $data);
+    }
 }
