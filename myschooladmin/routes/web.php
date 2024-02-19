@@ -188,6 +188,7 @@ Route::group(['middleware' => 'teacher'], function () {
     Route::post('teacher/single_submit_marks_register', [ExaminationsController::class, 'single_submit_marks_register']);
 
     Route::get('teacher/attendance/student', [AttendanceController::class, 'attendance_student_teacher']);
+    Route::post('teacher/attendance/student/save', [AttendanceController::class, 'attendance_student_submit']);
 });
 
 Route::group(['middleware' => 'student'], function () {
