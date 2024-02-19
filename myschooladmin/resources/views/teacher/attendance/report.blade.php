@@ -47,7 +47,7 @@
                                             name="student_last_name">
                                         </div>
 
-                                        <div class="form-group col-md-2">
+                                        <div class="form-group col-md-1">
                                             <label>Class</label>
                                             <select class="form-control" name="class_id">
                                                 <option value="">Select</option>
@@ -64,7 +64,7 @@
                                             name="attendance_date">
                                         </div>
 
-                                        <div class="form-group col-md-1">
+                                        <div class="form-group col-md-2">
                                             <label>Attendance Type</label>
                                             <select class="form-control" name="attendance_type">
                                                 <option value="">Select</option>
@@ -78,7 +78,7 @@
                                         <div class="form-group col-md-2">
                                             <button class="btn btn-primary" type="submit"
                                                 style="margin-top: 30px;">Search</button>
-                                            <a href="{{ url('admin/attendance/report') }}" class="btn btn-success"
+                                            <a href="{{ url('teacher/attendance/report') }}" class="btn btn-success"
                                                 style="margin-top: 30px;">Reset</a>
                                         </div>
                                     </div>
@@ -104,37 +104,48 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @forelse ($getRecord as $value)
-                                            <tr>
-                                                <td>{{ $value->id }}</td>
-                                                <td>{{ $value->student_name }} {{ $value->student_middle_name }} {{ $value->student_last_name }}</td>
-                                                <td>{{ $value->class_name }}</td>
-                                                <td>
-                                                    @if ($value->attendance_type == 1)
-                                                    Present
-                                                    @elseif ($value->attendance_type == 2)
-                                                    Late
-                                                    @elseif ($value->attendance_type == 3)
-                                                    Absent
-                                                    @elseif ($value->attendance_type == 4)
-                                                    Half Day
-                                                    @endif
-                                                </td>
-                                                <td>{{ date('d-m-Y', strtotime($value->attendance_date)) }}</td>
-                                                <td>{{ $value->created_name }}</td>
-                                                <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
-                                            </tr> 
-                                            @empty
+                                            @if (!@empty($getRecord))
+                                            {
+                                                @forelse ($getRecord as $value)
+                                                <tr>
+                                                    <td>{{ $value->id }}</td>
+                                                    <td>{{ $value->student_name }} {{ $value->student_middle_name }} {{ $value->student_last_name }}</td>
+                                                    <td>{{ $value->class_name }}</td>
+                                                    <td>
+                                                        @if ($value->attendance_type == 1)
+                                                        Present
+                                                        @elseif ($value->attendance_type == 2)
+                                                        Late
+                                                        @elseif ($value->attendance_type == 3)
+                                                        Absent
+                                                        @elseif ($value->attendance_type == 4)
+                                                        Half Day
+                                                        @endif
+                                                    </td>
+                                                    <td>{{ date('d-m-Y', strtotime($value->attendance_date)) }}</td>
+                                                    <td>{{ $value->created_name }}</td>
+                                                    <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
+                                                </tr> 
+                                                @empty
+                                                <tr>
+                                                    <td colspan="100%">Record not found</td>
+                                                </tr>                                          
+                                                @endforelse
+                                            @else
                                             <tr>
                                                 <td colspan="100%">Record not found</td>
-                                            </tr>                                          
-                                            @endforelse
+                                            </tr>
+
+                                            }            
+                                            @endif
                                         </tbody>
                                     </table>
-
+                                    @if (!@empty($getRecord))
                                     <div style="padding: 10px; float: right;">
                                         {!! $getRecord->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
                                     </div>
+                                    @endif
+                                    
                                 </div>
                             </div>
                     
