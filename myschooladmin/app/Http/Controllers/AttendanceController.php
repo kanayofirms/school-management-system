@@ -77,8 +77,15 @@ class AttendanceController extends Controller
 
     public function attendance_report_teacher(Request $request)
     {
-        $data['getClass'] = AssignClassTeacherModel::getMyClassSubjectGroup(Auth::user()->id);
-        $data['getRecord'] = StudentAttendanceModel::getRecord();
+        $getClass = AssignClassTeacherModel::getMyClassSubjectGroup(Auth::user()->id);
+        $classarray = array();
+        foreach ($getClass as $value)
+        {
+            $classarray[] = $value->class_id;
+        }
+
+        $data['getClass'] = $getClass;
+        $data['getRecord'] = StudentAttendanceModel::getRecordTeacher($classarray);
         $data['header_title'] = "Attendance Report";
         return view('teacher.attendance.report', $data);
     }
