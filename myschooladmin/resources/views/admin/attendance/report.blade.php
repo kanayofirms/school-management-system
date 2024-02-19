@@ -47,7 +47,7 @@
                                             name="student_last_name">
                                         </div>
 
-                                        <div class="form-group col-md-2">
+                                        <div class="form-group col-md-1">
                                             <label>Class</label>
                                             <select class="form-control" name="class_id">
                                                 <option value="">Select</option>
@@ -64,7 +64,7 @@
                                             name="attendance_date">
                                         </div>
 
-                                        <div class="form-group col-md-1">
+                                        <div class="form-group col-md-2">
                                             <label>Attendance Type</label>
                                             <select class="form-control" name="attendance_type">
                                                 <option value="">Select</option>
