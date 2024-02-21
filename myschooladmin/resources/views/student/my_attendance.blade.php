@@ -16,6 +16,51 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Search My Attendance</h3>
+                            </div>
+                            <form method="get" action="">
+                                <div class="card-body">
+                                    <div class="row">
+
+                                        <div class="form-group col-md-2">
+                                            <label>Class</label>
+                                            <select class="form-control" name="class_id">
+                                                <option value="">Select</option>
+                                                @foreach ($getClass as $class)
+                                                    <option {{ (Request::get('class_id') == $class->class_id) ? 'selected' : '' }} value="{{ $class->class_id }}">{{ $class->class_name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group col-md-2">
+                                            <label>Attendance Type</label>
+                                            <select class="form-control" name="attendance_type">
+                                                <option value="">Select</option>
+                                                <option {{ (Request::get('attendance_type') == 1) ? 'selected' : '' }} value="1">Present</option>
+                                                <option {{ (Request::get('attendance_type') == 2) ? 'selected' : '' }} value="2">Late</option> 
+                                                <option {{ (Request::get('attendance_type') == 3) ? 'selected' : '' }} value="3">Absent</option>
+                                                <option {{ (Request::get('attendance_type') == 4) ? 'selected' : '' }} value="4">Half Day</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group col-md-2">
+                                            <label>Attendance Date</label>
+                                            <input type="date" class="form-control" value="{{ Request::get('attendance_date') }}" 
+                                            name="attendance_date">
+                                        </div>
+
+                                        <div class="form-group col-md-2">
+                                            <button class="btn btn-primary" type="submit"
+                                                style="margin-top: 30px;">Search</button>
+                                            <a href="{{ url('student/my_attendance') }}" class="btn btn-success"
+                                                style="margin-top: 30px;">Reset</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
 
                             <div class="card">
                                 <div class="card-header">
