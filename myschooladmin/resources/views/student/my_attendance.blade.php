@@ -3,22 +3,18 @@
 
 @section('content')
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1>My Attendance</h1>
                     </div>
-                </div><!-- /.container-fluid -->
+                </div>
         </section>
-
-        <!-- Main content -->
         <section class="content">
 
             <div class="container-fluid">
                 <div class="row">
-                    <!-- /.col -->
                     <div class="col-md-12">
 
                             <div class="card">
@@ -36,12 +32,32 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            
+                                            @forelse ($getRecord as $value)
+                                                <tr>
+                                                    <td>{{ $value->class_name }}</td>
+                                                    <td>
+                                                        @if ($value->attendance_type == 1)
+                                                        Present
+                                                        @elseif ($value->attendance_type == 2)
+                                                        Late
+                                                        @elseif ($value->attendance_type == 3)
+                                                        Absent
+                                                        @elseif ($value->attendance_type == 4)
+                                                        Half Day
+                                                        @endif
+                                                    </td>
+                                                    <td>{{ date('d-m-Y', strtotime($value->attendance_date)) }}</td>
+                                                    <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td colspan="100%">Record not found</td>
+                                                </tr>
+                                            @endforelse
                                         </tbody>
                                     </table> 
                                 </div>
                             </div>
-                    
                     </div>
                 </div>
             </div>
