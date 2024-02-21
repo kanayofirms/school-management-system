@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>My Attendance</h1>
+                        <h1>My Attendance <span style="color: #3180FF;">(Total: {{ $getRecord->total() }})</span></h1>
                     </div>
                 </div>
         </section>
