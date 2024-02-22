@@ -28,7 +28,7 @@
                                 <div class="card-body">
                                     <div class="row">
 
-                                        <div class="form-group col-md-1">
+                                        <div class="form-group col-md-2">
                                             <label>Student ID</label>
                                             <input type="text" class="form-control" placeholder="Student ID" value="{{ Request::get('student_id') }}" 
                                             name="student_id">
@@ -47,7 +47,7 @@
                                             name="student_last_name">
                                         </div>
 
-                                        <div class="form-group col-md-1">
+                                        <div class="form-group col-md-2">
                                             <label>Class</label>
                                             <select class="form-control" name="class_id">
                                                 <option value="">Select</option>
@@ -59,9 +59,15 @@
                                         </div>
 
                                         <div class="form-group col-md-2">
-                                            <label>Attendance Date</label>
-                                            <input type="date" class="form-control" value="{{ Request::get('attendance_date') }}" 
-                                            name="attendance_date">
+                                            <label>Start Attendance Date</label>
+                                            <input type="date" class="form-control" value="{{ Request::get('start_attendance_date') }}" 
+                                            name="start_attendance_date">
+                                        </div>
+
+                                        <div class="form-group col-md-2">
+                                            <label>End Attendance Date</label>
+                                            <input type="date" class="form-control" value="{{ Request::get('end_attendance_date') }}" 
+                                            name="end_attendance_date">
                                         </div>
 
                                         <div class="form-group col-md-2">
