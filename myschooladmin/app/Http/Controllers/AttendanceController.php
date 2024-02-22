@@ -99,4 +99,15 @@ class AttendanceController extends Controller
         $data['header_title'] = "My Attendance";
         return view('student.my_attendance', $data);
     }
+
+    // parent side code
+
+    public function myAttendanceParent($student_id)
+    {
+        $data['getStudent'] = User::getSingle($student_id);
+        $data['getClass'] = StudentAttendanceModel::getClassStudent($student_id);
+        $data['getRecord'] = StudentAttendanceModel::getRecordStudent($student_id);
+        $data['header_title'] = "Student Attendance";
+        return view('parent.my_attendance', $data);
+    }
 }
