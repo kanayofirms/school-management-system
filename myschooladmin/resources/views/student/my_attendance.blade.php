@@ -46,9 +46,15 @@
                                         </div>
 
                                         <div class="form-group col-md-2">
-                                            <label>Attendance Date</label>
-                                            <input type="date" class="form-control" value="{{ Request::get('attendance_date') }}" 
-                                            name="attendance_date">
+                                            <label>Start Attendance Date</label>
+                                            <input type="date" class="form-control" value="{{ Request::get('start_attendance_date') }}" 
+                                            name="start_attendance_date">
+                                        </div>
+
+                                        <div class="form-group col-md-2">
+                                            <label>End Attendance Date</label>
+                                            <input type="date" class="form-control" value="{{ Request::get('end_attendance_date') }}" 
+                                            name="end_attendance_date">
                                         </div>
 
                                         <div class="form-group col-md-2">
