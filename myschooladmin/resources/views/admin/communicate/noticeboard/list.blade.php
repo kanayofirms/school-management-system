@@ -10,7 +10,7 @@
                         <h1>Notice Board</h1>
                     </div>
                     <div class="col-sm-6" style="text-align: right;">
-                        <a href="{{ url('admin/admin/add') }}" class="btn btn-primary">Add New Notice Board</a>
+                        <a href="{{ url('admin/communicate/notice_board/add') }}" class="btn btn-primary">Add New Notice Board</a>
                     </div>
                 </div>
         </section>
@@ -38,6 +38,7 @@
                                             <th>Notice Date</th>
                                             <th>Publish Date</th>
                                             <th>Message To</th>
+                                            <th>Created Date</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
