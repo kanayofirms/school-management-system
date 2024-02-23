@@ -166,6 +166,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/attendance/report', [AttendanceController::class, 'attendance_report']);
 
     Route::get('admin/communicate/notice_board', [CommunicateController::class, 'notice_board']);
+    Route::get('admin/communicate/notice_board/add', [CommunicateController::class, 'notice_board_add']);
 });
 
 Route::group(['middleware' => 'teacher'], function () {
