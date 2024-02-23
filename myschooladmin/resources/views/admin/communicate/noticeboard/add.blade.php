@@ -27,6 +27,23 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label>Notice Date</label>
+                                        <input type="date" class="form-control" name="notice_date" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Publish On</label>
+                                        <input type="date" class="form-control" name="publish_on" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="display: block;">Message To</label>
+                                        <label style="margin-right: 40px;"><input type="checkbox" name="">Student</label>
+                                        <label style="margin-right: 40px;"><input type="checkbox" name="">Parent</label>
+                                        <label><input type="checkbox" name="">Teacher</label>
+                                    </div>
+
+                                    <div class="form-group">
                                         <label>Message</label>
                                         <textarea id="compose-textarea" class="form-control" style="height: 300px">
                                         </textarea>
@@ -50,7 +67,9 @@
 
     <script type="text/javascript">
     $(function () {
-        $('#compose-textarea').summernote()
+        $('#compose-textarea').summernote({
+            height: 200,
+        });
     });
 
     </script>
