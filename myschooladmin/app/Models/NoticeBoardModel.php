@@ -11,6 +11,11 @@ class NoticeBoardModel extends Model
 
     protected $table = 'notice_board';
 
+    static public function getSingle($id)
+    {
+        return self::find($id);
+    }
+
     static public function getRecord()
     {
         return self::select('notice_board.*', 'users.name as created_by_name')
