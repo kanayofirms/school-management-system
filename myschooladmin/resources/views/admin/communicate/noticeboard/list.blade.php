@@ -52,7 +52,13 @@
                                                 <td>{{ date('d-m-Y', strtotime($value->publish_on)) }}</td>
                                                 <td>
                                                     @foreach ($value->getMessage as $message)
-                                                        {{ $message->message_to }}
+                                                        @if ($message->message_to == 2)
+                                                            <div>Teacher</div>
+                                                        @elseif ($message->message_to == 3)
+                                                            <div>Student</div>
+                                                        @elseif ($message->message_to == 4)
+                                                            <div>Parent</div>
+                                                        @endif
                                                     @endforeach
                                                 </td>
                                                 <td>{{ $value->created_by_name }}</td>
