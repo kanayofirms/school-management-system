@@ -50,9 +50,13 @@
                                                 <td>{{ $value->title }}</td>
                                                 <td>{{ date('d-m-Y', strtotime($value->notice_date)) }}</td>
                                                 <td>{{ date('d-m-Y', strtotime($value->publish_on)) }}</td>
-                                                <td></td>
+                                                <td>
+                                                    @foreach ($value->getMessage as $message)
+                                                        {{ $message->message_to }}
+                                                    @endforeach
+                                                </td>
                                                 <td>{{ $value->created_by_name }}</td>
-                                                <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
+                                                <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td> 
                                                 <td></td>
                                             </tr>
                                         @empty
