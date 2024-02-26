@@ -17,4 +17,9 @@ class CommunicateController extends Controller
         $data['header_title'] = "Add New Notice Board";
         return view('admin.communicate.noticeboard.add', $data);
     }
+
+    public function notice_board_insert(Request $request)
+    {
+        dd($request->all());
+    }
 }
