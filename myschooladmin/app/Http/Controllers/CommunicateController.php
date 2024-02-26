@@ -33,15 +33,17 @@ class CommunicateController extends Controller
         $save->created_by  = Auth::user()->id;
         $save->save();
 
-        foreach ($request->message_to as $message_to)
+        if(!empty($request->message_to))
         {
-            $message = new NoticeBoardMessageModel;
-            $message->notice_board_id = $save->id;
-            $message->message_to = $message_to;
-            $message->save();
+            foreach ($request->message_to as $message_to)
+            {
+                $message = new NoticeBoardMessageModel;
+                $message->notice_board_id = $save->id;
+                $message->message_to = $message_to;
+                $message->save();
+            }
         }
-
-
+        
         return redirect('admin/communicate/notice_board')->with('success', "Notice Board successfully created");
     }
 }
