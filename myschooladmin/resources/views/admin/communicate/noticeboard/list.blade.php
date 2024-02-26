@@ -38,12 +38,28 @@
                                             <th>Notice Date</th>
                                             <th>Publish Date</th>
                                             <th>Message To</th>
+                                            <th>Created By</th>
                                             <th>Created Date</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                        @forelse ($getRecord as $value)
+                                            <tr>
+                                                <td>{{ $value->id }}</td>
+                                                <td>{{ $value->title }}</td>
+                                                <td>{{ date('d-m-Y', strtotime($value->notice_date)) }}</td>
+                                                <td>{{ date('d-m-Y', strtotime($value->publish_on)) }}</td>
+                                                <td></td>
+                                                <td>{{ $value->created_by_name }}</td>
+                                                <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
+                                                <td></td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="100%">Record not found.</td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                                 
