@@ -18,4 +18,9 @@ class NoticeBoardModel extends Model
                 ->orderBy('notice_board.id', 'desc')
                 ->paginate(20);
     }
+
+    public function getMessage()
+    {
+        return $this->hasMany(NoticeBoardMessageModel::class, "notice_board_id");
+    }
 }
