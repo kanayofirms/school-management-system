@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\NoticeBoardMessageModel;
 use App\Models\NoticeBoardModel;
 use Auth;
 
@@ -31,6 +32,14 @@ class CommunicateController extends Controller
         $save->message = $request->message;
         $save->created_by  = Auth::user()->id;
         $save->save();
+
+        foreach ($request->message_to as $message_to)
+        {
+            $message = new NoticeBoardMessageModel;
+            $message->notice_board_id = $save->id;
+            $message->message_to = $message_to;
+            $message->save();
+        }
 
 
         return redirect('admin/communicate/notice_board')->with('success', "Notice Board successfully created");
