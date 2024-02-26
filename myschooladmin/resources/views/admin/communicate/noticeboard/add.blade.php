@@ -38,14 +38,14 @@
 
                                     <div class="form-group">
                                         <label style="display: block;">Message To</label>
-                                        <label style="margin-right: 40px;"><input type="checkbox" name="">Student</label>
-                                        <label style="margin-right: 40px;"><input type="checkbox" name="">Parent</label>
-                                        <label><input type="checkbox" name="">Teacher</label>
+                                        <label style="margin-right: 40px;"><input type="checkbox" value="3" name="message_to[]">Student</label>
+                                        <label style="margin-right: 40px;"><input type="checkbox" value="4" name="message_to[]">Parent</label>
+                                        <label><input type="checkbox" value="2" name="message_to[]">Teacher</label>
                                     </div>
 
                                     <div class="form-group">
                                         <label>Message</label>
-                                        <textarea id="compose-textarea" class="form-control" style="height: 300px">
+                                        <textarea id="compose-textarea" name="message" class="form-control" style="height: 300px">
                                         </textarea>
                                     </div>
 
