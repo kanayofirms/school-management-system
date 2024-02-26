@@ -63,7 +63,12 @@
                                                 </td>
                                                 <td>{{ $value->created_by_name }}</td>
                                                 <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td> 
-                                                <td></td>
+                                                <td>
+                                                    <a href="{{ url('admin/communicate/notice_board/edit/' . $value->id) }}"
+                                                        class="btn btn-primary">Edit</a>
+                                                    <a href="{{ url('admin/communicate/notice_board/delete/' . $value->id) }}"
+                                                        class="btn btn-danger">Delete</a>
+                                                </td>
                                             </tr>
                                         @empty
                                             <tr>
@@ -72,7 +77,10 @@
                                         @endforelse
                                     </tbody>
                                 </table>
-                                
+                                <div style="padding: 10px; float: right;">
+                                    {!! $getRecord->appends(Illuminate\Support\Facades\Request::except('page'))->links()
+                                     !!}
+                                </div>
                             </div>
                         </div>                        
                     </div>                   
