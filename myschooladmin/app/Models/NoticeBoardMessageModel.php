@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class NoticeBoardMessageModel extends Model
 {
     use HasFactory;
+
+    protected $table = 'notice_board_message';
 }
