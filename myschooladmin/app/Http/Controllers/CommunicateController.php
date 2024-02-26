@@ -46,4 +46,11 @@ class CommunicateController extends Controller
         
         return redirect('admin/communicate/notice_board')->with('success', "Notice Board successfully created");
     }
+
+    public function notice_board_edit($id)
+    {
+        $data['getRecord'] = NoticeBoardModel::getSingle($id);
+        $data['header_title'] = "Edit Notice Board";
+        return view('admin.communicate.noticeboard.edit', $data);
+    }
 }
