@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\NoticeBoardModel;
+use Auth;
 
 class CommunicateController extends Controller
 {
     public function notice_board()
     {
+        $data['getRecord'] = NoticeBoardModel::getRecord();
         $data['header_title'] = "Notice Board";
         return view('admin.communicate.noticeboard.list', $data);
     }
@@ -20,6 +24,15 @@ class CommunicateController extends Controller
 
     public function notice_board_insert(Request $request)
     {
-        dd($request->all());
+        $save = new NoticeBoardModel;
+        $save->title = $request->title;
+        $save->notice_date = $request->notice_date;
+        $save->publish_on = $request->publish_on;
+        $save->message = $request->message;
+        $save->created_by  = Auth::user()->id;
+        $save->save();
+
+
+        return redirect('admin/communicate/notice_board')->with('success', "Notice Board successfully created");
     }
 }
