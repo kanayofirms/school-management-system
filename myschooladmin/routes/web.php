@@ -168,6 +168,9 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/communicate/notice_board', [CommunicateController::class, 'notice_board']);
     Route::get('admin/communicate/notice_board/add', [CommunicateController::class, 'notice_board_add']);
     Route::post('admin/communicate/notice_board/add', [CommunicateController::class, 'notice_board_insert']);
+
+    Route::get('admin/communicate/notice_board/edit/{id}', [CommunicateController::class, 'notice_board_edit']);
+
 });
 
 Route::group(['middleware' => 'teacher'], function () {
