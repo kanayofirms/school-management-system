@@ -23,19 +23,22 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label>Title</label>
-                                        <input type="text" class="form-control" name="title" required placeholder="Title">
+                                        <input type="text" class="form-control"  value="{{ $getRecord->title }}" name="title" required placeholder="Title">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Notice Date</label>
-                                        <input type="date" class="form-control" name="notice_date" required>
+                                        <input type="date" class="form-control"  value="{{ $getRecord->notice_date }}" name="notice_date" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label>Publish On</label>
-                                        <input type="date" class="form-control" name="publish_on" required>
+                                        <input type="date" class="form-control" value="{{ $getRecord->publish_on }}" name="publish_on" required>
                                     </div>
 
+                                    @php
+                                        $message_to_student = $getRecord->getMessageToSingle($getRecord->id, 3);
+                                    @endphp
                                     <div class="form-group">
                                         <label style="display: block;">Message To</label>
                                         <label style="margin-right: 40px;"><input type="checkbox" value="3" name="message_to[]">Student</label>
@@ -46,7 +49,7 @@
                                     <div class="form-group">
                                         <label>Message</label>
                                         <textarea id="compose-textarea" name="message" class="form-control" style="height: 300px">
-                                        </textarea>
+                                            value="{{ $getRecord->message }}"</textarea>
                                     </div>
 
                                 </div>
