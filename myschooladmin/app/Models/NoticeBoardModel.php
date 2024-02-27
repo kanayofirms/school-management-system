@@ -28,4 +28,10 @@ class NoticeBoardModel extends Model
     {
         return $this->hasMany(NoticeBoardMessageModel::class, "notice_board_id");
     }
+
+    public function getMessageToSingle($notice_board_id, $message_to)
+    {
+        return NoticeBoardMessageModel::where('notice_board_id', '=', $notice_board_id)->where('message_to', 
+        '=', $message_to)->first();
+    }
 }
