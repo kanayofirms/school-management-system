@@ -38,18 +38,31 @@
 
                                     @php
                                         $message_to_student = $getRecord->getMessageToSingle($getRecord->id, 3);
+                                        $message_to_parent = $getRecord->getMessageToSingle($getRecord->id, 4);
+                                        $message_to_teacher = $getRecord->getMessageToSingle($getRecord->id, 2);
                                     @endphp
+                                    
                                     <div class="form-group">
                                         <label style="display: block;">Message To</label>
-                                        <label style="margin-right: 40px;"><input type="checkbox" value="3" name="message_to[]">Student</label>
-                                        <label style="margin-right: 40px;"><input type="checkbox" value="4" name="message_to[]">Parent</label>
-                                        <label><input type="checkbox" value="2" name="message_to[]">Teacher</label>
+                                        <label style="margin-right: 40px;">
+                                            <input {{ !empty($message_to_student) ? 'checked' : '' }} type="checkbox" value="3" name="message_to[]">
+                                            Student
+                                        </label>
+                                        <label style="margin-right: 40px;">
+                                            <input {{ !empty($message_to_parent) ? 'checked' : '' }} type="checkbox" value="4" name="message_to[]">
+                                            Parent
+                                        </label>
+                                        <label>
+                                            <input {{ !empty($message_to_teacher) ? 'checked' : '' }} type="checkbox" value="2" name="message_to[]">
+                                            Teacher
+                                        </label>
                                     </div>
 
                                     <div class="form-group">
                                         <label>Message</label>
                                         <textarea id="compose-textarea" name="message" class="form-control" style="height: 300px">
-                                            value="{{ $getRecord->message }}"</textarea>
+                                            {{ $getRecord->message }}
+                                        </textarea>
                                     </div>
 
                                 </div>
