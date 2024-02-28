@@ -37,6 +37,16 @@ class NoticeBoardModel extends Model
                     $return = $return->where('notice_board.notice_date', '<=', Request::get('notice_date_to'));
                 }
 
+                if(!empty(Request::get('publish_date_from')))
+                {
+                    $return = $return->where('notice_board.publish_on', '>=', Request::get('publish_date_from'));
+                }
+
+                if(!empty(Request::get('publish_date_to')))
+                {
+                    $return = $return->where('notice_board.publish_on', '<=', Request::get('publish_date_to'));
+                }
+
         $return = $return->orderBy('notice_board.id', 'desc')
                 ->paginate(20);
 
