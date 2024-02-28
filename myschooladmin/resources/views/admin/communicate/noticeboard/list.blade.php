@@ -61,11 +61,11 @@
 
                                         <div class="form-group col-md-2">
                                             <label>Message To</label>
-                                            <select class="form-control">
+                                            <select class="form-control" name="message_to">
                                                 <option value="">Select</option>
-                                                <option value="2">Teacher</option>
-                                                <option value="3">Student</option>
-                                                <option value="4">Parent</option>
+                                                <option {{ (Request::get('message_to') == 2) ? 'selected' : '' }} value="2">Teacher</option>
+                                                <option {{ (Request::get('message_to') == 3) ? 'selected' : '' }} value="3">Student</option>
+                                                <option {{ (Request::get('message_to') == 4) ? 'selected' : '' }} value="4">Parent</option>
                                             </select>
                                         </div>
 
