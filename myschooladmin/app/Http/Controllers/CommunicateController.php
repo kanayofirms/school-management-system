@@ -79,4 +79,14 @@ class CommunicateController extends Controller
         return redirect('admin/communicate/notice_board')->with('success', "Notice Board 
             successfully updated");
     }
+
+    public function notice_board_delete($id)
+    {
+        $save = NoticeBoardModel::getSingle($id);
+        $save->delete();
+
+        NoticeBoardMessageModel::DeleteRecord($id);
+
+        return redirect()->back()->with('success', "Notice Board successfully deleted");
+    }
 }
