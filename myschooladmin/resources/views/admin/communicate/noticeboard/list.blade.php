@@ -36,27 +36,27 @@
                                         </div>
 
                                         <div class="form-group col-md-2">
+                                            <label>Notice Date From</label>
+                                            <input type="date" class="form-control" value="{{ Request::get('notice_date_from') }}"
+                                                name="notice_date_from">
+                                        </div>
+                                        
+                                        <div class="form-group col-md-2">
                                             <label>Notice Date To</label>
                                             <input type="date" class="form-control" value="{{ Request::get('notice_date_to') }}"
                                                 name="notice_date_to">
                                         </div>
 
                                         <div class="form-group col-md-2">
-                                            <label>Notice Date From</label>
-                                            <input type="date" class="form-control" value="{{ Request::get('notice_date_from') }}"
-                                                name="notice_date_from">
+                                            <label>Publish Date From</label>
+                                            <input type="date" class="form-control" value="{{ Request::get('publish_date_from') }}"
+                                                name="publish_date_from">
                                         </div>
 
                                         <div class="form-group col-md-2">
                                             <label>Publish Date To</label>
                                             <input type="date" class="form-control" value="{{ Request::get('publish_date_to') }}"
                                                 name="publish_date_to">
-                                        </div>
-
-                                        <div class="form-group col-md-2">
-                                            <label>Publish Date From</label>
-                                            <input type="date" class="form-control" value="{{ Request::get('publish_date_from') }}"
-                                                name="publish_date_from">
                                         </div>
 
                                         <div class="form-group col-md-2">
