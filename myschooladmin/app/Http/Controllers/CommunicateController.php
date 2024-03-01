@@ -94,6 +94,7 @@ class CommunicateController extends Controller
 
     public function my_notice_board_student()
     {
+        $data['getRecord'] = NoticeBoardModel::getRecordUser(Auth::user()->user_type);
         $data['header_title'] = "My Notice Board";
         return view('student.my_notice_board', $data);
     }
