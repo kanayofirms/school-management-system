@@ -18,11 +18,13 @@
         <div class="container-fluid">
           <div class="row">
             
-          <div class="col-md-12">
+
+        @foreach ($getRecord as $value)
+        <div class="col-md-12">
             <div class="card card-primary card-outline">
               <div class="card-body p-0">
                 <div class="mailbox-read-info">
-                  <h5>Message Subject Is Placed Here</h5>
+                  <h5>{{ $value->title }}</h5>
                   <h6><span class="mailbox-read-time float-right">15 Feb. 2015 11:03 PM</span></h6>
                 </div>
                 <div class="mailbox-read-message">
@@ -64,6 +66,8 @@
               </div>
             </div>
           </div>
+        @endforeach
+          
         </div>
         </div>
       </section>
