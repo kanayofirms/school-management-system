@@ -223,6 +223,9 @@ Route::group(['middleware' => 'student'], function () {
     Route::get('student/my_exam_result', [ExaminationsController::class, 'myExamResult']);
 
     Route::get('student/my_attendance', [AttendanceController::class, 'my_attendance_student']);
+
+    Route::get('student/my_notice_board', [CommunicateController::class, 'my_notice_board_student']);
+
 });
 
 Route::group(['middleware' => 'parent'], function () {
