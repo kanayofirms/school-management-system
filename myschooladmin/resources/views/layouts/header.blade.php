@@ -555,6 +555,16 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a href="{{ url('student/my_notice_board') }}"
+                    class="nav-link @if (Request::segment(2) == 'my_notice_board') active @endif">
+                    <i class="nav-icon far fa-user"></i>
+                    <p>
+                        Notice Board
+                    </p>
+                </a>
+            </li>
+
              <li class="nav-item">
                  <a href="{{ url('student/account') }}"
                      class="nav-link @if (Request::segment(2) == 'account') active @endif">
