@@ -89,4 +89,12 @@ class CommunicateController extends Controller
 
         return redirect()->back()->with('success', "Notice Board successfully deleted");
     }
+
+    // student side code
+
+    public function my_notice_board_student()
+    {
+        $data['header_title'] = "My Notice Board";
+        return view('student.my_notice_board', $data);
+    }
 }
