@@ -61,6 +61,17 @@ class NoticeBoardModel extends Model
         return $return;
     }
 
+    static public function getRecordUser($message_to)
+    {
+        $return = self::select('notice_board.*', 'users.name as created_by_name')
+                ->join('users', 'users.id', '=', 'notice_board.created_by');
+
+        $return = $return->orderBy('notice_board.id', 'desc')
+                ->paginate(20);
+
+        return $return;
+    }
+
     public function getMessage()
     {
         return $this->hasMany(NoticeBoardMessageModel::class, "notice_board_id");
