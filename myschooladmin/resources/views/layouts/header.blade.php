@@ -617,6 +617,16 @@
              </li>
 
              <li class="nav-item">
+                <a href="{{ url('parent/my_notice_board') }}"
+                    class="nav-link @if (Request::segment(2) == 'my_notice_board') active @endif">
+                    <i class="nav-icon far fa-user"></i>
+                    <p>
+                        My Notice Board
+                    </p>
+                </a>
+            </li>
+
+             <li class="nav-item">
                  <a href="{{ url('parent/account') }}"
                      class="nav-link @if (Request::segment(2) == 'account') active @endif">
                      <i class="nav-icon far fa-user"></i>
