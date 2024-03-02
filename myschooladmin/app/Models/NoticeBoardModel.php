@@ -67,6 +67,22 @@ class NoticeBoardModel extends Model
                 ->join('users', 'users.id', '=', 'notice_board.created_by');
         $return = $return->join('notice_board_message', 'notice_board_message.notice_board_id'
                 , '=', 'notice_board.id');
+
+                if(!empty(Request::get('title')))
+                {
+                    $return = $return->where('notice_board.title', 'like', '%'.trim(Request::get('title')).'%');
+                }
+
+                if(!empty(Request::get('notice_date_from')))
+                {
+                    $return = $return->where('notice_board.notice_date', '>=', Request::get('notice_date_from'));
+                }
+
+                if(!empty(Request::get('notice_date_to')))
+                {
+                    $return = $return->where('notice_board.notice_date', '<=', Request::get('notice_date_to'));
+                }
+                
         $return = $return->where('notice_board_message.message_to', '=', $message_to);
         $return = $return->where('notice_board.publish_on', '<=', date('Y-m-d'));
         $return = $return->orderBy('notice_board.id', 'desc')
