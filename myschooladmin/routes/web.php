@@ -255,4 +255,6 @@ Route::group(['middleware' => 'parent'], function () {
     Route::get('parent/my_student/attendance/{student_id}', [AttendanceController::class, 'myAttendanceParent']);
 
     Route::get('parent/my_notice_board', [CommunicateController::class, 'my_notice_board_parent']);
+
+    Route::get('parent/my_student_notice_board', [CommunicateController::class, 'my_student_notice_board_parent']);
 });
