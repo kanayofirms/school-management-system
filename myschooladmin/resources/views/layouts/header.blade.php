@@ -350,6 +350,14 @@
                             <p>Notice Board</p>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a href="{{ url('admin/communicate/send_email') }}"
+                            class="nav-link @if (Request::segment(3) == 'send_email') active @endif">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Send Email</p>
+                        </a>
+                    </li>
            </ul>
          </li>
      
