@@ -10,6 +10,13 @@ use Auth;
 
 class CommunicateController extends Controller
 {
+
+    public function send_email()
+    {
+        $data['header_title'] = "Send Email";
+        return view('admin.communicate.send_email', $data);
+    }
+
     public function notice_board()
     {
         $data['getRecord'] = NoticeBoardModel::getRecord();
