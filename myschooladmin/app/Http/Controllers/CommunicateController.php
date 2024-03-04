@@ -17,6 +17,21 @@ class CommunicateController extends Controller
         return view('admin.communicate.send_email', $data);
     }
 
+    public function search_user(Request $request){
+        dd($request->all());
+
+        $json = array();
+        if(!empty($request->search))
+        {
+            $getUser = User::SearchUser($request->search);
+            foreach ($getUser as $value) {
+                $name = $value->name.' '.$value->last_name.' ';
+                $json[] = ['id'=> $value->id, 'text'=> $name];
+            }
+
+        }
+    }
+
     public function notice_board()
     {
         $data['getRecord'] = NoticeBoardModel::getRecord();
