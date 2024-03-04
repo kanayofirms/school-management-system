@@ -76,7 +76,23 @@
     <script type="text/javascript">
     $(function () {
 
-        $('.select2').select2()
+        $('.select2').select2({
+            ajax: {
+                url: '{{ url('admin/communicate/search_user') }}',
+                dataType: 'json',
+                delay: 250,
+                data: function (data) {
+                    return {
+                        search: data.form,
+                    };
+                },
+                processResults: function (response) {
+                    return {
+                        results:response
+                    };
+                },
+            }
+        });
 
         $('#compose-textarea').summernote({
             height: 200,
