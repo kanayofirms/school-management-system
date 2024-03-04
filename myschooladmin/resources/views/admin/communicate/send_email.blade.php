@@ -1,4 +1,13 @@
 @extends('layouts.app')
+@section('style')
+<link rel="stylesheet" href="{{ url('public/plugins/select2/css/select2.min.css') }}">
+<style type="text/css">
+    .select2-container .select2-selection--single
+    {
+        height: 40px;
+    }
+</style>
+@endsection
 
 @section('content')
     <div class="content-wrapper">
@@ -30,13 +39,7 @@
                                     <div class="form-group">
                                           <label>User (Student / Parent / Teacher)</label>
                                           <select class="form-control select2" style="width: 100%;">
-                                            <option selected="selected">Alabama</option>
-                                            <option>Alaska</option>
-                                            <option>California</option>
-                                            <option>Delaware</option>
-                                            <option>Tennessee</option>
-                                            <option>Texas</option>
-                                            <option>Washington</option>
+                                            <option value="">Select</option>
                                           </select>
                                         </div>
 
@@ -67,10 +70,14 @@
 @endsection
 
 @section('script')
-    <script src="{{ url('plugins/summernote/summernote-bs4.min.js') }}"></script>
+    <script src="{{ url('public/plugins/summernote/summernote-bs4.min.js') }}"></script>
+    <script src="{{ url('public/plugins/select2/js/select2.full.min.js') }}"></script>
 
     <script type="text/javascript">
     $(function () {
+
+        $('.select2').select2()
+
         $('#compose-textarea').summernote({
             height: 200,
         });
