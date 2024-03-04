@@ -79,7 +79,7 @@
 @endsection
 
 @section('script')
-    <script src="{{ url('plugins/summernote/summernote-bs4.min.js') }}"></script>
+    <script src="{{ url('public/plugins/summernote/summernote-bs4.min.js') }}"></script>
 
     <script type="text/javascript">
     $(function () {
