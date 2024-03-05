@@ -8,6 +8,7 @@ use App\Models\NoticeBoardMessageModel;
 use App\Models\NoticeBoardModel;
 use App\Mail\SendEmailUserMail;
 use Auth;
+use Mail;
 
 class CommunicateController extends Controller
 {
@@ -54,7 +55,18 @@ class CommunicateController extends Controller
 
     public function send_email_user(Request $request)
     {
-        dd($request->all());
+        if(!empty($request->user_id))
+        {
+            $user = User::getSingle($request->user_id);
+            $user->send_message = $request->message;
+            $user->send_subject = $request->subject;
+
+            Mail::to($user->email)->send(new SendEmailUserMail($user));
+
+            
+        }
+
+        return redirect()->back()->with('success', "Mail successfully sent");
     }
 
     public function notice_board()
