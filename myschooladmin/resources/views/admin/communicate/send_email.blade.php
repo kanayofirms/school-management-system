@@ -26,6 +26,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
+                        @include('_message')
                         <div class="card card-primary">
                             <form method="post" action="">
                                 {{ csrf_field() }}
