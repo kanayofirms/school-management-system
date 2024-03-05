@@ -53,10 +53,11 @@ class User extends Authenticatable
         $return = self::select('users.*')
                 ->where(function($query) use ($search) {
                     $query->where('users.name', 'like', '%'.$search.'%')
+                    ->orWhere('users.middle_name', 'like', '%'.$search.'%')
                     ->orWhere('users.last_name', 'like', '%'.$search.'%');
         })
-        ->limit(10)
-        ->get();
+                ->limit(10)
+                ->get();
 
         return $return;
     }
