@@ -74,6 +74,7 @@
     <script src="{{ url('public/plugins/select2/js/select2.full.min.js') }}"></script>
 
     <script type="text/javascript">
+
     $(function () {
 
         $('.select2').select2({
@@ -83,7 +84,7 @@
                 delay: 250,
                 data: function (data) {
                     return {
-                        search: data.form,
+                        search: data.term,
                     };
                 },
                 processResults: function (response) {
