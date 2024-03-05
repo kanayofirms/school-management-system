@@ -38,7 +38,7 @@
                                     
                                     <div class="form-group">
                                           <label>User (Student / Parent / Teacher)</label>
-                                          <select class="form-control select2" style="width: 100%;">
+                                          <select name="user_id" class="form-control select2" style="width: 100%;">
                                             <option value="">Select</option>
                                           </select>
                                         </div>
