@@ -17,19 +17,20 @@ class CommunicateController extends Controller
         return view('admin.communicate.send_email', $data);
     }
 
-    public function search_user(Request $request){
-        dd($request->all());
-
+    public function search_user(Request $request)
+    {
         $json = array();
         if(!empty($request->search))
         {
             $getUser = User::SearchUser($request->search);
             foreach ($getUser as $value) {
-                $name = $value->name.' '.$value->last_name.' ';
+                $name = $value->name.' '.$value->middle_name.' '.$value->last_name.' ';
                 $json[] = ['id'=> $value->id, 'text'=> $name];
             }
 
         }
+
+        echo json_encode($json);
     }
 
     public function notice_board()
