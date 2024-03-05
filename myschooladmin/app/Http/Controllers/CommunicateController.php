@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\NoticeBoardMessageModel;
 use App\Models\NoticeBoardModel;
+use App\Mail\SendEmailUserMail;
 use Auth;
 
 class CommunicateController extends Controller
@@ -24,13 +25,36 @@ class CommunicateController extends Controller
         {
             $getUser = User::SearchUser($request->search);
             foreach ($getUser as $value) {
-                $name = $value->name.' '.$value->middle_name.' '.$value->last_name.' ';
+                $type = '';
+                if($value->user_type == 1)
+                {
+                    $type = 'Admin';
+                }
+                elseif($value->user_type == 2)
+                {
+                    $type = 'Teacher';
+                }
+                elseif($value->user_type == 3)
+                {
+                    $type = 'Student';
+                }
+                elseif($value->user_type == 4)
+                {
+                    $type = 'Parent';
+                }
+
+                $name = $value->name.' '.$value->middle_name.' '.$value->last_name.' - '. $type;
                 $json[] = ['id'=> $value->id, 'text'=> $name];
             }
 
         }
 
         echo json_encode($json);
+    }
+
+    public function send_email_user(Request $request)
+    {
+        dd($request->all());
     }
 
     public function notice_board()
