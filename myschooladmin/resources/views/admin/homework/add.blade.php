@@ -28,7 +28,7 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label>Class <span style="color: red">*</span></label>
-                                        <select class="form-control" name="class_id" required>
+                                        <select class="form-control" id="getClass" name="class_id" required>
                                             <option value="">Select Class</option>
                                             @foreach ($getClass as $class)
                                             <option value="{{ $class->id }}">{{ $class->name }}</option>
@@ -38,7 +38,7 @@
 
                                     <div class="form-group">
                                         <label>Subject <span style="color: red">*</span></label>
-                                        <select class="form-control" name="subject_id" required>
+                                        <select class="form-control" id="getSubject" name="subject_id" required>
                                             <option value="">Select Subject</option>
                                         </select>
                                     </div>
@@ -87,6 +87,24 @@
 
         $('#compose-textarea').summernote({
             height: 200,
+        });
+
+        $('#getClass').change(function() {
+            var class_id = $(this).val();
+            $.ajax({
+                type: "POST", 
+                url: "{{ url('admin/ajax_get_subject') }}", 
+                data: {
+                    "_token" : "{{ csrf_token() }}",
+                    class_id : class_id,
+
+                },
+                dataType : "json",
+                success : function(data) {
+                    $('#getSubject').html(data.success);
+                }
+    });
+
         });
     });
 
