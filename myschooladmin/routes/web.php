@@ -182,8 +182,7 @@ Route::group(['middleware' => 'admin'], function () {
     // homework
 
     Route::get('admin/homework/homework', [HomeworkController::class, 'homework']);
-    
-
+    Route::get('admin/homework/homework/add', [HomeworkController::class, 'homework_add']);    
 
 });
 
