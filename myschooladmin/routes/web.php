@@ -17,6 +17,8 @@ use App\Http\Controllers\ExaminationsController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\CommunicateController;
+use App\Http\Controllers\HomeworkController;
+
 
 
 
@@ -175,8 +177,11 @@ Route::group(['middleware' => 'admin'], function () {
 
     Route::get('admin/communicate/send_email', [CommunicateController::class, 'send_email']);
     Route::post('admin/communicate/send_email', [CommunicateController::class, 'send_email_user']);
-
     Route::get('admin/communicate/search_user', [CommunicateController::class, 'search_user']);
+
+    // homework
+
+    Route::get('admin/homework/homework', [HomeworkController::class, 'homework']);
     
 
 
