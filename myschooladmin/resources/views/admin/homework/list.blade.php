@@ -10,7 +10,7 @@
                         <h1>Homework</h1>
                     </div>
                     <div class="col-sm-6" style="text-align: right;">
-                        <a href="{{ url('admin/communicate/notice_board/add') }}" class="btn btn-primary">Add New Homework</a>
+                        <a href="{{ url('admin/homework/homework/add') }}" class="btn btn-primary">Add New Homework</a>
                     </div>
                 </div>
         </section>
@@ -36,11 +36,12 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Title</th>
-                                            <th>Notice Date</th>
-                                            <th>Publish Date</th>
-                                            <th>Message To</th>
-                                            <th>Created By</th>
+                                            <th>Class</th>
+                                            <th>Subject</th>
+                                            <th>Homework Date</th>
+                                            <th>Submission Date</th>
+                                            <th>Document</th>
+                                            <th>Description</th>
                                             <th>Created Date</th>
                                             <th>Action</th>
                                         </tr>
