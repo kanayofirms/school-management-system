@@ -1,11 +1,6 @@
 @extends('layouts.app')
 @section('style')
-<link rel="stylesheet" href="{{ url('public/plugins/select2/css/select2.min.css') }}">
 <style type="text/css">
-    .select2-container .select2-selection--single
-    {
-        height: 40px;
-    }
 </style>
 @endsection
 
@@ -35,6 +30,9 @@
                                         <label>Class <span style="color: red">*</span></label>
                                         <select class="form-control" name="class_id" required>
                                             <option value="">Select Class</option>
+                                            @foreach ($getClass as $class)
+                                            <option value="{{ $class->id }}">{{ $class->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
 
