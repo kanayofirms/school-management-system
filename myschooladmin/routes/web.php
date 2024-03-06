@@ -183,7 +183,8 @@ Route::group(['middleware' => 'admin'], function () {
 
     Route::get('admin/homework/homework', [HomeworkController::class, 'homework']);
     Route::get('admin/homework/homework/add', [HomeworkController::class, 'homework_add']);
-    Route::post('admin/ajax_get_subject', [HomeworkController::class, 'ajax_get_subject']); 
+    Route::post('admin/ajax_get_subject', [HomeworkController::class, 'ajax_get_subject']);
+    Route::post('admin/homework/homework/add', [HomeworkController::class, 'homework_insert']);
 
 });
 
