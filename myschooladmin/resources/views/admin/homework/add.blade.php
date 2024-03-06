@@ -23,7 +23,7 @@
                     <div class="col-md-12">
                         @include('_message')
                         <div class="card card-primary">
-                            <form method="post" action="">
+                            <form method="post" action="" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="card-body">
                                     <div class="form-group">
@@ -66,7 +66,7 @@
 
                                 </div>
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Send Email</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </form>
                         </div>
