@@ -15,6 +15,7 @@ class HomeworkController extends Controller
 {
     public function homework()
     {
+        $data['getRecord'] = HomeworkModel::getRecord();
         $data['header_title'] = "Homework";
         return view('admin.homework.list', $data);
     }
