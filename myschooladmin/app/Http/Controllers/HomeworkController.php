@@ -58,6 +58,7 @@ class HomeworkController extends Controller
     {
         $getRecord = HomeworkModel::getSingle($id);
         $data['getRecord'] = $getRecord;
+        $data['getSubject'] = ClassSubjectModel::mySubject($getRecord->class_id);
         $data['getClass'] = ClassModel::getClass();
         $data['header_title'] = "Edit Homework";
         return view('admin.homework.edit', $data);
