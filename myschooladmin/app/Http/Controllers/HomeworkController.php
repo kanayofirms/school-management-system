@@ -90,6 +90,15 @@ class HomeworkController extends Controller
         successfully updated");
     }
 
+    public function homework_delete($id)
+    {
+        $homework = HomeworkModel::getSingle($id);
+        $homework->is_delete = 1;
+        $homework->save();
+
+        return redirect()->back()->with('success', "Homework successfully deleted");
+    }
+
     public function ajax_get_subject(Request $request)
     {
         $class_id = $request->class_id;
