@@ -41,6 +41,10 @@
                                         <label>Subject <span style="color: red">*</span></label>
                                         <select class="form-control" id="getSubject" name="subject_id" required>
                                             <option value="">Select Subject</option>
+                                            @foreach ($getSubject as $subject)
+                                            <option {{ ($getRecord->subject_id == $subject->subject_id) ? 'selected' : '' }} 
+                                                value="{{ $subject->subject_id }}">{{ $subject->subject_name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
 
@@ -74,7 +78,7 @@
 
                                 </div>
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
                             </form>
                         </div>
