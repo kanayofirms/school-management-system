@@ -54,6 +54,15 @@ class HomeworkController extends Controller
 
     }
 
+    public function homework_edit($id)
+    {
+        $getRecord = HomeworkModel::getSingle($id);
+        $data['getRecord'] = $getRecord;
+        $data['getClass'] = ClassModel::getClass();
+        $data['header_title'] = "Edit Homework";
+        return view('admin.homework.edit', $data);
+    }
+
     public function ajax_get_subject(Request $request)
     {
         $class_id = $request->class_id;
