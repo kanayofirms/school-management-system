@@ -41,7 +41,6 @@
                                             <th>Homework Date</th>
                                             <th>Submission Date</th>
                                             <th>Document</th>
-                                            <th>Description</th>
                                             <th>Created Date</th>
                                             <th>Action</th>
                                         </tr>
@@ -54,9 +53,12 @@
                                             <td>{{ $value->subject_name }}</td>
                                             <td>{{ date('d-m-Y', strtotime($value->homework_date)) }}</td>
                                             <td>{{ date('d-m-Y', strtotime($value->submission_date)) }}</td>
-                                            <td>{{ $value->submission_date }}</td>
-                                            <td>{{ $value->submission_date }}</td>
-                                            <td>{{ $value->submission_date }}</td>
+                                            <td>
+                                                @if(!@empty($value->getDocument()))
+                                                    <a href="{{ $value->getDocument() }}" class="btn btn-primary" 
+                                                        download="">Download</a>
+                                                @endif
+                                            </td>
                                            </tr>
                                        @empty
                                            <tr>
