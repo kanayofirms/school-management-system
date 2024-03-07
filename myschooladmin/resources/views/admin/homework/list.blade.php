@@ -47,7 +47,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                       
+                                       @forelse ($getRecord as $value)
+                                           <tr>
+                                            <td>{{ $value->id }}</td>
+                                            <td>{{ $value->class_name }}</td>
+                                            <td>{{ $value->subject_name }}</td>
+                                            <td>{{ date('d-m-Y', strtotime($value->homework_date)) }}</td>
+                                            <td>{{ date('d-m-Y', strtotime($value->submission_date)) }}</td>
+                                            <td>{{ $value->submission_date }}</td>
+                                            <td>{{ $value->submission_date }}</td>
+                                            <td>{{ $value->submission_date }}</td>
+                                           </tr>
+                                       @empty
+                                           <tr>
+                                            <td colspan="100%">Record not found</td>
+                                           </tr>
+                                       @endforelse
                                     </tbody>
                                 </table>
                                 
