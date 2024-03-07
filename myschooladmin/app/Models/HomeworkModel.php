@@ -24,4 +24,15 @@ class HomeworkModel extends Model
 
         return $return;
     }
+
+    public function getDocument()
+    {
+        if(!empty($this->document_file) && file_exists('upload/homework/'.$this->document_file))
+        {
+            return url('upload/homework/'.$this->document_file);
+        }
+        else{
+            return "";
+        }
+    }
 }
