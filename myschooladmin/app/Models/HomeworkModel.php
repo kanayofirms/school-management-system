@@ -11,6 +11,11 @@ class HomeworkModel extends Model
 
     protected $table = 'homework';
 
+    static public function getSingle($id)
+    {
+        return self::find($id);
+    }
+
     static public function getRecord()
     {
         $return = self::select('homework.*', 'class.name as class_name', 'subject.name 
