@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AssignClassTeacherModel;
 use Illuminate\Http\Request;
 use App\Models\ClassModel;
 use App\Models\ClassSubjectModel;
@@ -112,5 +113,21 @@ class HomeworkController extends Controller
 
         $json['success'] = $html;
         echo json_encode($json);
+    }
+
+    // teacher side code
+
+    public function homework_teacher()
+    {
+        $data['getRecord'] = HomeworkModel::getRecord();
+        $data['header_title'] = "Homework";
+        return view('teacher.homework.list', $data);
+    }
+
+    public function homework_add_teacher()
+    {
+        $data['getClass'] = AssignClassTeacherModel::getMyClassSubjectGroup(Auth::user()->id); 
+        $data['header_title'] = "Add New Homework";
+        return view('teacher.homework.add', $data);
     }
 }
