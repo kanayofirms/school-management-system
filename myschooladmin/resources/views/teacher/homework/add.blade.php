@@ -93,7 +93,7 @@
             var class_id = $(this).val();
             $.ajax({
                 type: "POST", 
-                url: "{{ url('admin/ajax_get_subject') }}", 
+                url: "{{ url('teacher/ajax_get_subject') }}", 
                 data: {
                     "_token" : "{{ csrf_token() }}",
                     class_id : class_id,
