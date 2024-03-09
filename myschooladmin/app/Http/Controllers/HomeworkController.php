@@ -119,7 +119,13 @@ class HomeworkController extends Controller
 
     public function homework_teacher()
     {
-        $data['getRecord'] = HomeworkModel::getRecordTeacher();
+        $class_ids = array();
+        $getClass = AssignClassTeacherModel::getMyClassSubjectGroup(Auth::user()->id);
+        foreach($getClass as $class)
+        {
+            $class_ids[] = $class->class_id;
+        }
+        $data['getRecord'] = HomeworkModel::getRecordTeacher($class_ids);
         $data['header_title'] = "Homework";
         return view('teacher.homework.list', $data);
     }
