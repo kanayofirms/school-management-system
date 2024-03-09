@@ -73,13 +73,14 @@ class HomeworkModel extends Model
         return $return;
     }
 
-    static public function getRecordTeacher()
+    static public function getRecordTeacher($class_ids)
     {
         $return = self::select('homework.*', 'class.name as class_name', 'subject.name 
         as subject_name', 'users.name as created_by_name')
             ->join('users', 'users.id', '=', 'homework.created_by')
             ->join('class', 'class.id', '=', 'homework.class_id')
             ->join('subject', 'subject.id', '=', 'homework.subject_id')
+            ->whereIn('homework.class_id', $class_ids)
             ->where('homework.is_delete', '=', 0);
 
             if(!empty(Request::get('class_name')))
