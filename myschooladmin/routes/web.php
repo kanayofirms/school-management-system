@@ -221,9 +221,11 @@ Route::group(['middleware' => 'teacher'], function () {
     Route::get('teacher/my_notice_board', [CommunicateController::class, 'my_notice_board_teacher']);
 
     Route::get('teacher/homework/homework', [HomeworkController::class, 'homework_teacher']);
-    Route::get('teacher/homework/homework/add', [HomeworkController::class, 'homework_add_teacher']);
+    Route::get('teacher/homework/homework/add', [HomeworkController::class, 'homework_teacher_add']);
+    Route::post('teacher/ajax_get_subject', [HomeworkController::class, 'ajax_get_subject']);
+//     Route::get('teacher/homework/homework/add', [HomeworkController::class, 'homework_teacher_insert']);
 
-});
+ });
 
 Route::group(['middleware' => 'student'], function () {
     Route::get('student/dashboard', [DashboardController::class, 'dashboard']);
