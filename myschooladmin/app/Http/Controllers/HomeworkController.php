@@ -172,4 +172,30 @@ class HomeworkController extends Controller
         $data['header_title'] = "Edit Homework";
         return view('teacher.homework.edit', $data); 
     }
+
+    public function homework_teacher_update($id, Request $request)
+    {
+        $homework = HomeworkModel::getSingle($id);
+        $homework->class_id = trim($request->class_id);
+        $homework->subject_id = trim($request->subject_id);
+        $homework->homework_date = trim($request->homework_date);
+        $homework->submission_date = trim($request->submission_date);
+        $homework->description = trim($request->description);
+
+        if(!empty($request->file('document_file')))
+        {
+            $ext = $request->file('document_file')->getClientOriginalExtension();
+            $file = $request->file('document_file');
+            $randomStr = date('Ymdhis').Str::random(20);
+            $filename = strtolower($randomStr).'.'.$ext;
+            $file->move('upload/homework/', $filename);
+
+            $homework->document_file = $filename;
+        }
+
+        $homework->save();
+
+        return redirect('teacher/homework/homework')->with('success', "Homework 
+        successfully updated");
+    }
 }
