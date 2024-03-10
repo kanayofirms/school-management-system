@@ -106,11 +106,37 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                
+                                        @forelse ($getRecord as $value)
+                                           <tr>
+                                            <td>{{ $value->id }}</td>
+                                            <td>{{ $value->class_name }}</td>
+                                            <td>{{ $value->subject_name }}</td>
+                                            <td>{{ date('d-m-Y', strtotime($value->homework_date)) }}</td>
+                                            <td>{{ date('d-m-Y', strtotime($value->submission_date)) }}</td>
+                                            <td>
+                                                @if(!@empty($value->getDocument()))
+                                                    <a href="{{ $value->getDocument() }}" class="btn btn-primary" 
+                                                        download="">Download</a>
+                                                @endif
+                                            </td>
+                                            <td>{{ $value->created_by_name }}</td>
+                                            <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
+                                            <td>
+                                                <a href="{{ url('teacher/homework/homework/edit/' . $value->id) }}"
+                                                    class="btn btn-primary">Edit</a>
+                                                <a href="{{ url('teacher/homework/homework/delete/' . $value->id) }}"
+                                                    class="btn btn-danger">Delete</a>
+                                            </td>
+                                           </tr>
+                                       @empty
+                                           <tr>
+                                            <td colspan="100%">Record not found</td>
+                                           </tr>
+                                       @endforelse
                                     </tbody>
                                 </table>
                                 <div style="padding: 10px; float:right;">
-                                                                    
+                                    {!! $getRecord->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}                                 
                                 </div>
                             </div>
                         </div>                        
