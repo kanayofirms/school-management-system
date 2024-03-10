@@ -198,4 +198,12 @@ class HomeworkController extends Controller
         return redirect('teacher/homework/homework')->with('success', "Homework 
         successfully updated");
     }
+
+    // student side code
+
+    public function my_homework()
+    {
+        $data['header_title'] = "My Homework";
+        return view('student.homework.list', $data);
+    }
 }
