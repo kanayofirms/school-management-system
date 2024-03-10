@@ -227,7 +227,7 @@ Route::group(['middleware' => 'teacher'], function () {
     Route::get('teacher/homework/homework/edit/{id}', [HomeworkController::class, 'homework_teacher_edit']);
     Route::post('teacher/homework/homework/edit/{id}', [HomeworkController::class, 'homework_teacher_update']);
     Route::get('teacher/homework/homework/delete/{id}', [HomeworkController::class, 'homework_delete']);
- });
+});
 
 Route::group(['middleware' => 'student'], function () {
     Route::get('student/dashboard', [DashboardController::class, 'dashboard']);
@@ -251,6 +251,8 @@ Route::group(['middleware' => 'student'], function () {
     Route::get('student/my_attendance', [AttendanceController::class, 'my_attendance_student']);
 
     Route::get('student/my_notice_board', [CommunicateController::class, 'my_notice_board_student']);
+
+    Route::get('student/my_homework', [HomeworkController::class, 'my_homework']);
 
 });
 
