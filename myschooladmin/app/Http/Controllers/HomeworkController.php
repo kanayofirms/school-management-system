@@ -162,4 +162,14 @@ class HomeworkController extends Controller
 
         return redirect('teacher/homework/homework')->with('success', "Homework successfully created");
     }
+
+    public function homework_teacher_edit($id)
+    {
+        $getRecord = HomeworkModel::getSingle($id);
+        $data['getRecord'] = $getRecord;
+        $data['getSubject'] = ClassSubjectModel::mySubject($getRecord->class_id);
+        $data['getClass'] = AssignClassTeacherModel::getMyClassSubjectGroup(Auth::user()->id); 
+        $data['header_title'] = "Edit Homework";
+        return view('teacher.homework.edit', $data); 
+    }
 }
