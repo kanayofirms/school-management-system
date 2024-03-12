@@ -253,6 +253,7 @@ Route::group(['middleware' => 'student'], function () {
     Route::get('student/my_notice_board', [CommunicateController::class, 'my_notice_board_student']);
 
     Route::get('student/my_homework', [HomeworkController::class, 'my_homework']);
+    Route::get('student/my_homework/submit_homework/{id}', [HomeworkController::class, 'submit_homework']);  
 
 });
 
