@@ -204,7 +204,7 @@ class HomeworkController extends Controller
 
     public function my_homework()
     {
-        $data['getRecord'] = HomeworkModel::getRecordStudent(Auth::user()->class_id);
+        $data['getRecord'] = HomeworkModel::getRecordStudent(Auth::user()->class_id, Auth::user()->id);
         $data['header_title'] = "My Homework";
         return view('student.homework.list', $data);
     }
