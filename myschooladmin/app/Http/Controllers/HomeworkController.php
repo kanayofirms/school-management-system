@@ -207,4 +207,11 @@ class HomeworkController extends Controller
         $data['header_title'] = "My Homework";
         return view('student.homework.list', $data);
     }
+
+    public function submit_homework($homework_id)
+    {
+        $data['getRecord'] = HomeworkModel::getSingle($homework_id);
+        $data['header_title'] = "Submit My Homework";
+        return view('student.homework.submit', $data);
+    }
 }
