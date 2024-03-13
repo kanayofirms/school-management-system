@@ -129,10 +129,13 @@
                                             <td>{{ $value->created_by_name }}</td>
                                             <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
                                             <td>
-                                                <a href="{{ url('admin/homework/homework/edit/' . $value->id) }}"
+                                                <a href="{{ url('admin/homework/homework/edit/'. $value->id) }}"
                                                     class="btn btn-primary">Edit</a>
-                                                <a href="{{ url('admin/homework/homework/delete/' . $value->id) }}"
+                                                <a href="{{ url('admin/homework/homework/delete/'. $value->id) }}"
                                                     class="btn btn-danger">Delete</a>
+
+                                                <a href="{{ url('admin/homework/homework/submitted/'. $value->id) }}"
+                                                        class="btn btn-success">Submitted Homework</a>
                                             </td>
                                            </tr>
                                        @empty
