@@ -13,8 +13,11 @@ class HomeworkSubmitModel extends Model
 
     static public function getRecordStudent($student_id)
     {
-        $return = HomeworkSubmitModel::select('homework_submit.*')
+        $return = HomeworkSubmitModel::select('homework_submit.*', 'class.name as class_name', 
+            'subject.name as subject_name')
                     ->join('homework', 'homework.id', '=', 'homework_submit.homework_id')
+                    ->join('class', 'class.id', '=', 'homework.class_id')
+                    ->join('subject', 'subject.id', '=', 'homework.subject_id')
                     ->orderBy('homework_submit.id', 'desc')
                     ->paginate(20);
 
@@ -31,4 +34,9 @@ class HomeworkSubmitModel extends Model
             return "";
         }
     }
+
+    public function getHomework()
+{
+    return $this->belongsTo(HomeworkModel::class, "homework_id");
+}
 }
