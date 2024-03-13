@@ -26,6 +26,12 @@
                             <form method="get" action="">
                                 <div class="card-body">
                                     <div class="row">
+
+                                        <div class="form-group col-md-2">
+                                            <label>Class</label>
+                                            <input type="text" class="form-control" value="{{ Request::get('class_name') }}"
+                                                name="class_name" placeholder="Class Name">
+                                        </div>
                                     
                                         <div class="form-group col-md-2">
                                             <label>Subject</label>
@@ -59,13 +65,13 @@
                                         </div>
 
                                         <div class="form-group col-md-2">
-                                            <label>From Created Date</label>
+                                            <label>From Submitted Created Date</label>
                                             <input type="date" class="form-control" value="{{ Request::get('from_created_date') }}"
                                                 name="from_created_date">
                                         </div>
 
                                         <div class="form-group col-md-2">
-                                            <label>To Created Date</label>
+                                            <label>To Submitted Created Date</label>
                                             <input type="date" class="form-control" value="{{ Request::get('to_created_date') }}"
                                                 name="to_created_date">
                                         </div>
