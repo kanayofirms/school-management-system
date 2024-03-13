@@ -102,6 +102,10 @@
                                             <th>Document</th>
                                             <th>Description</th>
                                             <th>Created Date</th>
+
+                                            <th>Submitted Document</th>
+                                            <th>Submitted Description</th>
+                                            <th>Submitted Created Date</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -120,6 +124,16 @@
                                             </td>
                                             <td>{!! $value->getHomework->description !!}</td>
                                             <td>{{ date('d-m-Y', strtotime($value->getHomework->created_at)) }}</td>
+
+
+                                            <td>
+                                                @if(!@empty($value->getDocument()))
+                                                    <a href="{{ $value->getDocument() }}" class="btn btn-primary" 
+                                                        download="">Download</a>
+                                                @endif
+                                            </td>
+                                            <td>{!! $value->description !!}</td>
+                                            <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
                                            </tr>
                                        @empty
                                            <tr>
