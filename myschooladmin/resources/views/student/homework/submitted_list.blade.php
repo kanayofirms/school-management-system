@@ -103,7 +103,6 @@
                                             <th>Description</th>
                                             <th>Created By</th>
                                             <th>Created Date</th>
-                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -123,10 +122,6 @@
                                             <td>{!! $value->description !!}</td>
                                             <td>{{ $value->created_by_name }}</td>
                                             <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
-                                            <td>
-                                                <a href="{{ url('student/my_homework/submit_homework/'.$value->id) }}" 
-                                                    class="btn btn-primary">Submit Homework</a>
-                                            </td>
                                            </tr>
                                        @empty
                                            <tr>
