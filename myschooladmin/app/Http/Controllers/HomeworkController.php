@@ -101,6 +101,22 @@ class HomeworkController extends Controller
         return redirect()->back()->with('success', "Homework successfully deleted");
     }
 
+    public function homework_submitted($homework_id)
+    {
+        $homework = HomeworkModel::getSingle($homework_id);
+        if(!empty($homework))
+        {
+            $data['homework_id'] = $homework_id;
+            $data['getRecord'] = HomeworkModel::getRecord();
+            $data['header_title'] = "Submitted Homework";
+            return view('admin.homework.submitted', $data);
+        }
+        else{
+            abort(404);
+        }
+
+    }
+
     public function ajax_get_subject(Request $request)
     {
         $class_id = $request->class_id;
@@ -115,6 +131,7 @@ class HomeworkController extends Controller
         $json['success'] = $html;
         echo json_encode($json);
     }
+
 
     // teacher side code
 
