@@ -373,7 +373,7 @@
 
                 <li class="nav-item">
                     <a href="{{ url('admin/homework/homework') }}"
-                        class="nav-link @if (Request::segment(3) == 'notice_board') active @endif">
+                        class="nav-link @if (Request::segment(3) == 'homework') active @endif">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Homework</p>
                     </a>
