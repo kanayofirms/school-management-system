@@ -101,7 +101,6 @@
                                             <th>Submission Date</th>
                                             <th>Document</th>
                                             <th>Description</th>
-                                            <th>Created By</th>
                                             <th>Created Date</th>
                                         </tr>
                                     </thead>
@@ -111,17 +110,16 @@
                                             <td>{{ $value->id }}</td>
                                             <td>{{ $value->class_name }}</td>
                                             <td>{{ $value->subject_name }}</td>
-                                            <td>{{ date('d-m-Y', strtotime($value->homework_date)) }}</td>
-                                            <td>{{ date('d-m-Y', strtotime($value->submission_date)) }}</td>
+                                            <td>{{ date('d-m-Y', strtotime($value->getHomework->homework_date)) }}</td>
+                                            <td>{{ date('d-m-Y', strtotime($value->getHomework->submission_date)) }}</td>
                                             <td>
-                                                @if(!@empty($value->getDocument()))
-                                                    <a href="{{ $value->getDocument() }}" class="btn btn-primary" 
+                                                @if(!@empty($value->getHomework->getDocument()))
+                                                    <a href="{{ $value->getHomework->getDocument() }}" class="btn btn-primary" 
                                                         download="">Download</a>
                                                 @endif
                                             </td>
-                                            <td>{!! $value->description !!}</td>
-                                            <td>{{ $value->created_by_name }}</td>
-                                            <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
+                                            <td>{!! $value->getHomework->description !!}</td>
+                                            <td>{{ date('d-m-Y', strtotime($value->getHomework->created_at)) }}</td>
                                            </tr>
                                        @empty
                                            <tr>
