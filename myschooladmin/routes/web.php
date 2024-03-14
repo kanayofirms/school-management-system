@@ -225,11 +225,16 @@ Route::group(['middleware' => 'teacher'], function () {
 
     Route::get('teacher/homework/homework', [HomeworkController::class, 'homework_teacher']);
     Route::get('teacher/homework/homework/add', [HomeworkController::class, 'homework_teacher_add']);
-    Route::post('teacher/ajax_get_subject', [HomeworkController::class, 'ajax_get_subject']);     
+
+    Route::post('teacher/ajax_get_subject', [HomeworkController::class, 'ajax_get_subject']);  
+
     Route::post('teacher/homework/homework/add', [HomeworkController::class, 'homework_teacher_insert']);
     Route::get('teacher/homework/homework/edit/{id}', [HomeworkController::class, 'homework_teacher_edit']);
     Route::post('teacher/homework/homework/edit/{id}', [HomeworkController::class, 'homework_teacher_update']);
     Route::get('teacher/homework/homework/delete/{id}', [HomeworkController::class, 'homework_delete']);
+
+    Route::get('teacher/homework/homework/submitted/{id}', [HomeworkController::class, 'homework_submitted_teacher']);
+
 });
 
 Route::group(['middleware' => 'student'], function () {
