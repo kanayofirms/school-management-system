@@ -135,7 +135,7 @@
                                                     class="btn btn-danger">Delete</a>
 
                                                 <a href="{{ url('admin/homework/homework/submitted/'. $value->id) }}"
-                                                        class="btn btn-success">Submitted Homework</a>
+                                                    class="btn btn-success">Submitted Homework</a>
                                             </td>
                                            </tr>
                                        @empty
