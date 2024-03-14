@@ -287,6 +287,7 @@ class HomeworkController extends Controller
         $getStudent = User::getSingle($student_id);
         $data['getRecord'] = HomeworkModel::getRecordStudent($getStudent->class_id, $getStudent->id);
         $data['header_title'] = "Student Homework";
+        $data['getStudent'] = $getStudent;
         return view('parent.homework.list', $data);
     }
 }
