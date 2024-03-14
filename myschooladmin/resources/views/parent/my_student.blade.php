@@ -97,19 +97,21 @@
                                                 <td>{{ $value->genotype }}</td>
                                                 <td>{{ $value->disability }}</td>
                                                 <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
-                                                <td style="min-width:600px;">
-                                                    <a class="btn btn-success btn-sm" 
+                                                <td style="min-width:400px;">
+                                                    <a style="margin-bottom: 10px;" class="btn btn-success btn-sm" 
                                                         href="{{ url('parent/my_student/subject/'.$value->id) }}">Subject</a>
-                                                    <a class="btn btn-primary btn-sm" 
+                                                    <a style="margin-bottom: 10px;" class="btn btn-primary btn-sm" 
                                                         href="{{ url('parent/my_student/exam_timetable/'.$value->id) }}">Exam Timetable</a>
-                                                    <a class="btn btn-primary btn-sm" 
+                                                    <a style="margin-bottom: 10px;" class="btn btn-primary btn-sm" 
                                                         href="{{ url('parent/my_student/exam_result/'.$value->id) }}">Exam Result</a>
-                                                    <a class="btn btn-warning btn-sm" 
+                                                    <a style="margin-bottom: 10px;" class="btn btn-warning btn-sm" 
                                                         href="{{ url('parent/my_student/calendar/'.$value->id) }}">Calendar</a>
-                                                    <a class="btn btn-primary btn-sm" 
+                                                    <a style="margin-bottom: 10px;" class="btn btn-primary btn-sm" 
                                                         href="{{ url('parent/my_student/attendance/'.$value->id) }}">Attendance</a>
-                                                    <a class="btn btn-primary btn-sm" 
+                                                    <a style="margin-bottom: 10px;" class="btn btn-primary btn-sm" 
                                                         href="{{ url('parent/my_student/homework/'.$value->id) }}">Homework</a>
+                                                    <a style="margin-bottom: 10px;" class="btn btn-primary btn-sm" 
+                                                        href="{{ url('parent/my_student/submitted_homework/'.$value->id) }}">Submitted Homework</a>
                                                 </td>
                                             </tr>
                                         @endforeach
