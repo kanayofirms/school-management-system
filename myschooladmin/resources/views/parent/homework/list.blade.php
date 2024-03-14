@@ -7,7 +7,8 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-12">
-                        <h1>Student Homework</h1>
+                        <h1>Student Homework <span style="color: #3180FF;">({{ $getStudent->name }} 
+                            {{ $getStudent->middle_name }} {{ $getStudent->last_name }})</span></h1>
                     </div>
                     </div>
                 </div>
@@ -73,7 +74,7 @@
                                         <div class="form-group col-md-3">
                                             <button class="btn btn-primary" type="submit"
                                                 style="margin-top: 30px;">Search</button>
-                                            <a href="{{ url('student/my_homework') }}" class="btn btn-success"
+                                            <a href="{{ url('parent/my_student/homework/'.$getStudent->id) }}" class="btn btn-success"
                                                 style="margin-top: 30px;">Reset</a>
                                         </div>
 
@@ -103,7 +104,6 @@
                                             <th>Description</th>
                                             <th>Created By</th>
                                             <th>Created Date</th>
-                                          
                                         </tr>
                                     </thead>
                                     <tbody>
