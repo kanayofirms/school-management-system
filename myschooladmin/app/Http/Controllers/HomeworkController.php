@@ -217,6 +217,21 @@ class HomeworkController extends Controller
         successfully updated");
     }
 
+    public function homework_submitted_teacher($homework_id)
+    {
+        $homework = HomeworkModel::getSingle($homework_id);
+        if(!empty($homework))
+        {
+            $data['homework_id'] = $homework_id;
+            $data['getRecord'] = HomeworkSubmitModel::getRecord($homework_id);
+            $data['header_title'] = "Submitted Homework";
+            return view('teacher.homework.submitted', $data);
+        }
+        else{
+            abort(404);
+        }
+    }
+
     // student side code
 
     public function my_homework()
