@@ -107,7 +107,7 @@ class HomeworkController extends Controller
         if(!empty($homework))
         {
             $data['homework_id'] = $homework_id;
-            $data['getRecord'] = HomeworkModel::getRecord();
+            $data['getRecord'] = HomeworkSubmitModel::getRecord($homework_id);
             $data['header_title'] = "Submitted Homework";
             return view('admin.homework.submitted', $data);
         }
