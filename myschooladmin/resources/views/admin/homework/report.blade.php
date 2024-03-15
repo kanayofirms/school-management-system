@@ -116,11 +116,42 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                        @forelse ($getRecord as $value)
+                                           <tr>
+                                            <td>{{ $value->id }}</td>
+                                            <td>{{ $value->first_name }} {{ $value->middle_name }} {{ $value->last_name }}</td>
+                                            <td>{{ $value->class_name }}</td>
+                                            <td>{{ $value->subject_name }}</td>
+                                            <td>{{ date('d-m-Y', strtotime($value->getHomework->homework_date)) }}</td>
+                                            <td>{{ date('d-m-Y', strtotime($value->getHomework->submission_date)) }}</td>
+                                            <td>
+                                                @if(!@empty($value->getHomework->getDocument()))
+                                                    <a href="{{ $value->getHomework->getDocument() }}" class="btn btn-primary" 
+                                                        download="">Download</a>
+                                                @endif
+                                            </td>
+                                            <td>{!! $value->getHomework->description !!}</td>
+                                            <td>{{ date('d-m-Y', strtotime($value->getHomework->created_at)) }}</td>
+
+
+                                            <td>
+                                                @if(!@empty($value->getDocument()))
+                                                    <a href="{{ $value->getDocument() }}" class="btn btn-primary" 
+                                                        download="">Download</a>
+                                                @endif
+                                            </td>
+                                            <td>{!! $value->description !!}</td>
+                                            <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
+                                           </tr>
+                                       @empty
+                                           <tr>
+                                            <td colspan="100%">Record not found</td>
+                                           </tr>
+                                       @endforelse
                                     </tbody>
                                 </table>
                                 <div style="padding: 10px; float:right;">
-                                                                     
+                                    {!! $getRecord->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}                                 
                                 </div>
                             </div>
                         </div>                        
