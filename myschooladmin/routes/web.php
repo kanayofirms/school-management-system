@@ -189,8 +189,9 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/homework/homework/edit/{id}', [HomeworkController::class, 'homework_edit']);
     Route::post('admin/homework/homework/edit/{id}', [HomeworkController::class, 'homework_update']);
     Route::get('admin/homework/homework/delete/{id}', [HomeworkController::class, 'homework_delete']);
-
     Route::get('admin/homework/homework/submitted/{id}', [HomeworkController::class, 'homework_submitted']);
+
+    Route::get('admin/homework/homework_report', [HomeworkController::class, 'homework_report']);
 
 });
 
