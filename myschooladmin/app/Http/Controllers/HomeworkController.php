@@ -40,12 +40,11 @@ class HomeworkController extends Controller
         $homework->description = trim($request->description);
         $homework->created_by = Auth::user()->id;
 
-        if(!empty($request->file('document_file')))
-        {
+        if (!empty($request->file('document_file'))) {
             $ext = $request->file('document_file')->getClientOriginalExtension();
             $file = $request->file('document_file');
-            $randomStr = date('Ymdhis').Str::random(20);
-            $filename = strtolower($randomStr).'.'.$ext;
+            $randomStr = date('Ymdhis') . Str::random(20);
+            $filename = strtolower($randomStr) . '.' . $ext;
             $file->move('upload/homework/', $filename);
 
             $homework->document_file = $filename;
@@ -54,7 +53,6 @@ class HomeworkController extends Controller
         $homework->save();
 
         return redirect('admin/homework/homework')->with('success', "Homework successfully created");
-
     }
 
     public function homework_edit($id)
@@ -76,12 +74,11 @@ class HomeworkController extends Controller
         $homework->submission_date = trim($request->submission_date);
         $homework->description = trim($request->description);
 
-        if(!empty($request->file('document_file')))
-        {
+        if (!empty($request->file('document_file'))) {
             $ext = $request->file('document_file')->getClientOriginalExtension();
             $file = $request->file('document_file');
-            $randomStr = date('Ymdhis').Str::random(20);
-            $filename = strtolower($randomStr).'.'.$ext;
+            $randomStr = date('Ymdhis') . Str::random(20);
+            $filename = strtolower($randomStr) . '.' . $ext;
             $file->move('upload/homework/', $filename);
 
             $homework->document_file = $filename;
@@ -105,17 +102,21 @@ class HomeworkController extends Controller
     public function homework_submitted($homework_id)
     {
         $homework = HomeworkModel::getSingle($homework_id);
-        if(!empty($homework))
-        {
+        if (!empty($homework)) {
             $data['homework_id'] = $homework_id;
             $data['getRecord'] = HomeworkSubmitModel::getRecord($homework_id);
             $data['header_title'] = "Submitted Homework";
             return view('admin.homework.submitted', $data);
-        }
-        else{
+        } else {
             abort(404);
         }
+    }
 
+    public function homework_report()
+    {
+        $data['getRecord'] = HomeworkSubmitModel::getHomeworkReport();
+        $data['header_title'] = "Homework Report";
+        return view('admin.homework.report', $data);
     }
 
     public function ajax_get_subject(Request $request)
@@ -124,9 +125,8 @@ class HomeworkController extends Controller
         $getSubject = ClassSubjectModel::mySubject($class_id);
         $html = '';
         $html .= '<option value="">Select Subject</option>';
-        foreach ($getSubject as $value)
-        {
-            $html .= '<option value="'.$value->subject_id.'">'.$value->subject_name.'</option>';
+        foreach ($getSubject as $value) {
+            $html .= '<option value="' . $value->subject_id . '">' . $value->subject_name . '</option>';
         }
 
         $json['success'] = $html;
@@ -140,8 +140,7 @@ class HomeworkController extends Controller
     {
         $class_ids = array();
         $getClass = AssignClassTeacherModel::getMyClassSubjectGroup(Auth::user()->id);
-        foreach($getClass as $class)
-        {
+        foreach ($getClass as $class) {
             $class_ids[] = $class->class_id;
         }
         $data['getRecord'] = HomeworkModel::getRecordTeacher($class_ids);
@@ -151,7 +150,7 @@ class HomeworkController extends Controller
 
     public function homework_teacher_add()
     {
-        $data['getClass'] = AssignClassTeacherModel::getMyClassSubjectGroup(Auth::user()->id); 
+        $data['getClass'] = AssignClassTeacherModel::getMyClassSubjectGroup(Auth::user()->id);
         $data['header_title'] = "Add New Homework";
         return view('teacher.homework.add', $data);
     }
@@ -166,12 +165,11 @@ class HomeworkController extends Controller
         $homework->description = trim($request->description);
         $homework->created_by = Auth::user()->id;
 
-        if(!empty($request->file('document_file')))
-        {
+        if (!empty($request->file('document_file'))) {
             $ext = $request->file('document_file')->getClientOriginalExtension();
             $file = $request->file('document_file');
-            $randomStr = date('Ymdhis').Str::random(20);
-            $filename = strtolower($randomStr).'.'.$ext;
+            $randomStr = date('Ymdhis') . Str::random(20);
+            $filename = strtolower($randomStr) . '.' . $ext;
             $file->move('upload/homework/', $filename);
 
             $homework->document_file = $filename;
@@ -187,9 +185,9 @@ class HomeworkController extends Controller
         $getRecord = HomeworkModel::getSingle($id);
         $data['getRecord'] = $getRecord;
         $data['getSubject'] = ClassSubjectModel::mySubject($getRecord->class_id);
-        $data['getClass'] = AssignClassTeacherModel::getMyClassSubjectGroup(Auth::user()->id); 
+        $data['getClass'] = AssignClassTeacherModel::getMyClassSubjectGroup(Auth::user()->id);
         $data['header_title'] = "Edit Homework";
-        return view('teacher.homework.edit', $data); 
+        return view('teacher.homework.edit', $data);
     }
 
     public function homework_teacher_update($id, Request $request)
@@ -201,12 +199,11 @@ class HomeworkController extends Controller
         $homework->submission_date = trim($request->submission_date);
         $homework->description = trim($request->description);
 
-        if(!empty($request->file('document_file')))
-        {
+        if (!empty($request->file('document_file'))) {
             $ext = $request->file('document_file')->getClientOriginalExtension();
             $file = $request->file('document_file');
-            $randomStr = date('Ymdhis').Str::random(20);
-            $filename = strtolower($randomStr).'.'.$ext;
+            $randomStr = date('Ymdhis') . Str::random(20);
+            $filename = strtolower($randomStr) . '.' . $ext;
             $file->move('upload/homework/', $filename);
 
             $homework->document_file = $filename;
@@ -221,14 +218,12 @@ class HomeworkController extends Controller
     public function homework_submitted_teacher($homework_id)
     {
         $homework = HomeworkModel::getSingle($homework_id);
-        if(!empty($homework))
-        {
+        if (!empty($homework)) {
             $data['homework_id'] = $homework_id;
             $data['getRecord'] = HomeworkSubmitModel::getRecord($homework_id);
             $data['header_title'] = "Submitted Homework";
             return view('teacher.homework.submitted', $data);
-        }
-        else{
+        } else {
             abort(404);
         }
     }
@@ -256,12 +251,11 @@ class HomeworkController extends Controller
         $homework->student_id = Auth::user()->id;
         $homework->description = trim($request->description);
 
-        if(!empty($request->file('document_file')))
-        {
+        if (!empty($request->file('document_file'))) {
             $ext = $request->file('document_file')->getClientOriginalExtension();
             $file = $request->file('document_file');
-            $randomStr = date('Ymdhis').Str::random(20);
-            $filename = strtolower($randomStr).'.'.$ext;
+            $randomStr = date('Ymdhis') . Str::random(20);
+            $filename = strtolower($randomStr) . '.' . $ext;
             $file->move('upload/homework/', $filename);
 
             $homework->document_file = $filename;
