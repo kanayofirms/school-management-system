@@ -112,6 +112,51 @@ class HomeworkSubmitModel extends Model
             ->join('homework', 'homework.id', '=', 'homework_submit.homework_id')
             ->join('class', 'class.id', '=', 'homework.class_id')
             ->join('subject', 'subject.id', '=', 'homework.subject_id');
+
+            if (!empty(Request::get('first_name'))) {
+                $return = $return->where('users.name', 'like', '%' . Request::get('first_name') . '%');
+            }
+
+            if (!empty(Request::get('middle_name'))) {
+                $return = $return->where('users.middle_name', 'like', '%' . Request::get('middle_name') . '%');
+            }
+
+            if (!empty(Request::get('last_name'))) {
+                $return = $return->where('users.last_name', 'like', '%' . Request::get('last_name') . '%');
+            }
+            
+            if (!empty(Request::get('class_name'))) {
+                $return = $return->where('class.name', 'like', '%' . Request::get('class_name') . '%');
+            }
+    
+            if (!empty(Request::get('subject_name'))) {
+                $return = $return->where('subject.name', 'like', '%' . Request::get('subject_name') . '%');
+            }
+    
+            if (!empty(Request::get('from_homework_date'))) {
+                $return = $return->where('homework.homework_date', '>=', Request::get('from_homework_date'));
+            }
+    
+            if (!empty(Request::get('to_homework_date'))) {
+                $return = $return->where('homework.homework_date', '<=', Request::get('to_homework_date'));
+            }
+    
+            if (!empty(Request::get('from_submission_date'))) {
+                $return = $return->where('homework.submission_date', '>=', Request::get('from_submission_date'));
+            }
+    
+            if (!empty(Request::get('to_submission_date'))) {
+                $return = $return->where('homework.submission_date', '<=', Request::get('to_submission_date'));
+            }
+    
+            if (!empty(Request::get('from_created_date'))) {
+                $return = $return->whereDate('homework_submit.created_at', '>=', Request::get('from_created_date'));
+            }
+    
+            if (!empty(Request::get('to_created_date'))) {
+                $return = $return->whereDate('homework_submit.created_at', '<=', Request::get('to_created_date'));
+            }
+
         $return = $return->orderBy('homework_submit.id', 'desc')
             ->paginate(20);
 
