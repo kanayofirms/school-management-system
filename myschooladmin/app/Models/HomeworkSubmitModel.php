@@ -98,6 +98,26 @@ class HomeworkSubmitModel extends Model
         return $return;
     }
 
+    static public function getHomeworkReport()
+    {
+        $return = HomeworkSubmitModel::select(
+            'homework_submit.*',
+            'class.name as class_name',
+            'subject.name as subject_name',
+            'users.name as first_name',
+            'users.middle_name',
+            'users.last_name'
+        )
+            ->join('users', 'users.id', '=', 'homework_submit.student_id')
+            ->join('homework', 'homework.id', '=', 'homework_submit.homework_id')
+            ->join('class', 'class.id', '=', 'homework.class_id')
+            ->join('subject', 'subject.id', '=', 'homework.subject_id');
+        $return = $return->orderBy('homework_submit.id', 'desc')
+            ->paginate(20);
+
+        return $return;
+    }
+
     public function getDocument()
     {
         if (!empty($this->document_file) && file_exists('upload/homework/' . $this->document_file)) {
