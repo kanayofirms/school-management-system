@@ -9,6 +9,12 @@ use Hash;
 
 class UserController extends Controller
 {
+    public function Setting()
+    {
+        $data['header_title'] = "Setting";
+        return view('admin.setting', $data);
+    }
+
     public function myAccount()
     {
         $data['getRecord'] = User::getSingle(Auth::user()->id);
