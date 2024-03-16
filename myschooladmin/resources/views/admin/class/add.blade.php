@@ -12,15 +12,14 @@
           </div>
         
         </div>
-      </div><!-- /.container-fluid -->
+      </div>
     </section>
 
-    <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
-            <!-- general form elements -->
+            
             <div class="card card-primary">   
               <form method="post" action="">
                 {{ csrf_field() }}
@@ -28,6 +27,11 @@
                     <div class="form-group">
                         <label>Class Name</label>
                         <input type="text" class="form-control" name="name" required placeholder="Class Name">
+                      </div>
+
+                      <div class="form-group">
+                        <label>Amount (N)</label>
+                        <input type="number" class="form-control" name="amount" required placeholder="Amount">
                       </div>
 
                       <div class="form-group">
