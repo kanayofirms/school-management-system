@@ -132,7 +132,23 @@ class User extends Authenticatable
         return $return;
     }
 
-    
+    static public function getCollectFeesStudent()
+    {
+        $return = self::select('users.*', 'class.name as class_name')
+                        ->join('class', 'class.id', '=', 'users.class_id')
+                        ->where('users.user_type', '=', 3)
+                        ->where('users.is_delete', '=', 0);
+
+                        if(!empty(Request::get('class_id')))
+                        {
+                            $return = $return->where('users.class_id', '=', Request::get('class_id'));
+                        }
+                        
+        $return = $return->orderBy('users.name', 'asc')
+                        ->paginate(50);
+
+        return $return;
+    }
 
     static public function getStudent()
     {
