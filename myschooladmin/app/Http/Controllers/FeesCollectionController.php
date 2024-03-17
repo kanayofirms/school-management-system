@@ -10,7 +10,7 @@ class FeesCollectionController extends Controller
 {
     public function collect_fees()
     {
-        $data['getRecord'] = ClassModel::getRecord();
+        $data['getClass'] = ClassModel::getClass();
         $data['header_title'] = "Collect Fees";
         return view('admin.fees_collection.collect_fees', $data);
     }
