@@ -97,14 +97,36 @@
                                             <th>Student ID</th>
                                             <th>Student Name</th>
                                             <th>Class Name</th>
-                                            <th>Amount</th>
+                                            <th>Total Amount</th>
+                                            <th>Paid Amount</th>
                                             <th>Created Date</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                        @if(!@empty($getRecord))
+                                            @forelse ($getRecord as $value)
+                                                <tr>
+                                                    <td>{{ $value->id }}</td>
+                                                    <td>{{ $value->name }} {{ $value->middle_name }} {{ $value->last_name }}</td>
+                                                    <td>{{ $value->class_name }}</td>
+                                                    <td>N{{ number_format($value->amount, 2) }}</td>
+                                                    <td>N0.00</td>
+                                                    <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
+                                                    <td>
 
+                                                    </td>
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td colspan="100%">Record not found</td>
+                                                </tr>
+                                            @endforelse
+                                        @else
+                                            <tr>
+                                                <td colspan="100%">Record not found</td>
+                                            </tr> 
+                                        @endif
                                     </tbody>
                                 </table>
                                 <div style="padding: 10px; float:right;">
