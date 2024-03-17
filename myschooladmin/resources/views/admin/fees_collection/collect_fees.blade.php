@@ -94,11 +94,10 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>Name</th>
+                                            <th>Student ID</th>
+                                            <th>Student Name</th>
+                                            <th>Class Name</th>
                                             <th>Amount</th>
-                                            <th>Status</th>
-                                            <th>Created By</th>
                                             <th>Created Date</th>
                                             <th>Action</th>
                                         </tr>
