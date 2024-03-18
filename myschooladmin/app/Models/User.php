@@ -82,17 +82,22 @@ class User extends Authenticatable
 
                         if(!empty(Request::get('name')))
                         {
-                            $return = $return->where('name','like', '%'.Request::get('name').'%');
+                            $return = $return->where('users.name','like', '%'.Request::get('name').'%');
+                        }
+
+                        if(!empty(Request::get('middle_name')))
+                        {
+                            $return = $return->where('users.middle_name','like', '%'.Request::get('middle_name').'%');
                         }
 
                         if(!empty(Request::get('last_name')))
                         {
-                            $return = $return->where('last_name','like', '%'.Request::get('last_name').'%');
+                            $return = $return->where('users.last_name','like', '%'.Request::get('last_name').'%');
                         }
 
                         if(!empty(Request::get('email')))
                         {
-                            $return = $return->where('email','like', '%'.Request::get('email').'%');
+                            $return = $return->where('users.email','like', '%'.Request::get('email').'%');
                         }
 
                         if(!empty(Request::get('gender')))
@@ -102,22 +107,22 @@ class User extends Authenticatable
 
                         if(!empty(Request::get('mobile_number')))
                         {
-                            $return = $return->where('mobile_number','like', '%'.Request::get('mobile_number').'%');
+                            $return = $return->where('users.mobile_number','like', '%'.Request::get('mobile_number').'%');
                         }
 
                         if(!empty(Request::get('address')))
                         {
-                            $return = $return->where('address','like', '%'.Request::get('address').'%');
+                            $return = $return->where('users.address','like', '%'.Request::get('address').'%');
                         }
 
                         if(!empty(Request::get('occupation')))
                         {
-                            $return = $return->where('occupation','like', '%'.Request::get('occupation').'%');
+                            $return = $return->where('users.occupation','like', '%'.Request::get('occupation').'%');
                         }
 
                         if(!empty(Request::get('date')))
                         {
-                            $return = $return->whereDate('created_at','=', Request::get('date'));
+                            $return = $return->whereDate('users.created_at','=', Request::get('date'));
                         }
 
                         if(!empty(Request::get('status')))
@@ -142,6 +147,26 @@ class User extends Authenticatable
                         if(!empty(Request::get('class_id')))
                         {
                             $return = $return->where('users.class_id', '=', Request::get('class_id'));
+                        }
+
+                        if(!empty(Request::get('student_id')))
+                        {
+                            $return = $return->where('users.id', '=', Request::get('student_id'));
+                        }
+
+                        if(!empty(Request::get('first_name')))
+                        {
+                            $return = $return->where('users.name','like', '%'.Request::get('first_name').'%');
+                        }
+
+                        if(!empty(Request::get('middle_name')))
+                        {
+                            $return = $return->where('users.middle_name','like', '%'.Request::get('middle_name').'%');
+                        }
+
+                        if(!empty(Request::get('last_name')))
+                        {
+                            $return = $return->where('users.last_name','like', '%'.Request::get('last_name').'%');
                         }
 
         $return = $return->orderBy('users.name', 'asc')
