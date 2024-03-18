@@ -22,4 +22,10 @@ class FeesCollectionController extends Controller
         $data['header_title'] = "Collect Fees";
         return view('admin.fees_collection.collect_fees', $data);
     }
+
+    public function add_fees(Request $request)
+    {
+        $data['header_title'] = "Add Fees";
+        return view('admin.fees_collection.add_fees', $data);
+    }
 }
