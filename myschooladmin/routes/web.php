@@ -198,7 +198,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/homework/homework_report', [HomeworkController::class, 'homework_report']);
 
     Route::get('admin/fees_collection/collect_fees', [FeesCollectionController::class, 'collect_fees']);
-    Route::get('admin/fees_collection/collect_fees/add_fees', [FeesCollectionController::class, 'add_fees']);
+    Route::get('admin/fees_collection/collect_fees/add_fees/{student_id}', [FeesCollectionController::class, 'add_fees']);
 
 
 
