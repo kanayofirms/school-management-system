@@ -60,22 +60,43 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
+            <form action="" method="post">
+                {{ csrf_field() }}
             <div class="modal-body">
-              <form>
+              
                 <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">Amount:</label>
-                  <input type="text" class="form-control" name="amount">
+                    <label class="col-form-label">Total Amount : N{{ number_format($getStudent->amount, 2) }}</label>
                 </div>
                 <div class="form-group">
-                  <label for="message-text" class="col-form-label">Message:</label>
-                  <textarea class="form-control" id="message-text"></textarea>
+                    <label class="col-form-label">Paid Amount : </label>
                 </div>
-              </form>
+                <div class="form-group">
+                    <label class="col-form-label">Remaining Amount : </label>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label">Amount <span color: red;>*</span></label>
+                  <input type="number" class="form-control" name="amount">
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label">Payment Type <span color: red;>*</span></label>
+                    <select name="payment_type" id="" class="form-control" required>
+                        <option value="">Select</option>
+                        <option value="Cash">Cash</option>
+                        <option value="Cheque">Cheque</option>
+                        <option value="Transfer">Transfer</option>
+                    </select>
+                  </div>
+                <div class="form-group">
+                  <label class="col-form-label">Remark</label>
+                  <textarea class="form-control" name="remark"></textarea>
+                </div>
+              
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Send message</button>
+              <button type="submit" class="btn btn-primary">Submit</button>
             </div>
+        </form>
           </div>
         </div>
       </div>
