@@ -65,6 +65,9 @@
             <div class="modal-body">
               
                 <div class="form-group">
+                    <label class="col-form-label">Class Name : {{ $getStudent->class_name }}</label>
+                </div>
+                <div class="form-group">
                     <label class="col-form-label">Total Amount : N{{ number_format($getStudent->amount, 2) }}</label>
                 </div>
                 <div class="form-group">
