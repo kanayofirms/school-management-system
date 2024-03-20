@@ -27,6 +27,7 @@ class FeesCollectionController extends Controller
 
     public function add_fees($student_id)
     {
+        $data['getFees'] = StudentAddFeesModel::getFees($student_id);
         $data['getStudent'] = User::getSingleClass($student_id);
         $data['header_title'] = "Add Fees";
         return view('admin.fees_collection.add_fees', $data);
