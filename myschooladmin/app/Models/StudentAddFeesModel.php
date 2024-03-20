@@ -15,4 +15,12 @@ class StudentAddFeesModel extends Model
     {
         return self::find($id);
     }
+
+    static public function getFees($student_id)
+    {
+        return self::select('student_add_fees.*')
+                    ->join('class', 'class.id', '=', 'student_add_fees.class_id')
+                    ->where('student_add_fees.student_id', '=', $student_id)
+                    ->get();
+    }
 }
