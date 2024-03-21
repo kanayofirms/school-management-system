@@ -23,6 +23,7 @@ class StudentAddFeesModel extends Model
                     ->join('class', 'class.id', '=', 'student_add_fees.class_id')
                     ->join('users', 'users.id', '=', 'student_add_fees.created_by')
                     ->where('student_add_fees.student_id', '=', $student_id)
+                    ->where('student_add_fees.is_payment', '=', 1)
                     ->get();
     }
 
@@ -30,6 +31,7 @@ class StudentAddFeesModel extends Model
     {
         return self::where('student_add_fees.class_id', '=', $class_id)
                     ->where('student_add_fees.student_id', '=', $student_id)
+                    ->where('student_add_fees.is_payment', '=', 1)
                     ->sum('student_add_fees.paid_amount');
     }
 }
