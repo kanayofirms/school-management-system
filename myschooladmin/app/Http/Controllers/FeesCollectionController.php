@@ -91,15 +91,36 @@ class FeesCollectionController extends Controller
         
         $data['getFees'] = StudentAddFeesModel::getFees($student_id);
 
-        dd($data['getFees']);
-        
+        //dd($data['getFees']);
+
         $getStudent = User::getSingleClass($student_id);
         $data['getStudent'] = $getStudent;  
 
         $data['header_title'] = "Fees Collection";
-
+        
         $data['paid_amount'] = StudentAddFeesModel::getPaidAmount($student_id, 
-        $getStudent->class_id);
+        $getStudent->class_id); // Auth::user()->id, Auth::user()->class_id
         return view('student.my_fees_collection', $data);
+    }
+
+    public function collect_fees_student_payment(Request $request)
+    {
+        $getStudent = User::getSingleClass(Auth::user()-id);
+        $paid_amount = StudentAddFeesModel::getPaidAmount(Auth::user()-id, Auth::user()->class_id);
+        if(!empty($request->amount))
+        {
+            $remaingAmount = $getStudent->amount - $paid_amount;
+            if($remaingAmount >= $request->amount)
+            {
+            }
+            else{
+                return redirect()->back()->with('error', "Your amount is greater than remaining amount");
+            }
+        }
+        else
+        {
+            return redirect()->back()->with('error', "Add at least N1");
+        }
+        dd($request->all());
     }
 }
