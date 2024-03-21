@@ -43,10 +43,14 @@ class FeesCollectionController extends Controller
         $remaingAmount = $getStudent->amount - $paid_amount;
         if($remaingAmount >= $request->amount)
         {
+            $remaining_amount_user = $remaingAmount - $request->amount;
+            
             $payment = new StudentAddFeesModel;
             $payment->student_id = $student_id;
             $payment->class_id = $getStudent->class_id;
             $payment->paid_amount = $request->amount;
+            $payment->total_amount = $remaingAmount;
+            $payment->remaining_amount = $remaining_amount_user;
             $payment->payment_type = $request->payment_type;
             $payment->remark = $request->remark;
             $payment->created_by = Auth::user()->id;
