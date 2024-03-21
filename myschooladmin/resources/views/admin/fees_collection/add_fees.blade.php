@@ -7,7 +7,8 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Collect Fees</h1>
+                        <h1>Collect Fees <span style="color: #3180FF;">({{ $getStudent->name }} 
+                            {{ $getStudent->middle_name }} {{ $getStudent->last_name }})</span></h1>
                     </div>
                     <div class="col-sm-6" style="text-align: right;">
                         <button type="button" class="btn btn-primary" id="AddFees">Add Fees</button>
@@ -27,17 +28,33 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Student ID</th>
-                                            <th>Student Name</th>
                                             <th>Class Name</th>
                                             <th>Total Amount</th>
                                             <th>Paid Amount</th>
+                                            <th>Remaining Amount</th>
+                                            <th>Payment Type</th>
+                                            <th>Remark</th>
+                                            <th>Created By</th>
                                             <th>Created Date</th>
-                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                        @forelse ($getFees as $value)
+                                            <tr>
+                                                <td>{{ $value->class_name }}</td>
+                                                <td>N{{ number_format($value->total_amount, 2) }}</td>
+                                                <td>N{{ number_format($value->paid_amount, 2) }}</td>
+                                                <td>N{{ number_format($value->remaining_amount, 2) }}</td>
+                                                <td>{{ $value->payment_type }}</td>
+                                                <td>{{ $value->remark }}</td>
+                                                <td>{{ $value->created_by_name }}</td>
+                                                <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="100%">Record not found</td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                                 <div style="padding: 10px; float:right;">
