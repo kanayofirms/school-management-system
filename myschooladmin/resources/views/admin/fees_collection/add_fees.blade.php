@@ -88,10 +88,13 @@
                     <label class="col-form-label">Total Amount : N{{ number_format($getStudent->amount, 2) }}</label>
                 </div>
                 <div class="form-group">
-                    <label class="col-form-label">Paid Amount : </label>
+                    <label class="col-form-label">Paid Amount : N{{ number_format($paid_amount, 2) }}</label>
                 </div>
                 <div class="form-group">
-                    <label class="col-form-label">Remaining Amount : </label>
+                    @php
+                        $remaingAmount = $getStudent->amount - $paid_amount;
+                    @endphp
+                    <label class="col-form-label">Remaining Amount : N{{ number_format($remaingAmount, 2) }}</label>
                 </div>
                 <div class="form-group">
                   <label class="col-form-label">Amount <span color: red;>*</span></label>
