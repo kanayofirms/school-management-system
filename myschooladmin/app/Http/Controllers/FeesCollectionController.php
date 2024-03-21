@@ -40,28 +40,36 @@ class FeesCollectionController extends Controller
     {
         $getStudent = User::getSingleClass($student_id);
         $paid_amount = StudentAddFeesModel::getPaidAmount($student_id, $getStudent->class_id);
-        $remaingAmount = $getStudent->amount - $paid_amount;
-        if($remaingAmount >= $request->amount)
+        if(!empty($request->amount))
         {
-            $remaining_amount_user = $remaingAmount - $request->amount;
-            
-            $payment = new StudentAddFeesModel;
-            $payment->student_id = $student_id;
-            $payment->class_id = $getStudent->class_id;
-            $payment->paid_amount = $request->amount;
-            $payment->total_amount = $remaingAmount;
-            $payment->remaining_amount = $remaining_amount_user;
-            $payment->payment_type = $request->payment_type;
-            $payment->remark = $request->remark;
-            $payment->created_by = Auth::user()->id;
-            $payment->save();
-
-            return redirect()->back()->with('success', "Fees Successfully Added");
+            $remaingAmount = $getStudent->amount - $paid_amount;
+            if($remaingAmount >= $request->amount)
+            {
+                $remaining_amount_user = $remaingAmount - $request->amount;
+    
+                $payment = new StudentAddFeesModel;
+                $payment->student_id = $student_id;
+                $payment->class_id = $getStudent->class_id;
+                $payment->paid_amount = $request->amount;
+                $payment->total_amount = $remaingAmount;
+                $payment->remaining_amount = $remaining_amount_user;
+                $payment->payment_type = $request->payment_type;
+                $payment->remark = $request->remark;
+                $payment->created_by = Auth::user()->id;
+                $payment->save();
+    
+                return redirect()->back()->with('success', "Fees Successfully Added");
+            }
+            else{
+                return redirect()->back()->with('error', "Your amount is greater than remaining amount");
+            }
         }
-        else{
-            return redirect()->back()->with('error', "Your amount is greater than remaining amount");
-        }
+        else
+        {
+            return redirect()->back()->with('error', "Add at least N1");
 
+        }
+        
         $payment = new StudentAddFeesModel;
         $payment->student_id = $student_id;
         $payment->class_id = $getStudent->class_id;
