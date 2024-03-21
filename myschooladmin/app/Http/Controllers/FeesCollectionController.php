@@ -82,4 +82,24 @@ class FeesCollectionController extends Controller
         return redirect()->back()->with('success', "Fees Successfully Added");
 
     }
+
+    // student side code
+
+    public function collect_fees_student(Request $request)
+    {
+        $student_id = Auth::user()->id;
+        
+        $data['getFees'] = StudentAddFeesModel::getFees($student_id);
+
+        dd($data['getFees']);
+        
+        $getStudent = User::getSingleClass($student_id);
+        $data['getStudent'] = $getStudent;  
+
+        $data['header_title'] = "Fees Collection";
+
+        $data['paid_amount'] = StudentAddFeesModel::getPaidAmount($student_id, 
+        $getStudent->class_id);
+        return view('student.my_fees_collection', $data);
+    }
 }
