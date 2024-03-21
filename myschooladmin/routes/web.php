@@ -277,6 +277,10 @@ Route::group(['middleware' => 'student'], function () {
     Route::post('student/my_homework/submit_homework/{id}', [HomeworkController::class, 'submit_homework_insert']); 
     
     Route::get('student/my_submitted_homework', [HomeworkController::class, 'my_submitted_homework']);
+
+    Route::get('student/fees_collection', [FeesCollectionController::class, 'collect_fees_student']);
+    Route::post('student/fees_collection', [FeesCollectionController::class, 'collect_fees_student_payment']);
+
 });
 
 Route::group(['middleware' => 'parent'], function () {
