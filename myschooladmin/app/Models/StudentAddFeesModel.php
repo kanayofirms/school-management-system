@@ -18,8 +18,10 @@ class StudentAddFeesModel extends Model
 
     static public function getFees($student_id)
     {
-        return self::select('student_add_fees.*')
+        return self::select('student_add_fees.*', 'class.name as class_name', 'users.name as 
+        created_by_name')
                     ->join('class', 'class.id', '=', 'student_add_fees.class_id')
+                    ->join('users', 'users.id', '=', 'student_add_fees.created_by')
                     ->where('student_add_fees.student_id', '=', $student_id)
                     ->get();
     }
