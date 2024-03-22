@@ -388,6 +388,7 @@ class ExaminationsController extends Controller
         {
             $dataE = array();
             $dataE['exam_name'] = $value->exam_name;
+            $dataE['exam_id'] = $value->exam_id;
             $getExamSubject = MarksRegisterModel::getExamSubject($value->exam_id, Auth::user()->id);
             $dataSubject = array();
             foreach($getExamSubject as $exam)
@@ -411,6 +412,11 @@ class ExaminationsController extends Controller
         $data['getRecord'] = $result;
         $data['header_title'] = "My Exam Result";
         return view('student.my_exam_result', $data);
+    }
+
+    public function myExamResultPrint()
+    {
+        return view('exam_result_print');
     }
 
     public function myExamTimetable(Request $request)
