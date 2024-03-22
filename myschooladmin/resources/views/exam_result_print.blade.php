@@ -79,16 +79,31 @@
                                     </tr>
                                 </tbody>
                             </table>
+
+                            <table class="margin-bottom" style="width: 100%">
+                                <tbody>
+                                    <tr>
+                                        <td width="19%">Total Score : </td>
+                                        <td style="border-bottom:1px solid; width:50%;"></td>
+                                        <td width="16%">Average : </td>
+                                        <td style="border-bottom:1px solid; width:50%;"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </td>
-                        <td></td>
-                        <td></td>
+                        <td width="5%"></td>
+                        <td width="20%" valign="top"></td>
+                            <img src="http://localhost/school-management-system/myschooladmin/upload/profile/20231226114824emxqpx2ja4itvffoz2pg.jpg" 
+                            alt="" style="border-radius:6px;" height="100px" width="100px">
+                            <br>
+                            Gender : Male
                         <td></td>
                     </tr>
             </table>
     </div>
 
     <script type="text/javascript">
-        // window.print();
+        window.print();
     </script>
 </body>
 </html>
