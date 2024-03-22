@@ -6,6 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Print Exam Result</title>
     <style type="text/css">
+        @page {
+            size: 8.3in 11.7in;
+        }
+        @page {
+            size: A4;
+        }
+
+        @media print{
+            @page {
+                margin: 0px;
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+        }
         .margin-bottom
         {
             margin-bottom: 3px;
@@ -17,7 +31,7 @@
             <table style="width: 100%; text-align:center;">
                 <tr>
                     <td width="5%"></td>
-                    <td width="15%"><img style="width: 110px;" src="" alt=""></td>
+                    {{-- <td width="15%"><img style="width: 110px;" src="" alt=""></td> --}}
                     <td align="left">
                         <h1>MODERN IDEAL COLLEGE</h1>
                     </td>
@@ -51,6 +65,17 @@
                                     <tr>
                                         <td width="23%">Class : </td>
                                         <td style="border-bottom:1px solid; width:100%;"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="margin-bottom" style="width: 100%">
+                                <tbody>
+                                    <tr>
+                                        <td width="28%">Academic Session : </td>
+                                        <td style="border-bottom:1px solid; width:20%;"></td>
+                                        <td width="11%">Term : </td>
+                                        <td style="border-bottom:1px solid; width:80%;"></td>
                                     </tr>
                                 </tbody>
                             </table>
