@@ -80,7 +80,7 @@ class AdminController extends Controller
 
         if(!empty($request->file('profile_pic')))
         {
-            if(!empty($student->getProfile()))
+            if(!empty($user->getProfile()))
             {
                 unlink('upload/profile/'.$user->profile_pic);
             }
