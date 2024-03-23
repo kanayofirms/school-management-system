@@ -439,6 +439,18 @@ class User extends Authenticatable
         }
         else
         {
+            return '';
+        }
+    }
+
+    public function getProfileDirect()
+    {
+        if(!empty($this->profile_pic) && file_exists('upload/profile/'.$this->profile_pic))
+        {
+            return url('upload/profile/'.$this->profile_pic);
+        }
+        else
+        {
             return url('upload/profile/user.png');
         }
     }
