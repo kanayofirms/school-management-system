@@ -66,6 +66,7 @@ class StudentController extends Controller
 
             $student->profile_pic = $filename;
         }
+        
         $student->address = trim($request->address);
         $student->country = trim($request->country);
         $student->state = trim($request->state);
@@ -150,6 +151,7 @@ class StudentController extends Controller
 
             $student->profile_pic = $filename;
         }
+        
         $student->address = trim($request->address);
         $student->country = trim($request->country);
         $student->state = trim($request->state);
