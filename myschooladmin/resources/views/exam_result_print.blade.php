@@ -60,7 +60,7 @@
                     <tr>
                         <td width="5%"></td>
                         <td width="70%">
-                            <table class="margin-bottom" style="width: 100%">
+                            <table class="margin-bottom" style="width: 50%;">
                                 <tbody>
                                     <tr>
                                         <td width="27%">Name Of Student : </td>
@@ -69,7 +69,7 @@
                                 </tbody>
                             </table>
 
-                            <table class="margin-bottom" style="width: 100%">
+                            <table class="margin-bottom" style="width: 30%;">
                                 <tbody>
                                     <tr>
                                         <td width="23%">Admission No : </td>
@@ -78,7 +78,7 @@
                                 </tbody>
                             </table>
 
-                            <table class="margin-bottom" style="width: 100%">
+                            <table class="margin-bottom" style="width: 30%;">
                                 <tbody>
                                     <tr>
                                         <td width="23%">Class : </td>
@@ -87,23 +87,23 @@
                                 </tbody>
                             </table>
 
-                            <table class="margin-bottom" style="width: 100%">
+                            <table class="margin-bottom" style="width: 30%;">
                                 <tbody>
                                     <tr>
-                                        <td width="28%">Academic Session : </td>
+                                        <td width="18%">Academic Session : </td>
                                         <td style="border-bottom:1px solid; width:20%;"></td>
-                                        <td width="11%">Term : </td>
+                                        <td width="12%">Term : </td>
                                         <td style="border-bottom:1px solid; width:80%;"></td>
                                     </tr>
                                 </tbody>
                             </table>
 
-                            <table class="margin-bottom" style="width: 100%">
+                            <table class="margin-bottom" style="width: 30%;">
                                 <tbody>
                                     <tr>
                                         <td width="19%">Total Score : </td>
                                         <td style="border-bottom:1px solid; width:50%;"></td>
-                                        <td width="16%">Average : </td>
+                                        <td width="11%">Average : </td>
                                         <td style="border-bottom:1px solid; width:50%;"></td>
                                     </tr>
                                 </tbody>
@@ -311,6 +311,24 @@
                   </table>
 
             </div>
+
+            <div>
+                <p>
+                    Merchants using SeerBit can receive payments in 13 currencies like GBP, CAD, and USD, 
+                    so if you have international customers, SeerBit has you covered. 
+                    There are no setup fees, but it charges 1.5% and 3.8% of the transaction fee 
+                    for local and international transactions, respectively.
+                </p>
+            </div>
+
+            <table class="margin-bottom" style="width: 50%">
+                <tbody>
+                    <tr>
+                        <td width="10%">Signature : </td>
+                        <td style="border-bottom:1px solid; width:40%;"></td>
+                    </tr>
+                </tbody>
+            </table>
     </div>
 
     <script type="text/javascript">
