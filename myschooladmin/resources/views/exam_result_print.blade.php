@@ -24,6 +24,24 @@
         {
             margin-bottom: 3px;
         }
+        .table-bg {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 15px;
+            text-align: center;
+        }
+        .th {
+            border: 1px solid #000;
+            padding: 10px;
+        }
+        .td {
+            border: 1px solid #000;
+            padding: 3px;
+        }
+        .text-container {
+            text-align: left;
+            padding-left: 5px;
+        }
     </style>
 </head>
 <body>
@@ -100,10 +118,203 @@
                         <td></td>
                     </tr>
             </table>
+
+            <br>
+            <div>
+                <table class="table-bg">
+                    <thead>
+                      <tr>
+                        <th class="th">Subject Name</th>
+                        <th class="th">Attendance</th>
+                        <th class="th">CAT 1</th>
+                        <th class="th">CAT 2</th>
+                        <th class="th">Exam</th>
+                        <th class="th">Total Score</th>
+                        <th class="th">Passing Mark</th>
+                        <th class="th">Full Mark</th>
+                        <th class="th">Result</th>
+  
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                          <td class="td" "text-container">Mathematics</td>
+                          <td class="td">10</td>
+                          <td class="td">5</td>
+                          <td class="td">5</td>
+                          <td class="td">67</td>
+                          <td class="td">87</td>
+                          <td class="td">40</td>
+                          <td class="td">100</td>
+                          <td class="td">
+                            <span style="color: green; font-weight:bold;">Pass</span>
+                            </td>
+                        </tr>   
+
+                        <tr>
+                          <td class="td" "text-container">Mathematics</td>
+                          <td class="td">10</td>
+                          <td class="td">5</td>
+                          <td class="td">5</td>
+                          <td class="td">67</td>
+                          <td class="td">87</td>
+                          <td class="td">40</td>
+                          <td class="td">100</td>
+                          <td class="td">
+                            <span style="color: green; font-weight:bold;">Pass</span>
+                            </td>
+                        </tr> 
+                        
+                        <tr>
+                            <td class="td" "text-container">Mathematics</td>
+                            <td class="td">10</td>
+                            <td class="td">5</td>
+                            <td class="td">5</td>
+                            <td class="td">67</td>
+                            <td class="td">87</td>
+                            <td class="td">40</td>
+                            <td class="td">100</td>
+                            <td class="td">
+                              <span style="color: green; font-weight:bold;">Pass</span>
+                              </td>
+                          </tr>   
+
+                          <tr>
+                            <td class="td" "text-container">Mathematics</td>
+                            <td class="td">10</td>
+                            <td class="td">5</td>
+                            <td class="td">5</td>
+                            <td class="td">67</td>
+                            <td class="td">87</td>
+                            <td class="td">40</td>
+                            <td class="td">100</td>
+                            <td class="td">
+                              <span style="color: green; font-weight:bold;">Pass</span>
+                              </td>
+                          </tr>   
+
+                          <tr>
+                            <td class="td" "text-container">Mathematics</td>
+                            <td class="td">10</td>
+                            <td class="td">5</td>
+                            <td class="td">5</td>
+                            <td class="td">67</td>
+                            <td class="td">87</td>
+                            <td class="td">40</td>
+                            <td class="td">100</td>
+                            <td class="td">
+                              <span style="color: green; font-weight:bold;">Pass</span>
+                              </td>
+                          </tr>   
+
+                          <tr>
+                            <td class="td" "text-container">Mathematics</td>
+                            <td class="td">10</td>
+                            <td class="td">5</td>
+                            <td class="td">5</td>
+                            <td class="td">67</td>
+                            <td class="td">87</td>
+                            <td class="td">40</td>
+                            <td class="td">100</td>
+                            <td class="td">
+                              <span style="color: green; font-weight:bold;">Pass</span>
+                              </td>
+                          </tr>   
+
+                          <tr>
+                            <td class="td" "text-container">Mathematics</td>
+                            <td class="td">10</td>
+                            <td class="td">5</td>
+                            <td class="td">5</td>
+                            <td class="td">67</td>
+                            <td class="td">87</td>
+                            <td class="td">40</td>
+                            <td class="td">100</td>
+                            <td class="td">
+                              <span style="color: green; font-weight:bold;">Pass</span>
+                              </td>
+                          </tr>   
+
+                          <tr>
+                            <td class="td" "text-container">Mathematics</td>
+                            <td class="td">10</td>
+                            <td class="td">5</td>
+                            <td class="td">5</td>
+                            <td class="td">67</td>
+                            <td class="td">87</td>
+                            <td class="td">40</td>
+                            <td class="td">100</td>
+                            <td class="td">
+                              <span style="color: green; font-weight:bold;">Pass</span>
+                              </td>
+                          </tr>   
+
+                          <tr>
+                            <td class="td" "text-container">Mathematics</td>
+                            <td class="td">10</td>
+                            <td class="td">5</td>
+                            <td class="td">5</td>
+                            <td class="td">67</td>
+                            <td class="td">87</td>
+                            <td class="td">40</td>
+                            <td class="td">100</td>
+                            <td class="td">
+                              <span style="color: green; font-weight:bold;">Pass</span>
+                              </td>
+                          </tr>   
+
+                          <tr>
+                            <td class="td" "text-container">Mathematics</td>
+                            <td class="td">10</td>
+                            <td class="td">5</td>
+                            <td class="td">5</td>
+                            <td class="td">67</td>
+                            <td class="td">87</td>
+                            <td class="td">40</td>
+                            <td class="td">100</td>
+                            <td class="td">
+                              <span style="color: green; font-weight:bold;">Pass</span>
+                              </td>
+                          </tr> 
+                          
+                          <tr>
+                            <td class="td" "text-container">Mathematics</td>
+                            <td class="td">10</td>
+                            <td class="td">5</td>
+                            <td class="td">5</td>
+                            <td class="td">67</td>
+                            <td class="td">87</td>
+                            <td class="td">40</td>
+                            <td class="td">100</td>
+                            <td class="td">
+                              <span style="color: green; font-weight:bold;">Pass</span>
+                              </td>
+                          </tr>
+
+                          <tr>
+                            <td colspan="2">
+                              <b>Grand Total : 478/600</b>
+                            </td>
+                            <td colspan="2">
+                                <b>Percentage : 79.67%</b>
+                            </td> 
+                            <td colspan="2">
+                              <b>Grade : B</b>
+                            </td>
+                            <td colspan="3">
+                              <b>Result: 
+                                <span style="color:green;">Pass</span>
+                                </b>
+                            </td>
+                          </tr>
+                    </tbody>
+                  </table>
+
+            </div>
     </div>
 
     <script type="text/javascript">
-        window.print();
+        // window.print();
     </script>
 </body>
 </html>
