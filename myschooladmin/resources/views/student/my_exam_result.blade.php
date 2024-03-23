@@ -4,16 +4,14 @@
 @section('content')
 
       <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1>My Exam Result</h1>
           </div>       
-      </div><!-- /.container-fluid -->
+      </div>
     </section>
-    <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
         <div class="row"> 
@@ -106,11 +104,8 @@
           </div>
         </div>
         @endforeach
-        <!-- /.row -->  
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
+      </div>
     </section>  
-    <!-- /.content -->
   </div>
 
 @endsection
