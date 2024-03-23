@@ -439,7 +439,7 @@ class User extends Authenticatable
         }
         else
         {
-            return url('upload/profile/user.jpg');
+            return url('upload/profile/user.png');
         }
     }
 
