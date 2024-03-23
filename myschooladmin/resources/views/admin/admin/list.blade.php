@@ -88,8 +88,9 @@
                                             <tr>
                                                 <td>{{ $value->id }}</td>
                                                 <td>
-                                                    @if (!@empty($value->getProfile()))
-                                                    <img src="{{ $value->getProfile() }}" style="height: 50px; width: 50px; border-radius: 50%;">    
+                                                    @if (!@empty($value->getProfileDirect()))
+                                                    <img src="{{ $value->getProfileDirect() }}" 
+                                                        style="height: 50px; width: 50px; border-radius: 50%;">    
                                                     @endif
                                                 </td>
                                                 <td>{{ $value->name }}</td>
