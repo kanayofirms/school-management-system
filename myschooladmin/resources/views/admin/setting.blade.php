@@ -24,7 +24,7 @@
             @include('_message')
             <!-- general form elements -->
             <div class="card card-primary">   
-              <form method="post" action="">
+              <form method="post" action="" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="card-body">
                     
@@ -35,6 +35,17 @@
                       
                     </div>
                   </div>
+
+                  <div class="form-group">
+                    <label>Favicon Icon<span style="color: red;"></span></label>
+                    <input type="file" class="form-control" name="favicon_icon"> 
+                 </div>
+
+                 <div class="form-group">
+                  <label>Logo<span style="color: red;"></span></label>
+                  <input type="file" class="form-control" name="logo"> 
+               </div>
+
                 </div>
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Save</button>
