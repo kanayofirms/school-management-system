@@ -39,11 +39,17 @@
                   <div class="form-group">
                     <label>Favicon Icon<span style="color: red;"></span></label>
                     <input type="file" class="form-control" name="favicon_icon"> 
+                    @if (!@empty($getRecord->getFavicon()))
+                        <img src="{{ $getRecord->getFavicon() }}" style="width: auto;height: 50px;">
+                    @endif
                  </div>
 
                  <div class="form-group">
                   <label>Logo<span style="color: red;"></span></label>
                   <input type="file" class="form-control" name="logo"> 
+                  @if (!@empty($getRecord->getLogo()))
+                        <img src="{{ $getRecord->getLogo() }}" style="width: auto;height: 50px;">
+                    @endif
                </div>
 
                 </div>
