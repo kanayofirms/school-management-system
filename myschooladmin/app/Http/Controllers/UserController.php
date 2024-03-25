@@ -22,6 +22,29 @@ class UserController extends Controller
     {
         $setting = SettingModel::getSingle();
         $setting->paystack_email = trim($request->paystack_email);
+
+        if(!empty($request->file('logo')))
+        {
+            $ext = $request->file('logo')->getClientOriginalExtension();
+            $file = $request->file('logo');
+            $randomStr = date('Ymdhis').Str::random(10);
+            $filename = strtolower($randomStr).'.'.$ext;
+            $file->move('upload/setting/', $filename);
+
+            $setting->logo = $filename;
+        }
+
+        if(!empty($request->file('favicon_icon')))
+        {
+            $ext = $request->file('favicon_icon')->getClientOriginalExtension();
+            $file = $request->file('favicon_icon');
+            $randomStr = date('Ymdhis').Str::random(10);
+            $favicon_icon = strtolower($randomStr).'.'.$ext;
+            $file->move('upload/setting/', $favicon_icon);
+
+            $setting->favicon_icon = $favicon_icon;
+        }
+
         $setting->save();
 
         return redirect()->back()->with('success', "Setting Successfully Updated");
