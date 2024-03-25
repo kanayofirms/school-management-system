@@ -30,8 +30,8 @@
                     
                   <div class="form-group">
                     <label>Paypal Bussiness Email</label>
-                    <input type="email" class="form-control" name="paystack_email" value="" 
-                    placeholder="Paypal Bussiness Email">
+                    <input type="email" class="form-control" name="paystack_email" 
+                    value="{{ $getRecord->paystack_email }}" placeholder="Paypal Bussiness Email">
                       
                     </div>
                   </div>
