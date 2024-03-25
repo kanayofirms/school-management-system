@@ -13,6 +13,11 @@
             size: A4;
         }
 
+            .margin-bottom
+        {
+            margin-bottom: 3px;
+        }
+
         @media print{
             @page {
                 margin: 0px;
@@ -20,10 +25,12 @@
                 margin-right: 20px;
             }
         }
-        .margin-bottom
-        {
-            margin-bottom: 3px;
-        }
+
+
+    </style>
+        
+        {{-- 
+    
         .table-bg {
             border-collapse: collapse;
             width: 100%;
@@ -41,17 +48,21 @@
         .text-container {
             text-align: left;
             padding-left: 5px;
-        }
-    </style>
+        } --}}
+
 </head>
 <body>
     <div id="page">
             <table style="width: 100%; text-align:center;">
                 <tr>
                     <td width="5%"></td>
-                    {{-- <td width="15%"><img style="width: 110px;" src="" alt=""></td> --}}
+                    <td width="15%"><img style="width: 110px;" 
+                        src="http://localhost/school-management-system/myschooladmin/upload/setting/20240325012242vdvmvsmpov.jpg" 
+                        alt=""></td>
                     <td align="left">
-                        <h1>MODERN IDEAL COLLEGE</h1>
+                        <h1>MODERN IDEAL COLLEGE, ENUGU</h1>
+                        <h3>CAMPUSES : ABAKPA, EMENE, NIKE</h3>
+                        <h4>www.micenugu.edu.ng</h4>
                     </td>
                 </tr>
             </table>
@@ -60,7 +71,7 @@
                     <tr>
                         <td width="5%"></td>
                         <td width="70%">
-                            <table class="margin-bottom" style="width: 50%;">
+                            <table class="margin-bottom" style="width: 100%;">
                                 <tbody>
                                     <tr>
                                         <td width="27%">Name Of Student : </td>
@@ -69,7 +80,7 @@
                                 </tbody>
                             </table>
 
-                            <table class="margin-bottom" style="width: 30%;">
+                            <table class="margin-bottom" style="width: 100%;">
                                 <tbody>
                                     <tr>
                                         <td width="23%">Admission No : </td>
@@ -78,7 +89,7 @@
                                 </tbody>
                             </table>
 
-                            <table class="margin-bottom" style="width: 30%;">
+                            <table class="margin-bottom" style="width: 100%;">
                                 <tbody>
                                     <tr>
                                         <td width="23%">Class : </td>
@@ -87,39 +98,39 @@
                                 </tbody>
                             </table>
 
-                            <table class="margin-bottom" style="width: 30%;">
+                            <table class="margin-bottom" style="width: 100%;">
                                 <tbody>
                                     <tr>
-                                        <td width="18%">Academic Session : </td>
+                                        <td width="28%">Academic Session : </td>
                                         <td style="border-bottom:1px solid; width:20%;"></td>
-                                        <td width="12%">Term : </td>
+                                        <td width="11%">Term : </td>
                                         <td style="border-bottom:1px solid; width:80%;"></td>
                                     </tr>
                                 </tbody>
                             </table>
 
-                            <table class="margin-bottom" style="width: 30%;">
+                            <table class="margin-bottom" style="width: 100%;">
                                 <tbody>
                                     <tr>
                                         <td width="19%">Total Score : </td>
                                         <td style="border-bottom:1px solid; width:50%;"></td>
-                                        <td width="11%">Average : </td>
+                                        <td width="16%">Average : </td>
                                         <td style="border-bottom:1px solid; width:50%;"></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </td>
                         <td width="5%"></td>
-                        <td width="20%" valign="top"></td>
+                        <td width="20%" valign="top">
                             <img src="http://localhost/school-management-system/myschooladmin/upload/profile/20231226114824emxqpx2ja4itvffoz2pg.jpg" 
                             alt="" style="border-radius:6px;" height="100px" width="100px">
                             <br>
                             Gender : Male
-                        <td></td>
+                        </td>
                     </tr>
             </table>
 
-            <br>
+            {{-- <br>
             <div>
                 <table class="table-bg">
                     <thead>
@@ -329,7 +340,7 @@
                     </tr>
                 </tbody>
             </table>
-    </div>
+    </div> --}}
 
     <script type="text/javascript">
         // window.print();
