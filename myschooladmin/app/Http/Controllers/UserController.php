@@ -13,6 +13,7 @@ class UserController extends Controller
 {
     public function Setting()
     {
+        $data['getRecord'] = SettingModel::getSingle();
         $data['header_title'] = "Setting";
         return view('admin.setting', $data);
     }
