@@ -30,7 +30,7 @@
                     
                   <div class="form-group">
                     <label>Paypal Bussiness Email</label>
-                    <input type="email" class="form-control" name="email" value="" 
+                    <input type="email" class="form-control" name="paystack_email" value="" 
                     placeholder="Paypal Bussiness Email">
                       
                     </div>
