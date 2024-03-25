@@ -102,8 +102,13 @@
  <aside class="main-sidebar sidebar-dark-primary elevation-4">
      <!-- Brand Logo -->
      <a href="javascript:;" class="brand-link" style="text-align: center;">
-         <span class="brand-text font-weight-light"
-             style="font-weight: bold !important;font-size: 20px;">Myschooladmin</span>
+        @if (!empty($getHeaderSetting->getLogo()))
+            <img src="{{ $getHeaderSetting->getLogo() }}" 
+            style="width:auto; height:60px; border-radius:8px;" alt="">
+        @else
+        <span class="brand-text font-weight-light" 
+        style="font-weight: bold !important;font-size: 20px;">Myschooladmin</span>        
+        @endif       
      </a>
 
      <!-- Sidebar -->
