@@ -15,4 +15,28 @@ class SettingModel extends Model
     {
         return self::find(1);
     }
+
+    public function getLogo()
+    {
+        if(!empty($this->logo) && file_exists('upload/setting/'.$this->logo))
+        {
+            return url('upload/setting/'.$this->logo);
+        }
+        else
+        {
+            return '';
+        }
+    }
+
+    public function getFavicon()
+    {
+        if(!empty($this->favicon_icon) && file_exists('upload/setting/'.$this->favicon_icon))
+        {
+            return url('upload/setting/'.$this->favicon_icon);
+        }
+        else
+        {
+            return '';
+        }
+    }
 }
