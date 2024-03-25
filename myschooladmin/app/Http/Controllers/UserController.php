@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\SettingModel;
 use Illuminate\Support\Str;
 use Auth;
 use Hash;
@@ -14,6 +15,15 @@ class UserController extends Controller
     {
         $data['header_title'] = "Setting";
         return view('admin.setting', $data);
+    }
+
+    public function updateSetting(Request $request)
+    {
+        $setting = SettingModel::getSingle();
+        $setting->paystack_email = trim($request->paystack_email);
+        $setting->save();
+
+        return redirect()->back()->with('success', "Setting Successfully Updated");
     }
 
     public function myAccount()
