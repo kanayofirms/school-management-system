@@ -13,7 +13,7 @@
             size: A4;
         }
 
-            .margin-bottom
+        .margin-bottom
         {
             margin-bottom: 3px;
         }
@@ -24,12 +24,7 @@
                 margin-left: 20px;
                 margin-right: 20px;
             }
-        }
-
-
-    </style>
-        
-        {{-- 
+        }          
     
         .table-bg {
             border-collapse: collapse;
@@ -48,21 +43,25 @@
         .text-container {
             text-align: left;
             padding-left: 5px;
-        } --}}
+        }
+
+    </style>
+        
+
 
 </head>
 <body>
     <div id="page">
             <table style="width: 100%; text-align:center;">
                 <tr>
-                    <td width="5%"></td>
-                    <td width="15%"><img style="width: 110px;" 
+                    <td width="1%"></td>
+                    <td width="15%"><img style="width: 120px;" 
                         src="http://localhost/school-management-system/myschooladmin/upload/setting/20240325012242vdvmvsmpov.jpg" 
                         alt=""></td>
-                    <td align="left">
+                    <td>
                         <h1>MODERN IDEAL COLLEGE, ENUGU</h1>
                         <h3>CAMPUSES : ABAKPA, EMENE, NIKE</h3>
-                        <h4>www.micenugu.edu.ng</h4>
+                        <p>www.micenugu.edu.ng</p>
                     </td>
                 </tr>
             </table>
@@ -146,16 +145,20 @@
                         <td width="20%" valign="top">
                             <img src="http://localhost/school-management-system/myschooladmin/upload/profile/20231226114824emxqpx2ja4itvffoz2pg.jpg" 
                             alt="" style="border-radius:6px;" height="100px" width="100px">
-                            <br>
-                            Gender : Male
                         </td>
                     </tr>
             </table>
 
-            {{-- <br>
+            <br>
+
             <div>
                 <table class="table-bg">
                     <thead>
+                      <tr>
+                        <th class="th">ACADEMIC</th>
+  
+                      </tr>
+
                       <tr>
                         <th class="th">Subject Name</th>
                         <th class="th">Attendance</th>
@@ -171,7 +174,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                          <td class="td" "text-container">Mathematics</td>
+                          <td class="td text-container">Mathematics</td>
                           <td class="td">10</td>
                           <td class="td">5</td>
                           <td class="td">5</td>
@@ -185,7 +188,7 @@
                         </tr>   
 
                         <tr>
-                          <td class="td" "text-container">Mathematics</td>
+                          <td class="td text-container">Mathematics</td>
                           <td class="td">10</td>
                           <td class="td">5</td>
                           <td class="td">5</td>
@@ -199,7 +202,7 @@
                         </tr> 
                         
                         <tr>
-                            <td class="td" "text-container">Mathematics</td>
+                            <td class="td text-container">Mathematics</td>
                             <td class="td">10</td>
                             <td class="td">5</td>
                             <td class="td">5</td>
@@ -213,7 +216,7 @@
                           </tr>   
 
                           <tr>
-                            <td class="td" "text-container">Mathematics</td>
+                            <td class="td text-container">Mathematics</td>
                             <td class="td">10</td>
                             <td class="td">5</td>
                             <td class="td">5</td>
@@ -227,7 +230,7 @@
                           </tr>   
 
                           <tr>
-                            <td class="td" "text-container">Mathematics</td>
+                            <td class="td text-container">Mathematics</td>
                             <td class="td">10</td>
                             <td class="td">5</td>
                             <td class="td">5</td>
@@ -241,7 +244,7 @@
                           </tr>   
 
                           <tr>
-                            <td class="td" "text-container">Mathematics</td>
+                            <td class="td text-container">Mathematics</td>
                             <td class="td">10</td>
                             <td class="td">5</td>
                             <td class="td">5</td>
@@ -255,7 +258,7 @@
                           </tr>   
 
                           <tr>
-                            <td class="td" "text-container">Mathematics</td>
+                            <td class="td text-container">Mathematics</td>
                             <td class="td">10</td>
                             <td class="td">5</td>
                             <td class="td">5</td>
@@ -269,7 +272,7 @@
                           </tr>   
 
                           <tr>
-                            <td class="td" "text-container">Mathematics</td>
+                            <td class="td text-container">Mathematics</td>
                             <td class="td">10</td>
                             <td class="td">5</td>
                             <td class="td">5</td>
@@ -283,7 +286,7 @@
                           </tr>   
 
                           <tr>
-                            <td class="td" "text-container">Mathematics</td>
+                            <td class="td text-container">Mathematics</td>
                             <td class="td">10</td>
                             <td class="td">5</td>
                             <td class="td">5</td>
@@ -297,7 +300,7 @@
                           </tr>   
 
                           <tr>
-                            <td class="td" "text-container">Mathematics</td>
+                            <td class="td text-container">Mathematics</td>
                             <td class="td">10</td>
                             <td class="td">5</td>
                             <td class="td">5</td>
@@ -310,19 +313,6 @@
                               </td>
                           </tr> 
                           
-                          <tr>
-                            <td class="td" "text-container">Mathematics</td>
-                            <td class="td">10</td>
-                            <td class="td">5</td>
-                            <td class="td">5</td>
-                            <td class="td">67</td>
-                            <td class="td">87</td>
-                            <td class="td">40</td>
-                            <td class="td">100</td>
-                            <td class="td">
-                              <span style="color: green; font-weight:bold;">Pass</span>
-                              </td>
-                          </tr>
 
                           <tr>
                             <td colspan="2">
@@ -345,24 +335,50 @@
 
             </div>
 
-            <div>
-                <p>
-                    Merchants using SeerBit can receive payments in 13 currencies like GBP, CAD, and USD, 
-                    so if you have international customers, SeerBit has you covered. 
-                    There are no setup fees, but it charges 1.5% and 3.8% of the transaction fee 
-                    for local and international transactions, respectively.
+            <div style="text-align: center; ">
+                <h3>SENIOR SECONDARY SCHOOL</h3>
+                <p>                
+                    [GRADING KEY: 80-100(EXCELLENT); 75-79(VERY GOOD); 60-64(CREDIT); 45-54(PASS); 40-44(PASS); 0-39(FAIL)]
+                </p>
+                <h3>JUNIOR SECONDARY SCHOOL</h3>
+                <p>                  
+                    [GRADING KEY: 70-100(EXCELLENT); 60-69(VERY GOOD); 55-59(CREDIT); 40-54(PASS); 0-39(FAIL)]
                 </p>
             </div>
 
-            <table class="margin-bottom" style="width: 50%">
+            <table class="margin-bottom" style="width: 100%">
                 <tbody>
                     <tr>
-                        <td width="10%">Signature : </td>
-                        <td style="border-bottom:1px solid; width:40%;"></td>
+                        <td width="3%">FORM TEACHER/PHONE NO.</td>
+                        <td style="border-bottom:1px solid; width:5%;"></td>
+                        <td width="3%">NEXT TERM BEGINS</td>
+                        <td style="border-bottom:1px solid; width:7%;"></td>
                     </tr>
                 </tbody>
             </table>
-    </div> --}}
+
+            <table class="margin-bottom" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td width="4%">FORM TEACHER'S REMARK</td>
+                        <td style="border-bottom:1px solid; width:7.5%;"></td>
+                        <td width="4.3%">NEXT TERM SCHOOL FEES</td>
+                        <td style="border-bottom:1px solid; width:10%;"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="margin-bottom" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td width="3.7%">PRINCIPAL/DATE</td>
+                        <td style="border-bottom:1px solid; width:7.5%;"></td>
+                        <td width="4%">NEXT TERM SCHOOL FEES</td>
+                        <td style="border-bottom:1px solid; width:10%;"></td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
 
     <script type="text/javascript">
         // window.print();
