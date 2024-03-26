@@ -74,7 +74,7 @@
                             <table class="margin-bottom" style="width: 100%;">
                                 <tbody>
                                     <tr>
-                                        <td width="27%">Name Of Student : </td>
+                                        <td width="20%">NAME OF STUDENT</td>
                                         <td style="border-bottom:1px solid; width:100%;"></td>
                                     </tr>
                                 </tbody>
@@ -83,28 +83,12 @@
                             <table class="margin-bottom" style="width: 100%;">
                                 <tbody>
                                     <tr>
-                                        <td width="23%">Admission No : </td>
-                                        <td style="border-bottom:1px solid; width:100%;"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                            <table class="margin-bottom" style="width: 100%;">
-                                <tbody>
-                                    <tr>
-                                        <td width="23%">Class : </td>
-                                        <td style="border-bottom:1px solid; width:100%;"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                            <table class="margin-bottom" style="width: 100%;">
-                                <tbody>
-                                    <tr>
-                                        <td width="28%">Academic Session : </td>
+                                        <td width="19%">ADMISSION NO</td>
                                         <td style="border-bottom:1px solid; width:20%;"></td>
-                                        <td width="11%">Term : </td>
-                                        <td style="border-bottom:1px solid; width:80%;"></td>
+                                        <td width="7%">CLASS</td>
+                                        <td style="border-bottom:1px solid; width:25%;"></td>
+                                        <td width="12%">CLASS AVERAGE</td>
+                                        <td style="border-bottom:1px solid; width:25%;"></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -112,10 +96,48 @@
                             <table class="margin-bottom" style="width: 100%;">
                                 <tbody>
                                     <tr>
-                                        <td width="19%">Total Score : </td>
-                                        <td style="border-bottom:1px solid; width:50%;"></td>
-                                        <td width="16%">Average : </td>
-                                        <td style="border-bottom:1px solid; width:50%;"></td>
+                                        <td width="6%">SEX</td>
+                                        <td style="border-bottom:1px solid; width:17%;"></td>
+                                        <td width="5%">NO.IN ClASS</td>
+                                        <td style="border-bottom:1px solid; width:14%;"></td>
+                                        <td width="10%">CLASS HIGHEST AVERAGE</td>
+                                        <td style="border-bottom:1px solid; width:7%;"></td>
+                                        
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="margin-bottom" style="width: 100%;">
+                                <tbody>
+                                    <tr>
+                                        <td width="5%">YEAR</td>
+                                        <td style="border-bottom:1px solid; width:17.9%;"></td>
+                                        <td width="5%">TERM</td>
+                                        <td style="border-bottom:1px solid; width:14.1%;"></td>
+                                        <td width="10%">CLASS LOWEST AVERAGE</td>
+                                        <td style="border-bottom:1px solid; width:7%;"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="margin-bottom" style="width: 100%;">
+                                <tbody>
+                                    <tr>
+                                        <td width="4%">AGE</td>
+                                        <td style="border-bottom:1px solid; width:16%;"></td>
+                                        <td width="3%">POSITION</td>
+                                        <td style="border-bottom:1px solid; width:12.5%;"></td>
+                                        <td width="4%">AVERAGE</td>
+                                        <td style="border-bottom:1px solid; width:10%;"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="margin-bottom" style="width: 50%;">
+                                <tbody>
+                                    <tr>
+                                        <td width="5%">TOTAL SCORE</td>
+                                        <td style="border-bottom:1px solid; width:20%;"></td>
                                     </tr>
                                 </tbody>
                             </table>
