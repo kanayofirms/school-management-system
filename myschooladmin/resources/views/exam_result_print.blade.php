@@ -33,7 +33,7 @@
             text-align: center;
         }
         .th {
-            border: 1px solid #000;
+            border: 1px solid white;
             padding: 10px;
         }
         .td {
