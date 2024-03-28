@@ -26,18 +26,33 @@
               </div>
               <div class="card-body p-0">
                 <table class="table table-striped">
-                  <thead>
+                  <thead style="font-size: 12px; text-align:center; background-color:#3180FF; color:white;">
                     <tr>
-                      <th>Subject Name</th>
-                      <th>Attendance</th>
-                      <th>CAT 1</th>
-                      <th>CAT 2</th>
-                      <th>Exam</th>
-                      <th>Total Score</th>
-                      <th>Passing Mark</th>
-                      <th>Full Mark</th>
-                      <th>Result</th>
-
+                      <th colspan="12">ACADEMIC</th>
+                    </tr>
+                    <tr>
+                      <th>SUBJECTS</th>
+                      <th>RESUMPTION TEST</th>
+                      <th>ASSIGNMENT</th>
+                      <th>MID-TERM TEST</th>
+                      <th>PROJECT</th>
+                      <th>EXAM</th>
+                      <th>TOTAL</th>
+                      <th colspan="5">SUMMARY OF TERM'S WORK</th>
+                    </tr>
+                    <tr>
+                      <th>SUBJECT NAME</th>
+                      <th>MAX SCORE 10</th>
+                      <th>MAX SCORE 10</th>
+                      <th>MAX SCORE 10</th>
+                      <th>MAX SCORE 10</th>
+                      <th>MAX SCORE 60</th>
+                      <th>MAX SCORE 100</th>
+                      <th>CLASS HIGHEST SCORE</th>
+                      <th>CLASS AVERAGE</th>
+                      <th>POSITION</th>
+                      <th>GRADE</th>
+                      <th>REMARKS</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -53,11 +68,13 @@
                     @endphp
                        <tr>
                         <td style="width:300px;">{{ $exam['subject_name'] }}</td>
-                        <td>{{ $exam['attendance'] }}</td>
-                        <td>{{ $exam['cat_one'] }}</td>
-                        <td>{{ $exam['cat_two'] }}</td>
+                        <td>{{ $exam['resumption_test'] }}</td>
+                        <td>{{ $exam['assignment'] }}</td>
+                        <td>{{ $exam['midterm_test'] }}</td>
+                        <td>{{ $exam['project'] }}</td>
                         <td>{{ $exam['exam'] }}</td>
                         <td>{{ $exam['totalScore'] }}</td>
+                      {{--  <td>{{ $exam['totalScore'] }}</td>
                         <td>{{ $exam['passing_mark'] }}</td>
                         <td>{{ $exam['full_mark'] }}</td>
                         <td>
@@ -70,7 +87,7 @@
                               <span style="color: red; font-weight:bold;
                               ">Fail</span>
                           @endif
-                        </td>
+                        </td> --}}
                        </tr>
                     @endforeach
 
