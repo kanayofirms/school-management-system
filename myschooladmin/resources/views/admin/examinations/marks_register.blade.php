@@ -112,7 +112,8 @@
                                             
                                             if(!empty($getMark))
                                             {
-                                                $totalMark = $getMark->attendance + $getMark->cat_one + $getMark->cat_two + $getMark->exam;
+                                                $totalMark = $getMark->resumption_test + $getMark->assignment 
+                                                + $getMark->midterm_test + $getMark->project + $getMark->exam;
                                             }
 
                                             $totalStudentMark = $totalStudentMark+$totalMark;
@@ -120,27 +121,40 @@
 
                                         <td>
                                             <div style="margin-bottom: 10px;">
-                                                Attendance
+                                                RESUMPTION TEST
                                                 <input type="hidden" name="mark[{{ $i }}][full_mark]" value="{{ $subject->full_mark }}">
                                                 <input type="hidden" name="mark[{{ $i }}][passing_mark]" value="{{ $subject->passing_mark }}">
                                                 <input type="hidden" name="mark[{{ $i }}][id]" value="{{ $subject->id }}">
                                                 <input type="hidden" name="mark[{{ $i }}][subject_id]" value="{{ $subject->subject_id }}">
-                                                <input type="text" name="mark[{{ $i }}][attendance]" style="width: 200px;" id="attendance_{{ $student->id }}{{ $subject->subject_id }}" placeholder="Enter Marks" value="{{ !empty($getMark->attendance) ? $getMark->attendance : '' }}" class="form-control">
+                                                <input type="text" name="mark[{{ $i }}][resumption_test]" style="width: 200px;" 
+                                                id="resumption_test_{{ $student->id }}{{ $subject->subject_id }}" placeholder="Enter Marks" 
+                                                value="{{ !empty($getMark->resumption_test) ? $getMark->resumption_test : '' }}" class="form-control">
                                             </div>
 
                                             <div style="margin-bottom: 10px;">
 
-                                                CAT 1
-                                                <input type="text" name="mark[{{ $i }}][cat_one]" style="width: 200px;" id="cat_one_{{ $student->id }}{{ $subject->subject_id }}" placeholder="Enter Marks" value="{{ !empty($getMark->cat_one) ? $getMark->cat_one : '' }}" class="form-control">
-                                            </div>
-
-                                            <div>
-                                                CAT 2
-                                                <input type="text" name="mark[{{ $i }}][cat_two]" style="width: 200px;" id="cat_two_{{ $student->id }}{{ $subject->subject_id }}" placeholder="Enter Marks" value="{{ !empty($getMark->cat_two) ? $getMark->cat_two : '' }}" class="form-control">
+                                                ASSIGNMENT
+                                                <input type="text" name="mark[{{ $i }}][assignment]" 
+                                                style="width: 200px;" id="assignment_{{ $student->id }}{{ $subject->subject_id }}" placeholder="Enter Marks" 
+                                                value="{{ !empty($getMark->assignment) ? $getMark->assignment : '' }}" class="form-control">
                                             </div>
 
                                             <div style="margin-bottom: 10px;">
-                                                Exam
+                                                MIDTERM TEST
+                                                <input type="text" name="mark[{{ $i }}][midterm_test]" style="width: 200px;" 
+                                                id="midterm_test_{{ $student->id }}{{ $subject->subject_id }}" placeholder="Enter Marks" 
+                                                value="{{ !empty($getMark->midterm_test) ? $getMark->midterm_test : '' }}" class="form-control">
+                                            </div>
+
+                                            <div style="margin-bottom: 10px;">
+                                                PROJECT
+                                                <input type="text" name="mark[{{ $i }}][project]" style="width: 200px;" 
+                                                id="project_{{ $student->id }}{{ $subject->subject_id }}" placeholder="Enter Marks" 
+                                                value="{{ !empty($getMark->project) ? $getMark->project : '' }}" class="form-control">
+                                            </div>
+
+                                            <div style="margin-bottom: 10px;">
+                                                EXAM
                                                 <input type="text" name="mark[{{ $i }}][exam]" style="width: 200px;" id="exam_{{ $student->id }}{{ $subject->subject_id }}" placeholder="Enter Marks" value="{{ !empty($getMark->exam) ? $getMark->exam : '' }}" class="form-control">
                                             </div>
 
@@ -248,9 +262,10 @@
     var exam_id = $(this).attr('data-exam');
     var class_id = $(this).attr('data-class');
     var id = $(this).attr('data-schedule');
-    var attendance = $('#attendance_'+student_id+subject_id).val();
-    var cat_one = $('#cat_one_'+student_id+subject_id).val();
-    var cat_two = $('#cat_two_'+student_id+subject_id).val();
+    var resumption_test = $('#resumption_test_'+student_id+subject_id).val();
+    var assignment = $('#assignment_'+student_id+subject_id).val();
+    var midterm_test = $('#midterm_test_'+student_id+subject_id).val();
+    var project = $('#project_'+student_id+subject_id).val();
     var exam = $('#exam_'+student_id+subject_id).val();
     
 
@@ -264,9 +279,10 @@
             subject_id : subject_id,
             exam_id : exam_id,
             class_id : class_id,
-            attendance : attendance,
-            cat_one : cat_one,
-            cat_two : cat_two,
+            resumption_test : resumption_test,
+            assignment : assignment,
+            midterm_test : midterm_test,
+            project : project,
             exam : exam
 
         },
