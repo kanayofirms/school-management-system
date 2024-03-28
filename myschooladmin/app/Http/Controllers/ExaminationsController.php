@@ -227,15 +227,16 @@ class ExaminationsController extends Controller
                 $getExamSchedule = ExamScheduleModel::getSingle($mark['id']);
                 $full_mark = $getExamSchedule->full_mark;
 
-                $attendance = !empty($mark['attendance']) ? $mark['attendance'] : 0;
-                $cat_one = !empty($mark['cat_one']) ? $mark['cat_one'] : 0;
-                $cat_two = !empty($mark['cat_two']) ? $mark['cat_two'] : 0;
+                $resumption_test = !empty($mark['resumption_test']) ? $mark['resumption_test'] : 0;
+                $assignment = !empty($mark['assignment']) ? $mark['assignment'] : 0;
+                $midterm_test = !empty($mark['midterm_test']) ? $mark['midterm_test'] : 0;
+                $project = !empty($mark['project']) ? $mark['project'] : 0;
                 $exam = !empty($mark['exam']) ? $mark['exam'] : 0;
                 $full_mark = !empty($mark['full_mark']) ? $mark['full_mark'] : 0;
                 $passing_mark = !empty($mark['passing_mark']) ? $mark['passing_mark'] : 0;
 
 
-                $total_mark = $attendance + $cat_one + $cat_two + $exam;
+                $total_mark = $resumption_test + $assignment + $midterm_test + $project + $exam;
                 if ($full_mark >= $total_mark) {
 
                     $getMark = MarksRegisterModel::CheckAlreadyMark($request->student_id, $request->exam_id, $request->class_id, $mark['subject_id']);
@@ -250,9 +251,10 @@ class ExaminationsController extends Controller
                     $save->exam_id = $request->exam_id;
                     $save->class_id = $request->class_id;
                     $save->subject_id = $mark['subject_id'];
-                    $save->attendance = $attendance;
-                    $save->cat_one = $cat_one;
-                    $save->cat_two = $cat_two;
+                    $save->resumption_test = $resumption_test;
+                    $save->assignment = $assignment;
+                    $save->midterm_test = $midterm_test;
+                    $save->project = $project;
                     $save->exam = $exam;
                     $save->full_mark = $full_mark;
                     $save->passing_mark = $passing_mark;
@@ -283,15 +285,16 @@ class ExaminationsController extends Controller
 
         $full_mark = $getExamSchedule->full_mark;
 
-        $attendance = !empty($request->attendance) ? $request->attendance : 0;
-        $cat_one = !empty($request->cat_one) ? $request->cat_one : 0;
-        $cat_two = !empty($request->cat_two) ? $request->cat_two : 0;
+        $resumption_test = !empty($request->resumption_test) ? $request->resumption_test : 0;
+        $assignment = !empty($request->assignment) ? $request->assignment : 0;
+        $midterm_test = !empty($request->midterm_test) ? $request->midterm_test : 0;
+        $project = !empty($request->project) ? $request->project : 0;
         $exam = !empty($request->exam) ? $request->exam : 0;
 
         // $full_mark = !empty($request->full_mark) ? $request->full_mark : 0;
         // $passing_mark = !empty($request->passing_mark) ? $request->passing_mark : 0;        
 
-        $total_mark = $attendance + $cat_one + $cat_two + $exam;
+        $total_mark = $resumption_test + $assignment + $midterm_test + $project + $exam;
 
         if ($full_mark >= $total_mark) {
             $getMark = MarksRegisterModel::CheckAlreadyMark($request->student_id, $request->exam_id, $request->class_id, $request->subject_id);
@@ -307,9 +310,10 @@ class ExaminationsController extends Controller
             $save->exam_id = $request->exam_id;
             $save->class_id = $request->class_id;
             $save->subject_id = $request->subject_id;
-            $save->attendance = $attendance;
-            $save->cat_one = $cat_one;
-            $save->cat_two = $cat_two;
+            $save->resumption_test = $resumption_test;
+            $save->assignment = $assignment;
+            $save->midterm_test = $midterm_test;
+            $save->project = $project;
             $save->exam = $exam;
 
             $save->full_mark = $getExamSchedule->full_mark;
@@ -393,12 +397,13 @@ class ExaminationsController extends Controller
             $dataSubject = array();
             foreach($getExamSubject as $exam)
             {
-                $totalScore = $exam['attendance'] + $exam['cat_one'] + $exam['cat_two'] + $exam['exam'];
+                $totalScore = $exam['resumption_test'] + $exam['assignment'] + $exam['midterm_test'] + $exam['project'] + $exam['exam'];
                 $dataS = array();
                 $dataS['subject_name'] = $exam['subject_name'];
-                $dataS['attendance'] = $exam['attendance'];
-                $dataS['cat_one'] = $exam['cat_one'];
-                $dataS['cat_two'] = $exam['cat_two'];
+                $dataS['resumption_test'] = $exam['resumption_test'];
+                $dataS['assignment'] = $exam['assignment'];
+                $dataS['midterm_test'] = $exam['midterm_test'];
+                $dataS['project'] = $exam['project'];
                 $dataS['exam'] = $exam['exam'];
                 $dataS['totalScore'] = $totalScore;
                 $dataS['full_mark'] = $exam['full_mark'];
