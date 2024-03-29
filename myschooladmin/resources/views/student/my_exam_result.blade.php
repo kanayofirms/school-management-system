@@ -77,7 +77,7 @@
                        <td>{{ $exam['totalScore'] }}</td>
                         <td>{{ $exam['passing_mark'] }}</td>
                         <td>{{ $exam['full_mark'] }}</td>
-                        <td>
+                        {{-- <td>
                           @if ($exam['totalScore'] >= $exam['passing_mark'])
                               <span style="color: green; font-weight:bold;">Pass</span>
                           @else
@@ -87,7 +87,7 @@
                               <span style="color: red; font-weight:bold;
                               ">Fail</span>
                           @endif
-                        </td> 
+                        </td>  --}}
                        </tr>
                     @endforeach
 
