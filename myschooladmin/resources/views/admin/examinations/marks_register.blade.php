@@ -155,7 +155,8 @@
 
                                             <div style="margin-bottom: 10px;">
                                                 EXAM
-                                                <input type="text" name="mark[{{ $i }}][exam]" style="width: 200px;" id="exam_{{ $student->id }}{{ $subject->subject_id }}" placeholder="Enter Marks" value="{{ !empty($getMark->exam) ? $getMark->exam : '' }}" class="form-control">
+                                                <input type="text" name="mark[{{ $i }}][exam]" style="width: 200px;" id="exam_{{ $student->id }}{{ $subject->subject_id }}" 
+                                                placeholder="Enter Marks" value="{{ !empty($getMark->exam) ? $getMark->exam : '' }}" class="form-control">
                                             </div>
 
                                             <div style="margin-bottom: 10px;">
@@ -267,7 +268,10 @@
     var midterm_test = $('#midterm_test_'+student_id+subject_id).val();
     var project = $('#project_'+student_id+subject_id).val();
     var exam = $('#exam_'+student_id+subject_id).val();
-    
+    // var class_highest_score = $('#class_highest_score_'+student_id+subject_id).val();
+    // var class_average = $('#class_average_'+student_id+subject_id).val();
+    // var position = $('#position_'+student_id+subject_id).val();
+
 
     $.ajax({
         type: "POST", 
@@ -284,6 +288,9 @@
             midterm_test : midterm_test,
             project : project,
             exam : exam
+            // class_highest_score : class_highest_score,
+            // class_average : class_average,
+            // position : position
 
         },
         dataType : "json",
