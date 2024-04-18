@@ -59,7 +59,7 @@
                     @php
                       $totalScore = 0;
                       $full_mark = 0;
-                      $resultValidation = 0;
+                      // $resultValidation = 0;
                     @endphp
                     @foreach ($value['subject'] as $exam)
                     @php
@@ -79,12 +79,26 @@
                         <td>{{ $exam['position'] }}</td>         
                         <td>{{ $exam['getLoopGrade'] }}</td>
                         <td>
-                          @if ($exam['totalScore'] >= $exam['passing_mark'])
-                              <span style="color: green; font-weight:bold;">Pass</span>
+                          @if ($exam['totalScore'] >= 80)
+                              <span style="color: green; font-weight:bold;">EXCELLENT</span>
+                          @elseif ($exam['totalScore'] >= 75 && $exam['totalScore'] <= 79)
+                              <span style="color: green; font-weight:bold;">VERY GOOD</span>
+                          @elseif ($exam['totalScore'] >= 70 && $exam['totalScore'] <= 74)
+                              <span style="color: yellow; font-weight:bold;">GOOD</span>
+                          @elseif ($exam['totalScore'] >= 65 && $exam['totalScore'] <= 69)
+                              <span style="color: blue; font-weight:bold;">CREDIT</span>
+                          @elseif ($exam['totalScore'] >= 60 && $exam['totalScore'] <= 64)
+                              <span style="color: blue; font-weight:bold;">CREDIT</span>
+                          @elseif ($exam['totalScore'] >= 55 && $exam['totalScore'] <= 59)
+                              <span style="color: blue; font-weight:bold;">CREDIT</span>
+                          @elseif ($exam['totalScore'] >= 45 && $exam['totalScore'] <= 54)
+                              <span style="color: blue; font-weight:bold;">PASS</span>
+                          @elseif ($exam['totalScore'] >= 40 && $exam['totalScore'] <= 44)
+                              <span style="color: blue; font-weight:bold;">PASS</span>
                           @else
-                            @php
+                            {{-- @php
                               $resultValidation = 1;
-                            @endphp
+                            @endphp --}}
                               <span style="color: red; font-weight:bold;
                               ">Fail</span>
                           @endif
@@ -106,7 +120,7 @@
                       <td colspan="2">
                         <b>Grade : {{ $getGrade }}</b>
                       </td>
-                      <td colspan="3">
+                      {{-- <td colspan="3">
                         <b>Result: 
                         @if ($resultValidation == 0)
                           <span style="color:green;">Pass</span>
@@ -114,7 +128,7 @@
                           <span style="color:red;">Fail</span>
                         @endif
                       </b>
-                      </td>
+                      </td> --}}
                     </tr>
                   </tbody>
                 </table>               
