@@ -74,9 +74,10 @@
                         <td>{{ $exam['project'] }}</td>
                         <td>{{ $exam['exam'] }}</td>
                         <td>{{ $exam['totalScore'] }}</td>
-                      {{--  <td>{{ $exam['totalScore'] }}</td>
-                        <td>{{ $exam['passing_mark'] }}</td>
-                        <td>{{ $exam['full_mark'] }}</td>
+                        <td>{{ $exam['class_highest_score'] }}</td>
+                        <td>{{ $exam['class_average'] }}</td>
+                        <td>{{ $exam['position'] }}</td>         
+                        <td>{{ $exam['getLoopGrade'] }}</td>
                         <td>
                           @if ($exam['totalScore'] >= $exam['passing_mark'])
                               <span style="color: green; font-weight:bold;">Pass</span>
