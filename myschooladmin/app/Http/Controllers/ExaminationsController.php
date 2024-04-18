@@ -398,6 +398,7 @@ class ExaminationsController extends Controller
             foreach($getExamSubject as $exam)
             {
                 $totalScore = $exam['resumption_test'] + $exam['assignment'] + $exam['midterm_test'] + $exam['project'] + $exam['exam'];
+                $getLoopGrade = MarksGradeModel::getGrade($totalScore);
                 $dataS = array();
                 $dataS['subject_name'] = $exam['subject_name'];
                 $dataS['resumption_test'] = $exam['resumption_test'];
@@ -406,6 +407,10 @@ class ExaminationsController extends Controller
                 $dataS['project'] = $exam['project'];
                 $dataS['exam'] = $exam['exam'];
                 $dataS['totalScore'] = $totalScore;
+                $dataS['class_highest_score'] = $exam['class_highest_score'];
+                $dataS['class_average'] = $exam['class_average'];
+                $dataS['position'] = $exam['position'];
+                $dataS['getLoopGrade'] = $getLoopGrade;
                 $dataS['full_mark'] = $exam['full_mark'];
                 $dataS['passing_mark'] = $exam['passing_mark'];
                 $dataSubject[] = $dataS;
