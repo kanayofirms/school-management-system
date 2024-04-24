@@ -38,4 +38,15 @@ class MarksRegisterModel extends Model
             ->where('marks_register.student_id', '=', $student_id)
             ->get();
     }
+
+    static public function classAverage($student_id, $exam_id, $class_id, $subject_id)
+    {
+        return MarksRegisterModel::orderBy('desc')
+                ->where('student_id', '=', $student_id)
+                ->where('exam_id', '=', $exam_id)
+                ->where('class_id', '=', $class_id)
+                ->where('subject_id', '=', $subject_id)
+                ->get()->row();
+    }
+
 }
