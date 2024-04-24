@@ -75,7 +75,7 @@
                         <td>{{ $exam['exam'] }}</td>
                         <td>{{ $exam['totalScore'] }}</td>
                         <td>{{ $exam['class_highest_score'] }}</td>
-                        <td>{{ $exam['class_average'] }}</td>
+                        {{-- <td>{{ $exam['getClassAverage'] }}</td> --}}
                         <td>{{ $exam['position'] }}</td>         
                         <td>{{ $exam['getLoopGrade'] }}</td>
                         <td>
@@ -84,7 +84,7 @@
                           @elseif ($exam['totalScore'] >= 75 && $exam['totalScore'] <= 79)
                               <span style="color: green; font-weight:bold;">VERY GOOD</span>
                           @elseif ($exam['totalScore'] >= 70 && $exam['totalScore'] <= 74)
-                              <span style="color: yellow; font-weight:bold;">GOOD</span>
+                              <span style="color: amber; font-weight:bold;">GOOD</span>
                           @elseif ($exam['totalScore'] >= 65 && $exam['totalScore'] <= 69)
                               <span style="color: blue; font-weight:bold;">CREDIT</span>
                           @elseif ($exam['totalScore'] >= 60 && $exam['totalScore'] <= 64)
