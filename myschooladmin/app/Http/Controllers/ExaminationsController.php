@@ -386,20 +386,33 @@ class ExaminationsController extends Controller
 
     public function myExamResult()
     {
+        $userId = Auth::user()->id;
         $result = array();
-        $getExam = MarksRegisterModel::getExam(Auth::user()->id);
-        foreach($getExam as $value)
-        {
+        $getExam = MarksRegisterModel::getExam($userId);
+
+        foreach ($getExam as $value) {
             $dataE = array();
             $dataE['exam_name'] = $value->exam_name;
             $dataE['exam_id'] = $value->exam_id;
-            $getExamSubject = MarksRegisterModel::getExamSubject($value->exam_id, Auth::user()->id);
+            $getExamSubject = MarksRegisterModel::getExamSubject($value->exam_id, $userId);
             $dataSubject = array();
-            foreach($getExamSubject as $exam)
-            {
+
+            foreach ($getExamSubject as $exam) {
                 $totalScore = $exam['resumption_test'] + $exam['assignment'] + $exam['midterm_test'] + $exam['project'] + $exam['exam'];
                 $getLoopGrade = MarksGradeModel::getGrade($totalScore);
-                // $getClassAverage = AVG($totalScore);
+
+                // Fetch class-wide stats
+                $examDetails = MarksRegisterModel::getExamSubjectDetails($value->exam_id, $exam['class_id'], $exam['subject_id']);
+
+                if ($examDetails) {  // Check if $examDetails is not null
+                    $classHighestScore = $examDetails->class_highest_score;
+                    $classAverage = round($examDetails->class_average,2);
+                } else {
+                    $classHighestScore = null;
+                    $classAverage = null;
+                }
+
+                $position = MarksRegisterModel::getPosition($value->exam_id, $userId, $exam['subject_id']);
                 $dataS = array();
                 $dataS['subject_name'] = $exam['subject_name'];
                 $dataS['resumption_test'] = $exam['resumption_test'];
@@ -408,18 +421,16 @@ class ExaminationsController extends Controller
                 $dataS['project'] = $exam['project'];
                 $dataS['exam'] = $exam['exam'];
                 $dataS['totalScore'] = $totalScore;
-                $dataS['class_highest_score'] = $exam['class_highest_score'];
-                $dataS['class_average'] = $exam['class_average'];
-                // $dataS['getClassAverage'] = $getClassAverage;
-                $dataS['position'] = $exam['position'];
+                $dataS['class_highest_score'] = $classHighestScore;
+                $dataS['class_average'] = $classAverage;
+                $dataS['position'] = $position;
                 $dataS['getLoopGrade'] = $getLoopGrade;
                 $dataS['full_mark'] = $exam['full_mark'];
                 $dataS['passing_mark'] = $exam['passing_mark'];
                 $dataSubject[] = $dataS;
             }
-            $dataE['subject'] = $dataSubject; 
+            $dataE['subject'] = $dataSubject;
             $result[] = $dataE;
-
         }
         $data['getRecord'] = $result;
         $data['header_title'] = "My Exam Result";
