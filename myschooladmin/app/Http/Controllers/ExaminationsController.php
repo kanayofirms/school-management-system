@@ -437,8 +437,52 @@ class ExaminationsController extends Controller
         return view('student.my_exam_result', $data);
     }
 
-    public function myExamResultPrint()
+    public function myExamResultPrint(Request $request)
     {
+        $exam_id = $request->exam_id;
+        $student_id = $request->student_id;
+
+        $data['getExam'] = ExamModel::getSingle($exam_id);
+        $data['getStudent'] = User::getSingle($student_id);
+
+
+        $getExamSubject = MarksRegisterModel::getExamSubject($exam_id, $student_id);
+            $dataSubject = array();
+
+            foreach ($getExamSubject as $exam) {
+                $totalScore = $exam['resumption_test'] + $exam['assignment'] + $exam['midterm_test'] + $exam['project'] + $exam['exam'];
+                $getLoopGrade = MarksGradeModel::getGrade($totalScore);
+
+                // Fetch class-wide stats
+                $examDetails = MarksRegisterModel::getExamSubjectDetails($value->exam_id, $exam['class_id'], $exam['subject_id']);
+
+                if ($examDetails) {  // Check if $examDetails is not null
+                    $classHighestScore = $examDetails->class_highest_score;
+                    $classAverage = round($examDetails->class_average,2);
+                } else {
+                    $classHighestScore = null;
+                    $classAverage = null;
+                }
+
+                $position = MarksRegisterModel::getPosition($value->exam_id, $userId, $exam['subject_id']);
+                $dataS = array();
+                $dataS['subject_name'] = $exam['subject_name'];
+                $dataS['resumption_test'] = $exam['resumption_test'];
+                $dataS['assignment'] = $exam['assignment'];
+                $dataS['midterm_test'] = $exam['midterm_test'];
+                $dataS['project'] = $exam['project'];
+                $dataS['exam'] = $exam['exam'];
+                $dataS['totalScore'] = $totalScore;
+                $dataS['class_highest_score'] = $classHighestScore;
+                $dataS['class_average'] = $classAverage;
+                $dataS['position'] = $position;
+                $dataS['getLoopGrade'] = $getLoopGrade;
+                $dataS['full_mark'] = $exam['full_mark'];
+                $dataS['passing_mark'] = $exam['passing_mark'];
+                $dataSubject[] = $dataS;
+            }
+            $data['getExamMark'] = $dataSubject;
+
         return view('exam_result_print');
     }
 
