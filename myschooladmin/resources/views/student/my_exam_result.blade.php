@@ -75,7 +75,7 @@
                         <td>{{ $exam['exam'] }}</td>
                         <td>{{ $exam['totalScore'] }}</td>
                         <td>{{ $exam['class_highest_score'] }}</td>
-                        {{-- <td>{{ $exam['getClassAverage'] }}</td> --}}
+                        <td>{{ $exam['class_average'] }}</td>
                         <td>{{ $exam['position'] }}</td>         
                         <td>{{ $exam['getLoopGrade'] }}</td>
                         <td>
@@ -106,7 +106,7 @@
                        </tr>
                     @endforeach
 
-                    <tr>
+                    {{-- <tr>
                       <td colspan="2">
                         <b>Grand Total : {{ $totalScore }}/{{ $full_mark }}</b>
                       </td>
@@ -120,7 +120,7 @@
                       <td colspan="2">
                         <b>Grade : {{ $getGrade }}</b>
                       </td>
-                      {{-- <td colspan="3">
+                      <td colspan="3">
                         <b>Result: 
                         @if ($resultValidation == 0)
                           <span style="color:green;">Pass</span>
@@ -128,8 +128,8 @@
                           <span style="color:red;">Fail</span>
                         @endif
                       </b>
-                      </td> --}}
-                    </tr>
+                      </td>
+                    </tr> --}}
                   </tbody>
                 </table>               
             </div>
