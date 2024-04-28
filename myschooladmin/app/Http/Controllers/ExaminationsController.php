@@ -439,6 +439,7 @@ class ExaminationsController extends Controller
 
     public function myExamResultPrint(Request $request)
     {
+        $userId = Auth::user()->id;
         $exam_id = $request->exam_id;
         $student_id = $request->student_id;
 
@@ -446,19 +447,19 @@ class ExaminationsController extends Controller
         $data['getStudent'] = User::getSingle($student_id);
 
 
-        $getExamSubject = MarksRegisterModel::getExamSubject($exam_id, $student_id);
-            $dataSubject = array();
+        $getExamSubject = MarksRegisterModel::getExamSubject($exam_id, $student_id, $userId);
+        $dataSubject = array();
 
-            foreach ($getExamSubject as $exam) {
-                $totalScore = $exam['resumption_test'] + $exam['assignment'] + $exam['midterm_test'] + $exam['project'] + $exam['exam'];
-                $getLoopGrade = MarksGradeModel::getGrade($totalScore);
+        foreach ($getExamSubject as $exam) {
+            $totalScore = $exam['resumption_test'] + $exam['assignment'] + $exam['midterm_test'] + $exam['project'] + $exam['exam'];
+            $getLoopGrade = MarksGradeModel::getGrade($totalScore);
 
-                // Fetch class-wide stats
-                $examDetails = MarksRegisterModel::getExamSubjectDetails($value->exam_id, $exam['class_id'], $exam['subject_id']);
+            // Fetch class-wide stats
+            $examDetails = MarksRegisterModel::getExamSubjectDetails($value->exam_id, $exam['class_id'], $exam['subject_id']);
 
-                if ($examDetails) {  // Check if $examDetails is not null
-                    $classHighestScore = $examDetails->class_highest_score;
-                    $classAverage = round($examDetails->class_average,2);
+            if ($examDetails) {  // Check if $examDetails is not null
+                $classHighestScore = $examDetails->class_highest_score;
+                $classAverage = round($examDetails->class_average,2);
                 } else {
                     $classHighestScore = null;
                     $classAverage = null;
@@ -483,7 +484,8 @@ class ExaminationsController extends Controller
             }
             $data['getExamMark'] = $dataSubject;
 
-        return view('exam_result_print');
+
+        return view('exam_result_print', $data);
     }
 
     public function myExamTimetable(Request $request)
