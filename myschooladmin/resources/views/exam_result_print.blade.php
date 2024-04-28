@@ -73,7 +73,8 @@
                                 <tbody>
                                     <tr>
                                         <td width="10vw">NAME OF STUDENT</td>
-                                        <td style="border-bottom:1px solid; width:20vw;"></td>
+                                        <td style="border-bottom:1px solid; width:20vw;">
+                                            </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -182,179 +183,81 @@
                       </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                          <td class="td text-container">Mathematics</td>
-                          <td class="td">10</td>
-                          <td class="td">5</td>
-                          <td class="td">5</td>
-                          <td class="td">67</td>
-                          <td class="td">87</td>
-                          <td class="td">5</td>
-                          <td class="td">67</td>
-                          <td class="td">87</td>
-                          <td class="td">40</td>
-                          <td class="td">100</td>
-                          <td class="td">
-                            <span style="color: green; font-weight:bold;">Pass</span>
-                            </td>
-                        </tr>   
-
-                        <tr>
-                          <td class="td text-container">Mathematics</td>
-                          <td class="td">10</td>
-                          <td class="td">5</td>
-                          <td class="td">5</td>
-                          <td class="td">67</td>
-                          <td class="td">87</td>
-                          <td class="td">5</td>
-                          <td class="td">67</td>
-                          <td class="td">87</td>
-                          <td class="td">40</td>
-                          <td class="td">100</td>
-                          <td class="td">
-                            <span style="color: green; font-weight:bold;">Pass</span>
-                            </td>
-                        </tr> 
-                        
-                        <tr>
-                            <td class="td text-container">Mathematics</td>
-                            <td class="td">10</td>
-                            <td class="td">5</td>
-                            <td class="td">5</td>
-                            <td class="td">67</td>
-                            <td class="td">87</td>
-                            <td class="td">40</td>
-                            <td class="td">5</td>
-                            <td class="td">67</td>
-                            <td class="td">87</td>
-                            <td class="td">100</td>
+                        @php
+                          $totalScore = 0;
+                          $full_mark = 0;
+                          // $resultValidation = 0;
+                        @endphp
+                        @foreach ($getExamMark as $exam)
+                        @php
+                          $totalScore = $totalScore + $exam['totalScore'];
+                          $full_mark = $full_mark + $exam['full_mark'];
+                        @endphp
+                           <tr>
+                            <td class="td" style="width:300px;">{{ $exam['subject_name'] }}</td>
+                            <td class="td">{{ $exam['resumption_test'] }}</td>
+                            <td class="td">{{ $exam['assignment'] }}</td>
+                            <td class="td">{{ $exam['midterm_test'] }}</td>
+                            <td class="td">{{ $exam['project'] }}</td>
+                            <td class="td">{{ $exam['exam'] }}</td>
+                            <td class="td">{{ $exam['totalScore'] }}</td>
+                            <td class="td">{{ $exam['class_highest_score'] }}</td>
+                            <td class="td">{{ $exam['class_average'] }}</td>
+                            <td class="td">{{ $exam['position'] }}</td>         
+                            <td class="td">{{ $exam['getLoopGrade'] }}</td>
                             <td class="td">
-                              <span style="color: green; font-weight:bold;">Pass</span>
-                              </td>
-                          </tr>   
-
-                          <tr>
-                            <td class="td text-container">Mathematics</td>
-                            <td class="td">10</td>
-                            <td class="td">5</td>
-                            <td class="td">5</td>
-                            <td class="td">67</td>
-                            <td class="td">87</td>
-                            <td class="td">40</td>
-                            <td class="td">5</td>
-                            <td class="td">67</td>
-                            <td class="td">87</td>
-                            <td class="td">100</td>
-                            <td class="td">
-                              <span style="color: green; font-weight:bold;">Pass</span>
-                              </td>
-                          </tr>   
-
-                          <tr>
-                            <td class="td text-container">Mathematics</td>
-                            <td class="td">10</td>
-                            <td class="td">5</td>
-                            <td class="td">5</td>
-                            <td class="td">67</td>
-                            <td class="td">87</td>
-                            <td class="td">5</td>
-                            <td class="td">67</td>
-                            <td class="td">87</td>
-                            <td class="td">40</td>
-                            <td class="td">100</td>
-                            <td class="td">
-                              <span style="color: green; font-weight:bold;">Pass</span>
-                              </td>
-                          </tr>   
-
-                          <tr>
-                            <td class="td text-container">Mathematics</td>
-                            <td class="td">10</td>
-                            <td class="td">5</td>
-                            <td class="td">5</td>
-                            <td class="td">67</td>
-                            <td class="td">87</td>
-                            <td class="td">5</td>
-                            <td class="td">67</td>
-                            <td class="td">87</td>
-                            <td class="td">40</td>
-                            <td class="td">100</td>
-                            <td class="td">
-                              <span style="color: green; font-weight:bold;">Pass</span>
-                              </td>
-                          </tr>   
-
-                          <tr>
-                            <td class="td text-container">Mathematics</td>
-                            <td class="td">10</td>
-                            <td class="td">5</td>
-                            <td class="td">5</td>
-                            <td class="td">67</td>
-                            <td class="td">87</td>
-                            <td class="td">5</td>
-                            <td class="td">67</td>
-                            <td class="td">87</td>
-                            <td class="td">40</td>
-                            <td class="td">100</td>
-                            <td class="td">
-                              <span style="color: green; font-weight:bold;">Pass</span>
-                              </td>
-                          </tr>   
-
-                          <tr>
-                            <td class="td text-container">Mathematics</td>
-                            <td class="td">10</td>
-                            <td class="td">5</td>
-                            <td class="td">5</td>
-                            <td class="td">67</td>
-                            <td class="td">87</td>
-                            <td class="td">5</td>
-                            <td class="td">67</td>
-                            <td class="td">87</td>
-                            <td class="td">40</td>
-                            <td class="td">100</td>
-                            <td class="td">
-                              <span style="color: green; font-weight:bold;">Pass</span>
-                              </td>
-                          </tr>   
-
-                          <tr>
-                            <td class="td text-container">Mathematics</td>
-                            <td class="td">10</td>
-                            <td class="td">5</td>
-                            <td class="td">5</td>
-                            <td class="td">67</td>
-                            <td class="td">87</td>
-                            <td class="td">40</td>
-                            <td class="td">100</td>
-                            <td class="td">5</td>
-                            <td class="td">67</td>
-                            <td class="td">87</td>
-                            <td class="td">
-                              <span style="color: green; font-weight:bold;">Pass</span>
-                              </td>
-                          </tr>   
-
-                          <tr>
-                            <td class="td text-container">Mathematics</td>
-                            <td class="td">10</td>
-                            <td class="td">5</td>
-                            <td class="td">5</td>
-                            <td class="td">67</td>
-                            <td class="td">87</td>
-                            <td class="td">5</td>
-                            <td class="td">67</td>
-                            <td class="td">87</td>
-                            <td class="td">40</td>
-                            <td class="td">100</td>
-                            <td class="td">
-                              <span style="color: green; font-weight:bold;">Pass</span>
-                              </td>
-                          </tr> 
-                          
-
-                          
-                    </tbody>
+                              @if ($exam['totalScore'] >= 80)
+                                  <span style="color: green; font-weight:bold;">EXCELLENT</span>
+                              @elseif ($exam['totalScore'] >= 75 && $exam['totalScore'] <= 79)
+                                  <span style="color: green; font-weight:bold;">VERY GOOD</span>
+                              @elseif ($exam['totalScore'] >= 70 && $exam['totalScore'] <= 74)
+                                  <span style="color: amber; font-weight:bold;">GOOD</span>
+                              @elseif ($exam['totalScore'] >= 65 && $exam['totalScore'] <= 69)
+                                  <span style="color: blue; font-weight:bold;">CREDIT</span>
+                              @elseif ($exam['totalScore'] >= 60 && $exam['totalScore'] <= 64)
+                                  <span style="color: blue; font-weight:bold;">CREDIT</span>
+                              @elseif ($exam['totalScore'] >= 55 && $exam['totalScore'] <= 59)
+                                  <span style="color: blue; font-weight:bold;">CREDIT</span>
+                              @elseif ($exam['totalScore'] >= 45 && $exam['totalScore'] <= 54)
+                                  <span style="color: blue; font-weight:bold;">PASS</span>
+                              @elseif ($exam['totalScore'] >= 40 && $exam['totalScore'] <= 44)
+                                  <span style="color: blue; font-weight:bold;">PASS</span>
+                              @else
+                                {{-- @php
+                                  $resultValidation = 1;
+                                @endphp --}}
+                                  <span style="color: red; font-weight:bold;
+                                  ">Fail</span>
+                              @endif
+                            </td> 
+                           </tr>
+                        @endforeach
+    
+                        {{-- <tr>
+                          <td colspan="2">
+                            <b>Grand Total : {{ $totalScore }}/{{ $full_mark }}</b>
+                          </td>
+                          <td colspan="2">
+                            @php
+                              $percent = ($totalScore * 100) / $full_mark;
+                              $getGrade = App\Models\MarksGradeModel::getGrade($percent);
+                            @endphp
+                            <b>Percentage : {{ round($percent, 2) }}%</b>
+                          </td> 
+                          <td colspan="2">
+                            <b>Grade : {{ $getGrade }}</b>
+                          </td>
+                          <td colspan="3">
+                            <b>Result: 
+                            @if ($resultValidation == 0)
+                              <span style="color:green;">Pass</span>
+                            @else
+                              <span style="color:red;">Fail</span>
+                            @endif
+                          </b>
+                          </td>
+                        </tr> --}}
+                      </tbody>
                   </table>
 
             </div>
