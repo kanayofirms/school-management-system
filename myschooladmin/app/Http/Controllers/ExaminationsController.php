@@ -465,7 +465,7 @@ class ExaminationsController extends Controller
                     $classAverage = null;
                 }
 
-                $position = MarksRegisterModel::getPosition($value->exam_id, $userId, $exam['subject_id']);
+                $position = MarksRegisterModel::getPosition($exam_id, $userId, $exam['subject_id']);
                 $dataS = array();
                 $dataS['subject_name'] = $exam['subject_name'];
                 $dataS['resumption_test'] = $exam['resumption_test'];
