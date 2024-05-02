@@ -28,10 +28,19 @@
     
         .table-bg {
             border-collapse: collapse;
-            min-width: 80vw;
+            min-width: 60vw;
             font-size: 15px;
             text-align: center;
         }
+
+        .table-sm {
+            border-collapse: collapse;
+            min-width: 17vw;
+            font-size: 15px;   
+            text-align: center;
+            float: right;
+        }
+
         .th {
             border: 1px solid white;
             padding: 10px;
@@ -82,25 +91,25 @@
                             <table class="margin-bottom" style="width: 80vw;">
                                 <tbody>
                                     <tr>
-                                        <td width="7vw">ADMISSION NO</td>
-                                        <td style="border-bottom:1px solid; width:14vw;"></td>
+                                        <td width="15vw">ADMISSION NO</td>
+                                        <td style="border-bottom:1px solid; width:10vw;"></td>
                                         <td width="7vw">CLASS</td>
-                                        <td style="border-bottom:1px solid; width:16vw;"></td>
-                                        <td width="17vw">CLASS AVERAGE</td>
-                                        <td style="border-bottom:1px solid; width:5vw;"></td>
+                                        <td style="border-bottom:1px solid; width:11vw;"></td>
+                                        <td width="15vw">CLASS AVERAGE</td>
+                                        <td style="border-bottom:1px solid; width:7vw;"></td>
                                     </tr>
                                 </tbody>
                             </table>
 
-                            <table class="margin-bottom" style="width: 100%;">
+                            <table class="margin-bottom" style="width: 80vw;">
                                 <tbody>
                                     <tr>
-                                        <td width="6%">SEX</td>
-                                        <td style="border-bottom:1px solid; width:17%;"></td>
-                                        <td width="5%">NO.IN ClASS</td>
-                                        <td style="border-bottom:1px solid; width:14%;"></td>
-                                        <td width="10%">CLASS HIGHEST AVERAGE</td>
-                                        <td style="border-bottom:1px solid; width:7%;"></td>
+                                        <td width="5vw">SEX</td>
+                                        <td style="border-bottom:1px solid; width:9vw;"></td>
+                                        <td width="5vw">NO. IN ClASS</td>
+                                        <td style="border-bottom:1px solid; width:7vw;"></td>
+                                        <td width="10vw">CLASS LOWEST AVERAGE</td>
+                                        <td style="border-bottom:1px solid; width:4vw;"></td>
                                         
                                     </tr>
                                 </tbody>
@@ -113,7 +122,7 @@
                                         <td style="border-bottom:1px solid; width:17.9%;"></td>
                                         <td width="5%">TERM</td>
                                         <td style="border-bottom:1px solid; width:14.1%;"></td>
-                                        <td width="10%">CLASS LOWEST AVERAGE</td>
+                                        <td width="10%">CLASS HIGHEST AVERAGE</td>
                                         <td style="border-bottom:1px solid; width:7%;"></td>
                                     </tr>
                                 </tbody>
@@ -131,15 +140,6 @@
                                     </tr>
                                 </tbody>
                             </table>
-
-                            <table class="margin-bottom" style="width: 50%;">
-                                <tbody>
-                                    <tr>
-                                        <td width="5%">TOTAL SCORE</td>
-                                        <td style="border-bottom:1px solid; width:20%;"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
                         </td>
                         <td width="5%"></td>
                         <td width="20%" valign="top">
@@ -152,8 +152,40 @@
             <br>
 
             <div>
+                <table class="table-sm">
+                    <thead style="font-size: 15px; text-align:center; background-color:#3180FF; color:white;">
+                        <tr>
+                            <th class="th" colspan="6">SKILL & BEHAVIOUR</th>
+                        </tr>
+                        
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="td"></td>
+                            <td class="td">5</td>
+                            <td class="td">4</td>
+                            <td class="td">3</td>
+                            <td class="td">2</td>
+                            <td class="td">1</td>
+                          </tr>
+                          <tr>
+                            <td class="td text-container">PUNCTUALITY</td>
+                            <td class="td"></td>
+                            <td class="td"></td>
+                            <td class="td"></td>
+                            <td class="td"></td>
+                            <td class="td"></td>
+                          </tr>
+                        
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <div>
                 <table class="table-bg">
-                    <thead style="font-size: 12px; text-align:center; background-color:#3180FF; color:white;">
+                    <thead style="font-size: 14px; text-align:center; background-color:#3180FF; color:white;">
                       <tr>
                         <th class="th" colspan="12">ACADEMIC</th>
                       </tr>
@@ -261,6 +293,8 @@
                   </table>
 
             </div>
+
+           
 
             <div style="text-align: center; ">
                 <h3>SENIOR SECONDARY SCHOOL</h3>
