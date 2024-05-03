@@ -18,7 +18,7 @@
                      <div class="col-lg-3 col-6">
                          <div class="small-box bg-info">
                              <div class="inner">
-                                 <h3>150</h3>
+                                <h3>N{{ number_format($getTotalFees, 2) }}</h3>
 
                                  <p>All Time Received Payment</p>
                              </div>
@@ -102,6 +102,21 @@
                                 <i class="ion ion-person-add"></i>
                             </div>
                             <a href="{{ url('admin/admin/list') }}" class="small-box-footer">More info <i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-6">
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <h3>{{ $TotalExam }}</h3>
+
+                                <p>Total Exam</p>
+                            </div>
+                            <div class="icon">
+                                <i class="nav-icon fas fa-table"></i>
+                            </div>
+                            <a href="{{ url('admin/examinations/exam/list') }}" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
