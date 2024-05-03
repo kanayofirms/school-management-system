@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Models\User;
 use App\Models\ExamModel;
+use App\Models\ClassModel;
 use App\Models\StudentAddFeesModel;
 
 
@@ -24,6 +25,7 @@ class DashboardController extends Controller
             $data['TotalParent'] = User::getTotalUser(4);
 
             $data['TotalExam'] = ExamModel::getTotalExam();
+            $data['TotalClass'] = ClassModel::getTotalClass();
             return view('admin.dashboard', $data);
         }
         else if(Auth::user()->user_type == 2)
