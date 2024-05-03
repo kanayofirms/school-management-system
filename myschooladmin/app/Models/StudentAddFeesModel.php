@@ -41,4 +41,10 @@ class StudentAddFeesModel extends Model
                     ->whereDate('student_add_fees.created_at', '=', date('Y-m-d'))
                     ->sum('student_add_fees.paid_amount');
     }
+
+    static public function getTotalFees()
+    {
+        return self::where('student_add_fees.is_payment', '=', 1)
+                    ->sum('student_add_fees.paid_amount');
+    }
 }
