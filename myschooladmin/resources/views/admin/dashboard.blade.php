@@ -131,12 +131,40 @@
                             <div class="icon">
                                 <i class="nav-icon fas fa-table"></i>
                             </div>
-                            <a href="{{ url('admin/examinations/exam/list') }}" class="small-box-footer">More info <i
+                            <a href="{{ url('admin/class/list') }}" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
 
-                     
+                    <div class="col-lg-3 col-6">
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3>{{ $TotalSubject }}</h3>
+
+                                <p>Total Subject</p>
+                            </div>
+                            <div class="icon">
+                                <i class="nav-icon fas fa-table"></i>
+                            </div>
+                            <a href="{{ url('admin/subject/list') }}" class="small-box-footer">More info <i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-6">
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3>{{ $TotalUsers }}</h3>
+
+                                <p>Total Users</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-person-add"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">More info<i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
                  </div>
              </div>
          </section>
