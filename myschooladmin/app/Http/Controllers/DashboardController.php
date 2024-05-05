@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\ExamModel;
 use App\Models\ClassModel;
 use App\Models\StudentAddFeesModel;
-
+use App\Models\SubjectModel;
 
 class DashboardController extends Controller
 {
@@ -26,10 +26,17 @@ class DashboardController extends Controller
 
             $data['TotalExam'] = ExamModel::getTotalExam();
             $data['TotalClass'] = ClassModel::getTotalClass();
+            $data['TotalSubject'] = SubjectModel::getTotalSubject();
+            $data['TotalUsers'] = $data['TotalAdmin'] + $data['TotalTeacher'] + $data['TotalStudent'] + $data['TotalParent'];
+
             return view('admin.dashboard', $data);
         }
         else if(Auth::user()->user_type == 2)
         {
+            $data['TotalStudent'] = User::getTeacherStudentCount(Auth::user()->id);
+            $data['TotalClass'] = ClassModel::getTotalClass();
+            $data['TotalSubject'] = SubjectModel::getTotalSubject();
+
             return view('teacher.dashboard', $data);
         }
         else if(Auth::user()->user_type == 3)
