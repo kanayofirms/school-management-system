@@ -9,6 +9,8 @@ use App\Models\ExamModel;
 use App\Models\ClassModel;
 use App\Models\StudentAddFeesModel;
 use App\Models\SubjectModel;
+use App\Models\AssignClassTeacherModel;
+
 
 class DashboardController extends Controller
 {
@@ -35,7 +37,7 @@ class DashboardController extends Controller
         {
             $data['TotalStudent'] = User::getTeacherStudentCount(Auth::user()->id);
             $data['TotalClass'] = ClassModel::getTotalClass();
-            $data['TotalSubject'] = SubjectModel::getTotalSubject();
+            $data['TotalSubject'] = AssignClassTeacherModel::getMyClassSubjectCount(Auth::user()->id);
 
             return view('teacher.dashboard', $data);
         }
