@@ -447,9 +447,7 @@ class ExaminationsController extends Controller
 
         $data['getClass'] = MarksRegisterModel::getClass($exam_id, $userId);
         $data['TotalClass'] = ClassModel::getTotalClass($exam_id, $userId);
-
-        
-        $data['getAge'] = User::getAge($exam_id, $userId);
+    
 
         
         $getExamSubject = MarksRegisterModel::getExamSubject($exam_id, $userId);
