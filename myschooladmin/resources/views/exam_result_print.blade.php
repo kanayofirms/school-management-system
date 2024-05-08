@@ -131,7 +131,7 @@
                         <tbody>
                             <tr>
                                 <td width="4vw;">AGE</td>
-                                <td style="border-bottom:1px solid; width:16vw;"></td>
+                                <td style="border-bottom:1px solid; width:16vw;">{{ $getStudent->getAge() }}</td>
                                 <td width="3vw">POSITION</td>
                                 <td style="border-bottom:1px solid; width:12.6vw;"></td>
                                 <td width="4vw">AVERAGE</td>
@@ -140,10 +140,10 @@
                         </tbody>
                     </table>
                 </td>
-                <td width="5%"></td>
-                <td width="20%" valign="top">
-                    <img src="http://localhost/school-management-system/myschooladmin/upload/profile/20231226114824emxqpx2ja4itvffoz2pg.jpg" 
-                        alt="" style="border-radius:6px;" height="100px" width="100px">
+                <td width="50vw"></td>
+                <td min-width="20vw" valign="top">
+                    <img src="{{ $getStudent->getProfileDirect() }}" 
+                        alt="" style="border-radius:1.5vw;" height="150vw;" width="150vw;">
                 </td>
             </tr>
         </table>
