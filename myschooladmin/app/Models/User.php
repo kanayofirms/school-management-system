@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Carbon;
 use Request;
 
 class User extends Authenticatable
@@ -454,6 +455,12 @@ class User extends Authenticatable
                         ->get();
 
         return $return;
+    }
+
+    static public function getAge($student_id)
+    {
+        return Carbon::parse('users.date_of_birth as age')
+                ->first();
     }
 
     static public function getPaidAmount($student_id, $class_id)
