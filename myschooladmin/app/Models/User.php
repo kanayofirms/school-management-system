@@ -457,10 +457,9 @@ class User extends Authenticatable
         return $return;
     }
 
-    static public function getAge($student_id)
+    public function getAge()
     {
-        return Carbon::parse('users.date_of_birth as age')
-                ->first();
+        return Carbon::parse($this->attributes['date_of_birth'])->age;
     }
 
     static public function getPaidAmount($student_id, $class_id)
