@@ -441,13 +441,11 @@ class ExaminationsController extends Controller
     {
         $userId = Auth::user()->id;
         $exam_id = $request->exam_id;
-        $student_id = $request->student_id;
-
         $data['getExam'] = ExamModel::getSingle($exam_id);
-        $data['getStudent'] = User::getSingle($student_id);
+        $data['getStudent'] = User::getSingle($userId);
 
 
-        $getExamSubject = MarksRegisterModel::getExamSubject($exam_id, $student_id, $userId);
+        $getExamSubject = MarksRegisterModel::getExamSubject($exam_id, $userId);
         $dataSubject = array();
 
         foreach ($getExamSubject as $exam) {
@@ -455,7 +453,7 @@ class ExaminationsController extends Controller
             $getLoopGrade = MarksGradeModel::getGrade($totalScore);
 
             // Fetch class-wide stats
-            $examDetails = MarksRegisterModel::getExamSubjectDetails($value->exam_id, $exam['class_id'], $exam['subject_id']);
+            $examDetails = MarksRegisterModel::getExamSubjectDetails($exam_id, $exam['class_id'], $exam['subject_id']);
 
             if ($examDetails) {  // Check if $examDetails is not null
                 $classHighestScore = $examDetails->class_highest_score;
@@ -481,9 +479,10 @@ class ExaminationsController extends Controller
                 $dataS['full_mark'] = $exam['full_mark'];
                 $dataS['passing_mark'] = $exam['passing_mark'];
                 $dataSubject[] = $dataS;
-            }
-            $data['getExamMark'] = $dataSubject;
 
+            }
+
+            $data['getExamMark'] = $dataSubject;
 
         return view('exam_result_print', $data);
     }
