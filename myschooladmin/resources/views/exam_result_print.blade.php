@@ -94,7 +94,7 @@
                                 <td width="15vw">ADMISSION NO</td>
                                 <td style="border-bottom:1px solid; width:10vw;">{{ $getStudent->admission_number }}</td>
                                 <td width="7vw">CLASS</td>
-                                <td style="border-bottom:1px solid; width:11vw;"></td>
+                                <td style="border-bottom:1px solid; width:11vw;">{{ $getClass->class_name }}</td>
                                 <td width="15vw">CLASS AVERAGE</td>
                                 <td style="border-bottom:1px solid; width:7vw;"></td>
                             </tr>
@@ -105,9 +105,9 @@
                         <tbody>
                             <tr>
                                 <td width="5vw;">SEX</td>
-                                <td style="border-bottom:1px solid; width:8.3vw;"></td>
+                                <td style="border-bottom:1px solid; width:8.3vw;">{{ $getStudent->gender }}</td>
                                 <td width="8vw">NO. IN ClASS</td>
-                                <td style="border-bottom:1px solid; width:7vw;"></td>
+                                <td style="border-bottom:1px solid; width:7vw;">{{ $TotalClass }}</td>
                                 <td width="8vw">CLASS LOWEST AVERAGE</td>
                                 <td style="border-bottom:1px solid; width:3.4vw;"></td>
                             </tr>
