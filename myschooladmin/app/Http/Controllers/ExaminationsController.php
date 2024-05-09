@@ -455,7 +455,8 @@ class ExaminationsController extends Controller
         $dataSubject = array();
 
         foreach ($getExamSubject as $exam) {
-            $totalScore = $exam['resumption_test'] + $exam['assignment'] + $exam['midterm_test'] + $exam['project'] + $exam['exam'];
+            $totalScore = $exam['resumption_test'] + $exam['assignment'] + $exam['midterm_test'] + 
+            $exam['project'] + $exam['exam'];
             $getLoopGrade = MarksGradeModel::getGrade($totalScore);
 
             // Fetch class-wide stats
@@ -463,7 +464,7 @@ class ExaminationsController extends Controller
 
             if ($examDetails) {  // Check if $examDetails is not null
                 $classHighestScore = $examDetails->class_highest_score;
-                $classAverage = round($examDetails->class_average,2);
+                $classAverage = round($examDetails->class_average,0);
                 } else {
                     $classHighestScore = null;
                     $classAverage = null;
