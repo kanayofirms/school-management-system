@@ -96,7 +96,7 @@
                                 <td width="7vw">CLASS</td>
                                 <td style="border-bottom:1px solid; width:11vw;">{{ $getClass->class_name }}</td>
                                 <td width="15vw">CLASS AVERAGE</td>
-                                <td style="border-bottom:1px solid; width:7vw;"></td>
+                                <td style="border-bottom:1px solid; width:7vw;">{{ $avgClass->avg('subject_average') }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -109,7 +109,7 @@
                                 <td width="8vw">NO. IN ClASS</td>
                                 <td style="border-bottom:1px solid; width:7vw;">{{ $TotalClass }}</td>
                                 <td width="8vw">CLASS LOWEST AVERAGE</td>
-                                <td style="border-bottom:1px solid; width:3.4vw;"></td>
+                                <td style="border-bottom:1px solid; width:3.4vw;">{{ $avgClass->min('subject_average') }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -122,7 +122,7 @@
                                 <td width="8vw;">TERM</td>
                                 <td style="border-bottom:1px solid; width:6.3vw;">{{ $getExam->name }}</td>
                                 <td width="8vw;">CLASS HIGHEST AVERAGE</td>
-                                <td style="border-bottom:1px solid; width:3vw;"></td>
+                                <td style="border-bottom:1px solid; width:3vw;">{{ $avgClass->max('subject_average') }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -133,9 +133,9 @@
                                 <td width="4vw;">AGE</td>
                                 <td style="border-bottom:1px solid; width:16vw;">{{ $getStudent->getAge() }}</td>
                                 <td width="3vw">POSITION</td>
-                                <td style="border-bottom:1px solid; width:12.6vw;"></td>
+                                <td style="border-bottom:1px solid; width:12.6vw;">{{ $avgClass->search(fn($dt) =>$dt->student_id === $getStudent->id) + 1 }}</td>
                                 <td width="4vw">AVERAGE</td>
-                                <td style="border-bottom:1px solid; width:9.5vw;"></td>
+                                <td style="border-bottom:1px solid; width:9.5vw;">{{ $avgClass->firstWhere('student_id', $getStudent->id)?->subject_average }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -422,9 +422,6 @@
                               @elseif ($exam['totalScore'] >= 40 && $exam['totalScore'] <= 44)
                                   <span style="color: blue; font-weight:bold;">PASS</span>
                               @else
-                                {{-- @php
-                                  $resultValidation = 1;
-                                @endphp --}}
                                   <span style="color: red; font-weight:bold;
                                   ">Fail</span>
                               @endif
@@ -432,30 +429,6 @@
                            </tr>
                         @endforeach
     
-                        {{-- <tr>
-                          <td colspan="2">
-                            <b>Grand Total : {{ $totalScore }}/{{ $full_mark }}</b>
-                          </td>
-                          <td colspan="2">
-                            @php
-                              $percent = ($totalScore * 100) / $full_mark;
-                              $getGrade = App\Models\MarksGradeModel::getGrade($percent);
-                            @endphp
-                            <b>Percentage : {{ round($percent, 2) }}%</b>
-                          </td> 
-                          <td colspan="2">
-                            <b>Grade : {{ $getGrade }}</b>
-                          </td>
-                          <td colspan="3">
-                            <b>Result: 
-                            @if ($resultValidation == 0)
-                              <span style="color:green;">Pass</span>
-                            @else
-                              <span style="color:red;">Fail</span>
-                            @endif
-                          </b>
-                          </td>
-                        </tr> --}}
                       </tbody>
                   </table>
 
@@ -472,10 +445,7 @@
             <br>
             <br>
             <br>
-            <br>
-            <br>
-            <br>
-            <br>
+            
 
 
             <table style="width:100vw;">
