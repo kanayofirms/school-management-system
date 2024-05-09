@@ -21,12 +21,14 @@ class MarksRegisterModel extends Model
                 ->first();
     }
 
-    static public function getExam($student_id)
+    static public function getExam($student_id, $class_id)
     {
         return MarksRegisterModel::select('marks_register.*', 'exam.name as exam_name')
             ->join('exam', 'exam.id', '=', 'marks_register.exam_id')
             ->where('marks_register.student_id', '=', $student_id)
+            ->where('marks_register.class_id', '=', $class_id)
             ->groupBy('marks_register.exam_id')
+            ->orderBy('marks_register.id', 'desc')
             ->get();
     }
 
@@ -51,11 +53,14 @@ class MarksRegisterModel extends Model
     }
 
     static public function getExamClassDetails($exam_id, $class_id) {
-        return self::select(
-            DB::raw('AVG(totalmark) as ClassAverage'))
+        return self::select('student_id',
+            DB::raw('AVG(resumption_test + assignment + midterm_test + project + exam) as subject_average')
+            )
+            ->groupBy('student_id')
             ->where('exam_id', $exam_id)
             ->where('class_id', $class_id)
-            ->first(); // Make sure to use first() to fetch a single object
+            ->orderBy('subject_average', 'DESC')
+            ->get();
     }
 
     static public function getPosition($exam_id, $student_id, $subject_id)
