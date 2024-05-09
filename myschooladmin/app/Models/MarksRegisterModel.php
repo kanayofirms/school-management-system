@@ -50,6 +50,14 @@ class MarksRegisterModel extends Model
             ->first(); // Make sure to use first() to fetch a single object
     }
 
+    static public function getExamClassDetails($exam_id, $class_id) {
+        return self::select(
+            DB::raw('AVG(totalmark) as ClassAverage'))
+            ->where('exam_id', $exam_id)
+            ->where('class_id', $class_id)
+            ->first(); // Make sure to use first() to fetch a single object
+    }
+
     static public function getPosition($exam_id, $student_id, $subject_id)
     {
         // First, get all scores for the given exam_id and subject_id, ordered by the calculated total score
