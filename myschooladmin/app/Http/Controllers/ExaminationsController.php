@@ -11,6 +11,7 @@ use App\Models\ExamScheduleModel;
 use App\Models\MarksRegisterModel;
 use App\Models\AssignClassTeacherModel;
 use App\Models\MarksGradeModel;
+use App\Models\SettingModel;
 use App\Models\User;
 
 
@@ -387,8 +388,9 @@ class ExaminationsController extends Controller
     public function myExamResult()
     {
         $userId = Auth::user()->id;
+        $classId = Auth::user()->class_id;
         $result = array();
-        $getExam = MarksRegisterModel::getExam($userId);
+        $getExam = MarksRegisterModel::getExam($userId, $classId);
 
         foreach ($getExam as $value) {
             $dataE = array();
@@ -447,10 +449,11 @@ class ExaminationsController extends Controller
 
         $data['getClass'] = MarksRegisterModel::getClass($exam_id, $userId);
         $data['TotalClass'] = ClassModel::getTotalClass($exam_id, $userId);
-    
-
         
         $getExamSubject = MarksRegisterModel::getExamSubject($exam_id, $userId);
+        $classId = $request->class_id;
+        $data['avgClass'] = MarksRegisterModel::getExamClassDetails($exam_id, $classId);
+        
 
         $dataSubject = array();
 
@@ -562,12 +565,12 @@ class ExaminationsController extends Controller
         return view('parent.my_exam_timetable', $data);
     }
 
-    public function ParentMyExamResult($student_id)
+    public function ParentMyExamResult($student_id, $class_id)
     {
         $data['getStudent'] = User::getSingle($student_id);
 
         $result = array();
-        $getExam = MarksRegisterModel::getExam($student_id);
+        $getExam = MarksRegisterModel::getExam($student_id, $class_id);
         foreach($getExam as $value)
         {
             $dataE = array();
