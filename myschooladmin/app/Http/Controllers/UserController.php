@@ -23,6 +23,12 @@ class UserController extends Controller
         $setting = SettingModel::getSingle();
         $setting->paystack_email = trim($request->paystack_email);
 
+        $setting->school_name = trim($request->school_name);
+        $setting->exam_description = trim($request->exam_description);
+
+
+        
+
         if(!empty($request->file('logo')))
         {
             $ext = $request->file('logo')->getClientOriginalExtension();
