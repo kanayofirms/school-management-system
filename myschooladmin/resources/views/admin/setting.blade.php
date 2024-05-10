@@ -34,7 +34,7 @@
                     value="{{ $getRecord->paystack_email }}" placeholder="Paypal Bussiness Email">
                       
                     </div>
-                  </div>
+                  
 
                   <div class="form-group">
                     <label>Favicon Icon<span style="color: red;"></span></label>
@@ -45,12 +45,22 @@
                  </div>
 
                  <div class="form-group">
-                  <label>Logo<span style="color: red;"></span></label>
-                  <input type="file" class="form-control" name="logo"> 
-                  @if (!@empty($getRecord->getLogo()))
-                        <img src="{{ $getRecord->getLogo() }}" style="width: auto;height: 50px;">
+                  <label for="">School Name</label>
+                  <input type="text" class="form-control" name="school_name" value="{{ $getRecord->school_name }}">
+                 </div>
+
+                 <div class="form-group">
+                  <label for="">Exam Description</label>
+                  <textarea class="form-control" name="exam_description">{{ $getRecord->exam_description }}</textarea>
+                 </div>
+
+                 <div class="form-group">
+                    <label>Logo<span style="color: red;"></span></label>
+                    <input type="file" class="form-control" name="logo"> 
+                    @if (!@empty($getRecord->getLogo()))
+                      <img src="{{ $getRecord->getLogo() }}" style="width: auto;height: 50px;">
                     @endif
-               </div>
+                  </div>
 
                 </div>
                 <div class="card-footer">
