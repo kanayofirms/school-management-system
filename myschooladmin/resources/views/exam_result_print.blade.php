@@ -65,7 +65,7 @@
             <tr>
                 <td width="1vw"></td>
                 <td width="3vw"><img style="width: 7vw;" 
-                    src="http://localhost/school-management-system/myschooladmin/upload/setting/20240325012242vdvmvsmpov.jpg" 
+                    src="{{ $getSetting->getLogo() }}" 
                     alt=""></td>
                 <td>
                     <h1>MODERN IDEAL COLLEGE, ENUGU</h1>
