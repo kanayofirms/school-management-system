@@ -80,6 +80,16 @@ class AssignClassTeacherModel extends Model
                     ->count();
     }
 
+    static public function getMyClassSubjectGroupCount($teacher_id)
+    {
+        return AssignClassTeacherModel::select('assign_class_teacher.id')
+                    ->join('class', 'class.id', '=', 'assign_class_teacher.class_id')
+                   ->where('assign_class_teacher.is_delete', '=', 0)
+                   ->where('assign_class_teacher.status', '=', 0)
+                   ->where('assign_class_teacher.teacher_id', '=', $teacher_id)
+                    ->count();
+    }
+
     static public function getMyClassSubjectGroup($teacher_id)
     {
         return AssignClassTeacherModel::select('assign_class_teacher.*', 'class.name as 
