@@ -9,6 +9,7 @@ use App\Models\ExamModel;
 use App\Models\ClassModel;
 use App\Models\StudentAddFeesModel;
 use App\Models\SubjectModel;
+use App\Models\ClassSubjectModel;
 use App\Models\AssignClassTeacherModel;
 use App\Models\NoticeBoardModel;
 
@@ -47,7 +48,12 @@ class DashboardController extends Controller
         else if(Auth::user()->user_type == 3)
         {
             $userId = Auth::user()->id;
+            $classId = Auth::user()->class_id;
+            $userType = Auth::user()->user_type;    
             $data['TotalPaidAmount'] = StudentAddFeesModel::TotalPaidAmountStudent($userId);
+            $data['TotalSubject'] = ClassSubjectModel::mySubjectTotal($classId);
+            $data['TotalNoticeBoard'] = NoticeBoardModel::getRecordUserCount($userType);
+
             
             return view('student.dashboard', $data);
         }
