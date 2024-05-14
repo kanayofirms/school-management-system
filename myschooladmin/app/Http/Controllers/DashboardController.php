@@ -46,6 +46,9 @@ class DashboardController extends Controller
         }
         else if(Auth::user()->user_type == 3)
         {
+            $userId = Auth::user()->id;
+            $data['TotalPaidAmount'] = StudentAddFeesModel::TotalPaidAmountStudent($userId);
+            
             return view('student.dashboard', $data);
         }
         else if(Auth::user()->user_type == 4)
