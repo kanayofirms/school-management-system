@@ -50,6 +50,16 @@
                  </div>
 
                  <div class="form-group">
+                  <label for="">Location</label>
+                  <textarea class="form-control" name="location">{{ $getRecord->location  }}</textarea>
+                 </div>
+
+                 <div class="form-group">
+                  <label for="">Website</label>
+                  <input type="text" class="form-control" name="website" value="{{ $getRecord->website  }}">
+                 </div>
+
+                 <div class="form-group">
                   <label for="">Exam Description</label>
                   <textarea class="form-control" name="exam_description">{{ $getRecord->exam_description }}</textarea>
                  </div>
