@@ -24,6 +24,8 @@ class UserController extends Controller
         $setting->paystack_email = trim($request->paystack_email);
 
         $setting->school_name = trim($request->school_name);
+        $setting->location = trim($request->location);
+        $setting->website = trim($request->website);
         $setting->exam_description = trim($request->exam_description);
 
 
