@@ -470,7 +470,7 @@ class ExaminationsController extends Controller
 
             if ($examDetails) {  // Check if $examDetails is not null
                 $classHighestScore = $examDetails->class_highest_score;
-                $classAverage = round($examDetails->class_average,0);
+                $classAverage = Round($examDetails->class_average,2);
                 } else {
                     $classHighestScore = null;
                     $classAverage = null;
