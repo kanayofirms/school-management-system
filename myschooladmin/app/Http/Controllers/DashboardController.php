@@ -10,7 +10,7 @@ use App\Models\ClassModel;
 use App\Models\StudentAddFeesModel;
 use App\Models\SubjectModel;
 use App\Models\AssignClassTeacherModel;
-
+use App\Models\NoticeBoardModel;
 
 class DashboardController extends Controller
 {
@@ -36,9 +36,11 @@ class DashboardController extends Controller
         else if(Auth::user()->user_type == 2)
         {
             $userId = Auth::user()->id;
+            $userType = Auth::user()->user_type;    
             $data['TotalStudent'] = User::getTeacherStudentCount($userId);
             $data['TotalClass'] = AssignClassTeacherModel::getMyClassSubjectGroupCount($userId);
             $data['TotalSubject'] = AssignClassTeacherModel::getMyClassSubjectCount($userId);
+            $data['TotalNoticeBoard'] = NoticeBoardModel::getRecordUserCount($userType);
 
             return view('teacher.dashboard', $data);
         }
