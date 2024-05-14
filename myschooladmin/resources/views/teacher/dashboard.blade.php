@@ -62,16 +62,16 @@
                    </div>
 
                    <div class="col-lg-3 col-6">
-                    <div class="small-box bg-primary">
+                    <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>{{ $TotalSubject }}</h3>
+                            <h3>{{ $TotalNoticeBoard }}</h3>
 
                             <p>Total Notice Board</p>
                         </div>
                         <div class="icon">
                             <i class="nav-icon fas fa-table"></i>
                         </div>
-                        <a href="{{ url('teacher/my_class_subject') }}" class="small-box-footer">More info <i
+                        <a href="{{ url('teacher/my_notice_board') }}" class="small-box-footer">More info <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
