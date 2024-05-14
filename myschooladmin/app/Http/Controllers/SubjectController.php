@@ -74,8 +74,8 @@ class SubjectController extends Controller
 
     public function mySubject()
     {
-        
-        $data['getRecord'] = ClassSubjectModel::mySubject(Auth::user()->class_id);
+        $classId = Auth::user()->class_id;
+        $data['getRecord'] = ClassSubjectModel::mySubject($classId);
         $data['header_title'] = "Subject List";
         return view('student.my_subject', $data);
     }
