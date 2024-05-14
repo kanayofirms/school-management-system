@@ -35,9 +35,10 @@ class DashboardController extends Controller
         }
         else if(Auth::user()->user_type == 2)
         {
-            $data['TotalStudent'] = User::getTeacherStudentCount(Auth::user()->id);
-            $data['TotalClass'] = ClassModel::getTotalClass();
-            $data['TotalSubject'] = AssignClassTeacherModel::getMyClassSubjectCount(Auth::user()->id);
+            $userId = Auth::user()->id;
+            $data['TotalStudent'] = User::getTeacherStudentCount($userId);
+            $data['TotalClass'] = AssignClassTeacherModel::getMyClassSubjectGroupCount($userId);
+            $data['TotalSubject'] = AssignClassTeacherModel::getMyClassSubjectCount($userId);
 
             return view('teacher.dashboard', $data);
         }
