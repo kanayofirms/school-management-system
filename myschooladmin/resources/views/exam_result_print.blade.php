@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Print Exam Result</title>
-    <style type="text/css">
+    <style type="text/css" media="print">
         @page {
-            size: 8.3in 11.7in;
+            size:  11.7in 8.3in;
         }
         @page {
-            size: A4;
+            size: A4 landscape;
         }
 
         .margin-bottom
@@ -23,20 +23,27 @@
                 margin: 0px;
                 margin-left: 20px;
                 margin-right: 20px;
+                size: landscape;
+            
+            },
+            .table-bg,
+            .table-sm {
+                margin: 0px;
+                
             }
         }          
     
         .table-bg {
             border-collapse: collapse;
-            max-width: 83vw;
+            width: 80%;
             font-size: 15px;
             text-align: center;
         }
 
         .table-sm {
             border-collapse: collapse;
-            min-width: 13vw;
-            font-size: 15px;   
+            width: 16%;
+            font-size: 13px;   
             text-align: center;
             float: right;
         }
@@ -61,90 +68,116 @@
 </head>
 <body>
     <div id="page">
-        <table style="width: 90vw; text-align:center;">
+        <table style="width: 90%; text-align:center;">
             <tr>
-                <td width="1vw"></td>
-                <td width="3vw"><img style="width: 7vw;" 
-                    src="{{ $getSetting->getLogo() }}" 
-                    alt=""></td>
-                <td>
-                    <h1>MODERN IDEAL COLLEGE, ENUGU</h1>
-                    <h3>CAMPUSES: ABAKPA, EMENE, NIKE</h3> 
-                    <h4>www.micenugu.edu.ng</h4>
+               
+                <td style="line-height:2%;">
+                    <h1>{!! $getSetting->school_name !!}</h1>
+                    <h3>{!! $getSetting->location !!}</h3> 
+                    <h4>{!! $getSetting->website !!}</h4>
                 </td>
             </tr>
         </table>
 
-        <table style="width:100vw">
+        <table style="width:100%">
             <tr>
-                <td width="0.1vw"></td>
-                <td width="70vw">
-                    <table class="margin-bottom" style="width: 83vw; font-weight:bold;">
+                <td width="0.1%"></td>
+                <table class="margin-bottom" style="width: 55%; float: right;">
+                    <tbody>
+                        <tr>
+                            {{-- <td width="2%"></td> --}}
+                            <td><img style="width: 18%;" 
+                            src="{{ $getSetting->getLogo() }}" 
+                            alt="">
+                            </td>
+                        </tr>  
+                    </tbody>
+                </table>
+
+
+                <td width="70%">
+                    <table class="margin-bottom" style="width: 40%; font-weight:bold; font-size:15px;">
                         <tbody>
                             <tr>
-                                <td width="10vw">NAME OF STUDENT</td>
-                                <td style="border-bottom:1px solid; width:20vw;">{{ $getStudent->name }} {{ $getStudent->middle_name }} {{ $getStudent->last_name }}</td>
+                                <td width="10%">NAME OF STUDENT</td>
+                                <td style="border-bottom:1px solid; width:30%;">{{ $getStudent->name }} 
+                                    {{ $getStudent->middle_name }} {{ $getStudent->last_name }}</td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <table class="margin-bottom" style="width: 80vw; font-weight:bold;">
+                    <table class="margin-bottom" style="width: 55%;">
                         <tbody>
                             <tr>
-                                <td width="15vw">ADMISSION NO</td>
-                                <td style="border-bottom:1px solid; width:10vw;">{{ $getStudent->admission_number }}</td>
-                                <td width="7vw">CLASS</td>
-                                <td style="border-bottom:1px solid; width:11vw;">{{ $getClass->class_name }}</td>
-                                <td width="15vw">CLASS AVERAGE</td>
-                                <td style="border-bottom:1px solid; width:7vw;">{{ $avgClass->avg('subject_average') }}</td>
+                                <td width="0.5%"></td>
+                                <td width="10%" valign="top" style="float: right;">
+                                    <img src="{{ $getStudent->getProfileDirect() }}" 
+                                        alt="" style="border-radius:10%;" height="120px;" width="120px;">
+                                </td>
+                            </tr>  
+                        </tbody>
+                    </table>
+
+                    <table class="margin-bottom" style="width: 40%; font-weight:bold; font-size:15px;">
+                        <tbody>
+                            <tr>
+                                <td width="8%">ADMISSION NO</td>
+                                <td style="border-bottom:1px solid; width:15%;">{{ $getStudent->admission_number }}</td>
+                                <td width="4%">CLASS</td>
+                                <td style="border-bottom:1px solid; width:16%;">{{ $getClass->class_name }}</td>
+                                {{-- <td width="8%">CLASS AVERAGE</td>
+                                <td style="border-bottom:1px solid; width:17%;">{{ Round($avgClass->avg('subject_average'),2) }}</td> --}}
                             </tr>
                         </tbody>
                     </table>
 
-                    <table class="margin-bottom" style="width: 80vw; font-weight:bold;">
+                    <table class="margin-bottom" style="width: 40%; font-weight:bold; font-size:15px;">
                         <tbody>
                             <tr>
-                                <td width="5vw;">SEX</td>
-                                <td style="border-bottom:1px solid; width:8.3vw;">{{ $getStudent->gender }}</td>
-                                <td width="8vw">NO. IN ClASS</td>
-                                <td style="border-bottom:1px solid; width:7vw;">{{ $TotalClass }}</td>
-                                <td width="8vw">CLASS LOWEST AVERAGE</td>
-                                <td style="border-bottom:1px solid; width:3.4vw;">{{ $avgClass->min('subject_average') }}</td>
+                                <td width="3%;">SEX</td>
+                                <td style="border-bottom:1px solid; width:5.9%;">{{ $getStudent->gender }}</td>
+                                <td width="2.2%">NO. IN ClASS</td>
+                                <td style="border-bottom:1px solid; width:5.1%;">{{ $TotalClass }}</td>
+                                {{-- <td width="4%">CLASS LOWEST AVERAGE</td>
+                                <td style="border-bottom:1px solid; width:5%;">{{ Round($avgClass->min('subject_average'),2) }}</td> --}}
                             </tr>
                         </tbody>
                     </table>
 
-                    <table class="margin-bottom" style="width: 80vw; font-weight:bold;">
+                    <table class="margin-bottom" style="width: 40%; font-weight:bold; font-size:15px;">
                         <tbody>
                             <tr>
-                                <td width="3vw;">YEAR</td>
-                                <td style="border-bottom:1px solid; width:7vw;">{{ $getExam->name }}</td>
-                                <td width="8vw;">TERM</td>
-                                <td style="border-bottom:1px solid; width:6.3vw;">{{ $getExam->name }}</td>
-                                <td width="8vw;">CLASS HIGHEST AVERAGE</td>
-                                <td style="border-bottom:1px solid; width:3vw;">{{ $avgClass->max('subject_average') }}</td>
+                                <td width="2.1%;">YEAR</td>
+                                <td style="border-bottom:1px solid; width:4.5%;">{{ $getExam->name }}</td>
+                                <td width="0.5%;">TERM</td>
+                                <td style="border-bottom:1px solid; width:4.8%;">{{ $getExam->name }}</td>
+                                {{-- <td width="3%;">CLASS HIGHEST AVERAGE</td>
+                                <td style="border-bottom:1px solid; width:4%;">{{ Round($avgClass->max('subject_average'),2) }}</td> --}}
                             </tr>
                         </tbody>
                     </table>
 
-                    <table class="margin-bottom" style="width: 80vw; font-weight:bold;">
+                    <table class="margin-bottom" style="width: 40%; font-weight:bold; font-size:15px;">
                         <tbody>
                             <tr>
-                                <td width="4vw;">AGE</td>
-                                <td style="border-bottom:1px solid; width:16vw;">{{ $getStudent->getAge() }}</td>
-                                <td width="3vw">POSITION</td>
-                                <td style="border-bottom:1px solid; width:12.6vw;">{{ $avgClass->search(fn($dt) =>$dt->student_id === $getStudent->id) + 1 }}</td>
-                                <td width="4vw">AVERAGE</td>
-                                <td style="border-bottom:1px solid; width:9.5vw;">{{ $avgClass->firstWhere('student_id', $getStudent->id)?->subject_average }}</td>
+                                <td width="3.7%;">AGE</td>
+                                <td style="border-bottom:1px solid; width:7.2%;">{{ $getStudent->getAge() }}</td>
+                                <td width="1%">POSITION</td>
+                                <td style="border-bottom:1px solid; width:6.7%;">{{ $avgClass->search(fn($dt) =>$dt->student_id === $getStudent->id) + 1 }}</td>
+                                {{-- <td width="1%">AVERAGE</td>
+                                <td style="border-bottom:1px solid; width:9%;">{{ Round($avgClass->firstWhere('student_id', $getStudent->id)?->subject_average,2) }}</td> --}}
                             </tr>
+
+                           
+
+                            
                         </tbody>
                     </table>
+
+   
                 </td>
-                <td width="50vw"></td>
-                <td min-width="20vw" valign="top">
-                    <img src="{{ $getStudent->getProfileDirect() }}" 
-                        alt="" style="border-radius:1.5vw;" height="150vw;" width="150vw;">
-                </td>
+                
+                
             </tr>
         </table>
         
@@ -393,17 +426,17 @@
                           $full_mark = $full_mark + $exam['full_mark'];
                         @endphp --}}
                            <tr>
-                            <td class="td" style="width:200px; text-align:left; font-size:16px;">{{ $exam['subject_name'] }}</td>
-                            <td class="td" style="width:100px;">{{ $exam['resumption_test'] }}</td>
-                            <td class="td">{{ $exam['assignment'] }}</td>
-                            <td class="td">{{ $exam['midterm_test'] }}</td>
-                            <td class="td">{{ $exam['project'] }}</td>
-                            <td class="td">{{ $exam['exam'] }}</td>
-                            <td class="td">{{ $exam['totalScore'] }}</td>
-                            <td class="td">{{ $exam['class_highest_score'] }}</td>
-                            <td class="td">{{ $exam['class_average'] }}</td>
-                            <td class="td">{{ $exam['position'] }}</td>         
-                            <td class="td">{{ $exam['getLoopGrade'] }}</td>
+                            <td class="td" style="width:200px; text-align:left; font-size:16px; font-weight:bold;">{{ $exam['subject_name'] }}</td>
+                            <td class="td" style="width:100px; font-weight:bold;">{{ $exam['resumption_test'] }}</td>
+                            <td class="td" style="width:100px; font-weight:bold;">{{ $exam['assignment'] }}</td>
+                            <td class="td" style="width:100px; font-weight:bold;">{{ $exam['midterm_test'] }}</td>
+                            <td class="td" style="width:100px; font-weight:bold;">{{ $exam['project'] }}</td>
+                            <td class="td" style="width:100px; font-weight:bold;">{{ $exam['exam'] }}</td>
+                            <td class="td" style="width:110px; font-weight:bold;">{{ $exam['totalScore'] }}</td>
+                            <td class="td" style="width:145px; font-weight:bold;">{{ $exam['class_highest_score'] }}</td>
+                            <td class="td" style="width:100px; font-weight:bold;">{{ $exam['class_average'] }}</td>
+                            <td class="td" style="width:100px; font-weight:bold;">{{ $exam['position'] }}</td>         
+                            <td class="td" style="width:100px; font-weight:bold;">{{ $exam['getLoopGrade'] }}</td>
                             <td class="td">
                               @if ($exam['totalScore'] >= 80)
                                   <span style="color: green; font-weight:bold;">EXCELLENT</span>
@@ -434,51 +467,61 @@
 
             </div>
 
-           
+           <br>
 
-            <div style="text-align: center;">
-                <h3>SENIOR SECONDARY SCHOOL<br>[GRADING KEY: 80-100(EXCELLENT); 75-79(VERY GOOD); 60-64(CREDIT); 45-54(PASS); 40-44(PASS); 0-39(FAIL)]</h3>
-                <h3>JUNIOR SECONDARY SCHOOL<br>[GRADING KEY: 70-100(EXCELLENT); 60-69(VERY GOOD); 55-59(CREDIT); 40-54(PASS); 0-39(FAIL)]</h3>
+            <div style="text-align: center; line-height: 2%; font-size:14px;">
+                <h3>{!! $getSetting->exam_description !!}</h3>
             </div>
             
             <br>
             <br>
             <br>
             <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
             
 
-
-            <table style="width:100vw;">
+            <table style="width:100%;">
                 <tr>
-                    <td width="0.1vw;"></td>
-                    <td width="90vw;">
-                        <table class="margin-bottom" style="width: 60vw; font-weight:bold;">
+                    <td width="0.1%;"></td>
+                    <td width="100%;">
+                        <table class="margin-bottom" style="width: 65%; font-weight:bold;">
                             <tbody>
                                 <tr>
-                                    <td width="4vw;">FORM TEACHER/PHONE NO.</td>
-                                    <td style="border-bottom:1px solid; width:2vw;"></td>
-                                    <td width="4vw;">NEXT TERM BEGINS</td>
-                                    <td style="border-bottom:1px solid; width:6vw;"></td>
+                                    <td width="1.5%;">FORM TEACHER/PHONE NO.</td>
+                                    <td style="border-bottom:1px solid; width:2%;"></td>
+                                    <td width="1.2%;">NEXT TERM BEGINS</td>
+                                    <td style="border-bottom:1px solid; width:2%;"></td>
                                 </tr>
                             </tbody>
                         </table>
     
-                        <table class="margin-bottom" style="width: 60vw; font-weight:bold;">
+                        <table class="margin-bottom" style="width: 65%; font-weight:bold;">
                             <tbody>
                                 <tr>
-                                    <td width="4vw;">FORM TEACHER'S REMARK</td>
-                                    <td style="border-bottom:1px solid; width:4vw;"></td>
-                                    <td width="4.3vw;">NEXT TERM SCHOOL FEES</td>
-                                    <td style="border-bottom:1px solid; width:5.1vw;"></td>
+                                    <td width="2.5%;">FORM TEACHER'S REMARK</td>
+                                    <td style="border-bottom:1px solid; width:3.3%;"></td>
+                                    <td width="2.3%;">NEXT TERM SCHOOL FEES</td>
+                                    <td style="border-bottom:1px solid; width:3%;"></td>
                                 </tr>
                             </tbody>
                         </table>
     
-                        <table class="margin-bottom" style="width: 50vw; font-weight:bold;">
+                        <table class="margin-bottom" style="width: 65%; font-weight:bold;">
                             <tbody>
                                 <tr>
-                                    <td width="10vw;">PRINCIPAL/DATE</td>
-                                    <td style="border-bottom:1px solid; width:20vw;"></td>
+                                    <td width="2%;">PRINCIPAL/DATE</td>
+                                    <td style="border-bottom:1px solid; width:20%;"></td>
                                     
                                 </tr>
                             </tbody>
